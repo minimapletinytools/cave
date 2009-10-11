@@ -24,7 +24,6 @@ class MatrixContainer(SuperContainer):
         self.length = len(self.wList)
         self.edit = True
         self.editor = MW_editor.WallEditor(self)
-        
         self.readXML(xml.dom.minidom.parse("testlevel.xml"))
     def update(self):
         if self.edit:
@@ -44,12 +43,22 @@ class MatrixContainer(SuperContainer):
         index = self.getIndex(*self.getMatrixPosition(pos))
         #print pos, TILING_SIZE, self.getMatrixPosition(pos)
         self.wList[index] = en
+    def getActiveTorches(self):
+        def isActive(torch):
+            return torch.burning
+        #print self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y)
+        #return self.getTypes(self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y),"TorchEn")
+        return filter(isActive,self.getTypes(self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y),"TorchEn"))
+    def getSpikeRects(self,rect):
+        return self.getTypes(rect,"SpikeEn")
     def getWallRects(self,rect):
+        return self.getTypes(rect,"WallEn")
+    def getTypes(self,rect,type):
         ret = list()
         for r in range(rect.h):
             for c in range(rect.w):
                 e = self.wList[self.getIndex((rect.x + c),(rect.y + r))]
-                if e:
+                if e and e.getName() == type:
                     ret.append(e.getRect())
         return ret
             
@@ -62,17 +71,19 @@ class MatrixContainer(SuperContainer):
                 
     def setAllWalls(self):
         for i in range(self.length):
-            if self.wList[i]:
+            if isinstance(self.wList[i],WallEn):
                 self.setWall(self,getCart(i))
+
+    
             
     def setWall(self, *args):
         if len(args == 1): x,y = args[0].x, args[0].y
         else: x,y = args[0],args[1]
         l = r = t = b = False
-        if self.isInBound(x+1, y) and self.wList[self.getIndex(x+1,y)]: r = True
-        if self.isInBound(x-1, y) and self.wList[self.getIndex(x-1,y)]: l = True
-        if self.isInBound(x, y+1) and self.wList[self.getIndex(x,y+1)]: b = True
-        if self.isInBound(x, y-1) and self.wList[self.getIndex(x,y-1)]: t = True
+        if self.isInBound(x+1, y) and isinstance(self.wList[self.getIndex(x+1,y)],MW_entity.WallEn): r = True
+        if self.isInBound(x-1, y) and isinstance(self.wList[self.getIndex(x-1,y)],MW_entity.WallEn): l = True
+        if self.isInBound(x, y+1) and isinstance(self.wList[self.getIndex(x,y+1)],MW_entity.WallEn): b = True
+        if self.isInBound(x, y-1) and isinstance(self.wList[self.getIndex(x,y-1)],MW_entity.WallEn): t = True
         #TODO decide how we want to generate tiles
     def isInBound(self,x,y):
         if x + y*self.width < self.length: return True
@@ -80,7 +91,9 @@ class MatrixContainer(SuperContainer):
     def getIndex(self,x,y):
         i = x + y*self.width
         if i < self.length: return i
-        else: raise Exception("out of index")
+        else:
+            self.printXML() 
+            raise Exception("out of index")
     def getCart(self,index):
         return index%self.width, int(index/self.width)
     def getMatrixRect(self,rect): #used for converting camera rect to matrix rect

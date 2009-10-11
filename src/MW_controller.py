@@ -64,6 +64,7 @@ class PlayController(Controller):
         self.woman = MW_entity.WomanEn(self)
         self.man = MW_entity.ManEn(self)
         self.activePlayer = self.man
+        self.burningTorches = list()
     def loop(self):
         for e in MW_global.eventList:
             if e.type == pygame.KEYDOWN:
@@ -74,11 +75,16 @@ class PlayController(Controller):
                     else: 
                         self.activePlayer = self.man
                         MW_global.camera.moveTo(self.man.pos)
+        t = pygame.time.get_ticks()
+        self.burningTorches = self.cont.getActiveTorches()
+        print pygame.time.get_ticks() -t
         self.woman.update()
         self.man.update()
         self.doodads.update() #scripting goes in here
         self.cont.update() #though tehre really is nothing to update
+        #t = pygame.time.get_ticks()
         self.cont.draw()
+        #print pygame.time.get_ticks() -t
         self.doodads.draw()
         self.woman.draw()
         self.man.draw()

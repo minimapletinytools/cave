@@ -11,7 +11,9 @@ class WallEditor:
         self.p = matrix
         self.cursor = Vector2d(0,0)
         self.ocursor = Vector2d(0,0)
-        self.activeObject = MW_entity.WallEn()
+        self.index = 0
+        self.entityList = (MW_entity.WallEn(),MW_entity.SpikeEn(),MW_entity.TorchEn(),None)
+        self.activeObject = self.setActive()
         self.mode = "place"
         self.placed = False
         
@@ -23,6 +25,18 @@ class WallEditor:
         self.cursor.y = truncateToMultiple(self.cursor.y, TILING_SIZE.y)
     
     def toggleMode(self):
+        if self.activeObject == None:
+            self.activeObject = self.entityList[self.index]
+            if self.activeObject == None:
+                self.setActive(1)
+        else: self.activeObject = None
+        
+    def setActive(self,offset = 0):
+        self.index += offset
+        self.index = self.index%len(self.entityList)
+        self.activeObject = self.entityList[self.index]
+        
+    def toggleModeOld(self):
         if self.mode == "place":
             self.mode = "edit"
             self.activeObject = None
@@ -43,8 +57,13 @@ class WallEditor:
                 self.appendObject()
             if e.type == pygame.MOUSEBUTTONUP:
                 self.placed = False
-            if e.type == pygame.KEYDOWN and e.key == pygame.K_SPACE:
-                self.toggleMode()
+            if e.type == pygame.KEYDOWN:
+                if e.key == pygame.K_PAGEUP:
+                    self.setActive(1)
+                if e.key == pygame.K_PAGEDOWN:
+                    self.setActive(-1)
+                if e.key == pygame.K_SPACE:
+                    self.toggleMode()
         
     def appendObject(self):
         #rint "wall appended at", self.activeObject.pos
@@ -66,7 +85,6 @@ class WallEditor:
                     MW_global.camera.moveToRel(Vector2d(0,-40))
                 if e.key == pygame.K_KP2:
                     MW_global.camera.moveToRel(Vector2d(0,40))
-
         self.addMode()
         
     def draw(self):

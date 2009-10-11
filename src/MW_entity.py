@@ -13,6 +13,8 @@ class Entity:
         pass
     def draw(self):
         pass
+    def getName(self):
+        return "Entity"
 
 class WallEn(Entity):
     def __init__(self,pos=Vector2d(0,0)):
@@ -20,6 +22,8 @@ class WallEn(Entity):
         self.pos = pos
         self.image = pygame.image.load("basic_wall.png")
         self.highlight = False
+    def getName(self):
+        return "WallEn"
     def teleport(self,pos):
         self.pos = pos
     def getRect(self):
@@ -48,16 +52,80 @@ class WallEn(Entity):
             pygame.draw.rect(MW_global.screen,COLOR_WHITE,pygame.Rect(dPos.x,dPos.y,TILING_SIZE.x,TILING_SIZE.y),1)
         self.highlight = False
         
+class TorchEn(Entity):
+    def __init__(self):
+        Entity.__init__(self)
+        self.pos = Vector2d(0,0)
+        self.burning = False
+        self.id = 0
+        #load some animation file thingy
+    def getName(self):
+        return "TorchEn"
+    def teleport(self,pos):
+        self.pos = pos
+    def draw(self):
+        dPos = MW_global.camera.convertCrds(self.pos)
+        pygame.draw.rect(MW_global.screen,COLOR_WHITE,pygame.Rect(dPos.x,dPos.y,TILING_SIZE.x,TILING_SIZE.y),1)
+        if self.burning:
+            pass
+        else:
+            pass
 class SpikeEn(Entity):
-    def __init__(self,exml):
-        pass
+    def __init__(self):
+        Entity.__init__(self)
+        self.pos = Vector2d(0,0)
+        #TODO load spikes, load random image out of a set
+        self.image = pygame.image.load("basic_wall.png")
+        self.highlight = False
+    def getName(self):
+        return "SpikeEn"
+    def draw(self):
+        #check if lit
+        MW_global.camera.drawOnScreen(self.image, self.pos)
+        #check if covered by light\
+        if self.highlight:
+            dPos = MW_global.camera.convertCrds(self.pos)
+            pygame.draw.rect(MW_global.screen,COLOR_WHITE,pygame.Rect(dPos.x,dPos.y,TILING_SIZE.x,TILING_SIZE.y),1)
+        self.highlight = False
+        
     def getRect(self):
-        pass
-        #TDOD
-    def teleport(self):
-        pass
+        return pygame.Rect(self.pos.x,self.pos.y,TILING_SIZE.x,TILING_SIZE.y)
+    def teleport(self,pos):
+        self.pos = pos
     def getXML(self):
-        pass
+        self.exml.setAttribute("x",str(self.pos.x))
+        self.exml.setAttribute("y",str(self.pos.y))
+        return exml
+
+class DoorEn(Entity):
+    def __init__(self,exml):
+        Entity.__init__(self)
+        self.xml = exml
+        self.id = 0
+        if MW_xml.hasAttributes(exml, ("x","y")):
+            self.pos = Vector2d(exml.getAttribute("x"), exml.getAttribute("y"))
+        else: self.pos = Vector2d()
+        #TODO load spikes, load random image out of a set
+        self.image = pygame.image.load("basic_wall.png")
+    def getName(self):
+        return "DoorEn"
+    def getXML(self):
+        self.exml.setAttribute("x",str(self.pos.x))
+        self.exml.setAttribute("y",str(self.pos.y))
+        return exml
+class SwitchEn(Entity):
+    def __init__(self,exml):
+        Entity.__init__(self)
+        self.xml = exml
+        self.id = 0
+        if MW_xml.hasAttributes(exml, ("x","y")):
+            self.pos = Vector2d(exml.getAttribute("x"), exml.getAttribute("y"))
+        else: self.pos = Vector2d()
+        #TODO load spikes, load random image out of a set
+        self.image = pygame.image.load("basic_wall.png")
+    def getName(self):
+        return "SwitchEn"
+        
 class PlayerEn(Entity):
     def __init__(self,controller):
         Entity.__init__(self)
@@ -66,6 +134,8 @@ class PlayerEn(Entity):
         self.hitOld = self.getRect()
         self.p = controller
         self.state = "STAND"
+    def getName(self):
+        return "PlayerEn"
     
     def teleport(self,pos):
         self.pos = pos
@@ -116,7 +186,15 @@ class PlayerEn(Entity):
             if math.fabs(rdiff.x) >  math.fabs(rdiff.y):    #we prioritize y direction
                 pass
             
-            
+    def checkDoodads(self):
+        for e in self.p.doodads.enList:
+            if isinstance(e,SpikeEn):
+                self.state = "DEAD"
+            elif isinstance(e,SwitchEn):
+                e.press = True
+            elif isinstance(e,DoorEn):
+                #TODO hit collision
+                pass
     def checkHits(self):
         rect = self.p.cont.getMatrixRect(self.getRect().inflate(40,40))  #arbitrary, can be more precise
         wallRects = self.p.cont.getWallRects(rect)
@@ -139,10 +217,10 @@ class PlayerEn(Entity):
                 if self.checkProjected(Vector2d(0,1)):
                     self.state = "STAND"
                 else:
-                    print "state fall"
                     self.state = "FALLING"
             self.anim.state = self.state
             self.anim.forceUpdate()
+            
     def checkHitsOld(self):
         rect = pygame.Rect(0,0,50,50) #arbitrary, can be more precise
         wallRects = self.p.cont.getWallRects(rect)
