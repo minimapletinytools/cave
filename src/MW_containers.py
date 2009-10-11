@@ -146,6 +146,9 @@ class DoodadContainer(SuperContainer):
     def draw(self):
         for e in self.enList:
             e.draw()
+    def deleteEntity(self,en):
+        pass
+        #do it
     def destroy(self):
         delList = list()
         for e in self.enList:

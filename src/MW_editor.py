@@ -74,7 +74,7 @@ class WallEditor():
             self.activeObject.draw()
         pygame.draw.rect(MW_global.screen, (255,255,255),MW_global.camera.convertCrds(pygame.Rect(self.cursor.x,self.cursor.y,TILING_SIZE.x,TILING_SIZE.y)),1)
         
-
+import MW_lookup
 class DooEditor():
     def __init__(self, doodadcontainer):
         self.p = doodadcontainer
@@ -98,31 +98,30 @@ class DooEditor():
         
     def setActive(self, move = 0):
         if not self.activeObject:
-            self.activeObject = pedo_lookup.enTables(self.entityList[self.currentItem])
+            self.activeObject = MW_lookup.enTables(self.entityList[self.currentItem])
         else:
             self.currentItem = (self.currentItem + move)%len(self.entityList)
-            self.activeObject = pedo_lookup.enTables(self.entityList[self.currentItem])
+            self.activeObject = MW_lookup.enTables(self.entityList[self.currentItem])
     
     def setMouse(self):
-        self.ocursor = self.cursor        
+        self.ocursor = self.cursor     
         self.screenCrds = Vector2d(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
-        self.cursor = PEG_mainLoop.mainLoop().cam.convertScreenCrds(self.screenCrds)
-        self.cursor.x = PEG_helpers.truncateToMultiple(self.cursor.x, TILING_SIZE.x)
-        self.cursor.y = PEG_helpers.truncateToMultiple(self.cursor.y, TILING_SIZE.y)
+        self.cursor = MW_global.camera.convertScreenCrds(self.screenCrds)
+        self.cursor.x = truncateToMultiple(self.cursor.x, TILING_SIZE.x)
+        self.cursor.y = truncateToMultiple(self.cursor.y, TILING_SIZE.y)
+        self.activeObject.teleport(self.cursor)
     
     def addMode(self):
         self.setMouse()
-        if self.activeObject:
-            self.activeObject.updateCursor(self.cursor)
         
-        for e in PEG_mainLoop.mainLoop().eventList:
+        for e in MW_global.eventList:
             if e.type == pygame.MOUSEBUTTONDOWN:
                 clickEvent = True
                 ret = self.activeObject.sendClick(e)
                 if ret != None:
                     print "object ", self.activeObject, " appended"
-                    PEG_mainLoop.mainLoop().entityList.append(ret)
-                    self.activeObject = pedo_lookup.enTables(self.entityList[self.currentItem].cloneNode(True))
+                    self.p.enList.append(ret)
+                    self.activeObject = MW_lookup.enTables(self.entityList[self.currentItem].cloneNode(True))
             if e.type == pygame.KEYDOWN:
                 if e.key == pygame.K_PAGEUP:
                     self.setActive(1)
@@ -137,69 +136,55 @@ class DooEditor():
 #                self.activeObject = pedo_lookup.enTables(self.entityList[self.currentItem].cloneNode(True))
 #==============================================================================
         if pygame.mouse.get_pressed()[0]:
-            try:
-                if self.activeObject.repeatable:
-                    if self.ocursor != self.cursor:
-                        for e in PEG_mainLoop.mainLoop().entityList:
-                                if e.pos.getSDLRect().collidepoint(self.cursor.getIntTuple()):
-                                    #TODO should check additional conditions for deleting things
-                                    try: 
-                                        if not e.drawOver or e.repeatable: #TEMPORARY CODE
-                                            PEG_mainLoop.mainLoop().deleteEntity(e)
-                                    except: pass
-                        self.appendObject()
-            except: pass
+            if not self.ocursor.__eq__(self.cursor):
+                for e in PEG_mainLoop.mainLoop().entityList:
+                    if e.getRect().collidepoint(self.cursor.getIntTuple()):
+                            self.p.deleteEntity(e)
+                self.appendObject()
             
     def appendObject(self):
-        PEG_mainLoop.mainLoop().entityList.append(self.activeObject)
-        self.activeObject = pedo_lookup.enTables(self.entityList[self.currentItem].cloneNode(True))
+        self.p.enList.append(self.activeObject)
+        self.activeObject = MW_lookup.enTables(self.entityList[self.currentItem].cloneNode(True))
         
     def editMode(self):
         self.setMouse()
-        for e in PEG_mainLoop.mainLoop().eventList:
+        for e in MW_global.eventList:
             if e.type == pygame.KEYDOWN:
                 if e.key == pygame.K_SPACE:
                     self.toggleMode()
             if e.type == pygame.MOUSEBUTTONUP:
-                for e in PEG_mainLoop.mainLoop().entityList:
-                    if e.pos.getSDLRect().collidepoint(self.cursor.getIntTuple()):
+                for e in MW_global.entityList:
+                    if e.getRect().collidepoint(self.cursor.getIntTuple()):
                         self.activeObject = e
-                        PEG_mainLoop.mainLoop().deleteEntity(e)
+                        self.p.deleteEntity(e)
                         self.toggleMode()
         
         
     def update(self):
-        for e in PEG_mainLoop.mainLoop().eventList:
+        for e in MW_global.eventList:
             if e.type == pygame.KEYDOWN:
                 if e.key == pygame.K_KP4:
-                    PEG_mainLoop.mainLoop().cam.moveToRel(Vector2d(-50,0))
+                    MW_global.cam.moveToRel(Vector2d(-50,0))
                 if e.key == pygame.K_KP6:
-                    PEG_mainLoop.mainLoop().cam.moveToRel(Vector2d(50,0))
+                    MW_global.cam.moveToRel(Vector2d(50,0))
                 if e.key == pygame.K_KP8:
-                    PEG_mainLoop.mainLoop().cam.moveToRel(Vector2d(0,-50))
+                    MW_global.cam.moveToRel(Vector2d(0,-50))
                 if e.key == pygame.K_KP2:
-                    PEG_mainLoop.mainLoop().cam.moveToRel(Vector2d(0,50))
+                    MW_global.cam.moveToRel(Vector2d(0,50))
         if self.mode == "place":
             self.addMode()
         else:
             self.editMode()
             
-        #return 0 means propogate input down
-        #return 1 means taken
-        #return 2 means I'm done, put me down!
-        for e in PEG_mainLoop.mainLoop().eventList:
-            if self.activeObject:
-                n = self.activeObject.sendKey(e)
-                if n == 0:
-                    #propogate
-                    if e.type == pygame.KEYDOWN and e.key == pygame.K_RETURN:
-                        PEG_mainLoop.mainLoop().saveState(99)
-                elif n == 2:
-                    self.appendObject() 
+        for e in MW_global.eventList:
+            if e.type == pygame.KEYDOWN and e.key == pygame.K_RETURN:
+                pass
+                #todo WRITE XML
         
     def draw(self):
         if self.activeObject:
             self.activeObject.draw()
-        pygame.draw.rect(PEG_mainLoop.mainLoop().screen, (255,255,255),pygame.Rect(self.screenCrds.x, self.screenCrds.y, 2, 2))
+        pygame.draw.rect(MW_global.screen, (255,255,255),MW_global.camera.convertCrds(pygame.Rect(self.cursor.x,self.cursor.y,TILING_SIZE.x,TILING_SIZE.y)),1)
+        
         
         

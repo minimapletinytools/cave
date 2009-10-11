@@ -47,6 +47,17 @@ class WallEn(Entity):
             dPos = MW_global.camera.convertCrds(self.pos)
             pygame.draw.rect(MW_global.screen,COLOR_WHITE,pygame.Rect(dPos.x,dPos.y,TILING_SIZE.x,TILING_SIZE.y),1)
         self.highlight = False
+        
+class SpikeEn(Entity):
+    def __init__(self,exml):
+        pass
+    def getRect(self):
+        pass
+        #TDOD
+    def teleport(self):
+        pass
+    def getXML(self):
+        pass
 class PlayerEn(Entity):
     def __init__(self,controller):
         Entity.__init__(self)
