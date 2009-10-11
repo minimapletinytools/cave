@@ -6,7 +6,7 @@ from MW_constants import *
 import xml.dom.minidom
 
 
-class WallEditor:
+class WallEditor():
     def __init__(self,matrix):
         self.p = matrix
         self.cursor = Vector2d(0,0)
@@ -74,8 +74,8 @@ class WallEditor:
             self.activeObject.draw()
         pygame.draw.rect(MW_global.screen, (255,255,255),MW_global.camera.convertCrds(pygame.Rect(self.cursor.x,self.cursor.y,TILING_SIZE.x,TILING_SIZE.y)),1)
         
-#import MW_lookup
-class DooEditor:
+import MW_lookup
+class DooEditor():
     def __init__(self, doodadcontainer):
         self.p = doodadcontainer
         self.cursor = Vector2d(0,0)
