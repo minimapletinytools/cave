@@ -12,8 +12,9 @@ class WallEditor:
         self.cursor = Vector2d(0,0)
         self.ocursor = Vector2d(0,0)
         self.index = 0
+        self.entityRefList = (MW_entity.WallEn,MW_entity.SpikeEn,MW_entity.TorchEn,None)
         self.entityList = (MW_entity.WallEn(),MW_entity.SpikeEn(),MW_entity.TorchEn(),None)
-        self.activeObject = self.setActive()
+        self.setActive()
         self.mode = "place"
         self.placed = False
         
@@ -34,7 +35,9 @@ class WallEditor:
     def setActive(self,offset = 0):
         self.index += offset
         self.index = self.index%len(self.entityList)
-        self.activeObject = self.entityList[self.index]
+        if self.entityRefList[self.index] != None:
+            self.activeObject = self.entityRefList[self.index]()
+        else: self.activeObject = None
         
     def toggleModeOld(self):
         if self.mode == "place":
@@ -69,8 +72,9 @@ class WallEditor:
         #rint "wall appended at", self.activeObject.pos
         self.p.addEn(self.activeObject,self.cursor)
         if self.mode == "place":
-            self.activeObject = MW_entity.WallEn()
-            self.activeObject.teleport(self.cursor)
+            self.setActive(0)
+            if self.activeObject:
+                self.activeObject.teleport(self.cursor)
         
     def update(self):
         for e in MW_global.eventList:

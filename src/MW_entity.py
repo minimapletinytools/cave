@@ -59,6 +59,8 @@ class TorchEn(Entity):
         self.burning = False
         self.id = 0
         #load some animation file thingy
+    def getRect(self):
+        return pygame.Rect(self.pos.x,self.pos.y,TILING_SIZE.x,TILING_SIZE.y)
     def getName(self):
         return "TorchEn"
     def teleport(self,pos):
@@ -75,7 +77,7 @@ class SpikeEn(Entity):
         Entity.__init__(self)
         self.pos = Vector2d(0,0)
         #TODO load spikes, load random image out of a set
-        self.image = pygame.image.load("basic_wall.png")
+        self.image = pygame.image.load("spikes_01.png")
         self.highlight = False
     def getName(self):
         return "SpikeEn"

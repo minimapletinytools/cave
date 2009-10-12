@@ -48,7 +48,7 @@ class MatrixContainer(SuperContainer):
             return torch.burning
         #print self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y)
         #return self.getTypes(self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y),"TorchEn")
-        return filter(isActive,self.getTypes(self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y),"TorchEn"))
+        return filter(isActive,self.getTypesEn(self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y),"TorchEn"))
     def getSpikeRects(self,rect):
         return self.getTypes(rect,"SpikeEn")
     def getWallRects(self,rect):
@@ -61,7 +61,14 @@ class MatrixContainer(SuperContainer):
                 if e and e.getName() == type:
                     ret.append(e.getRect())
         return ret
-            
+    def getTypesEn(self,rect,type):
+        ret = list()
+        for r in range(rect.h):
+            for c in range(rect.w):
+                e = self.wList[self.getIndex((rect.x + c),(rect.y + r))]
+                if e and e.getName() == type:
+                    ret.append(e)
+        return ret
         
     def setRectWalls(self,rect):
         rect = rect.inflate(TILING_SIZE.x,TILING_SIZE.y)
