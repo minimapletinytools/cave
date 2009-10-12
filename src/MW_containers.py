@@ -45,7 +45,7 @@ class MatrixContainer(SuperContainer):
         self.wList[index] = en
     def getActiveTorches(self):
         def isActive(torch):
-            return torch.burning
+            return torch.state == "BURNING"
         #print self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y)
         #return self.getTypes(self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y),"TorchEn")
         return filter(isActive,self.getTypesEn(self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y),"TorchEn"))
@@ -136,9 +136,9 @@ class MatrixContainer(SuperContainer):
 
         exml.appendChild(c)
         for i in range(len(self.wList)):
-            if self.wList[i] != None:
-                exml.appendChild(xml.dom.minidom.parseString("<p><wall i=\""
-                                                     +str(i)+"\" /></p>").getElementsByTagName("wall")[0])
+            if self.wList[i]:
+                exml.appendChild(xml.dom.minidom.parseString("<p><"+self.wList[i].getName()+" i=\""
+                                                             +str(i)+"\" /></p>").getElementsByTagName(self.wList[i].getName())[0])
         print exml.toxml()
     def readXML(self,exml):
         size = exml.getElementsByTagName("size")[0]
@@ -149,9 +149,19 @@ class MatrixContainer(SuperContainer):
         for e in range(self.width*self.height):
             self.wList.append(None)
         self.length = len(self.wList)
-        for e in exml.getElementsByTagName("wall"):
+        for e in exml.getElementsByTagName("WallEn"):
             index = int(e.getAttribute("i"))
             self.wList[index] = MW_entity.WallEn()
+            self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
+        for e in exml.getElementsByTagName("SpikeEn"):
+            print "making spike"
+            index = int(e.getAttribute("i"))
+            self.wList[index] = MW_entity.SpikeEn()
+            self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
+        for e in exml.getElementsByTagName("TorchEn"):
+            print "making torch"
+            index = int(e.getAttribute("i"))
+            self.wList[index] = MW_entity.TorchEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
         
         pass

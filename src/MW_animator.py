@@ -3,6 +3,8 @@ import xml.dom.minidom
 import MW_xml
 import MW_image
 import MW_global
+import random
+import os
 from MW_datatypes import *
 from MW_constants import *
 
@@ -88,10 +90,12 @@ class Animator:
     def __init__(self,exml):
         """pass exml node at top of graph"""
         if MW_xml.hasAttributes(exml, ("name","file")):
-            self.file = exml.getAttribute("file")
+            imageList = exml.getAttribute("file").split(" ")
+            self.file = imageList[random.randint(0,len(imageList))-1]
             self.name = exml.getAttribute("name")
         else:
-            raise Exception("can not file file")
+            raise Exception("can not file file")        
+        
         MW_global.imagewheel.loadImage(self.file)
         self.image = MW_global.imagewheel.getImage(self.file)
         self.flipImage = MW_global.imagewheel.getFlipImage(self.file)

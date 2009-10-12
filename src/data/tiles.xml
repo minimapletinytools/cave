@@ -4,43 +4,47 @@
 			<next state = "DEFAULT" id = "1" />
 			<next state = "BURNING" id = "11" time = "0"/>
 		</frame>
-		<frame id = "11" x = "0" y = "20" w = "20" h = "20" time = "2">
+		<frame id = "11" x = "0" y = "20" w = "20" h = "20" time = "5">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "BURNING" id = "12" />
 		</frame>
-		<frame id = "12" x = "0" y = "40" w = "20" h = "20" time = "2">
+		<frame id = "12" x = "0" y = "40" w = "20" h = "20" time = "5">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "BURNING" id = "13" />
 		</frame>
-		<frame id = "13" x = "0" y = "60" w = "20" h = "20" time = "2">
+		<frame id = "13" x = "0" y = "60" w = "20" h = "20" time = "5">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "BURNING" id = "14" />
 		</frame>
-		<frame id = "14" x = "0" y = "80" w = "20" h = "20" time = "2">
+		<frame id = "14" x = "0" y = "80" w = "20" h = "20" time = "5">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "BURNING" id = "11" />
 		</frame>
 	</sprite>
-	<sprite name = "spike" file = "spike_01.png" file = "spike_02.png">
+	<sprite name = "spike" file = "spikes_01.png spikes_02.png spikes_03.png spikes_04.png">
 		<frame id = "1" x = "0" y = "0" w = "20" h = "20" time = "99">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "BLOOD" id = "11" time = "0"/>
 		</frame>
-		<frame id = "11" x = "0" y = "20" w = "20" h = "20" time = "2">
+		<frame id = "11" x = "0" y = "20" w = "20" h = "20" time = "5">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "BLOOD" id = "12" />
 		</frame>
-		<frame id = "12" x = "0" y = "40" w = "20" h = "20" time = "2">
+		<frame id = "12" x = "0" y = "40" w = "20" h = "20" time = "5">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "BLOOD" id = "13" />
 		</frame>
-		<frame id = "13" x = "0" y = "60" w = "20" h = "20" time = "2">
+		<frame id = "13" x = "0" y = "60" w = "20" h = "20" time = "5">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "BLOOD" id = "14" />
 		</frame>
-		<frame id = "14" x = "0" y = "80" w = "20" h = "20" time = "2">
+		<frame id = "14" x = "0" y = "80" w = "20" h = "20" time = "5">
 			<next state = "DEFAULT" id = "1" />
-			<next state = "BLOOD" id = "14" />
+			<next state = "BLOOD" id = "15" />
+		</frame>
+		<frame id = "15" x = "0" y = "100" w = "20" h = "20" time = "5">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "BLOOD" id = "15" />
 		</frame>
 	</sprite>
 </tiles>
