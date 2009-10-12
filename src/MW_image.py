@@ -1,13 +1,13 @@
 import pygame
 import MW_global
 from MW_constants import *
-
+import os
 class ImageWheel:
     def __init__(self):
         self.iMap = dict()
     def loadImage(self,filename):
         if filename not in self.iMap:
-            self.iMap[filename] = pygame.image.load(filename).convert()
+            self.iMap[filename] = pygame.image.load(os.path.join("data",filename)).convert()
             self.iMap[filename].set_colorkey(COLOR_KEY)
             self.flipImage(filename)
     def flipImage(self,identifier):

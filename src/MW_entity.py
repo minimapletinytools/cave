@@ -4,6 +4,7 @@ import MW_animator
 import MW_xml
 import math
 import xml.dom.minidom
+import os
 from MW_datatypes import *
 from MW_constants import *
 class Entity:
@@ -20,7 +21,7 @@ class WallEn(Entity):
     def __init__(self,pos=Vector2d(0,0)):
         Entity.__init__(self)
         self.pos = pos
-        self.image = pygame.image.load("basic_wall.png")
+        self.image = pygame.image.load(os.path.join("data","basic_wall.png"))
         self.highlight = False
     def getName(self):
         return "WallEn"
@@ -58,7 +59,7 @@ class TorchEn(Entity):
         self.pos = Vector2d(0,0)
         self.burning = False
         self.id = 0
-        #load some animation file thingy
+        self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse("tiles.xml"), "sprite","name","torch"))
     def getRect(self):
         return pygame.Rect(self.pos.x,self.pos.y,TILING_SIZE.x,TILING_SIZE.y)
     def getName(self):
@@ -77,7 +78,7 @@ class SpikeEn(Entity):
         Entity.__init__(self)
         self.pos = Vector2d(0,0)
         #TODO load spikes, load random image out of a set
-        self.image = pygame.image.load("spikes_01.png")
+        self.image = pygame.image.load(os.path.join("data","spikes_01.png"))
         self.highlight = False
     def getName(self):
         return "SpikeEn"
