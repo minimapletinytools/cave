@@ -75,9 +75,9 @@ class PlayController(Controller):
                     else: 
                         self.activePlayer = self.man
                         MW_global.camera.moveTo(self.man.pos)
-        t = pygame.time.get_ticks()
+        #t = pygame.time.get_ticks()
         self.burningTorches = self.cont.getActiveTorches()
-        print pygame.time.get_ticks() -t
+        #print pygame.time.get_ticks() -t
         self.woman.update()
         self.man.update()
         self.doodads.update() #scripting goes in here
