@@ -1,5 +1,4 @@
 from MW_datatypes import *
-
 SCREEN_SIZE = WIDTH, HEIGHT = 640, 480
 FRAMERATE = 30
 MSPERFRAME = 1000/FRAMERATE
@@ -8,7 +7,6 @@ MSPERFRAME = 1000/FRAMERATE
 GRAVITY = Vector2d(0,-2)
 #tiling size
 TILING_SIZE = Vector2d(20,20)
-
 
 #colors
 COLOR_RED = 255,0,0
