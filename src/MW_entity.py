@@ -81,7 +81,7 @@ class SpikeEn(Entity):
         self.pos = Vector2d(0,0)
         #TODO load spikes, load random image out of a set
         self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse(os.path.join("data","tiles.xml")), "sprite","name","spike"))
-        self.state = "BLOOD"
+        self.state = "DEFAULT"
         self.highlight = False
     def getName(self):
         return "SpikeEn"
@@ -231,6 +231,14 @@ class PlayerEn(Entity):
                     self.state = "FALLING"
             self.anim.state = self.state
             self.anim.forceUpdate()
+    def checkSpikes(self):
+        rect = self.p.cont.getMatrixRect(self.getRect().inflate(40,40))  #arbitrary, can be more precise
+        spikes = self.p.cont.getSpikeRects(rect)
+        hits = self.getRect().collidelistall(spikes)
+        for i in hits:
+            self.p.cont.wList[self.p.cont.getMatrixIndex(spikes[i])].highlight = True
+            if self.anim.getVelData().y > 0:
+                self.p.cont.wList[self.p.cont.getMatrixIndex(spikes[i])].state = "BLOOD"      
             
     def checkHitsOld(self):
         rect = pygame.Rect(0,0,50,50) #arbitrary, can be more precise
@@ -289,6 +297,7 @@ class WomanEn(PlayerEn):
         self.anim.state = self.state
         self.anim.update()
         self.pos += self.anim.getVelData()
+        self.checkSpikes()
         self.checkHits()
         #check if over ground
         if not self.checkProjected(Vector2d(0,1)):
