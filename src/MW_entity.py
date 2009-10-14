@@ -286,10 +286,29 @@ class WomanEn(PlayerEn):
                         if e.key == pygame.K_LEFT:
                             self.anim.dir = "LEFT"
                         else: self.anim.dir = "RIGHT"
+                    if self.state == "CRAWL" or self.state == "CRAWLING":
+                        self.state = "CRAWLING"
+                        if e.key == pygame.K_LEFT:
+                            self.anim.dir = "LEFT"
+                        else: self.anim.dir = "RIGHT"
+                if e.key == pygame.K_DOWN:
+                    if self.state == "WALK":
+                        self.state = "CRAWLING"
+                    elif self.state == "STAND":
+                        self.state = "CRAWL"
             elif e.type == pygame.KEYUP:
                 if e.key == pygame.K_LEFT or e.key == pygame.K_RIGHT:
                     if self.state == "WALK":
                         self.state = "STAND"
+                    if self.state == "CRAWLING":
+                        self.state = "CRAWL"
+                    
+        if not self.keyMap[pygame.K_DOWN]:
+            if not self.checkProjected(Vector2d(0,-20)):
+                if self.state == "CRAWLING":
+                    self.state = "WALK"
+                elif self.state == "CRAWL":
+                    self.state = "STAND"
     def update(self):
         #print self.state, self.anim.activeNode.id
         self.hitOld = self.getRect()
