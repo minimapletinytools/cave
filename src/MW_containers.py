@@ -19,6 +19,8 @@ class MatrixContainer(SuperContainer):
         self.height = dim[1]
         self.startPos = Vector2d(-500,-500)
         self.wList = list()
+        self.torchList = list()
+        self.activeTorchList = list()
         for e in range(self.width*self.height):
             self.wList.append(None)
         self.length = len(self.wList)
@@ -28,6 +30,7 @@ class MatrixContainer(SuperContainer):
     def update(self):
         if self.edit:
             self.editor.update()
+        self.activeTorchList = self.getActiveTorches()
     def draw(self):
         if self.edit: 
             self.editor.draw()
@@ -37,15 +40,21 @@ class MatrixContainer(SuperContainer):
             for c in range(rect.w):
                 e = self.wList[self.getIndex((rect.x + c),(rect.y + r))]
                 if e:
-                    e.draw()
+                    for f in self.activeTorchList:
+                        if f.pos.distance(e.pos) < TORCH_RADIUS:
+                            e.draw()
     def addEn(self,en,pos):
         print en, "added"
         index = self.getIndex(*self.getMatrixPosition(pos))
         #print pos, TILING_SIZE, self.getMatrixPosition(pos)
+        if self.wList[index] and self.wList[index].getName() == "TorchEn":
+            self.torchList.remove(self.wList[index])
         self.wList[index] = en
+        if en and en.getName() == "TorchEn":
+            self.torchList.append(en)
     def getActiveTorches(self):
-        def isActive(torch):
-            return torch.state == "BURNING"
+        return filter(isInRadius,filter(isActive,self.torchList))
+    def getActiveTorchesOld(self):
         #print self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y)
         #return self.getTypes(self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y),"TorchEn")
         return filter(isActive,self.getTypesEn(self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y),"TorchEn"))
@@ -163,7 +172,7 @@ class MatrixContainer(SuperContainer):
             index = int(e.getAttribute("i"))
             self.wList[index] = MW_entity.TorchEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
-        
+            self.torchList.append(self.wList[index])
         pass
     
 class DoodadContainer(SuperContainer):
@@ -187,3 +196,9 @@ class DoodadContainer(SuperContainer):
         for e in delList:
             self.enList.remove(e)
         del delList
+
+def isInRadius(torch):
+    #TODO use circle square collision for this
+    return True
+def isActive(torch):
+    return torch.state == "BURNING"

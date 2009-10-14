@@ -4,9 +4,14 @@ import math
 
 
 class Vector2d():
-    def __init__(self,_x,_y):
-        self.x = _x
-        self.y = _y
+    def __init__(self,*args):
+        if len(args) == 2:
+            self.x = args[0]
+            self.y = args[1]
+        elif len(args) == 1:
+            self.x = args[0].x
+            self.y = args[0].y
+            
     def __str__(self):
         c = "Vector2d ("
         c += str(self.x)

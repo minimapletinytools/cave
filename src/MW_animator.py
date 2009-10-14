@@ -12,9 +12,12 @@ class FrameNode:
     def __init__(self, wxml, id, createdNodeList = list()):
         
         exml = MW_xml.getChildNodeWithAttribute(wxml, "frame", "id", id)
+        if id == "401":
+            pass
         
         createdNodeList.append(self)
         #set up important data
+        
         self.id = exml.getAttribute("id")
         
         if exml.hasAttribute("state"):
@@ -43,7 +46,7 @@ class FrameNode:
         
         #self.dVect2d
         if MW_xml.hasAttributes(exml, ("dx","dy")):
-            self.dVect2d = Vector2d(exml.getAttribute("dx"),exml.getAttribute("dy"))
+            self.dVect2d = Vector2d(int(exml.getAttribute("dx")),int(exml.getAttribute("dy")))
         else:
             self.dVect2d = Vector2d(0,0)
             #print exml, " has no dx dy attributes, setting dVect2d default", self.dVect2d
