@@ -12,6 +12,34 @@ class SuperContainer:
         self.duck = "quack"
         pass
 
+class WomanContainer(SuperContainer):
+    def __init__(self,controller):
+        SuperContainer.__init__(self)
+        self.enList = list()
+        self.delList = list()
+        self.p = controller
+        self.createNew()
+    def update(self):
+        if self.enList[len(self.enList)-1].anim.activeNode.state == "REALLYDEAD":
+            self.createNew()
+        self.enList[len(self.enList)-1].update()
+    def getActiveWoman(self):
+        return self.enList[len(self.enList)-1]
+    def createNew(self):
+        self.enList.append(MW_entity.WomanEn(self.p))
+    def draw(self):
+        for e in self.enList:
+            e.draw()
+    def deleteEntity(self,en):
+        self.delList.append(en)
+        #do it
+    def destroy(self):
+        for e in self.enList:
+            if e.destroy:
+                self.delList.append(e)
+        for e in self.delList:
+            self.enList.remove(e)
+        self.delList = list()
 class MatrixContainer(SuperContainer):
     def __init__(self,dim):
         SuperContainer.__init__(self)

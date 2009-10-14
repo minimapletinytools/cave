@@ -313,7 +313,7 @@ class WomanEn(PlayerEn):
         #print self.state, self.anim.activeNode.id
         self.hitOld = self.getRect()
         #get input, update and move character based on input, check hits, check if over ground, if so, will update next loop
-        if self.p.activePlayer == self:
+        if self.p.activePlayer == "woman":
             self.input(MW_global.eventList)
         elif self.state == "WALK": self.state = "STAND"
         self.anim.state = self.state
@@ -325,7 +325,7 @@ class WomanEn(PlayerEn):
         if not self.checkProjected(Vector2d(0,1)):
             if self.state != "JUMP" and self.state != "DEAD":
                 self.state = "FALLING" 
-    
+           
     def draw(self):
         MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
         #pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),1)
@@ -363,7 +363,7 @@ class ManEn(PlayerEn):
         #print self.state, self.anim.activeNode.id
         self.hitOld = self.getRect()
         #get input, update and move character based on input, check hits, check if over ground, if so, will update next loop
-        if self.p.activePlayer == self:
+        if self.p.activePlayer == "man":
             self.input(MW_global.eventList)
         elif self.state == "WALK": self.state = "STAND"
         self.anim.state = self.state

@@ -146,38 +146,42 @@
 		</frame>
 		
 		
-		<frame id = "401" x = "40" y = "220" w = "40" h = "20" dx = "0" dy = "20" hx = "0" hy = "20" hw = "40" hh = "20" time = "2" state = "DEAD">
+		<frame id = "401" x = "40" y = "220" w = "40" h = "20" dx = "-10" dy = "20" hx = "-10" hy = "20" hw = "40" hh = "20" time = "99" state = "DEAD">
 			<data velx = "0" vely = "3" />
 			<next state="DEFAULT" id = "1" time = "1"></next>
-			<next state="DEAD" id = "401"></next>
+			<next state="DEAD" id = "402"></next>
+		</frame>
+		<frame id = "402" x = "40" y = "220" w = "40" h = "20" dx = "-10" dy = "20" hx = "-10" hy = "20" hw = "40" hh = "20" time = "2" state = "REALLYDEAD">
+			<data velx = "0" vely = "3" />
+			<next state="DEFAULT" id = "1" time = "1"></next>
+			<next state="DEAD" id = "402"></next>
 		</frame>
 		
-		
-		<frame id = "501" x = "40" y = "0"  w = "40" h = "20" dx = "0" dy = "20" hx = "0" hy = "20" hw = "40" hh = "20" time = "4" state = "CRAWLING">
-			<data velx = "1" vely = "0" />
+		<frame id = "501" x = "40" y = "0"  w = "40" h = "20" dx = "-10" dy = "20" hx = "-10" hy = "20" hw = "40" hh = "20" time = "4" state = "CRAWLING">
+			<data velx = ".7" vely = "0" />
 			<next state = "DEFAULT" id = "0" time = "0"></next>
 			<next state = "CRAWL" id = "510"></next>
 			<next state = "CRAWLING" id = "502"></next>
 		</frame>
-		<frame id = "502" x = "40" y = "20"  w = "40" h = "20" dx = "0" dy = "20" hx = "0" hy = "20" hw = "40" hh = "20" time = "4" state = "CRAWLING">
-			<data velx = "1" vely = "0" />
+		<frame id = "502" x = "40" y = "20"  w = "40" h = "20" dx = "-10" dy = "20" hx = "-10" hy = "20" hw = "40" hh = "20" time = "4" state = "CRAWLING">
+			<data velx = ".7" vely = "0" />
 			<next state = "DEFAULT" id = "0" time = "0"></next>
 			<next state = "CRAWL" id = "510"></next>
 			<next state = "CRAWLING" id = "503"></next>
 		</frame>
-		<frame id = "503" x = "40" y = "40"  w = "40" h = "20" dx = "0" dy = "20" hx = "0" hy = "20" hw = "40" hh = "20" time = "4" state = "CRAWLING">
-			<data velx = "1" vely = "0" />
+		<frame id = "503" x = "40" y = "40"  w = "40" h = "20" dx = "-10" dy = "20" hx = "-10" hy = "20" hw = "40" hh = "20" time = "4" state = "CRAWLING">
+			<data velx = ".7" vely = "0" />
 			<next state = "DEFAULT" id = "0" time = "0"></next>
 			<next state = "CRAWL" id = "510"></next>
 			<next state = "CRAWLING" id = "504"></next>
 		</frame>
-		<frame id = "504" x = "40" y = "60"  w = "40" h = "20" dx = "0" dy = "20" hx = "0" hy = "20" hw = "40" hh = "20" time = "4" state = "CRAWLING">
-			<data velx = "1" vely = "0" />
+		<frame id = "504" x = "40" y = "60"  w = "40" h = "20" dx = "-10" dy = "20" hx = "-10" hy = "20" hw = "40" hh = "20" time = "4" state = "CRAWLING">
+			<data velx = ".7" vely = "0" />
 			<next state = "DEFAULT" id = "0" time = "0"></next>
 			<next state = "CRAWL" id = "510"></next>
 			<next state = "CRAWLING" id = "501"></next>
 		</frame>
-		<frame id = "510" x = "40" y = "0"  w = "40" h = "20" dx = "0" dy = "20" hx = "0" hy = "20" hw = "40" hh = "20" time = "4" state = "CRAWL">
+		<frame id = "510" x = "40" y = "0"  w = "40" h = "20" dx = "-10" dy = "20" hx = "-10" hy = "20" hw = "40" hh = "20" time = "4" state = "CRAWL">
 			<data velx = "0" vely = "0" />
 			<next state = "DEFAULT" id = "0" time = "0"></next>
 			<next state = "CRAWL" id = "510"></next>
