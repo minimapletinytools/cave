@@ -321,7 +321,7 @@ class WomanEn(PlayerEn):
             pass
             #check if at least halfway above
             #check if left or right intersect is minimal
-            if self.hitOld.y < wallRects[hits[0]]:
+            if self.hitOld.y < wallRects[hits[0]] and self.anim.state != "WALK":
                 if self.getRect().clip(wallRects[hits[0]]).w < 10:
                     if self.anim.dir == "RIGHT":
                         self.pos.x = wallRects[hits[0]].x - 10
