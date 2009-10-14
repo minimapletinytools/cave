@@ -324,12 +324,11 @@ class WomanEn(PlayerEn):
             if self.hitOld.y < wallRects[hits[0]]:
                 if self.getRect().clip(wallRects[hits[0]]).w < 10:
                     if self.anim.dir == "RIGHT":
-                        self.pos.x = wallRects[hits[0]].x - 5
+                        self.pos.x = wallRects[hits[0]].x - 10
                     else:
                         self.pos.x = wallRects[hits[0]].x + 10
                     self.pos.y = wallRects[hits[0]].y - 40
                     self.state = "LEDGE"
-                    
                     print "LEDGE"
                     return 
         while len(hits) > 0:
@@ -362,6 +361,8 @@ class WomanEn(PlayerEn):
         self.anim.update()
         self.pos += self.anim.getVelData()
         self.checkSpikes()
+        if self.state == "LEDGE":
+            self.state = "STAND"
         self.checkHits()
         #check if over ground
         if not self.checkProjected(Vector2d(0,1)):
@@ -370,7 +371,7 @@ class WomanEn(PlayerEn):
            
     def draw(self):
         MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
-        pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),1)
+        #pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),1)
         #pygame.draw.rect(MW_global.screen,COLOR_WHITE,self.getRect().inflate(40,40),1)
     
     def getRect(self):

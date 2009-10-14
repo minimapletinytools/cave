@@ -27,8 +27,7 @@
 			<data velx = "2" vely = "0" />
 			<next state="WALK" id = "101"></next>
 			<next state="DEFAULT" id = "0"></next>
-			<next state="FALLING" id = "301" time = "0"></next>
-			<next state="DEFAULT" id = "0"></next>
+			<next state="DEFAULT" id = "0" time = "0"></next>
 		</frame>
 		<frame id = "101" x = "0" y = "40" w = "20" h = "40" time = "3" state = "WALK">
 			<data velx = "2" vely = "0" />
@@ -36,7 +35,7 @@
 			<next state="STAND" id = "0"></next>
 			<next state="JUMP" id = "0"></next>
 			<next state="FALLING" id = "301" time = "0"></next>
-			<next state="DEFAULT" id = "0"></next>
+			<next state="DEFAULT" id = "0" time = "0"></next>
 		</frame>
 		<frame id = "102" x = "0" y = "80" w = "20" h = "40" time = "3" state = "WALK">
 			<data velx = "2" vely = "0" />
@@ -44,7 +43,7 @@
 			<next state="STAND" id = "0"></next>
 			<next state="JUMP" id = "0"></next>
 			<next state="FALLING" id = "301" time = "0"></next>
-			<next state="DEFAULT" id = "0"></next>
+			<next state="DEFAULT" id = "0" time = "0"></next>
 		</frame>
 		<frame id = "103" x = "0" y = "120" w = "20" h = "40" time = "3" state = "WALK">
 			<data velx = "2" vely = "0" />
@@ -52,7 +51,7 @@
 			<next state="STAND" id = "0"></next>
 			<next state="JUMP" id = "0"></next>
 			<next state="FALLING" id = "301" time = "0"></next>
-			<next state="DEFAULT" id = "0"></next>
+			<next state="DEFAULT" id = "0" time = "0"></next>
 		</frame>
 		<frame id = "104" x = "0" y = "160" w = "20" h = "40" time = "3" state = "WALK">
 			<data velx = "2" vely = "0" />
@@ -60,7 +59,7 @@
 			<next state="STAND" id = "0"></next>
 			<next state="JUMP" id = "0"></next>
 			<next state="FALLING" id = "301" time = "0"></next>
-			<next state="DEFAULT" id = "0"></next>
+			<next state="DEFAULT" id = "0" time = "0"></next>
 		</frame>
 		<frame id = "105" x = "0" y = "200" w = "20" h = "40" time = "3" state = "WALK">
 			<data velx = "2" vely = "0" />
