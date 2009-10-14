@@ -50,7 +50,7 @@ class WallEn(Entity):
             #draw
         if self.highlight:
             dPos = MW_global.camera.convertCrds(self.pos)
-            pygame.draw.rect(MW_global.screen,COLOR_WHITE,pygame.Rect(dPos.x,dPos.y,TILING_SIZE.x,TILING_SIZE.y),1)
+            #pygame.draw.rect(MW_global.screen,COLOR_WHITE,pygame.Rect(dPos.x,dPos.y,TILING_SIZE.x,TILING_SIZE.y),1)
         self.highlight = False
         
 class TorchEn(Entity):
@@ -96,7 +96,7 @@ class SpikeEn(Entity):
         
         if self.highlight:
             dPos = MW_global.camera.convertCrds(self.pos)
-            pygame.draw.rect(MW_global.screen,COLOR_WHITE,pygame.Rect(dPos.x,dPos.y,TILING_SIZE.x,TILING_SIZE.y),1)
+            #pygame.draw.rect(MW_global.screen,COLOR_WHITE,pygame.Rect(dPos.x,dPos.y,TILING_SIZE.x,TILING_SIZE.y),1)
         self.highlight = False
         
     def getRect(self):
@@ -209,19 +209,21 @@ class PlayerEn(Entity):
     def checkHits(self):
         rect = self.p.cont.getMatrixRect(self.getRect().inflate(40,40))  #arbitrary, can be more precise
         wallRects = self.p.cont.getWallRects(rect)
-        hits = self.getRect().collidelistall(wallRects)
+        selfRect = self.getRect()
+        hits = selfRect.collidelistall(wallRects)
         for i in hits:
             self.p.cont.wList[self.p.cont.getMatrixIndex(wallRects[i])].highlight = True
         flag = False
         while len(hits) > 0:
             flag = True
-            if (self.pos-self.hitOld).magnitude() > 0:
-                if math.fabs((self.pos.y-self.hitOld.y)) >= math.fabs((self.pos.x-self.hitOld.x)):
-                    self.pos.y -= (self.pos.y-self.hitOld.y)/math.fabs((self.pos.y-self.hitOld.y))
+            if (Vector2d(selfRect)-Vector2d(self.hitOld)).magnitude() > 0:
+                if math.fabs((selfRect.y-self.hitOld.y)) >= math.fabs((selfRect.x-self.hitOld.x)):
+                    self.pos.y -= (selfRect.y-self.hitOld.y)/math.fabs((selfRect.y-self.hitOld.y))
                 else:
-                    self.pos.x -= (self.pos.x-self.hitOld.x)/math.fabs((self.pos.x-self.hitOld.x))
+                    self.pos.x -= (selfRect.x-self.hitOld.x)/math.fabs((selfRect.x-self.hitOld.x))
             #TODO make sure to check only on ground hits
-            hits = self.getRect().collidelistall(wallRects)
+            selfRect = self.getRect()
+            hits = selfRect.collidelistall(wallRects)
         #BAD should move to woman class
         if flag == True:
             if self.state == "JUMP" or self.state == "FALLING":
@@ -229,8 +231,8 @@ class PlayerEn(Entity):
                     self.state = "STAND"
                 else:
                     self.state = "FALLING"
-            self.anim.state = self.state
-            self.anim.forceUpdate()
+                self.anim.state = self.state
+                self.anim.forceUpdate()
     def checkSpikes(self):
         rect = self.p.cont.getMatrixRect(self.getRect().inflate(40,40))  #arbitrary, can be more precise
         spikes = self.p.cont.getSpikeRects(rect)
@@ -238,6 +240,7 @@ class PlayerEn(Entity):
         for i in hits:
             self.p.cont.wList[self.p.cont.getMatrixIndex(spikes[i])].highlight = True
             if self.anim.getVelData().y > 0:
+                self.state = "DEAD"
                 self.p.cont.wList[self.p.cont.getMatrixIndex(spikes[i])].state = "BLOOD"      
             
     def checkHitsOld(self):
@@ -283,15 +286,34 @@ class WomanEn(PlayerEn):
                         if e.key == pygame.K_LEFT:
                             self.anim.dir = "LEFT"
                         else: self.anim.dir = "RIGHT"
+                    if self.state == "CRAWL" or self.state == "CRAWLING":
+                        self.state = "CRAWLING"
+                        if e.key == pygame.K_LEFT:
+                            self.anim.dir = "LEFT"
+                        else: self.anim.dir = "RIGHT"
+                if e.key == pygame.K_DOWN:
+                    if self.state == "WALK":
+                        self.state = "CRAWLING"
+                    elif self.state == "STAND":
+                        self.state = "CRAWL"
             elif e.type == pygame.KEYUP:
                 if e.key == pygame.K_LEFT or e.key == pygame.K_RIGHT:
                     if self.state == "WALK":
                         self.state = "STAND"
+                    if self.state == "CRAWLING":
+                        self.state = "CRAWL"
+                    
+        if not self.keyMap[pygame.K_DOWN]:
+            if not self.checkProjected(Vector2d(0,-20)):
+                if self.state == "CRAWLING":
+                    self.state = "WALK"
+                elif self.state == "CRAWL":
+                    self.state = "STAND"
     def update(self):
         #print self.state, self.anim.activeNode.id
         self.hitOld = self.getRect()
         #get input, update and move character based on input, check hits, check if over ground, if so, will update next loop
-        if self.p.activePlayer == self:
+        if self.p.activePlayer == "woman":
             self.input(MW_global.eventList)
         elif self.state == "WALK": self.state = "STAND"
         self.anim.state = self.state
@@ -301,9 +323,9 @@ class WomanEn(PlayerEn):
         self.checkHits()
         #check if over ground
         if not self.checkProjected(Vector2d(0,1)):
-            if self.state != "JUMP":
+            if self.state != "JUMP" and self.state != "DEAD":
                 self.state = "FALLING" 
-    
+           
     def draw(self):
         MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
         #pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),1)
@@ -341,7 +363,7 @@ class ManEn(PlayerEn):
         #print self.state, self.anim.activeNode.id
         self.hitOld = self.getRect()
         #get input, update and move character based on input, check hits, check if over ground, if so, will update next loop
-        if self.p.activePlayer == self:
+        if self.p.activePlayer == "man":
             self.input(MW_global.eventList)
         elif self.state == "WALK": self.state = "STAND"
         self.anim.state = self.state

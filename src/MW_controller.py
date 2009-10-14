@@ -61,19 +61,19 @@ class PlayController(Controller):
         Controller.__init__(self)
         self.cont = MW_containers.MatrixContainer( (1000,1000) )
         self.doodads = MW_containers.DoodadContainer()
-        self.woman = MW_entity.WomanEn(self)
+        self.woman = MW_containers.WomanContainer(self)
         self.man = MW_entity.ManEn(self)
-        self.activePlayer = self.man
+        self.activePlayer = "man"
         self.burningTorches = list()
     def loop(self):
         for e in MW_global.eventList:
             if e.type == pygame.KEYDOWN:
                 if e.key == pygame.K_TAB:
-                    if self.activePlayer == self.man:
-                        self.activePlayer = self.woman
-                        MW_global.camera.moveTo(self.woman.pos)
+                    if self.activePlayer == "man":
+                        self.activePlayer = "woman"
+                        MW_global.camera.moveTo(self.woman.getActiveWoman().pos)
                     else: 
-                        self.activePlayer = self.man
+                        self.activePlayer = "man"
                         MW_global.camera.moveTo(self.man.pos)
         #t = pygame.time.get_ticks()
         self.burningTorches = self.cont.getActiveTorches()
