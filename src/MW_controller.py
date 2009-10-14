@@ -60,7 +60,6 @@ class PlayController(Controller):
     def __init__(self):
         Controller.__init__(self)
         self.cont = MW_containers.MatrixContainer( (1000,1000) )
-        self.doodads = MW_containers.DoodadContainer()
         self.woman = MW_containers.WomanContainer(self)
         self.man = MW_entity.ManEn(self)
         self.activePlayer = "man"
@@ -80,12 +79,10 @@ class PlayController(Controller):
         #print pygame.time.get_ticks() -t
         self.woman.update()
         self.man.update()
-        self.doodads.update() #scripting goes in here
         self.cont.update() #though tehre really is nothing to update
         #t = pygame.time.get_ticks()
         self.cont.draw()
         #print pygame.time.get_ticks() -t
-        self.doodads.draw()
         self.woman.draw()
         self.man.draw()
        #pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(MW_global.camera.rect),1)

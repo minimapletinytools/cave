@@ -32,7 +32,6 @@ class WomanContainer(SuperContainer):
             e.draw()
     def deleteEntity(self,en):
         self.delList.append(en)
-        #do it
     def destroy(self):
         for e in self.enList:
             if e.destroy:
@@ -207,23 +206,28 @@ class DoodadContainer(SuperContainer):
     def __init__(self):
         SuperContainer.__init__(self)
         self.enList = list()
+        self.delList = list()
+        self.edit = True
+        self.editor = MW_editor.DooEditor(self)
     def update(self):
+        if self.edit:
+            self.editor.update()
         for e in self.enList:
             e.update()
     def draw(self):
+        if self.edit:
+            self.editor.draw()
         for e in self.enList:
             e.draw()
     def deleteEntity(self,en):
-        pass
-        #do it
+        self.delList.append(en)
     def destroy(self):
-        delList = list()
         for e in self.enList:
             if e.destroy:
-                delList.append(e)
-        for e in delList:
+                self.delList.append(e)
+        for e in self.delList:
             self.enList.remove(e)
-        del delList
+        self.delList = list()
 
 def isInRadius(torch):
     #TODO use circle square collision for this

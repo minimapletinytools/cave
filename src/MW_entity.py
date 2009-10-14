@@ -309,6 +309,48 @@ class WomanEn(PlayerEn):
                     self.state = "WALK"
                 elif self.state == "CRAWL":
                     self.state = "STAND"
+    def checkHits(self):
+        rect = self.p.cont.getMatrixRect(self.getRect().inflate(40,40))  #arbitrary, can be more precise
+        wallRects = self.p.cont.getWallRects(rect)
+        selfRect = self.getRect()
+        hits = selfRect.collidelistall(wallRects)
+        for i in hits:
+            self.p.cont.wList[self.p.cont.getMatrixIndex(wallRects[i])].highlight = True
+        flag = False
+        if len(hits) == 1:
+            pass
+            #check if at least halfway above
+            #check if left or right intersect is minimal
+            if self.hitOld.y < wallRects[hits[0]]:
+                if self.getRect().clip(wallRects[hits[0]]).w < 10:
+                    if self.anim.dir == "RIGHT":
+                        self.pos.x = wallRects[hits[0]].x - 5
+                    else:
+                        self.pos.x = wallRects[hits[0]].x + 10
+                    self.pos.y = wallRects[hits[0]].y - 40
+                    self.state = "LEDGE"
+                    
+                    print "LEDGE"
+                    return 
+        while len(hits) > 0:
+            flag = True
+            if (Vector2d(selfRect)-Vector2d(self.hitOld)).magnitude() > 0:
+                if math.fabs((selfRect.y-self.hitOld.y)) >= math.fabs((selfRect.x-self.hitOld.x)):
+                    self.pos.y -= (selfRect.y-self.hitOld.y)/math.fabs((selfRect.y-self.hitOld.y))
+                else:
+                    self.pos.x -= (selfRect.x-self.hitOld.x)/math.fabs((selfRect.x-self.hitOld.x))
+            #TODO make sure to check only on ground hits
+            selfRect = self.getRect()
+            hits = selfRect.collidelistall(wallRects)
+        #BAD should move to woman class
+        if flag == True:
+            if self.state == "JUMP" or self.state == "FALLING":
+                if self.checkProjected(Vector2d(0,1)):
+                    self.state = "STAND"
+                else:
+                    self.state = "FALLING"
+                self.anim.state = self.state
+                self.anim.forceUpdate()
     def update(self):
         #print self.state, self.anim.activeNode.id
         self.hitOld = self.getRect()
@@ -328,7 +370,7 @@ class WomanEn(PlayerEn):
            
     def draw(self):
         MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
-        #pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),1)
+        pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),1)
         #pygame.draw.rect(MW_global.screen,COLOR_WHITE,self.getRect().inflate(40,40),1)
     
     def getRect(self):

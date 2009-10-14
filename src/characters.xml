@@ -10,6 +10,7 @@
 			<next state="DEAD" id = "401"></next>
 			<next state = "CRAWL" id = "510"></next>
 			<next state = "CRAWLING" id = "501"></next>
+			<next state = "LEDGE" id = "601"></next>
 		</frame>
 		
 		<frame id = "1" x = "0" y = "0" w = "20" h = "40" time = "1" state = "STAND">
@@ -186,6 +187,44 @@
 			<next state = "DEFAULT" id = "0" time = "0"></next>
 			<next state = "CRAWL" id = "510"></next>
 			<next state = "CRAWLING" id = "502"></next>
+		</frame>
+		
+		
+		<frame id = "601" x = "80" y = "0"  w = "40" h = "40" dx = "-10" dy = "20" hx = "0" hy = "0" hw = "20" hh = "40" time = "3" state = "LEDGE">
+			<data velx = "0" vely = "0" />
+			<next state = "DEFAULT" id = "602"></next>
+		</frame>
+		<frame id = "602" x = "80" y = "40"  w = "40" h = "40" dx = "-10" dy = "20" hx = "0" hy = "0" hw = "20" hh = "40" time = "3" state = "LEDGE">
+			<data velx = "0" vely = "0" />
+			<next state = "DEFAULT" id = "603"></next>
+		</frame>
+		<frame id = "603" x = "80" y = "80"  w = "40" h = "40" dx = "-10" dy = "20" hx = "0" hy = "0" hw = "20" hh = "40" time = "3" state = "LEDGE">
+			<data velx = "0" vely = "0" />
+			<next state = "DEFAULT" id = "604"></next>
+		</frame>
+		<frame id = "604" x = "80" y = "120"  w = "40" h = "40" dx = "-10" dy = "20" hx = "0" hy = "0" hw = "20" hh = "40" time = "3" state = "LEDGE">
+			<data velx = "0" vely = "0" />
+			<next state = "DEFAULT" id = "605"></next>
+		</frame>
+		<frame id = "605" x = "80" y = "160"  w = "40" h = "40" dx = "-10" dy = "20" hx = "0" hy = "0" hw = "20" hh = "40" time = "3" state = "LEDGE">
+			<data velx = "0" vely = "0" />
+			<next state = "DEFAULT" id = "606"></next>
+		</frame>
+		<frame id = "606" x = "80" y = "200"  w = "40" h = "40" dx = "-10" dy = "20" hx = "0" hy = "0" hw = "20" hh = "40" time = "3" state = "LEDGE">
+			<data velx = "0" vely = "0" />
+			<next state = "DEFAULT" id = "607"></next>
+		</frame>
+		<frame id = "607" x = "80" y = "240"  w = "40" h = "40" dx = "-10" dy = "20" hx = "0" hy = "0" hw = "20" hh = "40" time = "3" state = "LEDGE">
+			<data velx = "0" vely = "0" />
+			<next state = "DEFAULT" id = "608"></next>
+		</frame>
+		<frame id = "608" x = "80" y = "280"  w = "40" h = "40" dx = "-10" dy = "20" hx = "0" hy = "0" hw = "20" hh = "40" time = "3" state = "LEDGE">
+			<data velx = "0" vely = "0" />
+			<next state = "DEFAULT" id = "609"></next>
+		</frame>
+		<frame id = "609" x = "80" y = "320"  w = "40" h = "40" dx = "-10" dy = "20" hx = "0" hy = "0" hw = "20" hh = "40" time = "3" state = "LEDGE">
+			<data velx = "0" vely = "0" />
+			<next state = "DEFAULT" id = "0"></next>
 		</frame>
 	</sprite>
 	
