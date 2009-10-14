@@ -1,11 +1,7 @@
 <characters>
 	<sprite name="woman" file="woman_01.png">
 	
-		<frame id = "401" x = "40" y = "220" w = "40" h = "20" dx = "0" dy = "20" hx = "0" hy = "20" hw = "40" hh = "20" time = "2" state = "DEAD">
-			<data velx = "0" vely = "3" />
-			<next state="DEFAULT" id = "1" time = "1"></next>
-			<next state="DEAD" id = "401"></next>
-		</frame>
+	
 		
 		<frame id = "0" x = "0" y = "0" w = "20" h = "40" time = "0" state = "STAND">
 			<data velx = "0" vely = "0" />
@@ -145,6 +141,34 @@
 			<data velx = "0" vely = "8" />
 			<next state="DEFAULT" id = "0"></next>
 			<next state="FALLING" id = "303"></next>
+		</frame>
+		
+		
+		<frame id = "401" x = "40" y = "220" w = "40" h = "20" dx = "0" dy = "20" hx = "0" hy = "20" hw = "40" hh = "20" time = "2" state = "DEAD">
+			<data velx = "0" vely = "3" />
+			<next state="DEFAULT" id = "1" time = "1"></next>
+			<next state="DEAD" id = "401"></next>
+		</frame>
+		
+		<frame id = "501" x = "40" y = "0"  w = "40" h = "20" dx = "0" dy = "20" hx = "0" hy = "20" hw = "40" hh = "20" time = "2" state = "CRAWL">
+			<data velx = "1" vely = "0" />
+			<data state = "DEFAULT" id = "0" time = "0"></next>
+			<data state = "CRAWL" id = "502" time></next>
+		</frame>
+		<frame id = "501" x = "40" y = "0"  w = "40" h = "20" dx = "0" dy = "20" hx = "0" hy = "20" hw = "40" hh = "20" time = "2" state = "CRAWLING">
+			<data velx = "1" vely = "0" />
+			<data state = "DEFAULT" id = "0" time = "0"></next>
+			<data state = "CRAWL" id = "502" time></next>
+		</frame>
+		<frame id = "501" x = "40" y = "0"  w = "40" h = "20" dx = "0" dy = "20" hx = "0" hy = "20" hw = "40" hh = "20" time = "2" state = "CRAWLING">
+			<data velx = "1" vely = "0" />
+			<data state = "DEFAULT" id = "0" time = "0"></next>
+			<data state = "CRAWL" id = "502" time></next>
+		</frame>
+		<frame id = "501" x = "40" y = "0"  w = "40" h = "20" dx = "0" dy = "20" hx = "0" hy = "20" hw = "40" hh = "20" time = "2" state = "CRAWLING">
+			<data velx = "1" vely = "0" />
+			<data state = "DEFAULT" id = "0" time = "0"></next>
+			<data state = "CRAWL" id = "502" time></next>
 		</frame>
 	</sprite>
 	
