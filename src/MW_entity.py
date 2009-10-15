@@ -111,29 +111,34 @@ class SpikeEn(Entity):
 class DoorEn(Entity):
     def __init__(self,exml):
         Entity.__init__(self)
-        self.xml = exml
         self.id = 0
-        if MW_xml.hasAttributes(exml, ("x","y")):
-            self.pos = Vector2d(exml.getAttribute("x"), exml.getAttribute("y"))
-        else: self.pos = Vector2d()
-        #TODO load spikes, load random image out of a set
-        self.image = pygame.image.load("basic_wall.png")
+        self.pos = Vector2d(0,0)
     def getName(self):
         return "DoorEn"
-    def getXML(self):
-        self.exml.setAttribute("x",str(self.pos.x))
-        self.exml.setAttribute("y",str(self.pos.y))
-        return exml
+    def teleport(self,pos):
+        self.pos = pos
+    def draw(self):
+        self.anim.state = self.state
+        self.anim.update()
+        MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
+        
+
 class SwitchEn(Entity):
-    def __init__(self,exml):
+    def __init__(self):
         Entity.__init__(self)
-        self.xml = exml
         self.id = 0
-        if MW_xml.hasAttributes(exml, ("x","y")):
-            self.pos = Vector2d(exml.getAttribute("x"), exml.getAttribute("y"))
-        else: self.pos = Vector2d()
+        self.pos = Vector2d(0,0)
         #TODO load spikes, load random image out of a set
         self.image = pygame.image.load("basic_wall.png")
+        self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse(os.path.join("data","tiles.xml")), "sprite","name","switch"))
+        self.state = "UP"
+    def teleport(self,pos):
+        self.pos = pos
+    def draw(self):
+        self.anim.state = self.state
+        self.anim.update()
+        MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
+        
     def getName(self):
         return "SwitchEn"
         
@@ -321,16 +326,17 @@ class WomanEn(PlayerEn):
             pass
             #check if at least halfway above
             #check if left or right intersect is minimal
-            if self.hitOld.y < wallRects[hits[0]] and self.anim.state != "WALK":
-                if self.getRect().clip(wallRects[hits[0]]).w < 10:
-                    if self.anim.dir == "RIGHT":
-                        self.pos.x = wallRects[hits[0]].x - 10
-                    else:
-                        self.pos.x = wallRects[hits[0]].x + 10
-                    self.pos.y = wallRects[hits[0]].y - 40
-                    self.state = "LEDGE"
-                    print "LEDGE"
-                    return 
+            if getRectCollideSideVector2d(self.getRect(),wallRects[hits[0]]).x == -dirMap[self.anim.dir]:
+                if self.hitOld.y < wallRects[hits[0]] and self.anim.state != "WALK":
+                    if self.getRect().clip(wallRects[hits[0]]).w < 10:
+                        if self.anim.dir == "RIGHT":
+                            self.pos.x = wallRects[hits[0]].x - 10
+                        else:
+                            self.pos.x = wallRects[hits[0]].x + 10
+                        self.pos.y = wallRects[hits[0]].y - 40
+                        self.state = "LEDGE"
+                        print "LEDGE"
+                        return 
         while len(hits) > 0:
             flag = True
             if (Vector2d(selfRect)-Vector2d(self.hitOld)).magnitude() > 0:
@@ -414,7 +420,7 @@ class ManEn(PlayerEn):
         self.pos += self.anim.getVelData()
         self.checkHits()
         #check if over ground
-        if not self.checkProjected(Vector2d(0,1)):
+        if not self.checkProjected(Vector2d(0,1)): 
             if self.state != "JUMP":
                 self.state = "FALLING" 
     
