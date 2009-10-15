@@ -19,3 +19,8 @@ COLOR_KEY = COLOR_BLACK
 
 #game constants
 TORCH_RADIUS = 250
+
+#engine constants
+dirMap = dict()
+dirMap["RIGHT"] = 1
+dirMap["LEFT"] = -1
