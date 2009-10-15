@@ -186,13 +186,13 @@ class DooEditor:
         for e in MW_global.eventList:
             if e.type == pygame.KEYDOWN:
                 if e.key == pygame.K_KP4:
-                    MW_global.cam.moveToRel(Vector2d(-50,0))
+                    MW_global.camera.moveToRel(Vector2d(-50,0))
                 if e.key == pygame.K_KP6:
-                    MW_global.cam.moveToRel(Vector2d(50,0))
+                    MW_global.camera.moveToRel(Vector2d(50,0))
                 if e.key == pygame.K_KP8:
-                    MW_global.cam.moveToRel(Vector2d(0,-50))
+                    MW_global.camera.moveToRel(Vector2d(0,-50))
                 if e.key == pygame.K_KP2:
-                    MW_global.cam.moveToRel(Vector2d(0,50))
+                    MW_global.camera.moveToRel(Vector2d(0,50))
         if self.mode == "place":
             self.addMode()
         else:

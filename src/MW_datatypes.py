@@ -25,7 +25,7 @@ class Vector2d():
         return Vector2d(self.x+c.x, self.y+c.y)
     def __mul__(self,s1):
         try: return Vector2d(self.x*s1[0],self.y*s1[1])
-        except: return Vector2d(self.x*s1,self.y*s2)
+        except: return Vector2d(self.x*s1,self.y*s1)
     def __truediv__(self,scalar):
         try: return self*(1/scalar)
         except:
@@ -92,7 +92,7 @@ class Circle2d():
         self.p = _p
         self.r = _r
     def containsPt(self,pt):
-        return self.p.distance(pt) <= r
+        return self.p.distance(pt) <= self.r
         
     
     

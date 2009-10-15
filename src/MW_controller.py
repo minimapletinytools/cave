@@ -9,8 +9,6 @@ from MW_constants import *
 from MW_datatypes import *
 
 class ControllerController():
-    def duck():
-        print "quack!"
     def __init__(self):
         self.cList = [TestController(),StartController(),PlayController(),WinController()]
         self.activeIndex = 2 
