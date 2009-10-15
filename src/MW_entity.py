@@ -113,6 +113,7 @@ class DoorEn(Entity):
         Entity.__init__(self)
         self.id = 0
         self.pos = Vector2d(0,0)
+         self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse(os.path.join("data","tiles.xml")), "sprite","name","door"))
     def getName(self):
         return "DoorEn"
     def teleport(self,pos):
@@ -128,8 +129,6 @@ class SwitchEn(Entity):
         Entity.__init__(self)
         self.id = 0
         self.pos = Vector2d(0,0)
-        #TODO load spikes, load random image out of a set
-        self.image = pygame.image.load("basic_wall.png")
         self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse(os.path.join("data","tiles.xml")), "sprite","name","switch"))
         self.state = "UP"
     def teleport(self,pos):
