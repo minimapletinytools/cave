@@ -46,6 +46,7 @@ class MatrixContainer(SuperContainer):
         self.height = dim[1]
         self.startPos = Vector2d(-500,-500)
         self.wList = list()
+        self.doorList = list()
         self.torchList = list()
         self.activeTorchList = list()
         for e in range(self.width*self.height):
@@ -54,6 +55,7 @@ class MatrixContainer(SuperContainer):
         self.edit = True
         self.editor = MW_editor.WallEditor(self)
         self.readXML(xml.dom.minidom.parse("testlevel.xml"))
+        MW_global.matrixcontainer = self
     def update(self):
         if self.edit:
             self.editor.update()
@@ -76,9 +78,13 @@ class MatrixContainer(SuperContainer):
         #print pos, TILING_SIZE, self.getMatrixPosition(pos)
         if self.wList[index] and self.wList[index].getName() == "TorchEn":
             self.torchList.remove(self.wList[index])
+        if self.wList[index] and self.wList[index].getName() == "DoorEn":
+            self.doorList.remove(self.wList[index])
         self.wList[index] = en
         if en and en.getName() == "TorchEn":
             self.torchList.append(en)
+        elif en and en.getName() == "DoorEn":
+            self.doorList.append(en)
     def getActiveTorches(self):
         return filter(isInRadius,filter(isActive,self.torchList))
     def getActiveTorchesOld(self):
@@ -192,16 +198,27 @@ class MatrixContainer(SuperContainer):
             self.wList[index] = MW_entity.WallEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
         for e in exml.getElementsByTagName("SpikeEn"):
-            print "making spike"
+            #print "making spike"
             index = int(e.getAttribute("i"))
             self.wList[index] = MW_entity.SpikeEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
         for e in exml.getElementsByTagName("TorchEn"):
-            print "making torch"
+            #print "making torch"
             index = int(e.getAttribute("i"))
             self.wList[index] = MW_entity.TorchEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
             self.torchList.append(self.wList[index])
+        for e in exml.getElementsByTagName("DoorEn"):
+            index = int(e.getAttribute("i"))
+            self.wList[index] = MW_entity.DoorEn()
+            self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
+            self.wList[index].id = int(e.getAttribute("id"))
+            self.doorList.append(self.wList[index])
+        for e in exml.getElementsByTagName("SwitchEn"):
+            index = int(e.getAttribute("i"))
+            self.wList[index] = MW_entity.SwitchEn()
+            self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
+            self.wList[index].id = int(e.getAttribute("id"))
         pass
     
 class DoodadContainer(SuperContainer):

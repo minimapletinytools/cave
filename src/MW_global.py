@@ -11,3 +11,7 @@ imagewheel = MW_image.ImageWheel()
 controller = None
 matrixcontainer = None
 eventList = None
+switchdict = dict()
+
+def getMatrixContainer():
+    return matrixcontainer

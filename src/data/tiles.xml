@@ -68,32 +68,32 @@
 			<next state = "UP" id = "1"/>
 			<next state = "DOWN" id = "3"/>
 		</frame>
-		<frame id = "3" x = "0" y = "0" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "48" time = "5">
+		<frame id = "3" x = "0" y = "60" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "48" time = "5">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "UP" id = "2"/>
 			<next state = "DOWN" id = "4"/>
 		</frame>
-		<frame id = "4" x = "0" y = "0" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "42" time = "5">
+		<frame id = "4" x = "0" y = "120" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "42" time = "5">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "UP" id = "3"/>
 			<next state = "DOWN" id = "5"/>
 		</frame>
-		<frame id = "5" x = "0" y = "0" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "36" time = "5">
+		<frame id = "5" x = "0" y = "180" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "36" time = "5">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "UP" id = "4"/>
 			<next state = "DOWN" id = "6"/>
 		</frame>
-		<frame id = "6" x = "0" y = "0" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "30" time = "5">
+		<frame id = "6" x = "0" y = "240" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "30" time = "5">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "UP" id = "5"/>
 			<next state = "DOWN" id = "7"/>
 		</frame>
-                <frame id = "7" x = "0" y = "0" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "24" time = "5">
+                <frame id = "7" x = "0" y = "300" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "24" time = "5">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "UP" id = "6"/>
 			<next state = "DOWN" id = "8"/>
 		</frame>
-		<frame id = "8" x = "0" y = "0" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "18" time = "5">
+		<frame id = "8" x = "0" y = "360" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "18" time = "5">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "UP" id = "7"/>
 			<next state = "DOWN" id = "8"/>

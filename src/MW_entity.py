@@ -114,12 +114,18 @@ class DoorEn(Entity):
         self.id = 0
         self.pos = Vector2d(0,0)
         self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse(os.path.join("data","tiles.xml")), "sprite","name","door"))
-        self.state = "DOWN"
+        self.state = "UP"
     def getName(self):
         return "DoorEn"
     def teleport(self,pos):
         self.pos = pos
     def draw(self):
+        if self.id in MW_global.switchdict:
+            if MW_global.switchdict[self.id]:
+                self.state = "DOWN"
+            else:
+                #this does not work as this happens after the switch's post update state reset 
+                self.state = "UP"
         self.anim.state = self.state
         self.anim.update()
         MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
@@ -131,14 +137,23 @@ class SwitchEn(Entity):
         self.id = 0
         self.pos = Vector2d(0,0)
         self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse(os.path.join("data","tiles.xml")), "sprite","name","switch"))
-        self.state = "UP"
+        self.setState("UP")
+    def setState(self,state):
+        self.state = state
+        if self.state == "UP":
+            MW_global.switchdict[self.id] = False
+        elif self.state == "DOWN":
+            MW_global.switchdict[self.id] = True
     def teleport(self,pos):
         self.pos = pos
     def draw(self):
         self.anim.state = self.state
         self.anim.update()
         MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
-        self.state = "UP"
+        #this is a post-update that we put in the draw cycle
+        self.setState("UP")
+
+        
     def getRect(self):
         r = pygame.Rect(self.anim.activeNode.hRect)
         r.x += self.pos.x
@@ -254,12 +269,12 @@ class PlayerEn(Entity):
                 self.state = "DEAD"
                 self.p.cont.wList[self.p.cont.getMatrixIndex(spikes[i])].state = "BLOOD"      
     def checkSwitches(self):
-        rect = self.p.cont.getMatrixRect(self.getRect().inflate(40,40))  #arbitrary, can be more precise
+        rect = self.p.cont.getMatrixRect(self.getRect().inflate(20,20))  #arbitrary, can be more precise
         switches = self.p.cont.getSwitchRects(rect)
         hits = self.getRect().collidelistall(switches)   
         for i in hits:
             if self.getRect().clip(switches[i]).h > 15:
-                self.p.cont.wList[self.p.cont.getMatrixIndex(switches[i])].state = "DOWN"
+                self.p.cont.wList[self.p.cont.getMatrixIndex(switches[i])].setState("DOWN")
                 #self.pos.y = switches[i].y+switches[i].h - 8 - self.getRect().h
     def checkHitsOld(self):
         rect = pygame.Rect(0,0,50,50) #arbitrary, can be more precise
