@@ -228,22 +228,14 @@ class PlayerEn(Entity):
             if math.fabs(rdiff.x) >  math.fabs(rdiff.y):    #we prioritize y direction
                 pass
             
-    def checkDoodads(self):
-        for e in self.p.doodads.enList:
-            if isinstance(e,SpikeEn):
-                self.state = "DEAD"
-            elif isinstance(e,SwitchEn):
-                e.press = True
-            elif isinstance(e,DoorEn):
-                #TODO hit collision
-                pass
     def checkHits(self):
         rect = self.p.cont.getMatrixRect(self.getRect().inflate(60,20))  #arbitrary, can be more precise
         wallRects = self.p.cont.getWallRects(rect)
+        #append man/woman onto the wallRect
         selfRect = self.getRect()
         hits = selfRect.collidelistall(wallRects)
-        for i in hits:
-            self.p.cont.wList[self.p.cont.getMatrixIndex(wallRects[i])].highlight = True
+        #for i in hits:
+            #self.p.cont.wList[self.p.cont.getMatrixIndex(wallRects[i])].highlight = True
         flag = False
         while len(hits) > 0:
             flag = True
@@ -270,7 +262,7 @@ class PlayerEn(Entity):
         hits = self.getRect().collidelistall(spikes)
         for i in hits:
             self.p.cont.wList[self.p.cont.getMatrixIndex(spikes[i])].highlight = True
-            if self.anim.getVelData().y > 0:
+            if self.anim.getVelData().y > 0 and self.state != "WALK" and self.state != "LEDGE" and self.state != "STAND":
                 self.state = "DEAD"
                 self.p.cont.wList[self.p.cont.getMatrixIndex(spikes[i])].state = "BLOOD"      
     def checkSwitches(self):
@@ -400,14 +392,14 @@ class WomanEn(PlayerEn):
         self.anim.state = self.state
         self.anim.update()
         self.pos += self.anim.getVelData()
-        self.checkSpikes()
-        self.checkSwitches()
         if self.state == "LEDGE":
             self.state = "STAND"
         self.checkHits()
+        self.checkSwitches()
+        self.checkSpikes()
         #check if over ground
         if not self.checkProjected(Vector2d(0,1)):
-            if self.state != "JUMP" and self.state != "DEAD":
+            if self.state != "JUMP" and self.state != "DEAD" and self.state != "LEDGE":
                 self.state = "FALLING" 
            
     def draw(self):
