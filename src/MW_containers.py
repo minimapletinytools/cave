@@ -96,13 +96,13 @@ class MatrixContainer(SuperContainer):
     def getSwitchRects(self,rect):
         return self.getTypes(rect,"SwitchEn")
     def getWallRects(self,rect):
-        return self.getTypes(rect,"WallEn")
+        return self.getTypes(rect,("WallEn","DoorEn"))
     def getTypes(self,rect,type):
         ret = list()
         for r in range(rect.h):
             for c in range(rect.w):
                 e = self.wList[self.getIndex((rect.x + c),(rect.y + r))]
-                if e and e.getName() == type:
+                if e and e.getName() in type:
                     ret.append(e.getRect())
         return ret
     def getTypesEn(self,rect,type):

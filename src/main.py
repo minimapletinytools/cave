@@ -17,7 +17,8 @@ while 1:
         MW_global.screen.fill((0,0,0))
         t1 = pygame.time.get_ticks()
         mwc.loop()
-        #print pygame.time.get_ticks() - t1
+        if pygame.time.get_ticks()%10 == 1:
+            print pygame.time.get_ticks() - t1
         pygame.display.flip()   #flip the screen
     #else wait the difference
     else: 

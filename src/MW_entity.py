@@ -117,6 +117,11 @@ class DoorEn(Entity):
         self.state = "UP"
     def getName(self):
         return "DoorEn"
+    def getRect(self):
+        r = pygame.Rect(self.anim.activeNode.hRect)
+        r.x += self.pos.x
+        r.y += self.pos.y
+        return r
     def teleport(self,pos):
         self.pos = pos
     def draw(self):
@@ -151,7 +156,7 @@ class SwitchEn(Entity):
         self.anim.update()
         MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
         #this is a post-update that we put in the draw cycle
-        self.setState("UP")
+        #self.setState("UP")
 
         
     def getRect(self):
@@ -449,6 +454,7 @@ class ManEn(PlayerEn):
         self.anim.update()
         self.pos += self.anim.getVelData()
         self.checkHits()
+        self.checkSwitches()
         #check if over ground
         if not self.checkProjected(Vector2d(0,1)): 
             if self.state != "JUMP":
