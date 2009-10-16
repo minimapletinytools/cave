@@ -4,6 +4,7 @@ import MW_global
 import MW_editor
 import MW_xml
 import MW_entity
+import os
 from MW_datatypes import *
 from MW_constants import *
 
@@ -54,7 +55,7 @@ class MatrixContainer(SuperContainer):
         self.length = len(self.wList)
         self.edit = True
         self.editor = MW_editor.WallEditor(self)
-        self.readXML(xml.dom.minidom.parse("testlevel.xml"))
+        self.readXML(xml.dom.minidom.parse(os.path.join("data","jumpinglevel.xml")))
         MW_global.matrixcontainer = self
     def update(self):
         if self.edit:
