@@ -12,8 +12,7 @@ class WallEditor:
         self.cursor = Vector2d(0,0)
         self.ocursor = Vector2d(0,0)
         self.index = 0
-        self.entityRefList = (MW_entity.WallEn,MW_entity.SpikeEn,MW_entity.TorchEn,None)
-        self.entityList = (MW_entity.WallEn(),MW_entity.SpikeEn(),MW_entity.TorchEn(),None)
+        self.entityRefList = (MW_entity.WallEn,MW_entity.SpikeEn,MW_entity.TorchEn,MW_entity.DoorEn, MW_entity.SwitchEn,None)
         self.setActive()
         self.mode = "place"
         self.placed = False
@@ -27,14 +26,14 @@ class WallEditor:
     
     def toggleMode(self):
         if self.activeObject == None:
-            self.activeObject = self.entityList[self.index]
+            self.activeObject = self.entityRefList[self.index]()
             if self.activeObject == None:
                 self.setActive(1)
         else: self.activeObject = None
         
     def setActive(self,offset = 0):
         self.index += offset
-        self.index = self.index%len(self.entityList)
+        self.index = self.index%len(self.entityRefList)
         if self.entityRefList[self.index] != None:
             self.activeObject = self.entityRefList[self.index]()
         else: self.activeObject = None

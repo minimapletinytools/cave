@@ -109,11 +109,12 @@ class SpikeEn(Entity):
         return exml
 
 class DoorEn(Entity):
-    def __init__(self,exml):
+    def __init__(self):
         Entity.__init__(self)
         self.id = 0
         self.pos = Vector2d(0,0)
         self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse(os.path.join("data","tiles.xml")), "sprite","name","door"))
+        self.state = "DOWN"
     def getName(self):
         return "DoorEn"
     def teleport(self,pos):
@@ -137,6 +138,12 @@ class SwitchEn(Entity):
         self.anim.state = self.state
         self.anim.update()
         MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
+        self.state = "UP"
+    def getRect(self):
+        r = pygame.Rect(self.anim.activeNode.hRect)
+        r.x += self.pos.x
+        r.y += self.pos.y
+        return r
         
     def getName(self):
         return "SwitchEn"
@@ -211,7 +218,7 @@ class PlayerEn(Entity):
                 #TODO hit collision
                 pass
     def checkHits(self):
-        rect = self.p.cont.getMatrixRect(self.getRect().inflate(40,40))  #arbitrary, can be more precise
+        rect = self.p.cont.getMatrixRect(self.getRect().inflate(60,20))  #arbitrary, can be more precise
         wallRects = self.p.cont.getWallRects(rect)
         selfRect = self.getRect()
         hits = selfRect.collidelistall(wallRects)
@@ -246,7 +253,14 @@ class PlayerEn(Entity):
             if self.anim.getVelData().y > 0:
                 self.state = "DEAD"
                 self.p.cont.wList[self.p.cont.getMatrixIndex(spikes[i])].state = "BLOOD"      
-            
+    def checkSwitches(self):
+        rect = self.p.cont.getMatrixRect(self.getRect().inflate(40,40))  #arbitrary, can be more precise
+        switches = self.p.cont.getSwitchRects(rect)
+        hits = self.getRect().collidelistall(switches)   
+        for i in hits:
+            if self.getRect().clip(switches[i]).h > 15:
+                self.p.cont.wList[self.p.cont.getMatrixIndex(switches[i])].state = "DOWN"
+                #self.pos.y = switches[i].y+switches[i].h - 8 - self.getRect().h
     def checkHitsOld(self):
         rect = pygame.Rect(0,0,50,50) #arbitrary, can be more precise
         wallRects = self.p.cont.getWallRects(rect)
@@ -318,6 +332,7 @@ class WomanEn(PlayerEn):
         wallRects = self.p.cont.getWallRects(rect)
         selfRect = self.getRect()
         hits = selfRect.collidelistall(wallRects)
+        #TODO something to convert tiled rects into big rects or something like that 
         for i in hits:
             self.p.cont.wList[self.p.cont.getMatrixIndex(wallRects[i])].highlight = True
         flag = False
@@ -326,7 +341,7 @@ class WomanEn(PlayerEn):
             #check if at least halfway above
             #check if left or right intersect is minimal
             if getRectCollideSideVector2d(self.getRect(),wallRects[hits[0]]).x == -dirMap[self.anim.dir]:
-                if self.hitOld.y < wallRects[hits[0]] and self.anim.state != "WALK":
+                if self.hitOld.y < wallRects[hits[0]].y and self.anim.state != "WALK":
                     if self.getRect().clip(wallRects[hits[0]]).w < 10:
                         if self.anim.dir == "RIGHT":
                             self.pos.x = wallRects[hits[0]].x - 10
@@ -366,6 +381,7 @@ class WomanEn(PlayerEn):
         self.anim.update()
         self.pos += self.anim.getVelData()
         self.checkSpikes()
+        self.checkSwitches()
         if self.state == "LEDGE":
             self.state = "STAND"
         self.checkHits()

@@ -87,6 +87,8 @@ class MatrixContainer(SuperContainer):
         return filter(isActive,self.getTypesEn(self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y),"TorchEn"))
     def getSpikeRects(self,rect):
         return self.getTypes(rect,"SpikeEn")
+    def getSwitchRects(self,rect):
+        return self.getTypes(rect,"SwitchEn")
     def getWallRects(self,rect):
         return self.getTypes(rect,"WallEn")
     def getTypes(self,rect,type):
@@ -174,7 +176,7 @@ class MatrixContainer(SuperContainer):
         for i in range(len(self.wList)):
             if self.wList[i]:
                 exml.appendChild(xml.dom.minidom.parseString("<p><"+self.wList[i].getName()+" i=\""
-                                                             +str(i)+"\" /></p>").getElementsByTagName(self.wList[i].getName())[0])
+                                                             +str(i)+"\" id=\"" + "ID" + "\"/></p>").getElementsByTagName(self.wList[i].getName())[0])
         print exml.toxml()
     def readXML(self,exml):
         size = exml.getElementsByTagName("size")[0]
