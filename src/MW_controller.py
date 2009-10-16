@@ -73,17 +73,18 @@ class PlayController(Controller):
                         self.activePlayer = "man"
                         MW_global.camera.moveTo(self.man.pos)
         #t = pygame.time.get_ticks()
-        self.burningTorches = self.cont.getActiveTorches()
+        #self.burningTorches = self.cont.getActiveTorches()
         #print pygame.time.get_ticks() -t
         self.woman.update()
         self.man.update()
         self.cont.update() #though tehre really is nothing to update
-        #t = pygame.time.get_ticks()
+        t = pygame.time.get_ticks()
         self.cont.draw()
-        #print pygame.time.get_ticks() -t
+        if pygame.time.get_ticks()%10 == 1:
+            print pygame.time.get_ticks() - t
         self.woman.draw()
         self.man.draw()
-       #pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(MW_global.camera.rect),1)
+        pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(MW_global.camera.rect.inflate(-10,-10)),1)
     
 class WinController(Controller):
     def __init__(self):

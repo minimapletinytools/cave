@@ -151,8 +151,8 @@ class MatrixContainer(SuperContainer):
         return index%self.width, int(index/self.width)
     def getMatrixRect(self,rect): #used for converting camera rect to matrix rect
         x,y = self.getMatrixPosition(rect)
-        w = int(rect.w/TILING_SIZE.x)*2
-        h = int(rect.h/TILING_SIZE.y)*2
+        w = int(rect.w/TILING_SIZE.x)
+        h = int(rect.h/TILING_SIZE.y)
         return pygame.Rect(x,y,w,h).inflate(1,1)
     def getScreenPosition(self,x,y):    #converts matrix coordinates to screen coordinates
         return Vector2d(self.startPos.x + x*TILING_SIZE.x, self.startPos.y + y*TILING_SIZE.y)
