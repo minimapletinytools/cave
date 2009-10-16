@@ -23,13 +23,13 @@ class FrameNode:
         if exml.hasAttribute("state"):
             self.state = exml.getAttribute("state")
         else:
-            print exml, " has no \"state\" attribute, setting to default DEFAULT"
+            #print exml, " has no \"state\" attribute, setting to default DEFAULT"
             self.state = "DEFAULT"
             
         if exml.hasAttribute("time"):
             self.time = int(exml.getAttribute("time"))
         else:
-            print exml, " has no \"time\" attribute, setting to default 0"
+            #print exml, " has no \"time\" attribute, setting to default 0"
             self.time = 0
             
         if MW_xml.hasAttributes(exml, ("x","y")):
