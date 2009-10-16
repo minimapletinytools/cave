@@ -436,6 +436,9 @@ class ManEn(PlayerEn):
                     if self.state == "WALK":
                         self.state = "STAND"
     def update(self):
+        if self.anim.state == "REALLYDEAD":
+            self.state ="STAND"
+            self.teleport(self.respawn)
         #print self.state, self.anim.activeNode.id
         self.hitOld = self.getRect()
         #get input, update and move character based on input, check hits, check if over ground, if so, will update next loop
@@ -446,10 +449,12 @@ class ManEn(PlayerEn):
         self.anim.update()
         self.pos += self.anim.getVelData()
         self.checkHits()
+        self.checkSpikes()
         self.checkSwitches()
+
         #check if over ground
         if not self.checkProjected(Vector2d(0,1)): 
-            if self.state != "JUMP":
+            if self.state != "JUMP" and self.state != "DEAD":
                 self.state = "FALLING" 
     
     def draw(self):
