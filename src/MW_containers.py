@@ -53,8 +53,11 @@ class MatrixContainer(SuperContainer):
         for e in range(self.width*self.height):
             self.wList.append(None)
         self.length = len(self.wList)
+	
         self.edit = True
         self.editor = MW_editor.WallEditor(self)
+	self.switchId = 0
+	
         self.readXML(xml.dom.minidom.parse(os.path.join("data","jumpinglevel.xml")))
         MW_global.matrixcontainer = self
     def update(self):
@@ -81,6 +84,8 @@ class MatrixContainer(SuperContainer):
             self.torchList.remove(self.wList[index])
         if self.wList[index] and self.wList[index].getName() == "DoorEn":
             self.doorList.remove(self.wList[index])
+	if self.wList[index] and self.wList[index].getName() == "SwitchEn":
+		self.switchId += 1		 
         self.wList[index] = en
         if en and en.getName() == "TorchEn":
             self.torchList.append(en)
@@ -185,7 +190,7 @@ class MatrixContainer(SuperContainer):
         for i in range(len(self.wList)):
             if self.wList[i]:
                 exml.appendChild(xml.dom.minidom.parseString("<p><"+self.wList[i].getName()+" i=\""
-                                                             +str(i)+"\" id=\"" + "0" + "\"/></p>").getElementsByTagName(self.wList[i].getName())[0])
+                                                             +str(i)+"\" id=\"" + self.switchId + "\"/></p>").getElementsByTagName(self.wList[i].getName())[0])
         print exml.toxml()
     def readXML(self,exml):
         size = exml.getElementsByTagName("size")[0]
@@ -215,13 +220,13 @@ class MatrixContainer(SuperContainer):
             index = int(e.getAttribute("i"))
             self.wList[index] = MW_entity.DoorEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
-            self.wList[index].id = 0#int(e.getAttribute("id"))
+            self.wList[index].id = int(e.getAttribute("id"))
             self.doorList.append(self.wList[index])
         for e in exml.getElementsByTagName("SwitchEn"):
             index = int(e.getAttribute("i"))
             self.wList[index] = MW_entity.SwitchEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
-            self.wList[index].id = 0#int(e.getAttribute("id"))
+            self.wList[index].id = int(e.getAttribute("id"))
     
 class DoodadContainer(SuperContainer):
     def __init__(self):

@@ -214,22 +214,6 @@ class PlayerEn(Entity):
         if selfRect.colliderect(rect):
             return True
         else: return False
-        
-    def checkHitsIthoughtIGotIt(self):
-        rect = pygame.Rect(0,0,50,50) #arbitrary, can be more precise
-        wallRects = self.p.cont.getWallRects(rect)
-        hits = self.getRect().collidelistall(wallRects)
-        for i in hits:
-            self.p.cont.wList[self.p.cont.getMatrixIndex(wallRects[i])].highlight = True
-        #this could possible result in an infinite loop, just a warning.
-        while len(hits) > 0 and not self.pos.__eq__(self.hitOld):
-            pass
-            #we parse the first rect, not that it's special or anything
-            intersect = wallRects[hits[0]].clip(self.getRect())
-            wrect = wallRects[hits[0]]
-            rdiff = getRectDiff(self.hitOld,wrect)
-            if math.fabs(rdiff.x) >  math.fabs(rdiff.y):    #we prioritize y direction
-                pass
             
     def checkHits(self):
         rect = self.p.cont.getMatrixRect(self.getRect().inflate(60,20))  #arbitrary, can be more precise
@@ -280,7 +264,6 @@ class PlayerEn(Entity):
                     self.pos.y += selfRect.clip(rect).h
                 else:
                     self.pos.y -= selfRect.clip(rect).h
-                    print "want stand"
                     if self.state == "JUMP" or self.state == "FALLING":
                         self.state = "STAND"
             
@@ -390,7 +373,6 @@ class WomanEn(PlayerEn):
                             self.pos.x = wallRects[hits[0]].x + 10
                         self.pos.y = wallRects[hits[0]].y - 40
                         self.state = "LEDGE"
-                        print "LEDGE"
                         return 
         while len(hits) > 0:
             flag = True
