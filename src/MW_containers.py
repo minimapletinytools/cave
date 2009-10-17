@@ -64,7 +64,6 @@ class MatrixContainer(SuperContainer):
     def draw(self):
         if self.edit: 
             self.editor.draw()
-            
         rect = self.getMatrixRect(MW_global.camera.rect)
         for r in range(rect.h):
             for c in range(rect.w):
@@ -73,6 +72,7 @@ class MatrixContainer(SuperContainer):
                     for f in self.activeTorchList:
                         if not LIGHTING or f.pos.distance(e.pos) < TORCH_RADIUS:
                             e.draw()
+                            break
     def addEn(self,en,pos):
         print en, "added"
         index = self.getIndex(*self.getMatrixPosition(pos))

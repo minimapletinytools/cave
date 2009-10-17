@@ -103,10 +103,6 @@ class SpikeEn(Entity):
         return pygame.Rect(self.pos.x,self.pos.y,TILING_SIZE.x,TILING_SIZE.y)
     def teleport(self,pos):
         self.pos = pos
-    def getXML(self):
-        self.exml.setAttribute("x",str(self.pos.x))
-        self.exml.setAttribute("y",str(self.pos.y))
-        return exml
 
 class DoorEn(Entity):
     def __init__(self):
@@ -155,8 +151,7 @@ class SwitchEn(Entity):
         self.anim.state = self.state
         self.anim.update()
         MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
-        #this is a post-update that we put in the draw cycle
-        #self.setState("UP")
+        self.setState("UP")
 
         
     def getRect(self):
@@ -211,6 +206,14 @@ class PlayerEn(Entity):
         if len(hits) > 0:
             return True
         else: return False
+
+    def checkProjectedRect(self,projection,rect):
+        selfRect = self.getRect()
+        selfRect.x += projection.x
+        selfRect.y += projection.y
+        if selfRect.colliderect(rect):
+            return True
+        else: return False
         
     def checkHitsIthoughtIGotIt(self):
         rect = pygame.Rect(0,0,50,50) #arbitrary, can be more precise
@@ -237,7 +240,12 @@ class PlayerEn(Entity):
         #for i in hits:
             #self.p.cont.wList[self.p.cont.getMatrixIndex(wallRects[i])].highlight = True
         flag = False
+        counter = 0
         while len(hits) > 0:
+            if counter > 30:
+                print "hit infinite loop detected, breaking now"
+                break
+            counter += 1
             flag = True
             if (Vector2d(selfRect)-Vector2d(self.hitOld)).magnitude() > 0:
                 if math.fabs((selfRect.y-self.hitOld.y)) >= math.fabs((selfRect.x-self.hitOld.x)):
@@ -256,6 +264,26 @@ class PlayerEn(Entity):
                     self.state = "FALLING"
                 self.anim.state = self.state
                 self.anim.forceUpdate()
+    def checkSideHitRect(self,rect):
+        selfRect = self.getRect()
+        if selfRect.colliderect(rect):
+            side = getRectCollideSideVector2d(selfRect,rect)
+            intersect = selfRect.clip(rect)
+            rdiff = getRectDiff(self.hitOld,rect)
+            if math.fabs(rdiff.x) >  math.fabs(rdiff.y):    #we prioritize y direction
+                if side.x > 0:
+                    self.pos.x += selfRect.clip(rect).w
+                else:
+                    self.pos.x -= selfRect.clip(rect).w
+            else:
+                if side.y > 0:
+                    self.pos.y += selfRect.clip(rect).h
+                else:
+                    self.pos.y -= selfRect.clip(rect).h
+                    print "want stand"
+                    if self.state == "JUMP" or self.state == "FALLING":
+                        self.state = "STAND"
+            
     def checkSpikes(self):
         rect = self.p.cont.getMatrixRect(self.getRect().inflate(40,40))  #arbitrary, can be more precise
         spikes = self.p.cont.getSpikeRects(rect)
@@ -302,6 +330,7 @@ class WomanEn(PlayerEn):
     def __init__(self,controller):
         self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse("characters.xml"), "sprite","name","woman"))
         PlayerEn.__init__(self,controller)
+        self.pos = Vector2d(0,-100)
         
     def input(self, events):
         PlayerEn.input(self,events)
@@ -395,10 +424,11 @@ class WomanEn(PlayerEn):
         if self.state == "LEDGE":
             self.state = "STAND"
         self.checkHits()
+        self.checkSideHitRect(self.p.man.getRect())
         self.checkSwitches()
         self.checkSpikes()
         #check if over ground
-        if not self.checkProjected(Vector2d(0,1)):
+        if not self.checkProjected(Vector2d(0,1)) and not self.checkProjectedRect(Vector2d(0,1),self.p.man.getRect()):
             if self.state != "JUMP" and self.state != "DEAD" and self.state != "LEDGE":
                 self.state = "FALLING" 
            
@@ -449,6 +479,7 @@ class ManEn(PlayerEn):
         self.anim.update()
         self.pos += self.anim.getVelData()
         self.checkHits()
+        self.checkSideHitRect(self.p.woman.getActiveWoman().getRect())
         self.checkSpikes()
         self.checkSwitches()
 

@@ -47,7 +47,7 @@
 			<next state = "BLOOD" id = "15" />
 		</frame>
 	</sprite>
-	<sprite name = "switch" file = "switch01.png">
+	<sprite name = "switch" file = "switch02.png">
 		<frame id = "1" x = "0" y = "0" w = "20" h = "20" time = "5">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "DOWN" id = "11" time="0"/>

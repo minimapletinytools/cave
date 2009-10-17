@@ -146,12 +146,12 @@
 		</frame>
 		
 		
-		<frame id = "401" x = "40" y = "220" w = "40" h = "20" dx = "-10" dy = "30" hx = "-10" hy = "30" hw = "40" hh = "20" time = "99" state = "DEAD">
+		<frame id = "401" x = "40" y = "220" w = "40" h = "20" dx = "-10" dy = "30" hx = "-10" hy = "45" hw = "40" hh = "5" time = "99" state = "DEAD">
 			<data velx = "0" vely = "5" />
 			<next state="DEFAULT" id = "1" time = "1"></next>
 			<next state="DEAD" id = "402"></next>
 		</frame>
-		<frame id = "402" x = "40" y = "220" w = "40" h = "20" dx = "-10" dy = "30" hx = "-10" hy = "30" hw = "40" hh = "20" time = "2" state = "REALLYDEAD">
+		<frame id = "402" x = "40" y = "220" w = "40" h = "20" dx = "-10" dy = "30" hx = "-10" hy = "45" hw = "40" hh = "5" time = "2" state = "REALLYDEAD">
 			<data velx = "0" vely = "3" />
 			<next state="DEFAULT" id = "1" time = "1"></next>
 			<next state="DEAD" id = "402"></next>
@@ -411,12 +411,12 @@
 			<next state="FALLING" id = "303"></next>
 		</frame>
 		
-		<frame id = "401" x = "60" y = "0" w = "40" h = "20" dx = "-10" dy = "30" hx = "-10" hy = "30" hw = "40" hh = "20" time = "99" state = "DEAD">
+		<frame id = "401" x = "60" y = "0" w = "40" h = "20" dx = "-10" dy = "30" hx = "-10" hy = "45" hw = "40" hh = "5" time = "99" state = "DEAD">
 			<data velx = "0" vely = "5" />
 			<next state="DEFAULT" id = "1" time = "1"></next>
 			<next state="DEAD" id = "402"></next>
 		</frame>
-		<frame id = "402" x = "60" y = "0" w = "40" h = "20" dx = "-10" dy = "30" hx = "-10" hy = "30" hw = "40" hh = "20" time = "2" state = "REALLYDEAD">
+		<frame id = "402" x = "60" y = "0" w = "40" h = "20" dx = "-10" dy = "30" hx = "-10" hy = "45" hw = "40" hh = "5" time = "2" state = "REALLYDEAD">
 			<data velx = "0" vely = "3" />
 			<next state="DEFAULT" id = "1" time = "1"></next>
 			<next state="DEAD" id = "402"></next>

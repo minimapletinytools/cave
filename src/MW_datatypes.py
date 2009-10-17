@@ -200,7 +200,7 @@ def getRectDiff(r1,r2):
         y = -(r1.y - (r2.y + r2.h))
     if side.x > 0: #r1 RIGHT OF r2
         x = r1.x - (r2.x+r2.h)
-    elif side.r < 0:
+    elif side.x < 0:
         x = -(r1.x - (r2.x+r2.h))
     return Vector2d(x,y)
     
