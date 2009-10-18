@@ -91,8 +91,8 @@ class MatrixContainer(SuperContainer):
             self.doorList.append(en)
             en.id = self.switchId
         elif en and en.getName() == "SwitchEn":
-            en.id = self.switchId
             self.switchId += 1
+            en.id = self.switchId
     def getActiveTorches(self):
         return filter(isInRadius,filter(isActive,self.torchList))
     def getActiveTorchesOld(self):
