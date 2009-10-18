@@ -73,7 +73,7 @@ class MatrixContainer(SuperContainer):
                 e = self.wList[self.getIndex((rect.x + c),(rect.y + r))]
                 if e:
                     for f in self.activeTorchList:
-                        if not LIGHTING or f.pos.distance(e.pos) < TORCH_RADIUS:
+                        if not LIGHTING or f.pos.distance(e.pos) < TORCH_RADIUS or e.getName() == "TorchEn":
                             e.draw()
                             break
     def addEn(self,en,pos):
@@ -83,20 +83,24 @@ class MatrixContainer(SuperContainer):
         if self.wList[index] and self.wList[index].getName() == "TorchEn":
             self.torchList.remove(self.wList[index])
         if self.wList[index] and self.wList[index].getName() == "DoorEn":
-            self.doorList.remove(self.wList[index])
-	if self.wList[index] and self.wList[index].getName() == "SwitchEn":
-		self.switchId += 1		 
+            self.doorList.remove(self.wList[index])		 
         self.wList[index] = en
         if en and en.getName() == "TorchEn":
             self.torchList.append(en)
         elif en and en.getName() == "DoorEn":
             self.doorList.append(en)
+            en.id = self.switchId
+        elif en and en.getName() == "SwitchEn":
+            en.id = self.switchId
+            self.switchId += 1
     def getActiveTorches(self):
         return filter(isInRadius,filter(isActive,self.torchList))
     def getActiveTorchesOld(self):
         #print self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y)
         #return self.getTypes(self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y),"TorchEn")
         return filter(isActive,self.getTypesEn(self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y),"TorchEn"))
+    def getTorchRects(self,rect):
+        return self.getTypes(rect,"TorchEn")
     def getSpikeRects(self,rect):
         return self.getTypes(rect,"SpikeEn")
     def getSwitchRects(self,rect):
@@ -189,8 +193,11 @@ class MatrixContainer(SuperContainer):
         exml.appendChild(c)
         for i in range(len(self.wList)):
             if self.wList[i]:
+                idstr = ""
+                if self.wList[i].getName() == "DoorEn" or  self.wList[i].getName() == "SwitchEn":
+                    idstr = "\" id=\"" + str(self.wList[i].id)
                 exml.appendChild(xml.dom.minidom.parseString("<p><"+self.wList[i].getName()+" i=\""
-                                                             +str(i)+"\" id=\"" + self.switchId + "\"/></p>").getElementsByTagName(self.wList[i].getName())[0])
+                                                             +str(i)+idstr+ "\"/></p>").getElementsByTagName(self.wList[i].getName())[0])
         print exml.toxml()
     def readXML(self,exml):
         size = exml.getElementsByTagName("size")[0]

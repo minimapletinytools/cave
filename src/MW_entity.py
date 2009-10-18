@@ -266,7 +266,12 @@ class PlayerEn(Entity):
                     self.pos.y -= selfRect.clip(rect).h
                     if self.state == "JUMP" or self.state == "FALLING":
                         self.state = "STAND"
-            
+    def checkTorch(self):
+        rect = self.p.cont.getMatrixRect(self.getRect().inflate(40,40))  #arbitrary, can be more precise
+        spikes = self.p.cont.getTorchRects(rect)
+        hits = self.getRect().collidelistall(spikes)
+        for i in hits:
+            self.p.cont.wList[self.p.cont.getMatrixIndex(spikes[i])].state = "BURNING"    
     def checkSpikes(self):
         rect = self.p.cont.getMatrixRect(self.getRect().inflate(40,40))  #arbitrary, can be more precise
         spikes = self.p.cont.getSpikeRects(rect)
@@ -319,6 +324,8 @@ class WomanEn(PlayerEn):
         PlayerEn.input(self,events)
         for e in events:
             if e.type == pygame.KEYDOWN:
+                if e.key == pygame.K_z:
+                    self.checkTorch()
                 if e.key == pygame.K_UP:
                     if self.state == "STAND" or self.state == "WALK":
                         self.state = "JUMP"
@@ -429,6 +436,7 @@ class ManEn(PlayerEn):
     def __init__(self,controller):
         self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse("characters.xml"), "sprite","name","man"))
         PlayerEn.__init__(self,controller)
+        self.respawn = Vector2d(0,0)
         
     def input(self, events):
         PlayerEn.input(self,events)
@@ -448,7 +456,7 @@ class ManEn(PlayerEn):
                     if self.state == "WALK":
                         self.state = "STAND"
     def update(self):
-        if self.anim.state == "REALLYDEAD":
+        if self.anim.activeNode.state == "REALLYDEAD":
             self.state ="STAND"
             self.teleport(self.respawn)
         #print self.state, self.anim.activeNode.id
@@ -466,7 +474,7 @@ class ManEn(PlayerEn):
         self.checkSwitches()
 
         #check if over ground
-        if not self.checkProjected(Vector2d(0,1)): 
+        if not self.checkProjected(Vector2d(0,1)) and not self.checkProjectedRect(Vector2d(0,1),self.p.woman.getActiveWoman().getRect()): 
             if self.state != "JUMP" and self.state != "DEAD":
                 self.state = "FALLING" 
     
