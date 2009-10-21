@@ -12,8 +12,6 @@ class FrameNode:
     def __init__(self, wxml, id, createdNodeList = list()):
         
         exml = MW_xml.getChildNodeWithAttribute(wxml, "frame", "id", id)
-        if id == "401":
-            pass
         
         createdNodeList.append(self)
         #set up important data
@@ -71,12 +69,16 @@ class FrameNode:
         
         #set up next node dict, get data from xml, recursively create new ones, etc..
         self.next = dict()
-        self.nextTime = dict()
+        self.nextData = dict() 
         for e in exml.getElementsByTagName("next"):
+            self.nextData[e.getAttribute("state")] = dict()
             if e.hasAttribute("time"):
-                self.nextTime[e.getAttribute("state")] = int(e.getAttribute("time"))
+                self.nextData[e.getAttribute("state")]["time"] = int(e.getAttribute("time"))
             else:
-                self.nextTime[e.getAttribute("state")] = self.time
+                self.nextData[e.getAttribute("state")]["time"] = self.time
+            if e.hasAttribute("sound"):
+                self.nextData[e.getAttribute("state")]["sound"] = e.getAttribute("sound")
+                MW_global.sound.loadSound(self.nextData[e.getAttribute("state")]["sound"])
             flag = True
             for f in createdNodeList:
                 if f.id == e.getAttribute("id"):
@@ -116,13 +118,20 @@ class Animator:
         else:
             print "no", self.state, "or DEFAULT path found"
             return self.activeNode.next.keys()[0]
+    def playSounds(self):
+        if "sound" in self.activeNode.nextData[self.getNextState()]:
+                MW_global.sound.play(self.activeNode.nextData[self.getNextState()]["sound"])
+                print "playing sound", self.activeNode.nextData[self.getNextState()]["sound"]
     def forceUpdate(self):
+        self.playSounds()
         self.activeNode = self.activeNode.next[self.getNextState()]   
-
     def update(self):
         """advance one frame"""
-        while self.time - self.last >= self.activeNode.nextTime[self.getNextState()]:
-            self.last += self.activeNode.nextTime[self.getNextState()]
+        if self.activeNode.id == "210":
+            print self.getNextState()
+        while self.time - self.last >= self.activeNode.nextData[self.getNextState()]["time"]:
+            self.last += self.activeNode.nextData[self.getNextState()]["time"]
+            self.playSounds()
             self.activeNode = self.activeNode.next[self.getNextState()]   
         self.time += 1
     def getVelData(self):

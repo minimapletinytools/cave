@@ -18,7 +18,7 @@
 			<next state="DEFAULT" id = "0"></next>
 			<next state="STAND" id = "1"></next>
 			<next state="WALK" id = "101" time = "0"></next>
-			<next state="JUMP" id = "201" time = "0"></next>
+			<next state="JUMP" id = "201" time = "0" sound = "jump01.wav"></next>
 			<next state="FALLING" id = "301" time = "0"></next>
 		</frame>
 		
@@ -26,7 +26,6 @@
 		<frame id = "100" x = "0" y = "0" w = "20" h = "40" time = "3" state = "WALK">
 			<data velx = "2" vely = "0" />
 			<next state="WALK" id = "101"></next>
-			<next state="DEFAULT" id = "0"></next>
 			<next state="DEFAULT" id = "0" time = "0"></next>
 		</frame>
 		<frame id = "101" x = "0" y = "40" w = "20" h = "40" time = "3" state = "WALK">
@@ -105,13 +104,13 @@
 			<data velx = "5" vely = "3" />
 			<next state="JUMP" id = "210"></next>
 			<next state="FALLING" id = "301" time = "0"></next>
-			<next state="STAND" id = "251" time = "0"></next>
+			<next state="STAND" id = "1" time = "0" sound = "fall01.wav"></next>
 			<next state="DEFAULT" id = "0" time = "0"></next>
 		</frame>
 		<frame id = "210" x = "20" y = "80" w = "20" h = "40" time = "1" state = "JUMP">
 			<data velx = "5" vely = "4" />
 			<next state="JUMP" id = "210"></next>
-			<next state="STAND" id = "1" time = "0"></next>
+			<next state="STAND" id = "1" time = "0" sound = "fall01.wav"></next>
 			<next state="FALLING" id = "301" time = "0"></next>
 			<next state="DEFAULT" id = "0" time = "0"></next>
 		</frame>
@@ -131,8 +130,8 @@
 		
 		<frame id = "301" x = "20" y = "80" w = "20" h = "40" time = "2" state = "FALLING">
 			<data velx = "0" vely = "2" />
-			<next state="DEFAULT" id = "0"></next>
-			<next state="FALLING" id = "302"></next>
+			<next state="DEFAULT" id = "0" ></next>
+			<next state="FALLING" id = "302" ></next>
 		</frame>
 		<frame id = "302" x = "20" y = "80" w = "20" h = "40" time = "2" state = "FALLING">
 			<data velx = "0" vely = "5" />
@@ -363,13 +362,13 @@
 			<next state="DEFAULT" id = "0"></next>
 			<next state="JUMP" id = "210"></next>
 			<next state="FALLING" id = "301" time = "0"></next>
-			<next state="STAND" id = "251" time = "0"></next>
+			<next state="STAND" id = "1" time = "0" sound = "land01.wav"></next>
 		</frame>
 		<frame id = "210" x = "40" y = "240" w = "20" h = "40" time = "2" state = "JUMP">
 			<data velx = "3" vely = "2" />
 			<next state="DEFAULT" id = "0"></next>
 			<next state="JUMP" id = "210"></next>
-			<next state="STAND" id = "1" time = "0"></next>
+			<next state="STAND" id = "1" time = "0" sound = "land01.wav"></next>
 			<next state="FALLING" id = "301" time = "0"></next>
 		</frame>
 		<frame id = "251" x = "40" y = "240" w = "20" h = "40" time = "2" state = "LAND">
