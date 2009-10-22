@@ -38,13 +38,13 @@ class oldController:
 class TestController(Controller):
     def __init__(self):
         Controller.__init__(self)
-        self.cont = MW_containers.MatrixContainer( (100,100) )
+        #self.cont = MW_containers.MatrixContainer( (100,100), self )
         self.woman = MW_entity.WomanEn(self)
     def loop(self):
         self.woman.update()
         self.woman.draw()
-        self.cont.update()
-        self.cont.draw()
+        #self.cont.update()
+        #self.cont.draw()
         pass
     
 class StartController(Controller):
@@ -57,12 +57,19 @@ class StartController(Controller):
 class PlayController(Controller):
     def __init__(self):
         Controller.__init__(self)
-        self.cont = MW_containers.MatrixContainer( (1000,1000) )
+        self.cont = MW_containers.MatrixContainer( (1000,1000), self )
         self.woman = MW_containers.WomanContainer(self)
         self.man = MW_entity.ManEn(self)
         self.activePlayer = "man"
         self.burningTorches = list()
-    def loop(self):
+    def getPlayerList(self):
+        return [self.man,self.woman.getActiveWoman()]
+    def getActivePlayer(self):
+        if activePlayer == "man":
+            return self.man
+        elif activePlayer == "woman":
+            return self.woman.getActiveWoman() 
+    def handleInput(self):
         for e in MW_global.eventList:
             if e.type == pygame.KEYDOWN:
                 if e.key == pygame.K_TAB:
@@ -72,6 +79,9 @@ class PlayController(Controller):
                     else: 
                         self.activePlayer = "man"
                         MW_global.camera.moveTo(self.man.pos)
+    def loop(self):
+        self.handleInput()
+                        
         self.woman.update()
         self.man.update()
         self.cont.update() #though tehre really is nothing to update

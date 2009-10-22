@@ -41,10 +41,12 @@ class WomanContainer(SuperContainer):
             self.enList.remove(e)
         self.delList = list()
 class MatrixContainer(SuperContainer):
-    def __init__(self,dim):
+    def __init__(self,dim,parent):
         SuperContainer.__init__(self)
+        self.p = parent
         self.width = dim[0]
         self.height = dim[1]
+        
         self.startPos = Vector2d(-500,-500)
         self.wList = list()
         self.doorList = list()
@@ -56,7 +58,7 @@ class MatrixContainer(SuperContainer):
 	
         self.edit = True
         self.editor = MW_editor.WallEditor(self)
-	self.switchId = 0
+        self.switchId = 0
 	
         self.readXML(xml.dom.minidom.parse(os.path.join("data","jumpinglevel.xml")))
         MW_global.matrixcontainer = self
@@ -64,6 +66,16 @@ class MatrixContainer(SuperContainer):
         if self.edit:
             self.editor.update()
         self.activeTorchList = self.getActiveTorches()
+    def checkDraw(self,e):
+        if not LIGHTING or e.getName() == "TorchEn":
+            return True
+        for f in self.p.getPlayerList():
+            if f.pos.distance(e.pos) < PLAYER_LIGHT_RADIUS:
+                return True
+        for f in self.activeTorchList:
+            if f.pos.distance(e.pos) < TORCH_RADIUS:
+                return True
+        return False
     def draw(self):
         if self.edit: 
             self.editor.draw()
@@ -72,10 +84,11 @@ class MatrixContainer(SuperContainer):
             for c in range(rect.w):
                 e = self.wList[self.getIndex((rect.x + c),(rect.y + r))]
                 if e:
-                    for f in self.activeTorchList:
-                        if not LIGHTING or f.pos.distance(e.pos) < TORCH_RADIUS or e.getName() == "TorchEn":
-                            e.draw()
-                            break
+                    e.update()
+                    if self.checkDraw(e): e.draw()
+                    
+        pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),1)
+                    
     def addEn(self,en,pos):
         print en, "added"
         index = self.getIndex(*self.getMatrixPosition(pos))
@@ -153,10 +166,14 @@ class MatrixContainer(SuperContainer):
         i = x + y*self.width
         if i < self.length: return i
         else:
-            self.printXML()
+            #self.printXML()
             #TEMPORARY
             return (0)
             #raise Exception("out of index")
+    def getRect(self):
+        #print self.width,self.height
+        #print self.width*TILING_SIZE.x,self.height*TILING_SIZE.y
+        return pygame.Rect(self.startPos.x,self.startPos.y,self.width*TILING_SIZE.x,self.height*TILING_SIZE.y)
     def getCart(self,index):
         return index%self.width, int(index/self.width)
     def getMatrixRect(self,rect): #used for converting camera rect to matrix rect

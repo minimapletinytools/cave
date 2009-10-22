@@ -57,7 +57,7 @@ class TorchEn(Entity):
     def __init__(self):
         Entity.__init__(self)
         self.pos = Vector2d(0,0)
-        self.state = "BURNING"
+        self.state = "DEFAULT"
         self.id = 0
         self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse(os.path.join("data","tiles.xml")), "sprite","name","torch"))
     def getRect(self):
@@ -67,11 +67,9 @@ class TorchEn(Entity):
     def teleport(self,pos):
         self.pos = pos
     def update(self):
-        pass
-        #technically, animation update should be in here but we put it in draw cycle to save processes
-    def draw(self):
         self.anim.state = self.state
         self.anim.update()
+    def draw(self):
         MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
         #dPos = MW_global.camera.convertCrds(self.pos)
         #pygame.draw.rect(MW_global.screen,COLOR_WHITE,pygame.Rect(dPos.x,dPos.y,TILING_SIZE.x,TILING_SIZE.y),1)
@@ -85,12 +83,12 @@ class SpikeEn(Entity):
         self.highlight = False
     def getName(self):
         return "SpikeEn"
-    def draw(self):
-        #check if lit
-        #check if covered by light
-        
+    
+    def update(self):
         self.anim.state = self.state
         self.anim.update()
+        
+    def draw(self):
         MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
         
         
@@ -120,7 +118,7 @@ class DoorEn(Entity):
         return r
     def teleport(self,pos):
         self.pos = pos
-    def draw(self):
+    def update(self):
         if self.id in MW_global.switchdict:
             if MW_global.switchdict[self.id]:
                 self.state = "DOWN"
@@ -129,6 +127,7 @@ class DoorEn(Entity):
                 self.state = "UP"
         self.anim.state = self.state
         self.anim.update()
+    def draw(self):
         MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
         
 
@@ -147,10 +146,12 @@ class SwitchEn(Entity):
             MW_global.switchdict[self.id] = True
     def teleport(self,pos):
         self.pos = pos
-    def draw(self):
+    def update(self):
         self.anim.state = self.state
         self.anim.update()
+    def draw(self):
         MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
+        #if needed, put this in "post update"
         self.setState("UP")
 
         

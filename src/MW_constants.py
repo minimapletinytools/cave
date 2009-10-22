@@ -3,7 +3,7 @@ SCREEN_SIZE = WIDTH, HEIGHT = 640,480
 FRAMERATE = 25
 MSPERFRAME = 1000/FRAMERATE
 TILING_SIZE = Vector2d(20,20)
-LIGHTING = True
+LIGHTING = False
 
 #colors
 COLOR_RED = 255,0,0
@@ -16,6 +16,7 @@ COLOR_KEY = COLOR_BLACK
 
 #game constants
 TORCH_RADIUS = 200
+PLAYER_LIGHT_RADIUS = 50
 
 #engine constants
 dirMap = dict()

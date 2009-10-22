@@ -7,7 +7,7 @@
 			<data velx = "0" vely = "0" />
 			<next state="DEFAULT" id = "1"></next>
 			<next state="FALLING" id = "301"></next>
-			<next state="DEAD" id = "401"></next>
+			<next state="DEAD" id = "401" sound = "fall01.wav"></next>
 			<next state = "CRAWL" id = "510"></next>
 			<next state = "CRAWLING" id = "501"></next>
 			<next state = "LEDGE" id = "601"></next>
@@ -104,13 +104,13 @@
 			<data velx = "5" vely = "3" />
 			<next state="JUMP" id = "210"></next>
 			<next state="FALLING" id = "301" time = "0"></next>
-			<next state="STAND" id = "1" time = "0" sound = "fall01.wav"></next>
+			<next state="STAND" id = "1" time = "0" sound = ""></next>
 			<next state="DEFAULT" id = "0" time = "0"></next>
 		</frame>
 		<frame id = "210" x = "20" y = "80" w = "20" h = "40" time = "1" state = "JUMP">
 			<data velx = "5" vely = "4" />
 			<next state="JUMP" id = "210"></next>
-			<next state="STAND" id = "1" time = "0" sound = "fall01.wav"></next>
+			<next state="STAND" id = "1" time = "0" sound = ""></next>
 			<next state="FALLING" id = "301" time = "0"></next>
 			<next state="DEFAULT" id = "0" time = "0"></next>
 		</frame>
@@ -240,7 +240,7 @@
 			<data velx = "0" vely = "0" />
 			<next state="DEFAULT" id = "1"></next>
 			<next state="FALLING" id = "301"></next>
-			<next state ="DEAD" id = "401"></next>
+			<next state ="DEAD" id = "401" sound = "fall01.wav"></next>
 		</frame>
 		
 		<frame id = "100" x = "20" y = "0" w = "20" h = "40" time = "2" state = "WALK">
@@ -402,7 +402,7 @@
 		</frame>
 		
 		<frame id = "401" x = "60" y = "0" w = "40" h = "20" dx = "-10" dy = "30" hx = "-10" hy = "45" hw = "40" hh = "5" time = "99" state = "DEAD">
-			<data velx = "0" vely = "5" />
+			<data velx = "0" vely = "10" />
 			<next state="DEFAULT" id = "1" time = "1"></next>
 			<next state="DEAD" id = "402"></next>
 		</frame>

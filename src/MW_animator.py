@@ -76,7 +76,7 @@ class FrameNode:
                 self.nextData[e.getAttribute("state")]["time"] = int(e.getAttribute("time"))
             else:
                 self.nextData[e.getAttribute("state")]["time"] = self.time
-            if e.hasAttribute("sound"):
+            if e.hasAttribute("sound") and e.getAttribute("sound"):
                 self.nextData[e.getAttribute("state")]["sound"] = e.getAttribute("sound")
                 MW_global.sound.loadSound(self.nextData[e.getAttribute("state")]["sound"])
             flag = True
