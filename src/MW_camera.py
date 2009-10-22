@@ -8,6 +8,9 @@ class Camera:
         self.rect.center = (0,0)
         self.screen = sfc
         
+    def update(self):
+        pass
+    
     def drawOnScreen(self, sfc, pos, area = None):
         place = Vector2d(self.rect.x,self.rect.y)
         self.screen.blit(sfc, (pos - place).getIntTuple(), area)
@@ -15,7 +18,7 @@ class Camera:
     def isOnScreen(self,rect):
         if self.rect.colliderect(rect.getSDLRect()):
             return True
-        return False     
+        return False
     
     def convertScreenCrds(self, pos):
         return Vector2d(pos.x+self.rect.x, pos.y+self.rect.y)

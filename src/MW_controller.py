@@ -65,10 +65,13 @@ class PlayController(Controller):
     def getPlayerList(self):
         return [self.man,self.woman.getActiveWoman()]
     def getActivePlayer(self):
-        if activePlayer == "man":
+        if self.activePlayer == "man":
             return self.man
-        elif activePlayer == "woman":
-            return self.woman.getActiveWoman() 
+        elif self.activePlayer == "woman":
+            return self.woman.getActiveWoman()
+        else: 
+            #todo??? nothing really
+            return None 
     def handleInput(self):
         for e in MW_global.eventList:
             if e.type == pygame.KEYDOWN:
@@ -80,6 +83,7 @@ class PlayController(Controller):
                         self.activePlayer = "man"
                         MW_global.camera.moveTo(self.man.pos)
     def loop(self):
+        MW_global.camera.moveTo(self.getActivePlayer().pos)
         self.handleInput()
                         
         self.woman.update()
