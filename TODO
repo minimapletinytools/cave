@@ -2,8 +2,22 @@
 
 Redo movement. Have frames define acceleration NOT velocity. Make man move faster and more smoothly.
 
-refractor code so that lights work properly. Edit draw function to take flags (do draw routine/update routine only)
+redo movement, guy should move fast and easy, girl should move realistically
 
-test out scripting for door, do inital few floors
+redo girl crawling animation
 
-figure out how the whole area mojo is going to work. Draw a big rect around the whole matrix and see if it is enough space. Make sketch in editor of what level will look like.
+torch lighting, play a little spark animation, limited fuel?
+
+man flashlight should be directional (optional)
+
+sounds
+
+redo man animation walk and jump, maybe...
+
+ropes and falling to death, allow jumping off ropes and dropping new ropes?? Limited number of ropes means may have to start over if you run out of ropes???
+
+[DONE] refractor code so that lights work properly. Edit draw function to take flags (do draw routine/update routine only)
+
+[basic scripting DONE] test out scripting for door, do inital few floors
+
+[SOLVED, may need to write grid enlarge/shrink script] figure out how the whole area mojo is going to work. Draw a big rect around the whole matrix and see if it is enough space. Make sketch in editor of what level will look like.
