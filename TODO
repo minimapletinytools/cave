@@ -1,0 +1,9 @@
+10-18-09
+
+Redo movement. Have frames define acceleration NOT velocity. Make man move faster and more smoothly.
+
+refractor code so that lights work properly. Edit draw function to take flags (do draw routine/update routine only)
+
+test out scripting for door, do inital few floors
+
+figure out how the whole area mojo is going to work. Draw a big rect around the whole matrix and see if it is enough space. Make sketch in editor of what level will look like.
