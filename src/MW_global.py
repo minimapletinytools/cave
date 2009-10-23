@@ -2,8 +2,11 @@ import pygame
 import MW_camera
 import MW_image
 import MW_sound
-import os
+import os,sys
 from MW_constants import *
+
+print "version,",sys.version
+
 pygame.mixer.pre_init(44100, -16, 2, 2048)
 pygame.init()
 #screen = pygame.display.set_mode(SCREEN_SIZE, pygame.FULLSCREEN)
