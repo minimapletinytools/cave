@@ -69,11 +69,32 @@ class MatrixContainer(SuperContainer):
     def checkDraw(self,e):
         if not LIGHTING or e.getName() == "TorchEn":
             return True
+        
+        #if we are dealing with walls
+        if e.getName() == "WallEn":
+            for f in self.p.getPlayerList():
+                if f.pos.distance(e.pos) < PLAYER_LIGHT_RADIUS[0]:
+                    e.state = "LIGHT"
+                    return True
+            for f in self.activeTorchList:
+                if f.pos.distance(e.pos) < TORCH_RADIUS[0]:
+                    e.state = "LIGHT"
+                    return True
+            for f in self.p.getPlayerList():
+                if f.pos.distance(e.pos) < PLAYER_LIGHT_RADIUS[1]:
+                    e.state = "DARK"
+                    return True
+            for f in self.activeTorchList:
+                if f.pos.distance(e.pos) < TORCH_RADIUS[1]:
+                    e.state = "DARK"
+                    return True
+            return False
+                
         for f in self.p.getPlayerList():
-            if f.pos.distance(e.pos) < PLAYER_LIGHT_RADIUS:
+            if f.pos.distance(e.pos) < PLAYER_LIGHT_RADIUS[0]:
                 return True
         for f in self.activeTorchList:
-            if f.pos.distance(e.pos) < TORCH_RADIUS:
+            if f.pos.distance(e.pos) < TORCH_RADIUS[0]:
                 return True
         return False
     def draw(self):
@@ -85,7 +106,8 @@ class MatrixContainer(SuperContainer):
                 e = self.wList[self.getIndex((rect.x + c),(rect.y + r))]
                 if e:
                     e.update()
-                    if self.checkDraw(e): e.draw()
+                    if self.checkDraw(e):
+                            e.draw()
                     
         pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),1)
                     

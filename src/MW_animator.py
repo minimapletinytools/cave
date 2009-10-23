@@ -121,14 +121,12 @@ class Animator:
     def playSounds(self):
         if "sound" in self.activeNode.nextData[self.getNextState()]:
                 MW_global.sound.play(self.activeNode.nextData[self.getNextState()]["sound"])
-                print "playing sound", self.activeNode.nextData[self.getNextState()]["sound"]
+                #print "playing sound", self.activeNode.nextData[self.getNextState()]["sound"]
     def forceUpdate(self):
         self.playSounds()
         self.activeNode = self.activeNode.next[self.getNextState()]   
     def update(self):
         """advance one frame"""
-        if self.activeNode.id == "210":
-            print self.getNextState()
         while self.time - self.last >= self.activeNode.nextData[self.getNextState()]["time"]:
             self.last += self.activeNode.nextData[self.getNextState()]["time"]
             self.playSounds()

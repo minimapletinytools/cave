@@ -22,6 +22,8 @@ class WallEn(Entity):
         Entity.__init__(self)
         self.pos = pos
         self.image = pygame.image.load(os.path.join("data","basic_wall.png"))
+        self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse(os.path.join("data","tiles.xml")), "sprite","name","wall"))
+        self.state = "LIGHT"
         self.highlight = False
     def getName(self):
         return "WallEn"
@@ -43,9 +45,13 @@ class WallEn(Entity):
             self.image = pygame.transform.rotate(self.image,rotate)
                 
         pass
-    
+    def update(self):
+        pass
     def draw(self):
-        MW_global.camera.drawOnScreen(self.image, self.pos)
+        #MW_global.camera.drawOnScreen(self.image, self.pos)
+        self.anim.state = self.state
+        self.anim.update()
+        MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
         #check if covered by light
             #draw
         if self.highlight:
@@ -326,6 +332,8 @@ class WomanEn(PlayerEn):
         for e in events:
             if e.type == pygame.KEYDOWN:
                 if e.key == pygame.K_z:
+                    MW_global.sound.play(MW_global.soundMap['light'])
+                    MW_global.screen.fill((35,20,20))
                     self.checkTorch()
                 if e.key == pygame.K_UP:
                     if self.state == "STAND" or self.state == "WALK":
@@ -446,16 +454,16 @@ class ManEn(PlayerEn):
                 if e.key == pygame.K_UP:
                     if self.state == "STAND" or self.state == "WALK":
                         self.state = "JUMP"
-                if e.key == pygame.K_LEFT or e.key == pygame.K_RIGHT:
-                    if self.state == "STAND" or self.state == "WALK":
-                        self.state = "WALK"
-                        if e.key == pygame.K_LEFT:
-                            self.anim.dir = "LEFT"
-                        else: self.anim.dir = "RIGHT"
             elif e.type == pygame.KEYUP:
                 if e.key == pygame.K_LEFT or e.key == pygame.K_RIGHT:
                     if self.state == "WALK":
                         self.state = "STAND"
+        if self.keyMap[pygame.K_LEFT] or self.keyMap[pygame.K_RIGHT]:
+            if self.state == "STAND" or self.state == "WALK":
+                self.state = "WALK"
+                if self.keyMap[pygame.K_LEFT]:
+                    self.anim.dir = "LEFT"
+                else: self.anim.dir = "RIGHT"
     def update(self):
         if self.anim.activeNode.state == "REALLYDEAD":
             self.state ="STAND"

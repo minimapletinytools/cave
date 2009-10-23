@@ -1,4 +1,14 @@
 <tiles>
+	<sprite name = "wall" file = "basic_wall02.png" >
+		<frame id = "1" x = "0" y = "0" w = "20" h = "20" time = "99">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "DARK" id = "2" time = "0"/>
+		</frame>
+		<frame id = "2" x = "0" y = "20" w = "20" h = "20" time = "99">
+			<next state = "DEFAULT" id = "2" />
+			<next state = "LIGHT" id = "1" time = "0" />
+		</frame>
+	</sprite>
 	<sprite name = "torch" file = "torch_01.png" >
 		<frame id = "1" x = "0" y = "0" w = "20" h = "20" time = "99">
 			<next state = "DEFAULT" id = "1" />

@@ -9,9 +9,12 @@ class soundMan:
         """loads sound filename and puts it on the flywheel
         
         filename: string"""
-        self.soundList[filename] = pygame.mixer.Sound(os.path.join("data",filename))
+        if filename not in self.soundList:
+            self.soundList[filename] = pygame.mixer.Sound(os.path.join("data",filename))
+            print "loaded sound", filename
         
     def play(self, filename):
-        if not self.soundList[filename]:
+        if filename not in self.soundList:
             self.loadSound(filename)
+        print "playing sound",filename
         self.soundList[filename].play()
