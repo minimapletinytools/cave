@@ -135,6 +135,7 @@ class DoorEn(Entity):
         self.anim.update()
     def draw(self):
         MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
+        #pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),1)
         
 
 class SwitchEn(Entity):
@@ -201,7 +202,7 @@ class PlayerEn(Entity):
         return pygame.Rect(0,0,0,0)
     
     def checkProjected(self,projection):
-        r = self.getRect().inflate(40,40)
+        r = self.getRect().inflate(60,60)
         r.x += projection.x
         r.y += projection.y
         rect = self.p.cont.getMatrixRect(r)#arbitrary, can be more precise
@@ -223,7 +224,7 @@ class PlayerEn(Entity):
         else: return False
             
     def checkHits(self):
-        rect = self.p.cont.getMatrixRect(self.getRect().inflate(60,20))  #arbitrary, can be more precise
+        rect = self.p.cont.getMatrixRect(self.getRect().inflate(60,60))  #arbitrary, can be more precise
         wallRects = self.p.cont.getWallRects(rect)
         #append man/woman onto the wallRect
         selfRect = self.getRect()
@@ -368,7 +369,7 @@ class WomanEn(PlayerEn):
                 elif self.state == "CRAWL":
                     self.state = "STAND"
     def checkHits(self):
-        rect = self.p.cont.getMatrixRect(self.getRect().inflate(40,40))  #arbitrary, can be more precise
+        rect = self.p.cont.getMatrixRect(self.getRect().inflate(60,60))  #arbitrary, can be more precise
         wallRects = self.p.cont.getWallRects(rect)
         selfRect = self.getRect()
         hits = selfRect.collidelistall(wallRects)
@@ -400,7 +401,6 @@ class WomanEn(PlayerEn):
             #TODO make sure to check only on ground hits
             selfRect = self.getRect()
             hits = selfRect.collidelistall(wallRects)
-        #BAD should move to woman class
         if flag == True:
             if self.state == "JUMP" or self.state == "FALLING":
                 if self.checkProjected(Vector2d(0,1)):
@@ -422,7 +422,7 @@ class WomanEn(PlayerEn):
         if self.state == "LEDGE":
             self.state = "STAND"
         self.checkHits()
-        self.checkSideHitRect(self.p.man.getRect())
+        #self.checkSideHitRect(self.p.man.getRect())
         self.checkSwitches()
         self.checkSpikes()
         #check if over ground
@@ -478,7 +478,7 @@ class ManEn(PlayerEn):
         self.anim.update()
         self.pos += self.anim.getVelData()
         self.checkHits()
-        self.checkSideHitRect(self.p.woman.getActiveWoman().getRect())
+        #self.checkSideHitRect(self.p.woman.getActiveWoman().getRect())
         self.checkSpikes()
         self.checkSwitches()
 
@@ -490,7 +490,7 @@ class ManEn(PlayerEn):
     def draw(self):
         MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
         #pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),1)
-        #pygame.draw.rect(MW_global.screen,COLOR_WHITE,self.getRect().inflate(40,40),1)
+        #pygame.draw.rect(MW_global.screen,COLOR_WHITE,self.getRect().inflate(20,20),1)
     
     def getRect(self):
         r = pygame.Rect(self.anim.activeNode.hRect)

@@ -83,7 +83,8 @@ class PlayController(Controller):
                         self.activePlayer = "man"
                         MW_global.camera.moveTo(self.man.pos)
     def loop(self):
-        MW_global.camera.moveTo(self.getActivePlayer().pos)
+        if CAMERA_MODE == "force":
+            MW_global.camera.moveTo(self.getActivePlayer().pos)
         self.handleInput()
                         
         self.woman.update()

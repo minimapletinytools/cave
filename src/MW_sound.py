@@ -16,5 +16,5 @@ class soundMan:
     def play(self, filename):
         if filename not in self.soundList:
             self.loadSound(filename)
-        print "playing sound",filename
+        #print "playing sound",filename
         self.soundList[filename].play()
