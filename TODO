@@ -1,8 +1,21 @@
 10-18-09
 
+add more than one wall tile type
+
+sounds. Made good progress, satisfactory
+
+redo man animation walk and jump, maybe... May not need this anymore
+
+ropes and falling to death, allow jumping off ropes and dropping new ropes?? Limited number of ropes means may have to start over if you run out of ropes???
+
+man flashlight should be directional (optional)
+
 Redo movement. Have frames define acceleration NOT velocity. Make man 
 move faster and more smoothly. Maybe I don't want to do this anymore... 
 movements is okay enough for now
+
+[DONE] [WITH EFFECT] torch lighting, play a little spark animation, limited fuel? 
+currently added SOUNd, maybe should add EFFECT
 
 [DONE for now] redo movement, guy should move fast and easy, girl should 
 move realistically
@@ -13,19 +26,6 @@ move realistically
 
 [DONE] added two levels to wall lighting, consider doing more???
 
-add more than one wall tile type
-
-[DONE] torch lighting, play a little spark animation, limited fuel? 
-currently 
-added SOUNd, maybe should add EFFECT
-
-man flashlight should be directional (optional)
-
-sounds. Made good progress, satisfactory
-
-redo man animation walk and jump, maybe... May not need this anymore
-
-ropes and falling to death, allow jumping off ropes and dropping new ropes?? Limited number of ropes means may have to start over if you run out of ropes???
 
 [DONE] refractor code so that lights work properly. Edit draw function to take flags (do draw routine/update routine only)
 
