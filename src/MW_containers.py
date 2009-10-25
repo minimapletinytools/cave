@@ -43,11 +43,13 @@ class WomanContainer(SuperContainer):
 class MatrixContainer(SuperContainer):
     def __init__(self,dim,parent):
         SuperContainer.__init__(self)
+        MW_global.matrixcontainer = self
         self.p = parent
+        
+        #these changes are overwridden by self.readXML
         self.width = dim[0]
         self.height = dim[1]
-        
-        self.startPos = Vector2d(-500,-500)
+        self.startPos = Vector2d(0,0)
         self.wList = list()
         self.doorList = list()
         self.torchList = list()
@@ -60,8 +62,7 @@ class MatrixContainer(SuperContainer):
         self.editor = MW_editor.WallEditor(self)
         self.switchId = 0
 	
-        self.readXML(xml.dom.minidom.parse(os.path.join("data","jumpinglevel.xml")))
-        MW_global.matrixcontainer = self
+        self.readXML(xml.dom.minidom.parse(os.path.join("data","testlevel.xml")))
     def update(self):
         if self.edit:
             self.editor.update()
