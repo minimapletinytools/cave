@@ -1,0 +1,112 @@
+<tiles>
+	<sprite name = "wall" file = "basic_wall02.png" >
+		<frame id = "1" x = "0" y = "0" w = "20" h = "20" time = "99">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "DARK" id = "2" time = "0"/>
+		</frame>
+		<frame id = "2" x = "0" y = "20" w = "20" h = "20" time = "99">
+			<next state = "DEFAULT" id = "2" />
+			<next state = "LIGHT" id = "1" time = "0" />
+		</frame>
+	</sprite>
+	<sprite name = "torch" file = "torch_01.png" >
+		<frame id = "1" x = "0" y = "0" w = "20" h = "20" time = "99">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "BURNING" id = "11" time = "0"/>
+		</frame>
+		<frame id = "11" x = "0" y = "20" w = "20" h = "20" time = "5">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "BURNING" id = "12" />
+		</frame>
+		<frame id = "12" x = "0" y = "40" w = "20" h = "20" time = "5">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "BURNING" id = "13" />
+		</frame>
+		<frame id = "13" x = "0" y = "60" w = "20" h = "20" time = "5">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "BURNING" id = "14" />
+		</frame>
+		<frame id = "14" x = "0" y = "80" w = "20" h = "20" time = "5">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "BURNING" id = "11" />
+		</frame>
+	</sprite>
+	<sprite name = "spike" file = "spikes_01.png spikes_02.png spikes_03.png spikes_04.png">
+		<frame id = "1" x = "0" y = "0" w = "20" h = "20" time = "1">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "BLOOD" id = "11" time="0"/>
+		</frame>
+		<frame id = "11" x = "0" y = "20" w = "20" h = "20" time = "5">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "BLOOD" id = "12" />
+		</frame>
+		<frame id = "12" x = "0" y = "40" w = "20" h = "20" time = "5">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "BLOOD" id = "13" />
+		</frame>
+		<frame id = "13" x = "0" y = "60" w = "20" h = "20" time = "5">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "BLOOD" id = "14" />
+		</frame>
+		<frame id = "14" x = "0" y = "80" w = "20" h = "20" time = "5">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "BLOOD" id = "15" />
+		</frame>
+		<frame id = "15" x = "0" y = "100" w = "20" h = "20" time = "5">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "BLOOD" id = "15" />
+		</frame>
+	</sprite>
+	<sprite name = "switch" file = "switch02.png">
+		<frame id = "1" x = "0" y = "0" w = "20" h = "20" time = "5">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "DOWN" id = "11" time="0"/>
+		</frame>
+		<frame id = "11" x = "0" y = "20" w = "20" h = "20" time = "5">
+			<next state = "UP" id = "1" />
+			<next state = "DOWN" id = "11" />
+		</frame>
+	</sprite>
+	<sprite name = "door" file = "door01.png">
+		<frame id = "1" x = "0" y = "0" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "60" time = "5">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "UP" id = "1"/>
+			<next state = "DOWN" id = "2"/>
+		</frame>
+		<frame id = "2" x = "0" y = "0" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "54" time = "5">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "UP" id = "1"/>
+			<next state = "DOWN" id = "3"/>
+		</frame>
+		<frame id = "3" x = "0" y = "60" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "48" time = "5">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "UP" id = "2"/>
+			<next state = "DOWN" id = "4"/>
+		</frame>
+		<frame id = "4" x = "0" y = "120" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "42" time = "5">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "UP" id = "3"/>
+			<next state = "DOWN" id = "5"/>
+		</frame>
+		<frame id = "5" x = "0" y = "180" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "36" time = "5">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "UP" id = "4"/>
+			<next state = "DOWN" id = "6"/>
+		</frame>
+		<frame id = "6" x = "0" y = "240" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "30" time = "5">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "UP" id = "5"/>
+			<next state = "DOWN" id = "7"/>
+		</frame>
+                <frame id = "7" x = "0" y = "300" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "24" time = "5">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "UP" id = "6"/>
+			<next state = "DOWN" id = "8"/>
+		</frame>
+		<frame id = "8" x = "0" y = "360" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "18" time = "5">
+			<next state = "DEFAULT" id = "1" />
+			<next state = "UP" id = "7"/>
+			<next state = "DOWN" id = "8"/>
+		</frame>
+	</sprite>
+</tiles>
