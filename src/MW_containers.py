@@ -62,7 +62,7 @@ class MatrixContainer(SuperContainer):
         self.editor = MW_editor.WallEditor(self)
         self.switchId = 0
 	
-        self.readXML(xml.dom.minidom.parse(os.path.join("data","testlevel.xml")))
+        self.readXML(xml.dom.minidom.parse(os.path.join("data","emptylevel.xml")))
     def update(self):
         if self.edit:
             self.editor.update()
