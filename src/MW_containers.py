@@ -62,7 +62,9 @@ class MatrixContainer(SuperContainer):
         self.editor = MW_editor.WallEditor(self)
         self.switchId = 0
 	
-        self.readXML(xml.dom.minidom.parse(os.path.join("data","emptylevel.xml")))
+	t = pygame.time.get_ticks()
+        self.readXML(xml.dom.minidom.parse(os.path.join("data","testlevel.xml")))
+	print "time to read in xml", pygame.time.get_ticks() - t
     def update(self):
         if self.edit:
             self.editor.update()
@@ -245,35 +247,43 @@ class MatrixContainer(SuperContainer):
         self.width = int(size.getAttribute("w"))
         self.height = int(size.getAttribute("h"))
         self.wList = list()
+	t1 = pygame.time.get_ticks()
         for e in range(self.width*self.height):
             self.wList.append(None)
         self.length = len(self.wList)
+	t2 = pygame.time.get_ticks()
         for e in exml.getElementsByTagName("WallEn"):
             index = int(e.getAttribute("i"))
             self.wList[index] = MW_entity.WallEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
+	t3 = pygame.time.get_ticks()
         for e in exml.getElementsByTagName("SpikeEn"):
             #print "making spike"
             index = int(e.getAttribute("i"))
             self.wList[index] = MW_entity.SpikeEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
+	t4 = pygame.time.get_ticks()
         for e in exml.getElementsByTagName("TorchEn"):
             #print "making torch"
             index = int(e.getAttribute("i"))
             self.wList[index] = MW_entity.TorchEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
             self.torchList.append(self.wList[index])
+	t5 = pygame.time.get_ticks()
         for e in exml.getElementsByTagName("DoorEn"):
             index = int(e.getAttribute("i"))
             self.wList[index] = MW_entity.DoorEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
             self.wList[index].id = int(e.getAttribute("id"))
             self.doorList.append(self.wList[index])
+	t6 = pygame.time.get_ticks()
         for e in exml.getElementsByTagName("SwitchEn"):
             index = int(e.getAttribute("i"))
             self.wList[index] = MW_entity.SwitchEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
             self.wList[index].id = int(e.getAttribute("id"))
+	t7 = pygame.time.get_ticks()
+	print "size", t2-t1, "walls", t3-t2, "spikes", t4-t3, "torches", t5-t4, "doors", t6-t5, "switches", t7-t6
     
 class DoodadContainer(SuperContainer):
     def __init__(self):
