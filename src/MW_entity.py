@@ -21,8 +21,8 @@ class WallEn(Entity):
     def __init__(self,pos=Vector2d(0,0)):
         Entity.__init__(self)
         self.pos = pos
-        self.image = pygame.image.load(os.path.join("data","basic_wall.png"))
-        self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse(os.path.join("data","tiles.xml")), "sprite","name","wall"))
+        #self.image = pygame.image.load(os.path.join("data","basic_wall.png"))
+        #self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse(os.path.join("data","tiles.xml")), "sprite","name","wall"))
         self.state = "LIGHT"
         self.highlight = False
     def getName(self):

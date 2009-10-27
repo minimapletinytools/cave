@@ -90,6 +90,11 @@ class FrameNode:
     def __str__(self):
         return "Framenode " + str(self.id) + " state " + str(self.state)
     
+#TODO only makes one copy of the whole animation graph and shares it.
+class AnimatorWheel:
+    def __init__(self,exml):
+        pass
+    
 class Animator:
     """create one instance of me for each animation graph"""
     def __init__(self,exml):
