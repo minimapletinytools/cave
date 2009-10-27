@@ -282,7 +282,7 @@ class MatrixContainer(SuperContainer):
             self.wList[index] = MW_entity.DoorEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
             self.wList[index].id = int(e.getAttribute("id"))
-            #self.doorList.append(self.wList[index])
+            self.doorList.append(self.wList[index])
 	t6 = pygame.time.get_ticks()
         for e in exml.getElementsByTagName("SwitchEn"):
             index = int(e.getAttribute("i"))
