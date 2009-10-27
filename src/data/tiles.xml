@@ -60,10 +60,10 @@
 	<sprite name = "switch" file = "switch02.png">
 		<frame id = "1" x = "0" y = "0" w = "20" h = "20" time = "5">
 			<next state = "DEFAULT" id = "1" />
-			<next state = "DOWN" id = "11" time="0"/>
+			<next state = "DOWN" id = "11" time="0" sound = "switch01.wav"/>
 		</frame>
-		<frame id = "11" x = "0" y = "20" w = "20" h = "20" time = "5">
-			<next state = "UP" id = "1" />
+		<frame id = "11" x = "0" y = "20" w = "20" h = "20" time = "10">
+			<next state = "UP" id = "1" sound = "switch01.wav"/>
 			<next state = "DOWN" id = "11" />
 		</frame>
 	</sprite>

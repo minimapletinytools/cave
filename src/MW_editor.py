@@ -9,6 +9,7 @@ import xml.dom.minidom
 class WallEditor:
     def __init__(self,matrix):
         self.p = matrix
+        self.screenCrds = Vector2d(0,0)
         self.cursor = Vector2d(0,0)
         self.ocursor = Vector2d(0,0)
         self.index = 0
@@ -16,6 +17,8 @@ class WallEditor:
         self.setActive()
         self.mode = "place"
         self.placed = False
+        self.mIndex = 0
+        self.mX = self.mY = 0
         
     def setMouse(self):
         self.ocursor = self.cursor     
@@ -23,7 +26,8 @@ class WallEditor:
         self.cursor = MW_global.camera.convertScreenCrds(self.screenCrds)
         self.cursor.x = truncateToMultiple(self.cursor.x, TILING_SIZE.x)
         self.cursor.y = truncateToMultiple(self.cursor.y, TILING_SIZE.y)
-    
+        self.mIndex = self.p.getMatrixIndex(self.cursor)
+        self.mX, self.mY = self.p.getMatrixPosition(self.cursor)
     def toggleMode(self):
         if self.activeObject == None:
             self.activeObject = self.entityRefList[self.index]()
@@ -94,6 +98,8 @@ class WallEditor:
         if self.activeObject and self.mode == "place":
             self.activeObject.draw()
         pygame.draw.rect(MW_global.screen, (255,255,255),MW_global.camera.convertCrds(pygame.Rect(self.cursor.x,self.cursor.y,TILING_SIZE.x,TILING_SIZE.y)),1)
+        MW_global.speech.setSize(8)
+        MW_global.speech.writeText(MW_global.screen, Vector2d(10,10), "x: " + str(self.mX) + "  y: " + str(self.mY) + "  index: " + str(self.mIndex), COLOR_WHITE)
         
 #import MW_lookup
 class DooEditor:

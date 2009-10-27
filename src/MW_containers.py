@@ -61,10 +61,10 @@ class MatrixContainer(SuperContainer):
         self.edit = True
         self.editor = MW_editor.WallEditor(self)
         self.switchId = 0
-	
-	t = pygame.time.get_ticks()
+        
+        t = pygame.time.get_ticks()
         self.readXML(xml.dom.minidom.parse(os.path.join("data","testlevel.xml")))
-	print "time to set up level", pygame.time.get_ticks() - t
+	    #print "time to set up level", pygame.time.get_ticks() - t
     def update(self):
         if self.edit:
             self.editor.update()

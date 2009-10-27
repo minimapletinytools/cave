@@ -90,10 +90,26 @@ class FrameNode:
     def __str__(self):
         return "Framenode " + str(self.id) + " state " + str(self.state)
     
-#TODO only makes one copy of the whole animation graph and shares it.
+#does a little bit haha
 class AnimatorWheel:
-    def __init__(self,exml):
-        pass
+    def __init__(self):
+        self.animDict = dict()
+    def getAnimation(self,exml):
+        name = exml.getAttribute("name")
+        if name not in self.animDict:
+            print "loading new animation", name
+            self.animDict[name] = FrameNode(exml,1,list())
+        return self.animDict[name]
+    
+#maybe you should move to MW_xml
+class XMLWheel:
+    def __init__(self):
+        self.xmlDict = dict()
+    def loadXML(self,filename):
+        if filename not in self.xmlDict:
+            print "loading xml", filename
+            self.xmlDict[filename] = xml.dom.minidom.parse(os.path.join("data",filename))
+        return self.xmlDict[filename]
     
 class Animator:
     """create one instance of me for each animation graph"""
@@ -110,6 +126,7 @@ class Animator:
         self.image = MW_global.imagewheel.getImage(self.file)
         self.flipImage = MW_global.imagewheel.getFlipImage(self.file)
         self.activeNode = FrameNode(exml,1,list())
+        #self.activeNode = MW_global.animwheel.getAnimation(exml)
         self.last = 0
         self.time = 0
         self.dir = "RIGHT"

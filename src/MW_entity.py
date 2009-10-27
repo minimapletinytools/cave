@@ -22,7 +22,7 @@ class WallEn(Entity):
         Entity.__init__(self)
         self.pos = pos
         #self.image = pygame.image.load(os.path.join("data","basic_wall.png"))
-        self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse(os.path.join("data","tiles.xml")), "sprite","name","wall"))
+        self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(MW_global.xmlwheel.loadXML("tiles.xml"), "sprite","name","wall"))
         self.state = "LIGHT"
         self.highlight = False
     def getName(self):
@@ -65,7 +65,7 @@ class TorchEn(Entity):
         self.pos = Vector2d(0,0)
         self.state = "DEFAULT"
         self.id = 0
-        self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse(os.path.join("data","tiles.xml")), "sprite","name","torch"))
+        self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(MW_global.xmlwheel.loadXML("tiles.xml"), "sprite","name","torch"))
     def getRect(self):
         return pygame.Rect(self.pos.x,self.pos.y,TILING_SIZE.x,TILING_SIZE.y)
     def getName(self):
@@ -84,7 +84,7 @@ class SpikeEn(Entity):
         Entity.__init__(self)
         self.pos = Vector2d(0,0)
         #TODO load spikes, load random image out of a set
-        self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse(os.path.join("data","tiles.xml")), "sprite","name","spike"))
+        self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(MW_global.xmlwheel.loadXML("tiles.xml"), "sprite","name","spike"))
         self.state = "DEFAULT"
         self.highlight = False
     def getName(self):
@@ -113,7 +113,7 @@ class DoorEn(Entity):
         Entity.__init__(self)
         self.id = 0
         self.pos = Vector2d(0,0)
-        self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse(os.path.join("data","tiles.xml")), "sprite","name","door"))
+        self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(MW_global.xmlwheel.loadXML("tiles.xml"), "sprite","name","door"))
         self.state = "UP"
     def getName(self):
         return "DoorEn"
@@ -143,7 +143,7 @@ class SwitchEn(Entity):
         Entity.__init__(self)
         self.id = 0
         self.pos = Vector2d(0,0)
-        self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse(os.path.join("data","tiles.xml")), "sprite","name","switch"))
+        self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(MW_global.xmlwheel.loadXML("tiles.xml"), "sprite","name","switch"))
         self.setState("UP")
     def setState(self,state):
         self.state = state
@@ -324,7 +324,7 @@ class PlayerEn(Entity):
                 
 class WomanEn(PlayerEn):
     def __init__(self,controller):
-        self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse("characters.xml"), "sprite","name","woman"))
+        self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(MW_global.xmlwheel.loadXML("characters.xml"), "sprite","name","woman"))
         PlayerEn.__init__(self,controller)
         self.pos = Vector2d(0,-100)
         
@@ -443,7 +443,7 @@ class WomanEn(PlayerEn):
     
 class ManEn(PlayerEn):
     def __init__(self,controller):
-        self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(xml.dom.minidom.parse("characters.xml"), "sprite","name","man"))
+        self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(MW_global.xmlwheel.loadXML("characters.xml"), "sprite","name","man"))
         PlayerEn.__init__(self,controller)
         self.respawn = Vector2d(0,0)
         

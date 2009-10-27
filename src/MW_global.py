@@ -2,6 +2,8 @@ import pygame
 import MW_camera
 import MW_image
 import MW_sound
+import MW_speech
+import MW_animator
 import os,sys
 from MW_constants import *
 
@@ -15,9 +17,12 @@ screen = pygame.display.set_mode((SCREEN_SIZE),pygame.HWSURFACE|pygame.DOUBLEBUF
 pygame.mouse.set_visible(0)
 camera = MW_camera.Camera(screen)
 imagewheel = MW_image.ImageWheel()
+animwheel = MW_animator.AnimatorWheel()
+xmlwheel = MW_animator.XMLWheel()
 sound = MW_sound.soundMan()
+speech = MW_speech.Speech()
 soundMap = dict()
-soundMap['light'] = os.path.join("data","light07.wav")
+soundMap['light'] = "light08.wav"
 sound.loadSound(soundMap['light'])
 controller = None
 matrixcontainer = None
