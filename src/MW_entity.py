@@ -259,7 +259,8 @@ class PlayerEn(Entity):
         counter = 0
         while len(hits) > 0:
             if counter > 30:
-                print "hit infinite loop detected, breaking now"
+		#self.pos = Vector2d(self.hitOld.x,self.hitOld.y)
+                #print "hit infinite loop detected, breaking now"
                 break
             counter += 1
             flag = True
@@ -402,8 +403,8 @@ class WomanEn(PlayerEn):
         for i in hits:
             self.p.cont.wList[self.p.cont.getMatrixIndex(wallRects[i])].highlight = True
         flag = False
+	counter = 0
         if len(hits) == 1:
-            pass
             #check if at least halfway above
             #check if left or right intersect is minimal
             if getRectCollideSideVector2d(self.getRect(),wallRects[hits[0]]).x == -dirMap[self.anim.dir]:
@@ -416,7 +417,13 @@ class WomanEn(PlayerEn):
                         self.pos.y = wallRects[hits[0]].y - 40
                         self.state = "LEDGE"
                         return 
+	counter = 0
         while len(hits) > 0:
+	    if counter > 30:
+		#self.pos = Vector2d(self.hitOld.x,self.hitOld.y)
+                #print "hit infinite loop detected, breaking now"
+                break
+            counter += 1
             flag = True
             if (Vector2d(selfRect)-Vector2d(self.hitOld)).magnitude() > 0:
                 if math.fabs((selfRect.y-self.hitOld.y)) >= math.fabs((selfRect.x-self.hitOld.x)):
