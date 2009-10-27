@@ -13,7 +13,7 @@ class WallEditor:
         self.cursor = Vector2d(0,0)
         self.ocursor = Vector2d(0,0)
         self.index = 0
-        self.entityRefList = (MW_entity.WallEn,MW_entity.SpikeEn,MW_entity.TorchEn,MW_entity.DoorEn, MW_entity.SwitchEn,None)
+        self.entityRefList = (MW_entity.WallEn,MW_entity.SpikeEn,MW_entity.TorchEn,MW_entity.DoorEn, MW_entity.SwitchEn, MW_entity.RespawnEn, None)
         self.setActive()
         self.mode = "place"
         self.placed = False

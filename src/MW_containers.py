@@ -27,7 +27,12 @@ class WomanContainer(SuperContainer):
     def getActiveWoman(self):
         return self.enList[len(self.enList)-1]
     def createNew(self):
-        self.enList.append(MW_entity.WomanEn(self.p))
+        w = MW_entity.WomanEn(self.p)
+        try:
+            w.teleport(self.getActiveWoman().respawn)
+            w.respawn = w.pos
+        except: pass
+        self.enList.append(w)
     def draw(self):
         for e in self.enList:
             e.draw()
@@ -137,6 +142,8 @@ class MatrixContainer(SuperContainer):
         #print self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y)
         #return self.getTypes(self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y),"TorchEn")
         return filter(isActive,self.getTypesEn(self.getMatrixRect(MW_global.camera.rect).inflate(TORCH_RADIUS/TILING_SIZE.x,TORCH_RADIUS/TILING_SIZE.y),"TorchEn"))
+    def getRespawnRects(self,rect):
+        return self.getTypes(rect,"RespawnEn")
     def getTorchRects(self,rect):
         return self.getTypes(rect,"TorchEn")
     def getSpikeRects(self,rect):
@@ -275,7 +282,7 @@ class MatrixContainer(SuperContainer):
             self.wList[index] = MW_entity.DoorEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
             self.wList[index].id = int(e.getAttribute("id"))
-            self.doorList.append(self.wList[index])
+            #self.doorList.append(self.wList[index])
 	t6 = pygame.time.get_ticks()
         for e in exml.getElementsByTagName("SwitchEn"):
             index = int(e.getAttribute("i"))
@@ -283,6 +290,11 @@ class MatrixContainer(SuperContainer):
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
             self.wList[index].id = int(e.getAttribute("id"))
 	t7 = pygame.time.get_ticks()
+        for e in exml.getElementsByTagName("RespawnEn"):
+            index = int(e.getAttribute("i"))
+            self.wList[index] = MW_entity.RespawnEn()
+            self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
+            
 	print "size", t2-t1, "walls", t3-t2, "spikes", t4-t3, "torches", t5-t4, "doors", t6-t5, "switches", t7-t6
     
 class DoodadContainer(SuperContainer):

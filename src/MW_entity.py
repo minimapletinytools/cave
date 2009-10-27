@@ -170,6 +170,21 @@ class SwitchEn(Entity):
         
     def getName(self):
         return "SwitchEn"
+    
+class RespawnEn(Entity):
+    def __init__(self):
+        Entity.__init__(self)
+        self.pos = Vector2d(0,0)
+    def getRect(self):
+        return pygame.Rect(self.pos.x, self.pos.y, TILING_SIZE.x, TILING_SIZE.y)
+    def teleport(self,pos):
+        self.pos = pos
+    def update(self):
+        pass
+    def draw(self):
+        pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),0)        
+    def getName(self):
+        return "RespawnEn"
         
 class PlayerEn(Entity):
     def __init__(self,controller):
@@ -222,7 +237,16 @@ class PlayerEn(Entity):
         if selfRect.colliderect(rect):
             return True
         else: return False
-            
+    
+    def checkRespawn(self):
+        rect = self.p.cont.getMatrixRect(self.getRect().inflate(60,60))  #arbitrary, can be more precise
+        respawnRects = self.p.cont.getRespawnRects(rect)
+        #append man/woman onto the wallRect
+        selfRect = self.getRect()
+        hits = selfRect.collidelistall(respawnRects)
+        for i in hits:
+            self.respawn = self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].pos
+        
     def checkHits(self):
         rect = self.p.cont.getMatrixRect(self.getRect().inflate(60,60))  #arbitrary, can be more precise
         wallRects = self.p.cont.getWallRects(rect)
@@ -327,6 +351,7 @@ class WomanEn(PlayerEn):
         self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(MW_global.xmlwheel.loadXML("characters.xml"), "sprite","name","woman"))
         PlayerEn.__init__(self,controller)
         self.pos = Vector2d(0,-100)
+        self.respawn = Vector2d(0,0)
         
     def input(self, events):
         PlayerEn.input(self,events)
@@ -421,6 +446,7 @@ class WomanEn(PlayerEn):
         self.pos += self.anim.getVelData()
         if self.state == "LEDGE":
             self.state = "STAND"
+        self.checkRespawn()
         self.checkHits()
         #self.checkSideHitRect(self.p.man.getRect())
         self.checkSwitches()
@@ -477,6 +503,7 @@ class ManEn(PlayerEn):
         self.anim.state = self.state
         self.anim.update()
         self.pos += self.anim.getVelData()
+        self.checkRespawn()
         self.checkHits()
         #self.checkSideHitRect(self.p.woman.getActiveWoman().getRect())
         self.checkSpikes()
