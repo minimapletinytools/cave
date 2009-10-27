@@ -1,18 +1,27 @@
 URGENT! make animation wheel to speed up loading
 
+allow clicking to get id for easy door switch editing
+
+create respawn points for both man and woman.
+
 add more than one wall tile type
 
-sounds. Made good progress, satisfactory
+[DONE FOR NOW] sounds. Made good progress, satisfactory
 
-redo man animation walk and jump, maybe... May not need this anymore
+make door and switch sounds
 
-ropes and falling to death, allow jumping off ropes and dropping new ropes?? Limited number of ropes means may have to start over if you run out of ropes???
+redo man animation walk and jump, maybe... May not need this anymore 
+[OPTIONAL]
 
-man flashlight should be directional (optional)
+ropes and falling to death, allow jumping off ropes and dropping new 
+ropes?? Limited number of ropes means may have to start over if you run 
+out of ropes??? [OPTIONAL but you should really consider it]
+
+man flashlight should be directional [OPTIONAL]
 
 Redo movement. Have frames define acceleration NOT velocity. Make man 
 move faster and more smoothly. Maybe I don't want to do this anymore... 
-movements is okay enough for now
+movements is okay enough for now [OPTIONAL]
 
 [DONE] [WITH EFFECT] torch lighting, play a little spark animation, limited fuel? 
 currently added SOUNd, maybe should add EFFECT

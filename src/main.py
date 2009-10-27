@@ -18,8 +18,8 @@ while 1:
         t1 = pygame.time.get_ticks()
         mwc.loop()
         MW_global.frame += 1
-        if pygame.time.get_ticks()%10 == 1:
-            print pygame.time.get_ticks() - t1
+        if pygame.time.get_ticks()%200 == 1:
+            print "cycle time", pygame.time.get_ticks() - t1
         pygame.display.flip()   #flip the screen
     #else wait the difference
     else: 

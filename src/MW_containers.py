@@ -101,8 +101,7 @@ class MatrixContainer(SuperContainer):
                 return True
         return False
     def draw(self):
-        if self.edit: 
-            self.editor.draw()
+        
         rect = self.getMatrixRect(MW_global.camera.rect)
         for r in range(rect.h):
             for c in range(rect.w):
@@ -113,7 +112,8 @@ class MatrixContainer(SuperContainer):
                             e.draw()
                     
         pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),1)
-                    
+        if self.edit: 
+            self.editor.draw()
     def addEn(self,en,pos):
         print en, "added"
         index = self.getIndex(*self.getMatrixPosition(pos))
