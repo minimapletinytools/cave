@@ -30,8 +30,9 @@ class WallEditor:
         self.mX, self.mY = self.p.getMatrixPosition(self.cursor)
     def toggleMode(self):
         if self.activeObject == None:
-            self.activeObject = self.entityRefList[self.index]()
-            if self.activeObject == None:
+            if self.entityRefList[self.index]:
+                self.activeObject = self.entityRefList[self.index]()
+            else:
                 self.setActive(1)
         else: self.activeObject = None
         
