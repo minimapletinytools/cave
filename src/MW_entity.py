@@ -131,6 +131,9 @@ class DoorEn(Entity):
             else:
                 #this does not work as this happens after the switch's post update state reset 
                 self.state = "UP"
+                #BAD TEMP SCRIPTING CODE
+                if self.id == 2123: self.state = "DOWN"
+                
         self.anim.state = self.state
         self.anim.update()
     def draw(self):
@@ -357,7 +360,7 @@ class WomanEn(PlayerEn):
         self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(MW_global.xmlwheel.loadXML("characters.xml"), "sprite","name","woman"))
         PlayerEn.__init__(self,controller)
         self.pos = WOMAN_START
-        self.respawn = Vector2d(0,0)
+        self.respawn = WOMAN_START
         
     def input(self, events):
         PlayerEn.input(self,events)
@@ -483,7 +486,7 @@ class ManEn(PlayerEn):
         self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(MW_global.xmlwheel.loadXML("characters.xml"), "sprite","name","man"))
         PlayerEn.__init__(self,controller)
         self.pos = MAN_START
-        self.respawn = Vector2d(0,0)
+        self.respawn = MAN_START
         
     def input(self, events):
         PlayerEn.input(self,events)
