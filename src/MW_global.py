@@ -28,6 +28,7 @@ controller = None
 matrixcontainer = None
 eventList = None
 switchdict = dict()
+spawndict = dict()
 frame = 0
 
 def getMatrixContainer():

@@ -1,17 +1,6 @@
-URGENT! fix freeze bugs with dying and all that other stuff infinite 
-loops bad
+Resolve door stuck issue (even if it means just putting the switches further away)
 
-[DONE] URGENT! make animation wheel to speed up loading
-
-[DONE] allow clicking to get id for easy door switch editing
-
-[DONE] create respawn points for both man and woman.
-
-add more than one wall tile type
-
-[DONE FOR NOW] sounds. Made good progress, satisfactory
-
-[DONE] make door and switch sounds
+consider how to do scripting and event triggers and stuff. Maybe reuse the spawn point triggers [added ids to respawn points so we can resue them now]
 
 redo man animation walk and jump, maybe... May not need this anymore 
 [OPTIONAL]
@@ -44,3 +33,18 @@ move realistically
 [basic scripting DONE] test out scripting for door, do inital few floors
 
 [SOLVED, may need to write grid enlarge/shrink script] figure out how the whole area mojo is going to work. Draw a big rect around the whole matrix and see if it is enough space. Make sketch in editor of what level will look like.
+
+[DONE] URGENT! fix freeze bugs with dying and all that other stuff infinite 
+loops bad
+
+[DONE] URGENT! make animation wheel to speed up loading
+
+[DONE] allow clicking to get id for easy door switch editing
+
+[DONE] create respawn points for both man and woman.
+
+add more than one wall tile type
+
+[DONE FOR NOW] sounds. Made good progress, satisfactory
+
+[DONE] make door and switch sounds

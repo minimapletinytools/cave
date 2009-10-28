@@ -19,6 +19,8 @@ COLOR_KEY = COLOR_BLACK
 #game constants
 TORCH_RADIUS = 100,150
 PLAYER_LIGHT_RADIUS = 50,75
+MAN_START = Vector2d(-500,-100)
+WOMAN_START = Vector2d(-530,-120)
 
 #engine constants
 dirMap = dict()

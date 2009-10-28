@@ -243,8 +243,11 @@ class MatrixContainer(SuperContainer):
         for i in range(len(self.wList)):
             if self.wList[i]:
                 idstr = ""
-                if self.wList[i].getName() == "DoorEn" or  self.wList[i].getName() == "SwitchEn":
+                if self.wList[i].getName() == "DoorEn" or  self.wList[i].getName() == "SwitchEn" or  self.wList[i].getName() == "RespawnEn":
                     idstr = "\" id=\"" + str(self.wList[i].id)
+                #for permanently open doors, but we do not really need these
+                #if self.wList[i].getName() == "DoorEn" and self.wList[i].type == "OPEN":
+                    #idstr = "\" id=\"" + str(self.wList[i].id) + "\" id=\"" + self.wList[i].type 
                 exml.appendChild(xml.dom.minidom.parseString("<p><"+self.wList[i].getName()+" i=\""
                                                              +str(i)+idstr+ "\"/></p>").getElementsByTagName(self.wList[i].getName())[0])
         print exml.toxml()
@@ -294,6 +297,7 @@ class MatrixContainer(SuperContainer):
             index = int(e.getAttribute("i"))
             self.wList[index] = MW_entity.RespawnEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
+            self.wList[index].id = int(e.getAttribute("id"))
             
 	print "size", t2-t1, "walls", t3-t2, "spikes", t4-t3, "torches", t5-t4, "doors", t6-t5, "switches", t7-t6
     

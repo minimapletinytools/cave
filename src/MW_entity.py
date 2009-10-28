@@ -175,6 +175,10 @@ class RespawnEn(Entity):
     def __init__(self):
         Entity.__init__(self)
         self.pos = Vector2d(0,0)
+        self.id = 0
+        self.trigger(False)
+    def trigger(self,flag):
+        MW_global.spawndict[self.id] = flag
     def getRect(self):
         return pygame.Rect(self.pos.x, self.pos.y, TILING_SIZE.x, TILING_SIZE.y)
     def teleport(self,pos):
@@ -245,6 +249,7 @@ class PlayerEn(Entity):
         selfRect = self.getRect()
         hits = selfRect.collidelistall(respawnRects)
         for i in hits:
+            #TODO check if type is event tirgger and tirgger event
             self.respawn = self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].pos
         
     def checkHits(self):
@@ -351,7 +356,7 @@ class WomanEn(PlayerEn):
     def __init__(self,controller):
         self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(MW_global.xmlwheel.loadXML("characters.xml"), "sprite","name","woman"))
         PlayerEn.__init__(self,controller)
-        self.pos = Vector2d(0,-100)
+        self.pos = WOMAN_START
         self.respawn = Vector2d(0,0)
         
     def input(self, events):
@@ -403,7 +408,6 @@ class WomanEn(PlayerEn):
         for i in hits:
             self.p.cont.wList[self.p.cont.getMatrixIndex(wallRects[i])].highlight = True
         flag = False
-	counter = 0
         if len(hits) == 1:
             #check if at least halfway above
             #check if left or right intersect is minimal
@@ -416,11 +420,11 @@ class WomanEn(PlayerEn):
                             self.pos.x = wallRects[hits[0]].x + 10
                         self.pos.y = wallRects[hits[0]].y - 40
                         self.state = "LEDGE"
-                        return 
-	counter = 0
+                        return
+        counter = 0
         while len(hits) > 0:
-	    if counter > 30:
-		#self.pos = Vector2d(self.hitOld.x,self.hitOld.y)
+            if counter > 30:
+                #self.pos = Vector2d(self.hitOld.x,self.hitOld.y)
                 #print "hit infinite loop detected, breaking now"
                 break
             counter += 1
@@ -478,6 +482,7 @@ class ManEn(PlayerEn):
     def __init__(self,controller):
         self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(MW_global.xmlwheel.loadXML("characters.xml"), "sprite","name","man"))
         PlayerEn.__init__(self,controller)
+        self.pos = MAN_START
         self.respawn = Vector2d(0,0)
         
     def input(self, events):

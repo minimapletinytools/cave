@@ -99,7 +99,8 @@ class WallEditor:
             self.activeObject.draw()
         pygame.draw.rect(MW_global.screen, (255,255,255),MW_global.camera.convertCrds(pygame.Rect(self.cursor.x,self.cursor.y,TILING_SIZE.x,TILING_SIZE.y)),1)
         MW_global.speech.setSize(8)
-        MW_global.speech.writeText(MW_global.screen, Vector2d(10,10), "x: " + str(self.mX) + "  y: " + str(self.mY) + "  index: " + str(self.mIndex), COLOR_WHITE)
+        #MW_global.speech.writeText(MW_global.screen, Vector2d(10,10), "x: " + str(self.mX) + "  y: " + str(self.mY) + "  index: " + str(self.mIndex), COLOR_WHITE)
+        MW_global.speech.writeText(MW_global.screen, Vector2d(10,10), "x: " + str(self.cursor.x) + "  y: " + str(self.cursor.y) + "  index: " + str(self.mIndex), COLOR_WHITE)
         
 #import MW_lookup
 class DooEditor:
