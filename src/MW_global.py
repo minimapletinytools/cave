@@ -24,6 +24,8 @@ speech = MW_speech.Speech()
 soundMap = dict()
 soundMap['light'] = "light08.wav"
 sound.loadSound(soundMap['light'])
+stickyswitchlist = [2123,3]
+stickydoorlist = [] #sticky doors do not open
 controller = None
 matrixcontainer = None
 eventList = None

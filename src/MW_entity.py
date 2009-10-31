@@ -127,12 +127,10 @@ class DoorEn(Entity):
         self.pos = pos
     def update(self):
         if self.id in MW_global.switchdict:
-            if MW_global.switchdict[self.id]:
+            if self.id not in MW_global.stickydoorlist and MW_global.switchdict[self.id]:
                 self.state = "DOWN"
             else:
-                #BAD TEMP SCRIPTING CODE
-                if not self.id == 2123 and not self.id == 3:
-                    self.state = "UP"
+                self.state = "UP"
                 
                 
         self.anim.state = self.state
@@ -163,7 +161,8 @@ class SwitchEn(Entity):
     def draw(self):
         MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
         #if needed, put this in "post update"
-        self.setState("UP")
+        if self.id not in MW_global.stickyswitchlist:
+            self.setState("UP")
 
         
     def getRect(self):
