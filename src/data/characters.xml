@@ -246,14 +246,16 @@
 	<sprite name="man" file="man_sheet_01.png">
 		<frame id = "1" x = "0" y = "0" w = "20" h = "40" time = "1" state = "STAND">
 			<data velx = "0" vely = "0" />
-			<next state="DEFAULT" id = "1"></next>
+			<next state="DEFAULT" id = "1" />
 			<next state="WALK" id = "101" time = "0"></next>
+			<next state="STAND" id = "1"></next>
 			<next state="JUMP" id = "201" time = "0"  sound = "jump01.wav"></next>
+			<next state ="DEAD" id = "401" sound = "fall01.wav" time = "0"></next>
 			<next state="FALLING" id = "301" time = "0"></next>
 		</frame>
 		<frame id = "0" x = "0" y = "0" w = "20" h = "40" time = "0" state = "STAND">
 			<data velx = "0" vely = "0" />
-			<next state="DEFAULT" id = "1"></next>
+			<next state="DEFAULT" id = "1" time = "1"></next>
 			<next state="FALLING" id = "301"></next>
 			<next state ="DEAD" id = "401" sound = "fall01.wav"></next>
 		</frame>
@@ -361,19 +363,26 @@
 			<next state="FALLING" id = "301" time = "0"></next>
 		</frame>
 		<frame id = "201" x = "40" y = "160" w = "20" h = "40" time = "2" state = "JUMP">
-			<data velx = "2" vely = "-8" />
+			<data velx = "2" vely = "-6" />
 			<next state="DEFAULT" id = "0"></next>
 			<next state="JUMP" id = "205"></next>
 			<next state="FALLING" id = "301" time = "0"></next>
 		</frame>
-		<frame id = "205" x = "40" y = "200" w = "20" h = "40" time = "2" state = "JUMP">
-			<data velx = "4" vely = "-12" />
+		<frame id = "205" x = "40" y = "200" w = "20" h = "40" time = "4" state = "JUMP">
+			<data velx = "4" vely = "-10" />
 			<next state="DEFAULT" id = "0"></next>
 			<next state="JUMP" id = "206"></next>
 			<next state="FALLING" id = "301" time = "0"></next>
 		</frame>
 		<frame id = "206" x = "40" y = "240" w = "20" h = "40" time = "2" state = "JUMP">
-			<data velx = "5" vely = "-5" />
+			<data velx = "5" vely = "-4" />
+			<next state="DEFAULT" id = "0"></next>
+			<next state="JUMP" id = "207"></next>
+			<next state="FALLING" id = "301" time = "0"></next>
+			<next state="STAND" id = "1" time = "0" sound = "land02.wav"></next>
+		</frame>
+		<frame id = "207" x = "40" y = "240" w = "20" h = "40" time = "2" state = "JUMP">
+			<data velx = "5" vely = "0" />
 			<next state="DEFAULT" id = "0"></next>
 			<next state="JUMP" id = "210"></next>
 			<next state="FALLING" id = "301" time = "0"></next>
@@ -387,13 +396,13 @@
 			<next state="FALLING" id = "301" time = "0"></next>
 		</frame>
 		<frame id = "251" x = "40" y = "240" w = "20" h = "40" time = "2" state = "LAND">
-			<data velx = "3" vely = "6" />
+			<data velx = "3" vely = "1" />
 			<next state="DEFAULT" id = "0"></next>
 			<next state="JUMP" id = "252"></next>
 			<next state="FALLING" id = "301" time = "0"></next>
 		</frame>
 		<frame id = "252" x = "40" y = "240" w = "20" h = "40" time = "1" state = "LAND">
-			<data velx = "3" vely = "10" />
+			<data velx = "4" vely = "10" />
 			<next state="DEFAULT" id = "0"></next>
 			<next state="JUMP" id = "1"></next>
 			<next state="FALLING" id = "301" time = "0"></next>

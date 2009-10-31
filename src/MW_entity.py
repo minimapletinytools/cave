@@ -7,6 +7,7 @@ import xml.dom.minidom
 import os
 from MW_datatypes import *
 from MW_constants import *
+
 class Entity:
     def __init__(self):
         self.destroy = False
@@ -129,10 +130,10 @@ class DoorEn(Entity):
             if MW_global.switchdict[self.id]:
                 self.state = "DOWN"
             else:
-                #this does not work as this happens after the switch's post update state reset 
-                self.state = "UP"
                 #BAD TEMP SCRIPTING CODE
-                if self.id == 2123: self.state = "DOWN"
+                if not self.id == 2123 and not self.id == 3:
+                    self.state = "UP"
+                
                 
         self.anim.state = self.state
         self.anim.update()
@@ -267,7 +268,10 @@ class PlayerEn(Entity):
         counter = 0
         while len(hits) > 0:
             if counter > 30:
-		#self.pos = Vector2d(self.hitOld.x,self.hitOld.y)
+                self.state = "DEAD"
+                #self.anim.state = self.state
+                #.anim.forceUpdate()
+		        #self.pos = Vector2d(self.hitOld.x,self.hitOld.y)
                 #print "hit infinite loop detected, breaking now"
                 break
             counter += 1
@@ -427,6 +431,7 @@ class WomanEn(PlayerEn):
         counter = 0
         while len(hits) > 0:
             if counter > 30:
+                self.state = "DEAD"
                 #self.pos = Vector2d(self.hitOld.x,self.hitOld.y)
                 #print "hit infinite loop detected, breaking now"
                 break

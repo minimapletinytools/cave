@@ -98,14 +98,14 @@
 			<next state = "UP" id = "5"/>
 			<next state = "DOWN" id = "7"/>
 		</frame>
-                <frame id = "7" x = "0" y = "300" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "24" time = "5">
+                <frame id = "7" x = "0" y = "300" w = "20" h = "60" hx = "0" hy = "0" hw = "21" hh = "24" time = "5">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "UP" id = "6"/>
 			<next state = "DOWN" id = "8"/>
 		</frame>
-		<frame id = "8" x = "0" y = "360" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "18" time = "5">
+		<frame id = "8" x = "0" y = "360" w = "20" h = "60" hx = "0" hy = "0" hw = "20" hh = "20" time = "5">
 			<next state = "DEFAULT" id = "1" />
-			<next state = "UP" id = "7"/>
+			<next state = "UP" id = "7" time = "0"/>
 			<next state = "DOWN" id = "8"/>
 		</frame>
 	</sprite>

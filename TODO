@@ -1,4 +1,4 @@
-Resolve door stuck issue (even if it means just putting the switches further away)
+[DONE]Resolve door stuck issue (even if it means just putting the switches further away)
 
 consider how to do scripting and event triggers and stuff. Maybe reuse the spawn point triggers [added ids to respawn points so we can resue them now]
 
