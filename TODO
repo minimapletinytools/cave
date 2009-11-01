@@ -1,6 +1,6 @@
-[DONE]Resolve door stuck issue (even if it means just putting the switches further away)
+scripting! you have script trigger points now you need to do actual scripting.
 
-consider how to do scripting and event triggers and stuff. Maybe reuse the spawn point triggers [added ids to respawn points so we can resue them now]
+add symbol and maybe instructions to level editor
 
 redo man animation walk and jump, maybe... May not need this anymore 
 [OPTIONAL]
@@ -48,3 +48,7 @@ add more than one wall tile type
 [DONE FOR NOW] sounds. Made good progress, satisfactory
 
 [DONE] make door and switch sounds
+
+[DONE]Resolve door stuck issue (even if it means just putting the switches further away)
+
+[DONE] consider how to do scripting and event triggers and stuff. Maybe reuse the spawn point triggers [added ids to respawn points so we can resue them now]
