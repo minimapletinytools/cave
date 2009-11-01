@@ -5,7 +5,7 @@ from MW_datatypes import *
 from MW_constants import *
 
 class EffectMenu(MW_entity.Entity):
-    def __init__(self,exml=None):
+    def __init__(self):
         MW_entity.Entity.__init__(self,Rect2d(0,0,0,0))
         self.effectList = list()
         self.deleteList = []
@@ -50,6 +50,9 @@ class Effect:
         self.p.deleteEffect(self)
     def draw(self):
         pass
+
+def getTextEffect(pos,text):
+    return EffectText()
 
 class EffectText(Effect):
     def __init__(self,parent,position = Vector2d(0,0),expiration = 999999,text = "Game Over"):
