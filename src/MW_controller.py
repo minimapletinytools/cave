@@ -5,19 +5,22 @@ import MW_xml
 import MW_global
 import MW_containers
 import MW_entity
+import MW_effects
 from MW_constants import *
 from MW_datatypes import *
 
 class ControllerController():
     def __init__(self):
         self.cList = [TestController(),StartController(),PlayController(),WinController()]
+        self.effect = MW_effects.EffectMenu()
         self.activeIndex = 2 
         MW_global.controller = self
     def loop(self):
-        #post events
         MW_global.eventList = pygame.event.get()
         pygame.event.clear()
+        self.effect.update()
         self.cList[self.activeIndex].loop()
+        self.effect.draw()
     def switchController(self,index):
         if 0 <= index < len(self.activeIndex):
             self.activeIndex = index 

@@ -21,17 +21,22 @@ animwheel = MW_animator.AnimatorWheel()
 xmlwheel = MW_animator.XMLWheel()
 sound = MW_sound.soundMan()
 speech = MW_speech.Speech()
+controller = None
+matrixcontainer = None
+effectentity = None
+eventList = None
+switchdict = dict()
+spawndict = dict()
+frame = 0
+
+#scripted constants
+
 soundMap = dict()
 soundMap['light'] = "light08.wav"
 sound.loadSound(soundMap['light'])
 stickyswitchlist = [2123,3]
 stickydoorlist = [] #sticky doors do not open
-controller = None
-matrixcontainer = None
-eventList = None
-switchdict = dict()
-spawndict = dict()
-frame = 0
+torchStateMap = { 501:"INSTRUCTION1", 502:"INSTRUCTION12", 503:"SYMBOL1", 504:"SYMBOL2" }
 
 def getMatrixContainer():
     return matrixcontainer

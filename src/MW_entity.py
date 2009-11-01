@@ -67,6 +67,7 @@ class TorchEn(Entity):
         self.state = "DEFAULT"
         self.id = 0
         self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(MW_global.xmlwheel.loadXML("tiles.xml"), "sprite","name","torch"))
+        
     def getRect(self):
         return pygame.Rect(self.pos.x,self.pos.y,TILING_SIZE.x,TILING_SIZE.y)
     def getName(self):

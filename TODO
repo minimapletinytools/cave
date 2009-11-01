@@ -1,6 +1,8 @@
 scripting! you have script trigger points now you need to do actual scripting.
 
-add symbol and maybe instructions to level editor
+add symbol and maybe instructions to level editor. Pretty much done, overwriting torch class for this one
+
+add effects and text effect
 
 redo man animation walk and jump, maybe... May not need this anymore 
 [OPTIONAL]

@@ -13,6 +13,10 @@
 		<frame id = "1" x = "0" y = "0" w = "20" h = "20" time = "99">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "BURNING" id = "11" time = "0"/>
+			<next state = "INSTRUCTION1" id = "101" time = "0" />
+			<next state = "INSTRUCTION2" id = "102" time = "0" />
+			<next state = "SYMBOL1" id = "103" time = "0" />
+			<next state = "SYMBOL2" id = "104" time = "0" />
 		</frame>
 		<frame id = "11" x = "0" y = "20" w = "20" h = "20" time = "5">
 			<next state = "DEFAULT" id = "1" />
@@ -30,6 +34,20 @@
 			<next state = "DEFAULT" id = "1" />
 			<next state = "BURNING" id = "11" />
 		</frame>
+		
+		<frame id = "101" x = "0" y = "100" w = "20" h = "20" time = "5">
+			<next state = "DEFAULT" id = "101" />
+		</frame>
+		<frame id = "102" x = "0" y = "100" w = "20" h = "20" time = "5">
+			<next state = "DEFAULT" id = "102" />
+		</frame>
+		<frame id = "103" x = "0" y = "100" w = "20" h = "20" time = "5">
+			<next state = "DEFAULT" id = "103" />
+		</frame>
+		<frame id = "104" x = "0" y = "100" w = "20" h = "20" time = "5">
+			<next state = "DEFAULT" id = "104" />
+		</frame>
+		
 	</sprite>
 	<sprite name = "spike" file = "spikes_01.png spikes_02.png spikes_03.png spikes_04.png">
 		<frame id = "1" x = "0" y = "0" w = "20" h = "20" time = "1">
