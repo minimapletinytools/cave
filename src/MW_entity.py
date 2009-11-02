@@ -136,7 +136,7 @@ class DoorEn(Entity):
             
             #should put this SCRIPTING code with checkhits for switches but it does not really matter
             if self.id == 9338:
-                if 7 not in MW_global.stickdoorlist:
+                if 7 not in MW_global.stickydoorlist:
                     MW_global.stickydoorlist.append(7)
         self.anim.state = self.state
         self.anim.update()
