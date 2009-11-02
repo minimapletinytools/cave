@@ -21,7 +21,7 @@ while 1:
         if pygame.time.get_ticks()%200 == 1:
             print "cycle time", pygame.time.get_ticks() - t1
         pygame.display.flip()   #flip the screen
-    #else wait the difference
+    #else wait the difference3
     
     else: 
         pygame.time.wait( MSPERFRAME - pygame.time.get_ticks() + last)

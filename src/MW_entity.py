@@ -64,8 +64,8 @@ class TorchEn(Entity):
     def __init__(self):
         Entity.__init__(self)
         self.pos = Vector2d(0,0)
-        self.state = "DEFAULT"
         self.id = 0
+        self.state = "DEFAULT"
         self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(MW_global.xmlwheel.loadXML("tiles.xml"), "sprite","name","torch"))
         
     def getRect(self):
@@ -128,12 +128,16 @@ class DoorEn(Entity):
         self.pos = pos
     def update(self):
         if self.id in MW_global.switchdict:
+            #if door is not stick 
             if self.id not in MW_global.stickydoorlist and MW_global.switchdict[self.id]:
                 self.state = "DOWN"
             else:
-                self.state = "UP"
-                
-                
+                self.state = "UP"                
+            
+            #should put this SCRIPTING code with checkhits for switches but it does not really matter
+            if self.id == 9338:
+                if 7 not in MW_global.stickdoorlist:
+                    MW_global.stickydoorlist.append(7)
         self.anim.state = self.state
         self.anim.update()
     def draw(self):

@@ -243,7 +243,7 @@ class MatrixContainer(SuperContainer):
         for i in range(len(self.wList)):
             if self.wList[i]:
                 idstr = ""
-                if self.wList[i].getName() == "DoorEn" or  self.wList[i].getName() == "SwitchEn" or  self.wList[i].getName() == "RespawnEn":
+                if self.wList[i].getName() == "DoorEn" or  self.wList[i].getName() == "SwitchEn" or  self.wList[i].getName() == "RespawnEn" or  self.wList[i].getName() == "TorchEn":
                     idstr = "\" id=\"" + str(self.wList[i].id)
                 #for permanently open doors, but we do not really need these
                 #if self.wList[i].getName() == "DoorEn" and self.wList[i].type == "OPEN":
@@ -278,6 +278,11 @@ class MatrixContainer(SuperContainer):
             index = int(e.getAttribute("i"))
             self.wList[index] = MW_entity.TorchEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
+            if e.hasAttribute("id"):
+                self.wList[index].id = int(e.getAttribute("id"))
+            try:
+                self.wList[index].state = MW_global.torchStateMap[self.wList[index].id]
+            except: self.wList[index].state = "DEFAULT" 
             self.torchList.append(self.wList[index])
 	t5 = pygame.time.get_ticks()
         for e in exml.getElementsByTagName("DoorEn"):

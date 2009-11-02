@@ -9,7 +9,7 @@
 			<next state = "LIGHT" id = "1" time = "0" />
 		</frame>
 	</sprite>
-	<sprite name = "torch" file = "torch_01.png" >
+	<sprite name = "torch" file = "torch_02.png" >
 		<frame id = "1" x = "0" y = "0" w = "20" h = "20" time = "99">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "BURNING" id = "11" time = "0"/>
@@ -35,16 +35,16 @@
 			<next state = "BURNING" id = "11" />
 		</frame>
 		
-		<frame id = "101" x = "0" y = "100" w = "20" h = "20" time = "5">
+		<frame id = "101" x = "0" y = "100" w = "320" h = "20" time = "5" state = "INSTRUCTION1">
 			<next state = "DEFAULT" id = "101" />
 		</frame>
-		<frame id = "102" x = "0" y = "100" w = "20" h = "20" time = "5">
+		<frame id = "102" x = "0" y = "100" w = "320" h = "20" dx = "-280" dy = "0" time = "5" state = "INSTRUCTION2">
 			<next state = "DEFAULT" id = "102" />
 		</frame>
-		<frame id = "103" x = "0" y = "100" w = "20" h = "20" time = "5">
+		<frame id = "103" x = "0" y = "120" w = "40" h = "40" time = "5" state = "SYMBOL1">
 			<next state = "DEFAULT" id = "103" />
 		</frame>
-		<frame id = "104" x = "0" y = "100" w = "20" h = "20" time = "5">
+		<frame id = "104" x = "0" y = "160" w = "40" h = "80" time = "5" state = "SYMBOL2">
 			<next state = "DEFAULT" id = "104" />
 		</frame>
 		

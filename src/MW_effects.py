@@ -6,7 +6,7 @@ from MW_constants import *
 
 class EffectMenu(MW_entity.Entity):
     def __init__(self):
-        MW_entity.Entity.__init__(self,Rect2d(0,0,0,0))
+        MW_entity.Entity.__init__(self)
         self.effectList = list()
         self.deleteList = []
         self.screen = MW_global.screen
