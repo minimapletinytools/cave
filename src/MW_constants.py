@@ -1,11 +1,23 @@
 from MW_datatypes import *
-SCREEN_SIZE = WIDTH, HEIGHT = 640,480
-#SCREEN_SIZE = WIDTH, HEIGHT = 1200,800
+
+gamemode = 2
+if gamemode == 1:
+    SCREEN_SIZE = WIDTH, HEIGHT = 640,480
+    LIGHTING = 1
+    CAMERA_MODE = "force"
+elif gamemode == 2:
+    SCREEN_SIZE = WIDTH, HEIGHT = 1200,800
+    LIGHTING = 0
+    CAMERA_MODE = "nothing"
+elif gamemode == 3:
+    SCREEN_SIZE = WIDTH, HEIGHT = 800,600
+    LIGHTING = 0
+    CAMERA_MODE = "nothing"
+
 FRAMERATE = 25
 MSPERFRAME = 1000/FRAMERATE
 TILING_SIZE = Vector2d(20,20)
-LIGHTING = 10
-CAMERA_MODE = "force"
+
 
 #colors
 COLOR_RED = 255,0,0
