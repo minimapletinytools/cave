@@ -13,6 +13,10 @@ elif gamemode == 3:
     SCREEN_SIZE = WIDTH, HEIGHT = 800,600
     LIGHTING = 0
     CAMERA_MODE = "nothing"
+elif gamemode == 4:
+    SCREEN_SIZE = WIDTH, HEIGHT = 1200,800
+    LIGHTING = 0
+    CAMERA_MODE = "force"
 
 FRAMERATE = 25
 MSPERFRAME = 1000/FRAMERATE

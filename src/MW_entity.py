@@ -159,15 +159,17 @@ class SwitchEn(Entity):
             MW_global.switchdict[self.id] = False
         elif self.state == "DOWN":
             MW_global.switchdict[self.id] = True
+            #scripting nonsense
+            #TODO play some loud noise
+            if self.id == 9339:
+                if 8936 not in MW_global.stickydoorlist:
+                    MW_global.stickydoorlist.append(8936)
     def teleport(self,pos):
         self.pos = pos
     def update(self):
         self.anim.state = self.state
         self.anim.update()
-        #should put this SCRIPTING code with checkhits for switches but it does not really matter
-        if self.id == 9338:
-            if 7 not in MW_global.stickydoorlist:
-                MW_global.stickydoorlist.append(7)
+    
     def draw(self):
         MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
         #if needed, put this in "post update"
