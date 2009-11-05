@@ -36,7 +36,10 @@ soundMap['light'] = "light08.wav"
 sound.loadSound(soundMap['light'])
 stickyswitchlist = [2123,3]
 stickydoorlist = [] #sticky doors do not open
+dooropenlist = [] #open automatically
 torchStateMap = { 0:"DEFAULT", 501:"INSTRUCTION1", 502:"INSTRUCTION2", 503:"SYMBOL1", 504:"SYMBOL2" }
+torchonlist = [23909,]
+torchofflist = []
 
 def getMatrixContainer():
     return matrixcontainer

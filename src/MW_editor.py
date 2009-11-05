@@ -86,13 +86,13 @@ class WallEditor:
                 if e.key == pygame.K_RETURN:
                     self.p.printXML()
                 if e.key == pygame.K_KP4:
-                    MW_global.camera.moveToRel(Vector2d(-40,0))
+                    MW_global.camera.moveToRel(Vector2d(-100,0))
                 if e.key == pygame.K_KP6:
-                    MW_global.camera.moveToRel(Vector2d(40,0))
+                    MW_global.camera.moveToRel(Vector2d(100,0))
                 if e.key == pygame.K_KP8:
-                    MW_global.camera.moveToRel(Vector2d(0,-40))
+                    MW_global.camera.moveToRel(Vector2d(0,-100))
                 if e.key == pygame.K_KP2:
-                    MW_global.camera.moveToRel(Vector2d(0,40))
+                    MW_global.camera.moveToRel(Vector2d(0,100))
         self.addMode()
         
     def draw(self):
