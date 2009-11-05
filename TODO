@@ -4,20 +4,25 @@ make more puzzles :((((
 
 scripting! you have script trigger points now you need to do actual scripting.
 
+scripting: woman falls in when man hits crucial area
+
 add effects and text effect
 
 
 
-redo man animation walk and jump, maybe... May not need this anymore 
+[OUT] redo man animation walk and jump, maybe... May not need this 
+anymore 
 [OPTIONAL]
 
-ropes and falling to death, allow jumping off ropes and dropping new 
+[OUT] ropes and falling to death, allow jumping off ropes and dropping 
+new 
 ropes?? Limited number of ropes means may have to start over if you run 
 out of ropes??? [OPTIONAL but you should really consider it]
 
-man flashlight should be directional [OPTIONAL]
+[OUT]man flashlight should be directional [OPTIONAL]
 
-Redo movement. Have frames define acceleration NOT velocity. Make man 
+[OUT]Redo movement. Have frames define acceleration NOT velocity. Make 
+man 
 move faster and more smoothly. Maybe I don't want to do this anymore... 
 movements is okay enough for now [OPTIONAL]
 
