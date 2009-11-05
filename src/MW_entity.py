@@ -75,6 +75,10 @@ class TorchEn(Entity):
     def teleport(self,pos):
         self.pos = pos
     def update(self):
+        if self.id in MW_global.torchonlist:
+            self.state = "BURNING"
+        elif self.id in MW_global.torchofflist:
+            self.state = "DEFAULT"
         self.anim.state = self.state
         self.anim.update()
     def draw(self):
@@ -116,7 +120,7 @@ class DoorEn(Entity):
         self.id = 0
         self.pos = Vector2d(0,0)
         self.anim = MW_animator.Animator(MW_xml.getChildNodeWithAttribute(MW_global.xmlwheel.loadXML("tiles.xml"), "sprite","name","door"))
-        self.state = "UP"
+        self.state = "UP"   #note, UP is down and DOWN is up
     def getName(self):
         return "DoorEn"
     def getRect(self):
@@ -133,11 +137,8 @@ class DoorEn(Entity):
                 self.state = "DOWN"
             else:
                 self.state = "UP"                
-            
-            #should put this SCRIPTING code with checkhits for switches but it does not really matter
-            if self.id == 9338:
-                if 7 not in MW_global.stickydoorlist:
-                    MW_global.stickydoorlist.append(7)
+        if self.id in MW_global.dooropenlist:
+            self.state = "DOWN"
         self.anim.state = self.state
         self.anim.update()
     def draw(self):
@@ -158,11 +159,17 @@ class SwitchEn(Entity):
             MW_global.switchdict[self.id] = False
         elif self.state == "DOWN":
             MW_global.switchdict[self.id] = True
+            #scripting nonsense
+            #TODO play some loud noise
+            if self.id == 9339:
+                if 8936 not in MW_global.stickydoorlist:
+                    MW_global.stickydoorlist.append(8936)
     def teleport(self,pos):
         self.pos = pos
     def update(self):
         self.anim.state = self.state
         self.anim.update()
+    
     def draw(self):
         MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
         #if needed, put this in "post update"

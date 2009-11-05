@@ -41,10 +41,10 @@
 		<frame id = "102" x = "0" y = "100" w = "320" h = "20" dx = "-280" dy = "0" time = "5" state = "INSTRUCTION2">
 			<next state = "DEFAULT" id = "102" />
 		</frame>
-		<frame id = "103" x = "0" y = "120" w = "40" h = "40" time = "5" state = "SYMBOL1">
+		<frame id = "103" x = "0" y = "120" w = "40" h = "40" dx = "-10" dy = "-10" time = "5" state = "SYMBOL1">
 			<next state = "DEFAULT" id = "103" />
 		</frame>
-		<frame id = "104" x = "0" y = "160" w = "40" h = "80" time = "5" state = "SYMBOL2">
+		<frame id = "104" x = "0" y = "160" w = "40" h = "80" dx = "-10" dy = "-40" time = "5" state = "SYMBOL2">
 			<next state = "DEFAULT" id = "104" />
 		</frame>
 		

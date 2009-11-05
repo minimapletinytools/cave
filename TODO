@@ -1,27 +1,28 @@
-add two torches at the intersection where they split, add double button before the initial drop so both players are required to be nearbye (teamwork), add respawn points after initial split so people dont respawn in the splitting area and get stuck.
-
-make space in womans path for man to jump over some spikes.
-
-reduce respawn time
+fix door open kill glitch? WHY DOES IT HAPPEN?
 
 make more puzzles :((((
 
 scripting! you have script trigger points now you need to do actual scripting.
 
-add symbol and maybe instructions to level editor. Pretty much done, overwriting torch class for this one
+scripting: woman falls in when man hits crucial area
 
 add effects and text effect
 
-redo man animation walk and jump, maybe... May not need this anymore 
+
+
+[OUT] redo man animation walk and jump, maybe... May not need this 
+anymore 
 [OPTIONAL]
 
-ropes and falling to death, allow jumping off ropes and dropping new 
+[OUT] ropes and falling to death, allow jumping off ropes and dropping 
+new 
 ropes?? Limited number of ropes means may have to start over if you run 
 out of ropes??? [OPTIONAL but you should really consider it]
 
-man flashlight should be directional [OPTIONAL]
+[OUT]man flashlight should be directional [OPTIONAL]
 
-Redo movement. Have frames define acceleration NOT velocity. Make man 
+[OUT]Redo movement. Have frames define acceleration NOT velocity. Make 
+man 
 move faster and more smoothly. Maybe I don't want to do this anymore... 
 movements is okay enough for now [OPTIONAL]
 
@@ -62,3 +63,17 @@ add more than one wall tile type
 [DONE]Resolve door stuck issue (even if it means just putting the switches further away)
 
 [DONE] consider how to do scripting and event triggers and stuff. Maybe reuse the spawn point triggers [added ids to respawn points so we can resue them now]
+
+[DONE] add two torches at the intersection where they split, add double 
+button 
+before the initial drop so both players are required to be nearbye (teamwork), add respawn points after initial split so people dont respawn in the splitting area and get stuck.
+
+[DONE, i think] make space in womans path for man to jump over some 
+spikes.
+
+[DONE] reduce respawn time
+
+[DONE] add symbol and maybe instructions to level editor. Pretty much 
+done, overwriting torch class for this one
+
+[RESOLVED] add default font so py2exe does not break
