@@ -1,6 +1,6 @@
 from MW_datatypes import *
 
-gamemode = 2
+gamemode = 1
 if gamemode == 1:
     SCREEN_SIZE = WIDTH, HEIGHT = 640,480
     LIGHTING = 1
