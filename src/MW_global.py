@@ -12,7 +12,7 @@ print "version,",sys.version
 pygame.mixer.pre_init(44100, -16, 2, 2048)
 pygame.init()
 #screen = pygame.display.set_mode(SCREEN_SIZE, pygame.FULLSCREEN)
-screen = pygame.display.set_mode((SCREEN_SIZE),pygame.HWSURFACE|pygame.DOUBLEBUF|pygame.NOFRAME)
+screen = pygame.display.set_mode((SCREEN_SIZE),DISPLAY_FLAGS)
 #print "flags", screen.get_flags()
 pygame.mouse.set_visible(0)
 camera = MW_camera.Camera(screen)
