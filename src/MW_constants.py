@@ -1,6 +1,6 @@
 from MW_datatypes import *
 
-DISPLAY_FLAGS = pygame.HWSURFACE|pygame.DOUBLEBUF|pygame.NOFRAME|pygame.FULLSCREEN
+DISPLAY_FLAGS = pygame.HWSURFACE|pygame.DOUBLEBUF|pygame.NOFRAME
 #DISPLAY_FLAGS = pygame.FULLSCREEN
 gamemode = 1
 if gamemode == 1:

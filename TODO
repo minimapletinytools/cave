@@ -1,8 +1,5 @@
-fix door open kill glitch? WHY DOES IT HAPPEN?
 
-make more puzzles :((((
 
-scripting! you have script trigger points now you need to do actual scripting.
 
 scripting: woman falls in when man hits crucial area
 
@@ -77,3 +74,9 @@ spikes.
 done, overwriting torch class for this one
 
 [RESOLVED] add default font so py2exe does not break
+
+[DONE]fix door open kill glitch? WHY DOES IT HAPPEN?
+
+[DONE]make more puzzles :((((
+
+[DONE] scripting! you have script trigger points now you need to do actual scripting.
