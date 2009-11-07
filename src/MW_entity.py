@@ -162,8 +162,8 @@ class SwitchEn(Entity):
             #scripting nonsense
             #TODO play some loud noise
             if self.id == 9339:
-                if 8936 not in MW_global.stickydoorlist:
-                    MW_global.stickydoorlist.append(8936)
+                #if 8936 not in MW_global.stickydoorlist:
+                MW_global.stickydoorlist.add(8936)
     def teleport(self,pos):
         self.pos = pos
     def update(self):
@@ -265,6 +265,10 @@ class PlayerEn(Entity):
         hits = selfRect.collidelistall(respawnRects)
         for i in hits:
             #TODO check if type is event tirgger and tirgger event
+            #MAN 13376 13176 12976 12776 12576 COMES TURNS ON TORCHES 13379 12979 12579 12378 23778 13178
+            if self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].id == 13376:
+                print "added shit to torchonlist"
+                MW_global.torchonlist.add(13379)
             self.respawn = self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].pos
         
     def checkHits(self):
