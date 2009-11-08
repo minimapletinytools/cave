@@ -40,7 +40,7 @@ sound.loadSound(soundMap['light'])
 stickyswitchlist = set([2123,3,23299,28566])
 stickydoorlist = set() #sticky doors do not open
 dooropenlist = set() #open automatically
-torchStateMap = { 0:"DEFAULT", 501:"INSTRUCTION1", 502:"INSTRUCTION2", 503:"SYMBOL1", 504:"SYMBOL2", 510: "BLANK", 520: "BLANK" }
+torchStateMap = { 501:"INSTRUCTION1", 502:"INSTRUCTION2", 503:"SYMBOL1", 504:"SYMBOL2", 510: "BLANK", 520: "BLANK" }
 torchonlist = set([23125]) #23909 pit torch, turn on with scrpiting
 torchofflist = set()
 

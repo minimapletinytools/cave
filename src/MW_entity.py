@@ -225,7 +225,8 @@ class RespawnEn(Entity):
     def update(self):
         pass
     def draw(self):
-        pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),0)        
+        #pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),0)
+        pass        
     def getName(self):
         return "RespawnEn"
         
