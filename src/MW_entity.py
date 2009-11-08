@@ -290,29 +290,42 @@ class PlayerEn(Entity):
         for i in hits:
             #TODO check if type is event tirgger and tirgger event
             #MAN 13376 13176 12976 12776 12576 COMES TURNS ON TORCHES 13379 12979 12579 12378 23778 13178
-            if self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].id == 13376:
+            id = self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].id
+            if id == 13376:
                 MW_global.torchonlist.add(13379)
             #MAN 22751 22951 23151 TURNS ON TORCHES 22548 22554 AND CHANGES 22146 21947 etc
-            elif self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].id == 22751 and MW_global.state == "LOSE":
+            elif id == 22751 and MW_global.state == "LOSE":
                 MW_global.torchonlist.add(22548)
                 #MW_global.torchonlist.add(22146)
                 MW_global.torchStateMap[510] = "HANGING"
             #MAN 21124 21125 21126 TRIGGERS WOMAN PIT SCRIPT
-            elif self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].id == 21124:
+            elif id == 21124:
                 MW_global.state = "LOSE"
+                #TODO create shadowlady and have her walk left
                 pass    
             #MAN outside meets woman
-            elif self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].id == 27973:
+            elif id == 27973:
                 if self.getName() == "Man":
                     #TODO BEGIN WALKOFF SEQUENCE
+                    #TODO make woman walk right, make man walk right, camera freezes
                     pass
             #WOMAN outside by herself
-            elif self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].id == 28375:
-                #check if woman
+            elif id == 28375:
                 if self.getName() != "Man":
                     MW_global.state = "MAN JOINS WOMAN"
                     self.p.activePlayer = "man"
-            
+                    #TODO delete the lady so wec an replace her with shadow lady
+            #MAN AT BRINK OF PIT
+            elif id == 22713:
+                if self.getName() == "Man":
+                #TODO make woman fall into pit
+                    pass
+            #MAN falling down final chute
+            elif id == 24764:
+                if self.getName() == "Man":
+                    #TODO spawn shadow lady
+                    pass
+                
             self.respawn = self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].pos
         
     def checkHits(self):
@@ -516,6 +529,7 @@ class WomanEn(PlayerEn):
         #print self.state, self.anim.activeNode.id
         self.hitOld = self.getRect()
         #get input, update and move character based on input, check hits, check if over ground, if so, will update next loop
+    
         if self.p.activePlayer == "woman":
             self.input(MW_global.eventList)
         elif self.state == "WALK": self.state = "STAND"
@@ -579,10 +593,15 @@ class ManEn(PlayerEn):
                 self.pos = Vector2d(460,240)
                 MW_global.dooropenlist.add(9339)
                 MW_global.dooropenlist.add(11732)
-            #man jumped into pit so game state is winning
+            #man jumped into pit so game state is winning 
             elif MW_global.state == "WINNING":
+                #game freezes for a bit, then switch to woman and fill in the pit
                 if self.anim.activeNode.state == "REALLYREALLYDEAD":
                     self.p.activePlayer = "woman"
+                    MW_global.torchofflist.add(23909)
+                    for i in range(23508,24511):
+                        self.p.cont.wList[i] = MW_entity.WallEn()
+                        self.wList[i].teleport(self.p.cont.getScreenPosition(i%self.p.cont.width,int(i/self.p.cont.width)))
             #game state is lose when man enters climax room, if man dies, then he wins
             elif MW_global.state == "LOSE":
                 MW_global.state = "WINNING"
@@ -595,6 +614,8 @@ class ManEn(PlayerEn):
         #print self.state, self.anim.activeNode.id
         self.hitOld = self.getRect()
         #get input, update and move character based on input, check hits, check if over ground, if so, will update next loop
+        
+        #TODO add additional constraints
         if self.p.activePlayer == "man":
             self.input(MW_global.eventList)
         elif self.state == "WALK": self.state = "STAND"
