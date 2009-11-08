@@ -2,7 +2,7 @@ from MW_datatypes import *
 
 DISPLAY_FLAGS = pygame.HWSURFACE|pygame.DOUBLEBUF|pygame.NOFRAME
 #DISPLAY_FLAGS = pygame.FULLSCREEN
-gamemode = 2
+gamemode = 1
 if gamemode == 1:
     SCREEN_SIZE = WIDTH, HEIGHT = 641,480
     LIGHTING = 1
@@ -39,6 +39,9 @@ TORCH_RADIUS = 100,150
 PLAYER_LIGHT_RADIUS = 50,75
 MAN_START = Vector2d(-500,-100)
 WOMAN_START = Vector2d(-530,-120)
+MAN_START = Vector2d(600,1640)
+WOMAN_START = Vector2d(0,1280)
+#MAN_START = Vector2d(1300,2300)     #exit
 
 #engine constants
 dirMap = dict()

@@ -141,6 +141,28 @@ class DoorEn(Entity):
                 self.state = "UP"                
         if self.id in MW_global.dooropenlist:
             self.state = "DOWN"
+        #BAD scripting stuff
+        if self.index == 28168:
+            print self.anim.activeNode.id
+            if self.anim.activeNode.id == "2":
+                MW_global.matrixcontainer.getAtIndex(27975).state = "LIGHT"
+                print "lol"
+                MW_global.matrixcontainer.getAtIndex(27975).id = 999999
+            elif self.anim.activeNode.id == "3":
+                MW_global.matrixcontainer.getAtIndex(27980).state = "LIGHT"
+                MW_global.matrixcontainer.getAtIndex(27980).id = 999999
+            elif self.anim.activeNode.id == "4":
+                MW_global.matrixcontainer.getAtIndex(27985).state = "LIGHT"
+                MW_global.matrixcontainer.getAtIndex(27985).id = 999999
+            elif self.anim.activeNode.id == "5":
+                MW_global.matrixcontainer.getAtIndex(27990).state = "LIGHT"
+                MW_global.matrixcontainer.getAtIndex(27990).id = 999999
+            elif self.anim.activeNode.id == "6":
+                MW_global.matrixcontainer.getAtIndex(27995).state = "LIGHT"
+                MW_global.matrixcontainer.getAtIndex(27995).id = 999999
+            elif self.anim.activeNode.id == "7":
+                MW_global.matrixcontainer.getAtIndex(27571).state = "LIGHT"
+                MW_global.matrixcontainer.getAtIndex(27571).id = 999999
         self.anim.state = self.state
         self.anim.update()
     def draw(self):
@@ -271,15 +293,25 @@ class PlayerEn(Entity):
             if self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].id == 13376:
                 MW_global.torchonlist.add(13379)
             #MAN 22751 22951 23151 TURNS ON TORCHES 22548 22554 AND CHANGES 22146 21947 etc
-            elif self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].id == 22751:
+            elif self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].id == 22751 and MW_global.state == "LOSE":
                 MW_global.torchonlist.add(22548)
                 #MW_global.torchonlist.add(22146)
                 MW_global.torchStateMap[510] = "HANGING"
             #MAN 21124 21125 21126 TRIGGERS WOMAN PIT SCRIPT
             elif self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].id == 21124:
-                print "you lose"
                 MW_global.state = "LOSE"
                 pass    
+            #MAN outside meets woman
+            elif self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].id == 27973:
+                if self.getName() == "Man":
+                    #TODO BEGIN WALKOFF SEQUENCE
+                    pass
+            #WOMAN outside by herself
+            elif self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].id == 28375:
+                #check if woman
+                if self.getName() != "Man":
+                    MW_global.state = "MAN JOINS WOMAN"
+                    self.p.activePlayer = "man"
             
             self.respawn = self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].pos
         
@@ -519,7 +551,8 @@ class ManEn(PlayerEn):
         PlayerEn.__init__(self,controller)
         self.pos = MAN_START
         self.respawn = MAN_START
-        
+    def getName(self):
+        return "ManEn"
     def input(self, events):
         PlayerEn.input(self,events)
         for e in events:
@@ -538,17 +571,25 @@ class ManEn(PlayerEn):
                     self.anim.dir = "LEFT"
                 else: self.anim.dir = "RIGHT"
     def update(self):
-        if self.anim.activeNode.state == "REALLYDEAD" or self.anim.activeNode.state == "REALLYREALLYDEAD":
-            if MW_global.state == "LOSE":
+        if self.anim.activeNode.state == "DEAD" or self.anim.activeNode.state == "REALLYDEAD" or self.anim.activeNode.state == "REALLYREALLYDEAD":
+            #When woman leaves cave (28375) man comes back to life and goes to beginning
+            if MW_global.state == "MAN JOINS WOMAN":
+                MW_global.state = "MAN ON QUEST"
+                self.state = "STAND"
+                self.pos = Vector2d(460,240)
+                MW_global.dooropenlist.add(9339)
+                MW_global.dooropenlist.add(11732)
+            #man jumped into pit so game state is winning
+            elif MW_global.state == "WINNING":
+                if self.anim.activeNode.state == "REALLYREALLYDEAD":
+                    self.p.activePlayer = "woman"
+            #game state is lose when man enters climax room, if man dies, then he wins
+            elif MW_global.state == "LOSE":
                 MW_global.state = "WINNING"
                 MW_global.dooropenlist.add(17102)
                 MW_global.sound.play(MW_global.soundMap['switch'])
-                if self.anim.activeNode.state == "REALLYREALLYDEAD":
-                    #open doors and play sound
-                    #optional
-                    self.p.activePlayer = "woman"
-                
-            else:
+            #otherwise respawn as usual
+            elif self.anim.activeNode.state == "REALLYDEAD":
                 self.state ="STAND"
                 self.teleport(self.respawn)
         #print self.state, self.anim.activeNode.id

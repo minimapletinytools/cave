@@ -152,6 +152,8 @@ class MatrixContainer(SuperContainer):
         return self.getTypes(rect,"SwitchEn")
     def getWallRects(self,rect):
         return self.getTypes(rect,("WallEn","DoorEn"))
+    def getAtIndex(self,index):
+        return self.wList[index]
     def getTypes(self,rect,type):
         ret = list()
         for r in range(rect.h):
@@ -342,4 +344,4 @@ def isInRadius(torch):
     #TODO use circle square collision for this
     return True
 def isActive(torch):
-    return torch.state == "BURNING"
+    return torch.state == "BURNING" or torch.state == "LIGHT"
