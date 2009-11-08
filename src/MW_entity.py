@@ -2,6 +2,7 @@ import pygame
 import MW_global
 import MW_animator
 import MW_xml
+import MW_entity
 import math
 import xml.dom.minidom
 import os
@@ -305,6 +306,11 @@ class PlayerEn(Entity):
             #MAN outside meets woman
             elif id == 27973:
                 if self.getName() == "ManEn":
+                    if self.anim.activeNode.state == "SLOWWALK":
+                        self.p.woman.shadowLady.anim.dir = "RIGHT"
+                        self.p.woman.shadowLady.state = "WALK"
+                        self.p.woman.shadowLady.anim.state = "WALK"
+                        print self.p.woman.shadowLady.anim.state
                     if self.state != "SLOWWALK":
                         self.state = "SLOWWALK"
                         self.anim.forceUpdate()
@@ -313,20 +319,25 @@ class PlayerEn(Entity):
                     pass
             #WOMAN outside by herself
             elif id == 28375:
-                if self.getName() != "Man":
+                if self.getName() != "ManEn" and self.p.woman.shadowLady != self:
+                    self.state = "GHOST"
                     MW_global.state = "MAN JOINS WOMAN"
                     self.p.activePlayer = "man"
                     #TODO delete the lady so wec an replace her with shadow lady
             #MAN AT BRINK OF PIT
             elif id == 22713:
-                if self.getName() == "Man":
+                if self.getName() == "ManEn":
                 #TODO make woman fall into pit
                     pass
             #MAN falling down final chute
             elif id == 24764:
-                if self.getName() == "Man":
-                    #TODO spawn shadow lady
-                    pass
+                if self.getName() == "ManEn":
+                    self.p.woman.shadowLady.teleport(Vector2d(1500,2420))
+                    self.p.woman.shadowLady.anim.dir = "LEFT"
+                    if MW_global.state == "LOSE":
+                        pass
+                    elif MW_global.state == "MAN ON QUEST":
+                        pass
                 
             self.respawn = self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].pos
         
@@ -532,7 +543,7 @@ class WomanEn(PlayerEn):
         self.hitOld = self.getRect()
         #get input, update and move character based on input, check hits, check if over ground, if so, will update next loop
     
-        if self.p.activePlayer == "woman":
+        if self.p.activePlayer == "woman" or self.input == blankfcn:
             self.input(MW_global.eventList)
         elif self.state == "WALK": self.state = "STAND"
         self.anim.state = self.state
@@ -601,9 +612,9 @@ class ManEn(PlayerEn):
                 if self.anim.activeNode.state == "REALLYREALLYDEAD":
                     self.p.activePlayer = "woman"
                     MW_global.torchofflist.add(23909)
-                    for i in range(23508,24511):
+                    for i in range(23508,23511):
                         self.p.cont.wList[i] = MW_entity.WallEn()
-                        self.wList[i].teleport(self.p.cont.getScreenPosition(i%self.p.cont.width,int(i/self.p.cont.width)))
+                        self.p.cont.wList[i].teleport(self.p.cont.getScreenPosition(i%self.p.cont.width,int(i/self.p.cont.width)))
             #game state is lose when man enters climax room, if man dies, then he wins
             elif MW_global.state == "LOSE":
                 MW_global.state = "WINNING"

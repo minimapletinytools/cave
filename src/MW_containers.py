@@ -20,10 +20,16 @@ class WomanContainer(SuperContainer):
         self.delList = list()
         self.p = controller
         self.createNew()
+        
+        self.shadowLady = MW_entity.WomanEn(self.p)
+        self.shadowLady.teleport(SHADOW_LADY_START)
+        self.shadowLady.input = blankfcn
+        
     def update(self):
         if self.enList[len(self.enList)-1].anim.activeNode.state == "REALLYDEAD":
             self.createNew()
         self.enList[len(self.enList)-1].update()
+        self.shadowLady.update()
     def getActiveWoman(self):
         return self.enList[len(self.enList)-1]
     def createNew(self):
@@ -36,6 +42,8 @@ class WomanContainer(SuperContainer):
     def draw(self):
         for e in self.enList:
             e.draw()
+        if MW_global.matrixcontainer.checkDraw(self.shadowLady):
+            self.shadowLady.draw()
     def deleteEntity(self,en):
         self.delList.append(en)
     def destroy(self):
@@ -75,13 +83,13 @@ class MatrixContainer(SuperContainer):
             self.editor.update()
         self.activeTorchList = self.getActiveTorches()
     def checkDraw(self,e):
-        if not LIGHTING or e.getName() == "TorchEn":
+        if not LIGHTING or (e.getName() == "TorchEn" and not e.id in MW_global.torchofflist):
             return True
         
         #if we are dealing with walls
         if e.getName() == "WallEn":
             for f in self.p.getPlayerList():
-                if f.pos.distance(e.pos) < PLAYER_LIGHT_RADIUS[0]:
+                if f.pos.distance(e.pos) < PLAYER_LIGHT_RADIUS[0] and f.anim.activeNode.state != "REALLYREALLYDEAD":
                     e.state = "LIGHT"
                     return True
             for f in self.activeTorchList:
@@ -89,7 +97,7 @@ class MatrixContainer(SuperContainer):
                     e.state = "LIGHT"
                     return True
             for f in self.p.getPlayerList():
-                if f.pos.distance(e.pos) < PLAYER_LIGHT_RADIUS[1]:
+                if f.pos.distance(e.pos) < PLAYER_LIGHT_RADIUS[1] and f.anim.activeNode.state != "REALLYREALLYDEAD":
                     e.state = "DARK"
                     return True
             for f in self.activeTorchList:
@@ -99,7 +107,7 @@ class MatrixContainer(SuperContainer):
             return False
                 
         for f in self.p.getPlayerList():
-            if f.pos.distance(e.pos) < PLAYER_LIGHT_RADIUS[0]:
+            if f.pos.distance(e.pos) < PLAYER_LIGHT_RADIUS[0] and f.anim.activeNode.state != "REALLYREALLYDEAD":
                 return True
         for f in self.activeTorchList:
             if f.pos.distance(e.pos) < TORCH_RADIUS[0]:

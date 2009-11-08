@@ -42,7 +42,7 @@ stickydoorlist = set() #sticky doors do not open
 dooropenlist = set() #open automatically
 torchStateMap = { 501:"INSTRUCTION1", 502:"INSTRUCTION2", 503:"SYMBOL1", 504:"SYMBOL2", 510: "BLANK", 520: "BLANK" }
 torchonlist = set([23125]) #23909 pit torch, turn on with scrpiting
-torchofflist = set()
+torchofflist = set([503,504])
 
 def getMatrixContainer():
     return matrixcontainer

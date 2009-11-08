@@ -11,6 +11,7 @@
 			<next state = "CRAWL" id = "510"></next>
 			<next state = "CRAWLING" id = "501"></next>
 			<next state = "LEDGE" id = "601"></next>
+			<next state = "GHOST" id = "701" time = "5"></next>
 		</frame>
 		
 		<frame id = "1" x = "0" y = "0" w = "20" h = "40" time = "1" state = "STAND">
@@ -238,6 +239,12 @@
 		<frame id = "609" x = "80" y = "320"  w = "40" h = "40" dx = "-10" dy = "20" hx = "0" hy = "0" hw = "20" hh = "40" time = "3" state = "LEDGE">
 			<data velx = "0" vely = "0" />
 			<next state = "DEFAULT" id = "0"></next>
+		</frame>
+		
+		<frame id = "701" x = "0" y = "0" w = "0" h = "0" time = "5" state = "GHOST">
+			<data velx = "0" vely = "0" />
+			<next state="DEFAULT" id = "0"></next>
+			<next state="GHOST" id = "701"></next>
 		</frame>
 	</sprite>
 	
