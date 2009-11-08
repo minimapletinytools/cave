@@ -266,12 +266,13 @@ class MatrixContainer(SuperContainer):
             index = int(e.getAttribute("i"))
             self.wList[index] = MW_entity.WallEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
+            self.wList[index].index = index
 	t3 = pygame.time.get_ticks()
         for e in exml.getElementsByTagName("SpikeEn"):
-            #print "making spike"
             index = int(e.getAttribute("i"))
             self.wList[index] = MW_entity.SpikeEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
+            self.wList[index].index = index
 	t4 = pygame.time.get_ticks()
         for e in exml.getElementsByTagName("TorchEn"):
             #print "making torch"
@@ -284,6 +285,7 @@ class MatrixContainer(SuperContainer):
                 self.wList[index].state = MW_global.torchStateMap[self.wList[index].id]
             except: self.wList[index].state = "DEFAULT" 
             self.torchList.append(self.wList[index])
+            self.wList[index].index = index
 	t5 = pygame.time.get_ticks()
         for e in exml.getElementsByTagName("DoorEn"):
             index = int(e.getAttribute("i"))
@@ -291,18 +293,21 @@ class MatrixContainer(SuperContainer):
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
             self.wList[index].id = int(e.getAttribute("id"))
             self.doorList.append(self.wList[index])
+            self.wList[index].index = index
 	t6 = pygame.time.get_ticks()
         for e in exml.getElementsByTagName("SwitchEn"):
             index = int(e.getAttribute("i"))
             self.wList[index] = MW_entity.SwitchEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
             self.wList[index].id = int(e.getAttribute("id"))
+            self.wList[index].index = index
 	t7 = pygame.time.get_ticks()
         for e in exml.getElementsByTagName("RespawnEn"):
             index = int(e.getAttribute("i"))
             self.wList[index] = MW_entity.RespawnEn()
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
             self.wList[index].id = int(e.getAttribute("id"))
+            self.wList[index].index = index
             
 	print "size", t2-t1, "walls", t3-t2, "spikes", t4-t3, "torches", t5-t4, "doors", t6-t5, "switches", t7-t6
     

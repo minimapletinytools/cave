@@ -76,9 +76,11 @@ class TorchEn(Entity):
         self.pos = pos
     def update(self):
         if self.id in MW_global.torchonlist:
-            self.state = "BURNING"
+            self.state = "BURNING"                
         elif self.id in MW_global.torchofflist:
             self.state = "DEFAULT"
+        if self.id in MW_global.torchStateMap.keys():
+            self.state = MW_global.torchStateMap[self.id]
         self.anim.state = self.state
         self.anim.update()
     def draw(self):
@@ -267,8 +269,18 @@ class PlayerEn(Entity):
             #TODO check if type is event tirgger and tirgger event
             #MAN 13376 13176 12976 12776 12576 COMES TURNS ON TORCHES 13379 12979 12579 12378 23778 13178
             if self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].id == 13376:
-                print "added shit to torchonlist"
                 MW_global.torchonlist.add(13379)
+            #MAN 22751 22951 23151 TURNS ON TORCHES 22548 22554 AND CHANGES 22146 21947 etc
+            elif self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].id == 22751:
+                MW_global.torchonlist.add(22548)
+                #MW_global.torchonlist.add(22146)
+                MW_global.torchStateMap[510] = "HANGING"
+            #MAN 21124 21125 21126 TRIGGERS WOMAN PIT SCRIPT
+            elif self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].id == 21124:
+                print "you lose"
+                MW_global.state = "LOSE"
+                pass    
+            
             self.respawn = self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].pos
         
     def checkHits(self):
@@ -526,9 +538,19 @@ class ManEn(PlayerEn):
                     self.anim.dir = "LEFT"
                 else: self.anim.dir = "RIGHT"
     def update(self):
-        if self.anim.activeNode.state == "REALLYDEAD":
-            self.state ="STAND"
-            self.teleport(self.respawn)
+        if self.anim.activeNode.state == "REALLYDEAD" or self.anim.activeNode.state == "REALLYREALLYDEAD":
+            if MW_global.state == "LOSE":
+                MW_global.state = "WINNING"
+                MW_global.dooropenlist.add(17102)
+                MW_global.sound.play(MW_global.soundMap['switch'])
+                if self.anim.activeNode.state == "REALLYREALLYDEAD":
+                    #open doors and play sound
+                    #optional
+                    self.p.activePlayer = "woman"
+                
+            else:
+                self.state ="STAND"
+                self.teleport(self.respawn)
         #print self.state, self.anim.activeNode.id
         self.hitOld = self.getRect()
         #get input, update and move character based on input, check hits, check if over ground, if so, will update next loop

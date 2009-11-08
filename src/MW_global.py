@@ -29,15 +29,18 @@ switchdict = dict()
 spawndict = dict()
 frame = 0
 
+state = "PASS"
+
 #scripted constants
 
 soundMap = dict()
 soundMap['light'] = "light08.wav"
+soundMap['switch'] = "switch01.wav"
 sound.loadSound(soundMap['light'])
-stickyswitchlist = set([2123,3])
+stickyswitchlist = set([2123,3,23299])
 stickydoorlist = set() #sticky doors do not open
-dooropenlist = [] #open automatically
-torchStateMap = { 0:"DEFAULT", 501:"INSTRUCTION1", 502:"INSTRUCTION2", 503:"SYMBOL1", 504:"SYMBOL2" }
+dooropenlist = set() #open automatically
+torchStateMap = { 0:"DEFAULT", 501:"INSTRUCTION1", 502:"INSTRUCTION2", 503:"SYMBOL1", 504:"SYMBOL2", 510: "BLANK" }
 torchonlist = set([23909,23125])
 torchofflist = set()
 
