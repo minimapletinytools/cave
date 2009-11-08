@@ -143,10 +143,8 @@ class DoorEn(Entity):
             self.state = "DOWN"
         #BAD scripting stuff
         if self.index == 28168:
-            print self.anim.activeNode.id
             if self.anim.activeNode.id == "2":
                 MW_global.matrixcontainer.getAtIndex(27975).state = "LIGHT"
-                print "lol"
                 MW_global.matrixcontainer.getAtIndex(27975).id = 999999
             elif self.anim.activeNode.id == "3":
                 MW_global.matrixcontainer.getAtIndex(27980).state = "LIGHT"
@@ -225,7 +223,7 @@ class RespawnEn(Entity):
     def update(self):
         pass
     def draw(self):
-        #pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),0)
+        pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),0)
         pass        
     def getName(self):
         return "RespawnEn"
@@ -306,7 +304,10 @@ class PlayerEn(Entity):
                 pass    
             #MAN outside meets woman
             elif id == 27973:
-                if self.getName() == "Man":
+                if self.getName() == "ManEn":
+                    if self.state != "SLOWWALK":
+                        self.state = "SLOWWALK"
+                        self.anim.forceUpdate()
                     #TODO BEGIN WALKOFF SEQUENCE
                     #TODO make woman walk right, make man walk right, camera freezes
                     pass
