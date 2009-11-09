@@ -16,7 +16,11 @@ class ControllerController():
         self.activeIndex = 2 
         MW_global.controller = self
     def loop(self):
-        MW_global.eventList = pygame.event.get()
+        if MW_global.freezetime < 1:
+            MW_global.eventList = pygame.event.get()
+        else: 
+            MW_global.freezetime -= 1
+            MW_global.eventList = list()
         pygame.event.clear()
         self.effect.update()
         self.cList[self.activeIndex].loop()
@@ -79,7 +83,7 @@ class PlayController(Controller):
         for e in MW_global.eventList:
             if e.type == pygame.KEYDOWN:
                 if e.key == pygame.K_TAB:
-                    if self.activePlayer == "man" and MW_global.state != "MAN JOINS WOMAN":
+                    if self.activePlayer == "man" and self.woman.getActiveWoman().anim.state != "GHOST":
                         if(MW_global.state != "WINNING" or self.man.anim.activeNode.state == "REALLYREALLYDEAD"):
                             self.activePlayer = "woman"
                             MW_global.camera.moveTo(self.woman.getActiveWoman().pos)

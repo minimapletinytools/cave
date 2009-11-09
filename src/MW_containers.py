@@ -44,6 +44,10 @@ class WomanContainer(SuperContainer):
             e.draw()
         if MW_global.matrixcontainer.checkDraw(self.shadowLady):
             self.shadowLady.draw()
+    def clearBodies(self,en):
+        w = self.getActiveWoman()
+        self.enList = list()
+        self.enList.push(w)
     def deleteEntity(self,en):
         self.delList.append(en)
     def destroy(self):

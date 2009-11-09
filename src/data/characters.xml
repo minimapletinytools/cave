@@ -243,7 +243,7 @@
 		
 		<frame id = "701" x = "0" y = "0" w = "0" h = "0" time = "5" state = "GHOST">
 			<data velx = "0" vely = "0" />
-			<next state="DEFAULT" id = "0"></next>
+			<next state="DEFAULT" id = "701"></next>
 			<next state="GHOST" id = "701"></next>
 		</frame>
 	</sprite>

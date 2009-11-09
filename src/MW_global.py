@@ -30,6 +30,11 @@ spawndict = dict()
 frame = 0
 
 state = "PASS"
+microstate = "PASS"
+finalstate = "PASS"
+hangstate = False
+
+freezetime = 0
 
 #scripted constants
 
@@ -42,7 +47,7 @@ stickydoorlist = set() #sticky doors do not open
 dooropenlist = set() #open automatically
 torchStateMap = { 501:"INSTRUCTION1", 502:"INSTRUCTION2", 503:"SYMBOL1", 504:"SYMBOL2", 510: "BLANK", 520: "BLANK" }
 torchonlist = set([23125]) #23909 pit torch, turn on with scrpiting
-torchofflist = set([503,504])
+torchofflist = set([503,504,510])
 
 def getMatrixContainer():
     return matrixcontainer

@@ -294,10 +294,24 @@ class PlayerEn(Entity):
             if id == 13376:
                 MW_global.torchonlist.add(13379)
             #MAN 22751 22951 23151 TURNS ON TORCHES 22548 22554 AND CHANGES 22146 21947 etc
-            elif id == 22751 and MW_global.state == "LOSE":
-                MW_global.torchonlist.add(22548)
-                #MW_global.torchonlist.add(22146)
-                MW_global.torchStateMap[510] = "HANGING"
+            elif id == 22751 and MW_global.state == "LOSE" and not MW_global.hangstate:
+                if MW_global.freezetime < 1:
+                    MW_global.freezetime = 30
+                    MW_global.torchonlist.add(22548)
+                    #MW_global.torchonlist.add(22146)
+                    MW_global.torchStateMap[510] = "HANGING"
+                    self.keyMap[pygame.K_LEFT] = False
+                    self.keyMap[pygame.K_RIGHT] = False
+                    self.state = "STAND"
+                    #TODO play sound
+                elif MW_global.freezetime == 1:
+                    MW_global.hangstate = True
+                    MW_global.torchStateMap[510] = "BLANK"
+                    MW_global.torchonlist.remove(22548)
+                    MW_global.torchofflist.add(22548)
+                    
+                    #TODO play another sound
+                
             #MAN 21124 21125 21126 TRIGGERS WOMAN PIT SCRIPT
             elif id == 21124:
                 MW_global.state = "LOSE"
@@ -319,25 +333,62 @@ class PlayerEn(Entity):
                     pass
             #WOMAN outside by herself
             elif id == 28375:
-                if self.getName() != "ManEn" and self.p.woman.shadowLady != self:
+                if self.getName() != "ManEn" and self.p.woman.shadowLady != self and MW_global.state != "MAN ON QUEST":
                     self.state = "GHOST"
+                    self.anim.state = "GHOST"
+                    self.anim.forceUpdate()
+                    self.p.woman.clearBodies()
                     MW_global.state = "MAN JOINS WOMAN"
                     self.p.activePlayer = "man"
                     #TODO delete the lady so wec an replace her with shadow lady
             #MAN AT BRINK OF PIT
             elif id == 22713:
-                if self.getName() == "ManEn":
-                #TODO make woman fall into pit
-                    pass
+                if self.getName() == "ManEn" and MW_global.microstate != "SHADOWLADY DEAD":
+                     if MW_global.microstate == "SHADOWLADY READY TO JUMP" and MW_global.microstate != "MAN AT BRINK OF THE PIT":
+                          self.keyMap[pygame.K_LEFT] = False
+                          self.keyMap[pygame.K_RIGHT] = False
+                          MW_global.microstate = "MAN AT BRINK OF THE PIT"
+                          MW_global.freezetime = 40
+                          print MW_global.microstate
+                          self.state = "STAND"
             #MAN falling down final chute
             elif id == 24764:
                 if self.getName() == "ManEn":
                     self.p.woman.shadowLady.teleport(Vector2d(1500,2420))
                     self.p.woman.shadowLady.anim.dir = "LEFT"
+                    #TODO set finish sequence here
                     if MW_global.state == "LOSE":
-                        pass
+                        MW_global.finalstate = "LOSE"
                     elif MW_global.state == "MAN ON QUEST":
-                        pass
+                        MW_global.finalstate = "WIN"
+            #MAN lands in JUDGEMENT ROOM
+            elif id == 23126 and MW_global.microstate != "SHADOWLADY DEAD" and MW_global.microstate != "MAN AT BRINK OF THE PIT":
+                if self.getName() == "ManEn":
+                    if MW_global.microstate != "MAN LANDS IN JUDGEMENT ROOM" and MW_global.microstate != "SHADOWLADY READY TO JUMP":
+                        MW_global.torchonlist.add(23119)
+                        MW_global.torchonlist.add(23114)
+                        self.p.woman.shadowLady.teleport(Vector2d(340,1900))
+                        self.p.woman.shadowLady.anim.dir = "RIGHT"
+                        self.anim.dir = "LEFT"
+                        self.state = "STAND"
+                        self.keyMap[pygame.K_LEFT] = False
+                        self.keyMap[pygame.K_RIGHT] = False
+                        MW_global.microstate = "MAN LANDS IN JUDGEMENT ROOM"
+                        MW_global.freezetime = 40
+                    elif MW_global.freezetime < 1:
+                        self.p.woman.shadowLady.anim.dir = "LEFT"
+                        self.p.woman.shadowLady.state = "WALK"
+            #SHADOW LADY at brink of the pit
+            elif id == 23110 and MW_global.microstate != "SHADOWLADY DEAD":
+                if self == self.p.woman.shadowLady:
+                    if MW_global.microstate != "SHADOWLADY READY TO JUMP" and MW_global.microstate != "MAN AT BRINK OF THE PIT":
+                        MW_global.microstate = "SHADOWLADY READY TO JUMP"
+                        self.p.woman.shadowLady.anim.dir = "RIGHT"
+                        self.p.woman.shadowLady.state = "STAND"
+                    elif MW_global.freezetime < 1 and MW_global.microstate == "MAN AT BRINK OF THE PIT":
+                        MW_global.microstate = "SHADOWLADY DEAD"
+                        print "LADY JUMPS"
+                        #TODO lady jumps
                 
             self.respawn = self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].pos
         
@@ -516,10 +567,15 @@ class WomanEn(PlayerEn):
         counter = 0
         while len(hits) > 0:
             if counter > 30:
-                self.state = "DEAD"
-                #self.pos = Vector2d(self.hitOld.x,self.hitOld.y)
-                #print "hit infinite loop detected, breaking now"
-                break
+                if self.state == "CRAWL":
+                    self.state = "DEAD"
+                    #self.pos = Vector2d(self.hitOld.x,self.hitOld.y)
+                    #print "hit infinite loop detected, breaking now"
+                    break
+                else: 
+                    self.state = "CRAWL"
+                    self.anim.state = "CRAWL"
+                    self.anim.forceUpdate()
             counter += 1
             flag = True
             if (Vector2d(selfRect)-Vector2d(self.hitOld)).magnitude() > 0:
@@ -591,7 +647,7 @@ class ManEn(PlayerEn):
                 if e.key == pygame.K_LEFT or e.key == pygame.K_RIGHT:
                     if self.state == "WALK":
                         self.state = "STAND"
-        if self.keyMap[pygame.K_LEFT] or self.keyMap[pygame.K_RIGHT]:
+        if (self.keyMap[pygame.K_LEFT] or self.keyMap[pygame.K_RIGHT]) and MW_global.freezetime < 1:
             if self.state == "STAND" or self.state == "WALK":
                 self.state = "WALK"
                 if self.keyMap[pygame.K_LEFT]:
@@ -618,6 +674,7 @@ class ManEn(PlayerEn):
             #game state is lose when man enters climax room, if man dies, then he wins
             elif MW_global.state == "LOSE":
                 MW_global.state = "WINNING"
+                MW_global.microstate = "PASS"
                 MW_global.dooropenlist.add(17102)
                 MW_global.sound.play(MW_global.soundMap['switch'])
             #otherwise respawn as usual
