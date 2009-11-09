@@ -2,7 +2,7 @@ from MW_datatypes import *
  
 DISPLAY_FLAGS = pygame.HWSURFACE|pygame.DOUBLEBUF|pygame.NOFRAME
 #DISPLAY_FLAGS = pygame.FULLSCREEN
-gamemode = 2
+gamemode = 1
 if gamemode == 1:
     SCREEN_SIZE = WIDTH, HEIGHT = 641,480
     LIGHTING = 1
