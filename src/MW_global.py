@@ -31,10 +31,13 @@ frame = 0
 
 state = "PASS"
 microstate = "PASS"
+microstate2 = "PASS"
 finalstate = "PASS"
 hangstate = False
+judgementstate = False
 
 freezetime = 0
+freezetime2 = 0
 
 #scripted constants
 
@@ -42,11 +45,11 @@ soundMap = dict()
 soundMap['light'] = "light08.wav"
 soundMap['switch'] = "switch01.wav"
 sound.loadSound(soundMap['light'])
-stickyswitchlist = set([2123,3,23299,28566])
+stickyswitchlist = set([2123,3,23299,28566,11732])
 stickydoorlist = set() #sticky doors do not open
 dooropenlist = set() #open automatically
 torchStateMap = { 501:"INSTRUCTION1", 502:"INSTRUCTION2", 503:"SYMBOL1", 504:"SYMBOL2", 510: "BLANK", 520: "BLANK" }
-torchonlist = set([23125]) #23909 pit torch, turn on with scrpiting
+torchonlist = set()
 torchofflist = set([503,504,510])
 
 def getMatrixContainer():

@@ -7,6 +7,7 @@ import MW_entity
 import os
 from MW_datatypes import *
 from MW_constants import *
+import MW_constants
 
 class SuperContainer:
     def __init__(self):
@@ -44,10 +45,10 @@ class WomanContainer(SuperContainer):
             e.draw()
         if MW_global.matrixcontainer.checkDraw(self.shadowLady):
             self.shadowLady.draw()
-    def clearBodies(self,en):
+    def clearBodies(self):
         w = self.getActiveWoman()
         self.enList = list()
-        self.enList.push(w)
+        self.enList.append(w)
     def deleteEntity(self,en):
         self.delList.append(en)
     def destroy(self):
@@ -93,28 +94,28 @@ class MatrixContainer(SuperContainer):
         #if we are dealing with walls
         if e.getName() == "WallEn":
             for f in self.p.getPlayerList():
-                if f.pos.distance(e.pos) < PLAYER_LIGHT_RADIUS[0] and f.anim.activeNode.state != "REALLYREALLYDEAD":
+                if f.pos.distance(e.pos) < MW_constants.PLAYER_LIGHT_RADIUS[0] and f.anim.activeNode.state != "REALLYREALLYDEAD":
                     e.state = "LIGHT"
                     return True
             for f in self.activeTorchList:
-                if f.pos.distance(e.pos) < TORCH_RADIUS[0]:
+                if f.pos.distance(e.pos) < MW_constants.TORCH_RADIUS[0]:
                     e.state = "LIGHT"
                     return True
             for f in self.p.getPlayerList():
-                if f.pos.distance(e.pos) < PLAYER_LIGHT_RADIUS[1] and f.anim.activeNode.state != "REALLYREALLYDEAD":
+                if f.pos.distance(e.pos) < MW_constants.PLAYER_LIGHT_RADIUS[1] and f.anim.activeNode.state != "REALLYREALLYDEAD":
                     e.state = "DARK"
                     return True
             for f in self.activeTorchList:
-                if f.pos.distance(e.pos) < TORCH_RADIUS[1]:
+                if f.pos.distance(e.pos) < MW_constants.TORCH_RADIUS[1]:
                     e.state = "DARK"
                     return True
             return False
                 
         for f in self.p.getPlayerList():
-            if f.pos.distance(e.pos) < PLAYER_LIGHT_RADIUS[0] and f.anim.activeNode.state != "REALLYREALLYDEAD":
+            if f.pos.distance(e.pos) < MW_constants.PLAYER_LIGHT_RADIUS[0] and f.anim.activeNode.state != "REALLYREALLYDEAD":
                 return True
         for f in self.activeTorchList:
-            if f.pos.distance(e.pos) < TORCH_RADIUS[0]:
+            if f.pos.distance(e.pos) < MW_constants.TORCH_RADIUS[0]:
                 return True
         return False
     def draw(self):

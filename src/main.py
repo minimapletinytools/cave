@@ -4,10 +4,10 @@ import MW_controller
 from MW_constants import *
 from MW_datatypes import *
 
-        
 mwc = MW_controller.ControllerController()
 #mwc = MW_controller.oldController()
 last = pygame.time.get_ticks()
+
 while 1:
     #if time expired
     

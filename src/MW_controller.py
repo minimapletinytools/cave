@@ -26,7 +26,7 @@ class ControllerController():
         self.cList[self.activeIndex].loop()
         self.effect.draw()
     def switchController(self,index):
-        if 0 <= index < len(self.activeIndex):
+        if 0 <= index < len(self.cList):
             self.activeIndex = index 
     
 class Controller:
@@ -83,11 +83,11 @@ class PlayController(Controller):
         for e in MW_global.eventList:
             if e.type == pygame.KEYDOWN:
                 if e.key == pygame.K_TAB:
-                    if self.activePlayer == "man" and self.woman.getActiveWoman().anim.state != "GHOST":
+                    if self.activePlayer == "man" and MW_global.microstate2 != "WOMAN AT END" and MW_global.state != "LOSE":
                         if(MW_global.state != "WINNING" or self.man.anim.activeNode.state == "REALLYREALLYDEAD"):
                             self.activePlayer = "woman"
                             MW_global.camera.moveTo(self.woman.getActiveWoman().pos)
-                    elif MW_global.state != "WINNING": 
+                    elif MW_global.state != "WINNING" and MW_global.freezetime2 == 0: 
                         self.activePlayer = "man"
                         MW_global.camera.moveTo(self.man.pos)
     def loop(self):
