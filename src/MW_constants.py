@@ -39,7 +39,14 @@ TORCH_RADIUS = 100,150
 PLAYER_LIGHT_RADIUS = 50,75
 MAN_START = Vector2d(-500,-100)
 WOMAN_START = Vector2d(-530,-120)
+<<<<<<< HEAD:src/MW_constants.py
  
+=======
+MAN_START = Vector2d(600,1640)
+WOMAN_START = Vector2d(0,1280)
+#MAN_START = Vector2d(1300,2300)     #exit
+
+>>>>>>> d02b2b1a51baa3aaa282cdde996b8f566d9da6e3:src/MW_constants.py
 #engine constants
 dirMap = dict()
 dirMap["RIGHT"] = 1

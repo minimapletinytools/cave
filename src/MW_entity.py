@@ -76,9 +76,11 @@ class TorchEn(Entity):
         self.pos = pos
     def update(self):
         if self.id in MW_global.torchonlist:
-            self.state = "BURNING"
+            self.state = "BURNING"                
         elif self.id in MW_global.torchofflist:
             self.state = "DEFAULT"
+        if self.id in MW_global.torchStateMap.keys():
+            self.state = MW_global.torchStateMap[self.id]
         self.anim.state = self.state
         self.anim.update()
     def draw(self):
@@ -139,6 +141,28 @@ class DoorEn(Entity):
                 self.state = "UP"                
         if self.id in MW_global.dooropenlist:
             self.state = "DOWN"
+        #BAD scripting stuff
+        if self.index == 28168:
+            print self.anim.activeNode.id
+            if self.anim.activeNode.id == "2":
+                MW_global.matrixcontainer.getAtIndex(27975).state = "LIGHT"
+                print "lol"
+                MW_global.matrixcontainer.getAtIndex(27975).id = 999999
+            elif self.anim.activeNode.id == "3":
+                MW_global.matrixcontainer.getAtIndex(27980).state = "LIGHT"
+                MW_global.matrixcontainer.getAtIndex(27980).id = 999999
+            elif self.anim.activeNode.id == "4":
+                MW_global.matrixcontainer.getAtIndex(27985).state = "LIGHT"
+                MW_global.matrixcontainer.getAtIndex(27985).id = 999999
+            elif self.anim.activeNode.id == "5":
+                MW_global.matrixcontainer.getAtIndex(27990).state = "LIGHT"
+                MW_global.matrixcontainer.getAtIndex(27990).id = 999999
+            elif self.anim.activeNode.id == "6":
+                MW_global.matrixcontainer.getAtIndex(27995).state = "LIGHT"
+                MW_global.matrixcontainer.getAtIndex(27995).id = 999999
+            elif self.anim.activeNode.id == "7":
+                MW_global.matrixcontainer.getAtIndex(27571).state = "LIGHT"
+                MW_global.matrixcontainer.getAtIndex(27571).id = 999999
         self.anim.state = self.state
         self.anim.update()
     def draw(self):
@@ -266,9 +290,42 @@ class PlayerEn(Entity):
         for i in hits:
             #TODO check if type is event tirgger and tirgger event
             #MAN 13376 13176 12976 12776 12576 COMES TURNS ON TORCHES 13379 12979 12579 12378 23778 13178
-            if self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].id == 13376:
-                print "added shit to torchonlist"
+            id = self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].id
+            if id == 13376:
                 MW_global.torchonlist.add(13379)
+            #MAN 22751 22951 23151 TURNS ON TORCHES 22548 22554 AND CHANGES 22146 21947 etc
+            elif id == 22751 and MW_global.state == "LOSE":
+                MW_global.torchonlist.add(22548)
+                #MW_global.torchonlist.add(22146)
+                MW_global.torchStateMap[510] = "HANGING"
+            #MAN 21124 21125 21126 TRIGGERS WOMAN PIT SCRIPT
+            elif id == 21124:
+                MW_global.state = "LOSE"
+                #TODO create shadowlady and have her walk left
+                pass    
+            #MAN outside meets woman
+            elif id == 27973:
+                if self.getName() == "Man":
+                    #TODO BEGIN WALKOFF SEQUENCE
+                    #TODO make woman walk right, make man walk right, camera freezes
+                    pass
+            #WOMAN outside by herself
+            elif id == 28375:
+                if self.getName() != "Man":
+                    MW_global.state = "MAN JOINS WOMAN"
+                    self.p.activePlayer = "man"
+                    #TODO delete the lady so wec an replace her with shadow lady
+            #MAN AT BRINK OF PIT
+            elif id == 22713:
+                if self.getName() == "Man":
+                #TODO make woman fall into pit
+                    pass
+            #MAN falling down final chute
+            elif id == 24764:
+                if self.getName() == "Man":
+                    #TODO spawn shadow lady
+                    pass
+                
             self.respawn = self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].pos
         
     def checkHits(self):
@@ -472,6 +529,7 @@ class WomanEn(PlayerEn):
         #print self.state, self.anim.activeNode.id
         self.hitOld = self.getRect()
         #get input, update and move character based on input, check hits, check if over ground, if so, will update next loop
+    
         if self.p.activePlayer == "woman":
             self.input(MW_global.eventList)
         elif self.state == "WALK": self.state = "STAND"
@@ -507,7 +565,8 @@ class ManEn(PlayerEn):
         PlayerEn.__init__(self,controller)
         self.pos = MAN_START
         self.respawn = MAN_START
-        
+    def getName(self):
+        return "ManEn"
     def input(self, events):
         PlayerEn.input(self,events)
         for e in events:
@@ -526,12 +585,37 @@ class ManEn(PlayerEn):
                     self.anim.dir = "LEFT"
                 else: self.anim.dir = "RIGHT"
     def update(self):
-        if self.anim.activeNode.state == "REALLYDEAD":
-            self.state ="STAND"
-            self.teleport(self.respawn)
+        if self.anim.activeNode.state == "DEAD" or self.anim.activeNode.state == "REALLYDEAD" or self.anim.activeNode.state == "REALLYREALLYDEAD":
+            #When woman leaves cave (28375) man comes back to life and goes to beginning
+            if MW_global.state == "MAN JOINS WOMAN":
+                MW_global.state = "MAN ON QUEST"
+                self.state = "STAND"
+                self.pos = Vector2d(460,240)
+                MW_global.dooropenlist.add(9339)
+                MW_global.dooropenlist.add(11732)
+            #man jumped into pit so game state is winning 
+            elif MW_global.state == "WINNING":
+                #game freezes for a bit, then switch to woman and fill in the pit
+                if self.anim.activeNode.state == "REALLYREALLYDEAD":
+                    self.p.activePlayer = "woman"
+                    MW_global.torchofflist.add(23909)
+                    for i in range(23508,24511):
+                        self.p.cont.wList[i] = MW_entity.WallEn()
+                        self.wList[i].teleport(self.p.cont.getScreenPosition(i%self.p.cont.width,int(i/self.p.cont.width)))
+            #game state is lose when man enters climax room, if man dies, then he wins
+            elif MW_global.state == "LOSE":
+                MW_global.state = "WINNING"
+                MW_global.dooropenlist.add(17102)
+                MW_global.sound.play(MW_global.soundMap['switch'])
+            #otherwise respawn as usual
+            elif self.anim.activeNode.state == "REALLYDEAD":
+                self.state ="STAND"
+                self.teleport(self.respawn)
         #print self.state, self.anim.activeNode.id
         self.hitOld = self.getRect()
         #get input, update and move character based on input, check hits, check if over ground, if so, will update next loop
+        
+        #TODO add additional constraints
         if self.p.activePlayer == "man":
             self.input(MW_global.eventList)
         elif self.state == "WALK": self.state = "STAND"

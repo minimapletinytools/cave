@@ -79,10 +79,11 @@ class PlayController(Controller):
         for e in MW_global.eventList:
             if e.type == pygame.KEYDOWN:
                 if e.key == pygame.K_TAB:
-                    if self.activePlayer == "man":
-                        self.activePlayer = "woman"
-                        MW_global.camera.moveTo(self.woman.getActiveWoman().pos)
-                    else: 
+                    if self.activePlayer == "man" and MW_global.state != "MAN JOINS WOMAN":
+                        if(MW_global.state != "WINNING" or self.man.anim.activeNode.state == "REALLYREALLYDEAD"):
+                            self.activePlayer = "woman"
+                            MW_global.camera.moveTo(self.woman.getActiveWoman().pos)
+                    elif MW_global.state != "WINNING": 
                         self.activePlayer = "man"
                         MW_global.camera.moveTo(self.man.pos)
     def loop(self):
