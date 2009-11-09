@@ -1,4 +1,5 @@
 import pygame
+import os
 from MW_constants import *
 from MW_datatypes import *
 
@@ -6,8 +7,8 @@ class Speech:
     def __init__(self):
         print "loading speech singleton..."
         self.font = dict()
-        self.defaultFont = self.getFont(pygame.font.get_default_font(),50) 
-    
+        self.defaultFont = self.getFont("freesans.ttf",50) 
+        self.defaultFontName = os.path.join("data","FreeSans.ttf")
     def getFont(self,name,size):
         if name not in self.font:
             self.font[name] = dict()
@@ -25,8 +26,16 @@ class Speech:
         try: del self.font[name][size]
         except: pass
                     
-    def setSize(self,size,name = pygame.font.get_default_font()):
+    def setSize(self,size,name = None):
         """use this to preload default size at a certain size"""
+        #=======================================================================
+        # if name == None:
+        #    name = self.defaultFontName
+        #    self.defaultFont = pygame.font.Font(name,size)
+        #    return
+        #=======================================================================
+        if name == None:
+            name = self.defaultFontName
         self.defaultFont = self.getFont(name,size)
             
     def writeText(self, sfc, pos, text, color = COLOR_WHITE):
