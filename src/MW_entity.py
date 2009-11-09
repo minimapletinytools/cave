@@ -81,8 +81,8 @@ class TorchEn(Entity):
     def update(self):
         if self.id in MW_global.torchonlist:
             self.state = "BURNING"                
-        elif self.id in MW_global.torchofflist:
-            self.state = "DEFAULT"
+        #elif self.id in MW_global.torchofflist:
+            #self.state = "DEFAULT"
         if self.id in MW_global.torchStateMap.keys():
             self.state = MW_global.torchStateMap[self.id]
         self.anim.state = self.state
