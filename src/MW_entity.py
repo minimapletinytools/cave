@@ -190,6 +190,9 @@ class SwitchEn(Entity):
             if self.id == 9339:
                 #if 8936 not in MW_global.stickydoorlist:
                 MW_global.stickydoorlist.add(8936)
+            elif self.id == 17496:
+                MW_global.matrixcontainer.getAtIndex(17298).state = "BURNING"
+                MW_global.matrixcontainer.getAtIndex(17306).state = "BURNING"
     def teleport(self,pos):
         self.pos = pos
     def update(self):

@@ -8,6 +8,7 @@ import os
 from MW_datatypes import *
 from MW_constants import *
 import MW_constants
+import MW_global
 
 class SuperContainer:
     def __init__(self):
@@ -75,8 +76,10 @@ class MatrixContainer(SuperContainer):
         for e in range(self.width*self.height):
             self.wList.append(None)
         self.length = len(self.wList)
-	
-        self.edit = True
+	   
+        if MW_global.gamemode == 2:
+            self.edit = True
+        else: self.edit = False
         self.editor = MW_editor.WallEditor(self)
         self.switchId = 0
         
@@ -128,9 +131,8 @@ class MatrixContainer(SuperContainer):
                     e.update()
                     if self.checkDraw(e):
                             e.draw()
-                    
-        pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),1)
         if self.edit: 
+            pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),1)
             self.editor.draw()
     def addEn(self,en,pos):
         print en, "added"
