@@ -30,7 +30,7 @@ while 1:
     #quit
     pygame.event.pump()
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_q]:
+    if keys[pygame.K_ESCAPE]:
         print "goodbye"
         del mwc
         pygame.quit()
