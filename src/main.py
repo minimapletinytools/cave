@@ -19,7 +19,8 @@ while 1:
         mwc.loop()
         MW_global.frame += 1
         if pygame.time.get_ticks()%200 == 1:
-            print "cycle time", pygame.time.get_ticks() - t1
+            pass
+            #print "cycle time", pygame.time.get_ticks() - t1
         pygame.display.flip()   #flip the screen
     #else wait the difference3
     
@@ -30,9 +31,9 @@ while 1:
     #quit
     pygame.event.pump()
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_q]:
+    if keys[pygame.K_ESCAPE]:
         print "goodbye"
         del mwc
         pygame.quit()
-        quit()
+        exit()
 

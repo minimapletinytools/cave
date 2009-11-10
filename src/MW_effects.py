@@ -10,14 +10,17 @@ class EffectMenu(MW_entity.Entity):
         self.effectList = list()
         self.deleteList = []
         self.screen = MW_global.screen
-        #self.effectList.append(EffectNova(self,Vector2d(100,100),4000,500,(255,255,255),pointFunctionSquigglyPoly))
+        MW_global.effect = self
         
     def update(self):
         for e in self.effectList:
             e.updateTime()
             e.update()
-            
         self.deleteRoutine()
+        
+    def text(self,pos,text):
+        self.addEffect(EffectText(self,text,pos))
+        
     def addEffect(self,effect):
         self.effectList.append(effect)
             
@@ -35,16 +38,15 @@ class EffectMenu(MW_entity.Entity):
     
 class Effect:
     def __init__(self,parent, position = Vector2d(0,0), expiration = 0):
-        self.startTime = pygame.time.get_ticks()
-        self.lastUpdate = pygame.time.get_ticks()
         self.p = parent
         self.exp = expiration
+        self.current = self.exp
         self.pos = position
     def update(self):
         pass
     def updateTime(self):
-        self.lastUpdate = pygame.time.get_ticks()
-        if self.lastUpdate > self.startTime + self.exp:
+        self.current -= 1
+        if self.current < 1:
             self.deleteSelf()
     def deleteSelf(self):
         self.p.deleteEffect(self)
@@ -55,24 +57,15 @@ def getTextEffect(pos,text):
     return EffectText()
 
 class EffectText(Effect):
-    def __init__(self,parent,position = Vector2d(0,0),expiration = 999999,text = "Game Over"):
+    def __init__(self,parent,text = "Game Over",position = Vector2d(0,0),expiration = 100, size = 15):
         Effect.__init__(self,parent,position,expiration)
         self.text = text
+        self.size = size
     def draw(self):
-#===============================================================================
-#        alpha = 40 + (self.lastUpdate - self.startTime)*200/2000
-#        if alpha > 200: alpha = 200
-#        pygame.draw.rect(
-#                         self.p.screen,
-#                         (0,0,0, 255),
-#                         pygame.Rect(0,0,800,480),
-#                         0
-#                         )
-#===============================================================================
-        MW_global.speech.setSize(15)
+        MW_global.speech.setSize(self.size)
         MW_global.speech.writeCentered(
                                         self.p.screen,
-                                        Vector2d(400,240),
+                                        MW_global.camera.convertCrds(self.pos),
                                         self.text,
                                         COLOR_WHITE
                                         )

@@ -190,6 +190,9 @@ class SwitchEn(Entity):
             if self.id == 9339:
                 #if 8936 not in MW_global.stickydoorlist:
                 MW_global.stickydoorlist.add(8936)
+            elif self.id == 17496:
+                MW_global.matrixcontainer.getAtIndex(17298).state = "BURNING"
+                MW_global.matrixcontainer.getAtIndex(17306).state = "BURNING"
     def teleport(self,pos):
         self.pos = pos
     def update(self):
@@ -310,9 +313,9 @@ class PlayerEn(Entity):
                 elif MW_global.freezetime == 1:
                     MW_global.hangstate = True
                     MW_global.torchStateMap[510] = "BLANK"
+                    MW_global.torchStateMap[22548] = "DEFAULT"
                     MW_global.torchonlist.remove(22548)
                     MW_global.torchofflist.add(22548)
-                    
                     #TODO play another sound
                 
             #MAN 21124 21125 21126 TRIGGERS WOMAN PIT SCRIPT
@@ -353,11 +356,11 @@ class PlayerEn(Entity):
                           MW_global.microstate = "MAN AT BRINK OF THE PIT"
                           #MW_global.freezetime = 120
                           MW_global.freezetime = 40
-                          print MW_global.microstate
+                          #print MW_global.microstate
                           self.state = "STAND"
                           self.p.woman.shadowLady.state = "SHADOWFALL"
                      elif MW_global.freezetime < 1 and MW_global.microstate == "MAN AT BRINK OF THE PIT":
-                          print "torch on!"
+                          #print "torch on!"
                           MW_global.microstate = "SHADOWLADY DEAD"
                           MW_global.torchonlist.add(23909)                          
                           
@@ -393,7 +396,7 @@ class PlayerEn(Entity):
             #SHADOW LADY at brink of the pit
             elif id == 23110 and MW_global.microstate != "SHADOWLADY DEAD":
                 if self == self.p.woman.shadowLady:
-                    print MW_global.microstate, MW_global.microstate
+                    #print MW_global.microstate, MW_global.microstate
                     if MW_global.microstate != "SHADOWLADY READY TO JUMP" and MW_global.microstate != "MAN AT BRINK OF THE PIT":
                         MW_global.microstate = "SHADOWLADY READY TO JUMP"
                         self.p.woman.shadowLady.anim.dir = "RIGHT"
@@ -433,8 +436,29 @@ class PlayerEn(Entity):
         #for i in hits:
             #self.p.cont.wList[self.p.cont.getMatrixIndex(wallRects[i])].highlight = True
         flag = False
+        flag2 = False
         counter = 0
-        while len(hits) > 0:
+        #if only hit one square and jumping upwards
+        if len(hits) == 1 and self.anim.getVelData().y < 0:
+            flag = True
+            selfRect = self.getRect()
+            rect = wallRects[hits[0]]
+            if selfRect.colliderect(rect):
+                side = getRectCollideSideVector2d(selfRect,rect)
+                intersect = selfRect.clip(rect)
+                rdiff = getRectDiff(self.hitOld,rect)
+                if math.fabs(rdiff.x) <=  math.fabs(rdiff.y):    #we prioritize y direction
+                    flag2 = True
+                    if side.x > 0:
+                        self.pos.x += selfRect.clip(rect).w
+                    else:
+                        self.pos.x -= selfRect.clip(rect).w
+                else:
+                    pass
+            #TODO make sure to check only on ground hits
+            selfRect = self.getRect()
+            hits = selfRect.collidelistall(wallRects)
+        while len(hits) > 0 and not flag2:
             if counter > 30:
                 self.state = "DEAD"
                 #self.anim.state = self.state
@@ -444,6 +468,7 @@ class PlayerEn(Entity):
                 break
             counter += 1
             flag = True
+        
             if (Vector2d(selfRect)-Vector2d(self.hitOld)).magnitude() > 0:
                 if math.fabs((selfRect.y-self.hitOld.y)) >= math.fabs((selfRect.x-self.hitOld.x)):
                     self.pos.y -= (selfRect.y-self.hitOld.y)/math.fabs((selfRect.y-self.hitOld.y))
@@ -453,7 +478,7 @@ class PlayerEn(Entity):
             selfRect = self.getRect()
             hits = selfRect.collidelistall(wallRects)
         #BAD should move to woman class
-        if flag == True:
+        if flag and not flag2:
             if self.state == "JUMP" or self.state == "FALLING":
                 if self.checkProjected(Vector2d(0,1)):
                     self.state = "STAND"
@@ -479,10 +504,11 @@ class PlayerEn(Entity):
                     self.pos.y -= selfRect.clip(rect).h
                     if self.state == "JUMP" or self.state == "FALLING":
                         self.state = "STAND"
+    def checkClothing(self):
+        pass 
     def checkTorch(self):
         rect = self.p.cont.getMatrixRect(self.getRect().inflate(40,40))  #arbitrary, can be more precise
         spikes = self.p.cont.getTorchRects(rect)
-        print spikes
         hits = self.getRect().collidelistall(spikes)
         for i in hits:
             self.p.cont.wList[self.p.cont.getMatrixIndex(spikes[i])].state = "BURNING"    
@@ -540,6 +566,7 @@ class WomanEn(PlayerEn):
         for e in events:
             if e.type == pygame.KEYDOWN:
                 if e.key == pygame.K_z:
+                    #MW_global.effect.text(self.pos,"torch on")
                     MW_global.sound.play(MW_global.soundMap['light'])
                     MW_global.screen.fill((35,20,20))
                     self.checkTorch()
@@ -576,6 +603,16 @@ class WomanEn(PlayerEn):
                     self.state = "WALK"
                 elif self.state == "CRAWL":
                     self.state = "STAND"
+    def checkClothing(self):
+        rect = self.p.cont.getMatrixRect(self.getRect().inflate(40,40))  #arbitrary, can be more precise
+        cloth = self.p.cont.getTorchRects(rect)
+        hits = self.getRect().collidelistall(cloth)
+        for i in hits:
+            index = self.p.cont.wList[self.p.cont.getMatrixIndex(cloth[i])].index
+            if index == 123213:
+                pass
+            elif index == 2432:
+                pass
     def checkHits(self):
         rect = self.p.cont.getMatrixRect(self.getRect().inflate(60,60))  #arbitrary, can be more precise
         wallRects = self.p.cont.getWallRects(rect)
@@ -646,6 +683,7 @@ class WomanEn(PlayerEn):
         #self.checkSideHitRect(self.p.man.getRect())
         self.checkSwitches()
         self.checkSpikes()
+        self.checkClothing()
         #check if over ground
         if not self.checkProjected(Vector2d(0,1)) and not self.checkProjectedRect(Vector2d(0,1),self.p.man.getRect()):
             if self.state != "JUMP" and self.state != "DEAD" and self.state != "LEDGE":
@@ -687,6 +725,16 @@ class ManEn(PlayerEn):
                 if self.keyMap[pygame.K_LEFT]:
                     self.anim.dir = "LEFT"
                 else: self.anim.dir = "RIGHT"
+    def checkClothing(self):
+        rect = self.p.cont.getMatrixRect(self.getRect().inflate(40,40))  #arbitrary, can be more precise
+        cloth = self.p.cont.getTorchRects(rect)
+        hits = self.getRect().collidelistall(cloth)
+        for i in hits:
+            index = self.p.cont.wList[self.p.cont.getMatrixIndex(cloth[i])].index
+            if index == 123213:
+                pass
+            elif index == 2432:
+                pass
     def update(self):
         if self.anim.activeNode.state == "DEAD" or self.anim.activeNode.state == "REALLYDEAD" or self.anim.activeNode.state == "REALLYREALLYDEAD":
             #When woman leaves cave (28375) man comes back to life and goes to beginning
@@ -706,6 +754,7 @@ class ManEn(PlayerEn):
                             MW_global.torchonlist.remove(i)
                     self.p.activePlayer = "woman"
                     if 23909 in MW_global.torchonlist:
+                        self.p.cont.getAtIndex(23909).state = "BLANK"
                         MW_global.torchonlist.remove(23909)
                     MW_global.torchofflist.add(23909)
                     for i in range(23508,23511):
@@ -737,6 +786,7 @@ class ManEn(PlayerEn):
         #self.checkSideHitRect(self.p.woman.getActiveWoman().getRect())
         self.checkSpikes()
         self.checkSwitches()
+        self.checkClothing()
 
         #check if over ground
         if not self.checkProjected(Vector2d(0,1)) and not self.checkProjectedRect(Vector2d(0,1),self.p.woman.getActiveWoman().getRect()): 

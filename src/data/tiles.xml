@@ -21,6 +21,7 @@
 			<next state = "BLANK" id = "201" time = "0" />
 			<next state = "HANGING" id = "202" time = "0" />
 			<next state = "LIGHT" id = "301" time = "0" />
+			<next state = "Z" id = "401" time = "0" />
 		</frame>
 		<frame id = "11" x = "0" y = "20" w = "20" h = "20" time = "5">
 			<next state = "DEFAULT" id = "1" />
@@ -63,6 +64,10 @@
 		<frame id = "301" x = "0" y = "0" w = "1" h = "1" time = "5" state = "LIGHT">
 			<next state = "DEFAULT" id = "301" />
 			<next state = "LIGHT" id = "301" />
+		</frame>
+		<frame id = "401" x = "60" y = "120" w = "20" h = "20" time = "5" state = "Z">
+			<next state = "DEFAULT" id = "401" />
+			<next state = "Z" id = "401" />
 		</frame>
 	</sprite>
 	<sprite name = "spike" file = "spikes_01.png spikes_02.png spikes_03.png spikes_04.png">
