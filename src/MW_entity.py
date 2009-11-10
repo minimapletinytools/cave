@@ -436,8 +436,29 @@ class PlayerEn(Entity):
         #for i in hits:
             #self.p.cont.wList[self.p.cont.getMatrixIndex(wallRects[i])].highlight = True
         flag = False
+        flag2 = False
         counter = 0
-        while len(hits) > 0:
+        #if only hit one square and jumping upwards
+        if len(hits) == 1 and self.anim.getVelData().y < 0:
+            flag = True
+            selfRect = self.getRect()
+            rect = wallRects[hits[0]]
+            if selfRect.colliderect(rect):
+                side = getRectCollideSideVector2d(selfRect,rect)
+                intersect = selfRect.clip(rect)
+                rdiff = getRectDiff(self.hitOld,rect)
+                if math.fabs(rdiff.x) <=  math.fabs(rdiff.y):    #we prioritize y direction
+                    flag2 = True
+                    if side.x > 0:
+                        self.pos.x += selfRect.clip(rect).w
+                    else:
+                        self.pos.x -= selfRect.clip(rect).w
+                else:
+                    pass
+            #TODO make sure to check only on ground hits
+            selfRect = self.getRect()
+            hits = selfRect.collidelistall(wallRects)
+        while len(hits) > 0 and not flag2:
             if counter > 30:
                 self.state = "DEAD"
                 #self.anim.state = self.state
@@ -447,6 +468,7 @@ class PlayerEn(Entity):
                 break
             counter += 1
             flag = True
+        
             if (Vector2d(selfRect)-Vector2d(self.hitOld)).magnitude() > 0:
                 if math.fabs((selfRect.y-self.hitOld.y)) >= math.fabs((selfRect.x-self.hitOld.x)):
                     self.pos.y -= (selfRect.y-self.hitOld.y)/math.fabs((selfRect.y-self.hitOld.y))
@@ -456,7 +478,7 @@ class PlayerEn(Entity):
             selfRect = self.getRect()
             hits = selfRect.collidelistall(wallRects)
         #BAD should move to woman class
-        if flag == True:
+        if flag and not flag2:
             if self.state == "JUMP" or self.state == "FALLING":
                 if self.checkProjected(Vector2d(0,1)):
                     self.state = "STAND"
@@ -544,7 +566,7 @@ class WomanEn(PlayerEn):
         for e in events:
             if e.type == pygame.KEYDOWN:
                 if e.key == pygame.K_z:
-                    MW_global.effect.text(self.pos,"torch on")
+                    #MW_global.effect.text(self.pos,"torch on")
                     MW_global.sound.play(MW_global.soundMap['light'])
                     MW_global.screen.fill((35,20,20))
                     self.checkTorch()
@@ -732,6 +754,7 @@ class ManEn(PlayerEn):
                             MW_global.torchonlist.remove(i)
                     self.p.activePlayer = "woman"
                     if 23909 in MW_global.torchonlist:
+                        self.p.cont.getAtIndex(23909).state = "BLANK"
                         MW_global.torchonlist.remove(23909)
                     MW_global.torchofflist.add(23909)
                     for i in range(23508,23511):

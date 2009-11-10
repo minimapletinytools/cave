@@ -11,7 +11,7 @@
 			<next state = "CRAWL" id = "510"></next>
 			<next state = "CRAWLING" id = "501"></next>
 			<next state = "LEDGE" id = "601"></next>
-			<next state = "GHOST" id = "701" time = "5"></next>
+			<next state = "GHOST" id = "701"></next>
 			<next state = "SHADOWFALL" id = "801"></next>
 		</frame>
 		
