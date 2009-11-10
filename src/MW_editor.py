@@ -41,6 +41,8 @@ class WallEditor:
         self.index = self.index%len(self.entityRefList)
         if self.entityRefList[self.index] != None:
             self.activeObject = self.entityRefList[self.index]()
+            if self.activeObject.getName() == "TorchEn":
+                self.activeObject.id = 530
         else: self.activeObject = None
         
     def toggleModeOld(self):
