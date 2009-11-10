@@ -2,11 +2,15 @@ import pygame
 import MW_global
 import MW_animator
 import MW_xml
+import MW_entity
 import math
 import xml.dom.minidom
 import os
 from MW_datatypes import *
 from MW_constants import *
+import MW_constants
+
+
 
 class Entity:
     def __init__(self):
@@ -77,8 +81,8 @@ class TorchEn(Entity):
     def update(self):
         if self.id in MW_global.torchonlist:
             self.state = "BURNING"                
-        elif self.id in MW_global.torchofflist:
-            self.state = "DEFAULT"
+        #elif self.id in MW_global.torchofflist:
+            #self.state = "DEFAULT"
         if self.id in MW_global.torchStateMap.keys():
             self.state = MW_global.torchStateMap[self.id]
         self.anim.state = self.state
@@ -143,10 +147,8 @@ class DoorEn(Entity):
             self.state = "DOWN"
         #BAD scripting stuff
         if self.index == 28168:
-            print self.anim.activeNode.id
             if self.anim.activeNode.id == "2":
                 MW_global.matrixcontainer.getAtIndex(27975).state = "LIGHT"
-                print "lol"
                 MW_global.matrixcontainer.getAtIndex(27975).id = 999999
             elif self.anim.activeNode.id == "3":
                 MW_global.matrixcontainer.getAtIndex(27980).state = "LIGHT"
@@ -225,7 +227,8 @@ class RespawnEn(Entity):
     def update(self):
         pass
     def draw(self):
-        pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),0)        
+        if MW_global.gamemode == 2:
+            pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),0)        
     def getName(self):
         return "RespawnEn"
         
@@ -294,10 +297,24 @@ class PlayerEn(Entity):
             if id == 13376:
                 MW_global.torchonlist.add(13379)
             #MAN 22751 22951 23151 TURNS ON TORCHES 22548 22554 AND CHANGES 22146 21947 etc
-            elif id == 22751 and MW_global.state == "LOSE":
-                MW_global.torchonlist.add(22548)
-                #MW_global.torchonlist.add(22146)
-                MW_global.torchStateMap[510] = "HANGING"
+            elif id == 22751 and MW_global.state == "LOSE" and not MW_global.hangstate:
+                if MW_global.freezetime < 1:
+                    MW_global.freezetime = 15
+                    MW_global.torchonlist.add(22548)
+                    #MW_global.torchonlist.add(22146)
+                    MW_global.torchStateMap[510] = "HANGING"
+                    self.keyMap[pygame.K_LEFT] = False
+                    self.keyMap[pygame.K_RIGHT] = False
+                    self.state = "STAND"
+                    #TODO play sound
+                elif MW_global.freezetime == 1:
+                    MW_global.hangstate = True
+                    MW_global.torchStateMap[510] = "BLANK"
+                    MW_global.torchonlist.remove(22548)
+                    MW_global.torchofflist.add(22548)
+                    
+                    #TODO play another sound
+                
             #MAN 21124 21125 21126 TRIGGERS WOMAN PIT SCRIPT
             elif id == 21124:
                 MW_global.state = "LOSE"
@@ -305,27 +322,106 @@ class PlayerEn(Entity):
                 pass    
             #MAN outside meets woman
             elif id == 27973:
-                if self.getName() == "Man":
-                    #TODO BEGIN WALKOFF SEQUENCE
-                    #TODO make woman walk right, make man walk right, camera freezes
+                if self.getName() == "ManEn":
+                    if self.state != "SLOWWALK":
+                        self.state = "SLOWWALK"
+                        self.p.woman.shadowLady.state = "STAND"
+                        self.anim.forceUpdate()
+                    if self.anim.activeNode.state == "SLOWWALK":
+                        self.p.woman.shadowLady.anim.dir = "RIGHT"
+                        self.p.woman.shadowLady.state = "WALK"
+                        self.p.woman.shadowLady.anim.state = "WALK"
+                        MW_global.microstate = "MAN IS WALKING OFF"
                     pass
             #WOMAN outside by herself
             elif id == 28375:
-                if self.getName() != "Man":
+                if self.getName() != "ManEn" and self.p.woman.shadowLady != self and MW_global.state != "MAN ON QUEST":
+                    self.state = "GHOST"
+                    self.anim.state = "GHOST"
+                    MW_global.microstate2 = "WOMAN AT END"
+                    self.anim.forceUpdate()
+                    self.p.woman.clearBodies()
                     MW_global.state = "MAN JOINS WOMAN"
                     self.p.activePlayer = "man"
                     #TODO delete the lady so wec an replace her with shadow lady
             #MAN AT BRINK OF PIT
             elif id == 22713:
-                if self.getName() == "Man":
-                #TODO make woman fall into pit
-                    pass
+                if self.getName() == "ManEn" and MW_global.microstate != "SHADOWLADY DEAD":
+                     if MW_global.microstate == "SHADOWLADY READY TO JUMP" and MW_global.microstate != "MAN AT BRINK OF THE PIT":
+                          self.keyMap[pygame.K_LEFT] = False
+                          self.keyMap[pygame.K_RIGHT] = False
+                          MW_global.microstate = "MAN AT BRINK OF THE PIT"
+                          #MW_global.freezetime = 120
+                          MW_global.freezetime = 40
+                          print MW_global.microstate
+                          self.state = "STAND"
+                          self.p.woman.shadowLady.state = "SHADOWFALL"
+                     elif MW_global.freezetime < 1 and MW_global.microstate == "MAN AT BRINK OF THE PIT":
+                          print "torch on!"
+                          MW_global.microstate = "SHADOWLADY DEAD"
+                          MW_global.torchonlist.add(23909)                          
+                          
             #MAN falling down final chute
             elif id == 24764:
-                if self.getName() == "Man":
-                    #TODO spawn shadow lady
-                    pass
-                
+                if self.getName() == "ManEn":
+                    self.p.woman.shadowLady.teleport(Vector2d(1500,2420))
+                    self.p.woman.shadowLady.anim.dir = "LEFT"
+                    #TODO set finish sequence here
+                    if MW_global.state == "LOSE":
+                        MW_global.finalstate = "LOSE"
+                    elif MW_global.state == "MAN ON QUEST":
+                        MW_global.finalstate = "WIN"
+            #MAN lands in JUDGEMENT ROOM
+            elif id == 23126 and not MW_global.judgementstate and MW_global.microstate != "SHADOWLADY DEAD" and MW_global.microstate != "MAN AT BRINK OF THE PIT":
+                if self.getName() == "ManEn":
+                    if MW_global.microstate != "MAN LANDS IN JUDGEMENT ROOM" and MW_global.microstate != "SHADOWLADY READY TO JUMP":
+                        MW_global.torchonlist.add(23119)
+                        MW_global.torchonlist.add(23114)
+                        MW_global.torchonlist.add(23125)
+                        self.p.woman.shadowLady.teleport(Vector2d(340,1900))
+                        self.p.woman.shadowLady.anim.dir = "RIGHT"
+                        self.anim.dir = "LEFT"
+                        self.state = "STAND"
+                        self.keyMap[pygame.K_LEFT] = False
+                        self.keyMap[pygame.K_RIGHT] = False
+                        MW_global.microstate = "MAN LANDS IN JUDGEMENT ROOM"
+                        MW_global.freezetime = 40
+                    elif MW_global.freezetime < 1:
+                        MW_global.judgementstate = True
+                        self.p.woman.shadowLady.anim.dir = "LEFT"
+                        self.p.woman.shadowLady.state = "WALK"
+            #SHADOW LADY at brink of the pit
+            elif id == 23110 and MW_global.microstate != "SHADOWLADY DEAD":
+                if self == self.p.woman.shadowLady:
+                    print MW_global.microstate, MW_global.microstate
+                    if MW_global.microstate != "SHADOWLADY READY TO JUMP" and MW_global.microstate != "MAN AT BRINK OF THE PIT":
+                        MW_global.microstate = "SHADOWLADY READY TO JUMP"
+                        self.p.woman.shadowLady.anim.dir = "RIGHT"
+                        self.p.woman.shadowLady.state = "STAND"
+            #THE GAME ENDS HERE (kinda)
+            elif id == 28384:
+                if self.getName() == "ManEn":
+                    if MW_global.freezetime2 > 2:
+                        MW_global.freezetime2 -= 1
+                    if MW_global.finalstate == "WIN":
+                        MW_global.controller.switchController(3)
+                    elif MW_global.freezetime2 < 1:
+                        MW_global.freezetime2 = 200
+                        self.state = "STAND"
+                        self.p.activePlayer = "woman"
+                    elif MW_global.freezetime2 < 5:
+                        MW_global.controller.switchController(3)
+                    elif MW_global.freezetime2 < 200:
+                        scale = MW_global.freezetime2/200.0
+                        MW_constants.TORCH_RADIUS = (int(scale*100),int(scale*150))
+                        MW_constants.PLAYER_LIGHT_RADIUS = (int(scale*50),int(scale*75))
+                        if MW_global.freezetime2 < 30:
+                            for e in self.p.cont.torchList:
+                                e.state = "BLANK"
+                    
+                    
+                    
+            
             self.respawn = self.p.cont.wList[self.p.cont.getMatrixIndex(respawnRects[i])].pos
         
     def checkHits(self):
@@ -386,6 +482,7 @@ class PlayerEn(Entity):
     def checkTorch(self):
         rect = self.p.cont.getMatrixRect(self.getRect().inflate(40,40))  #arbitrary, can be more precise
         spikes = self.p.cont.getTorchRects(rect)
+        print spikes
         hits = self.getRect().collidelistall(spikes)
         for i in hits:
             self.p.cont.wList[self.p.cont.getMatrixIndex(spikes[i])].state = "BURNING"    
@@ -452,9 +549,10 @@ class WomanEn(PlayerEn):
                 if e.key == pygame.K_LEFT or e.key == pygame.K_RIGHT:
                     if self.state == "STAND" or self.state == "WALK":
                         self.state = "WALK"
-                        if e.key == pygame.K_LEFT:
-                            self.anim.dir = "LEFT"
-                        else: self.anim.dir = "RIGHT"
+                        if self.anim.activeNode.state != "LEDGE":
+                            if e.key == pygame.K_LEFT:
+                                self.anim.dir = "LEFT"
+                            else: self.anim.dir = "RIGHT"
                     if self.state == "CRAWL" or self.state == "CRAWLING":
                         self.state = "CRAWLING"
                         if e.key == pygame.K_LEFT:
@@ -503,10 +601,15 @@ class WomanEn(PlayerEn):
         counter = 0
         while len(hits) > 0:
             if counter > 30:
-                self.state = "DEAD"
-                #self.pos = Vector2d(self.hitOld.x,self.hitOld.y)
-                #print "hit infinite loop detected, breaking now"
-                break
+                if self.state == "CRAWL":
+                    self.state = "DEAD"
+                    #self.pos = Vector2d(self.hitOld.x,self.hitOld.y)
+                    #print "hit infinite loop detected, breaking now"
+                    break
+                else: 
+                    self.state = "CRAWL"
+                    self.anim.state = "CRAWL"
+                    self.anim.forceUpdate()
             counter += 1
             flag = True
             if (Vector2d(selfRect)-Vector2d(self.hitOld)).magnitude() > 0:
@@ -530,7 +633,7 @@ class WomanEn(PlayerEn):
         self.hitOld = self.getRect()
         #get input, update and move character based on input, check hits, check if over ground, if so, will update next loop
     
-        if self.p.activePlayer == "woman":
+        if self.p.activePlayer == "woman" or self.input == blankfcn:
             self.input(MW_global.eventList)
         elif self.state == "WALK": self.state = "STAND"
         self.anim.state = self.state
@@ -578,7 +681,7 @@ class ManEn(PlayerEn):
                 if e.key == pygame.K_LEFT or e.key == pygame.K_RIGHT:
                     if self.state == "WALK":
                         self.state = "STAND"
-        if self.keyMap[pygame.K_LEFT] or self.keyMap[pygame.K_RIGHT]:
+        if (self.keyMap[pygame.K_LEFT] or self.keyMap[pygame.K_RIGHT]) and MW_global.freezetime < 1:
             if self.state == "STAND" or self.state == "WALK":
                 self.state = "WALK"
                 if self.keyMap[pygame.K_LEFT]:
@@ -597,14 +700,21 @@ class ManEn(PlayerEn):
             elif MW_global.state == "WINNING":
                 #game freezes for a bit, then switch to woman and fill in the pit
                 if self.anim.activeNode.state == "REALLYREALLYDEAD":
+                    for i in (23125,23119,23114):
+                        if i in MW_global.torchonlist:
+                            self.p.cont.getAtIndex(i).state = "DEFAULT"
+                            MW_global.torchonlist.remove(i)
                     self.p.activePlayer = "woman"
+                    if 23909 in MW_global.torchonlist:
+                        MW_global.torchonlist.remove(23909)
                     MW_global.torchofflist.add(23909)
-                    for i in range(23508,24511):
+                    for i in range(23508,23511):
                         self.p.cont.wList[i] = MW_entity.WallEn()
-                        self.wList[i].teleport(self.p.cont.getScreenPosition(i%self.p.cont.width,int(i/self.p.cont.width)))
+                        self.p.cont.wList[i].teleport(self.p.cont.getScreenPosition(i%self.p.cont.width,int(i/self.p.cont.width)))
             #game state is lose when man enters climax room, if man dies, then he wins
             elif MW_global.state == "LOSE":
                 MW_global.state = "WINNING"
+                MW_global.microstate = "PASS"
                 MW_global.dooropenlist.add(17102)
                 MW_global.sound.play(MW_global.soundMap['switch'])
             #otherwise respawn as usual

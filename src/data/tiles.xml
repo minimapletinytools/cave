@@ -56,8 +56,9 @@
 			<next state = "HANGING" id = "202" time = "0" />
 			<next state = "LIGHT" id = "301" time = "0" />
 		</frame>
-		<frame id = "202" x = "40" y = "120" w = "20" h = "40" dx = "-5" dy = "-10" time = "5" state = "SYMBOL2">
-			<next state = "DEFAULT" id = "202" />
+		<frame id = "202" x = "40" y = "120" w = "20" h = "40" dx = "-5" dy = "-10" time = "5" state = "HANGING">
+			<next state = "HANGING" id = "202" />
+			<next state = "BLANK" id = "201" time = "0"/>
 		</frame>
 		<frame id = "301" x = "0" y = "0" w = "1" h = "1" time = "5" state = "LIGHT">
 			<next state = "DEFAULT" id = "301" />

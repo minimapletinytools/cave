@@ -1,5 +1,5 @@
 from MW_datatypes import *
- 
+
 DISPLAY_FLAGS = pygame.HWSURFACE|pygame.DOUBLEBUF|pygame.NOFRAME
 #DISPLAY_FLAGS = pygame.FULLSCREEN
 gamemode = 1
@@ -19,12 +19,12 @@ elif gamemode == 4:
     SCREEN_SIZE = WIDTH, HEIGHT = 1200,800
     LIGHTING = 0
     CAMERA_MODE = "force"
- 
+
 FRAMERATE = 25
 MSPERFRAME = 1000/FRAMERATE
 TILING_SIZE = Vector2d(20,20)
- 
- 
+
+
 #colors
 COLOR_RED = 255,0,0
 COLOR_WHITE = 255,255,255
@@ -33,21 +33,24 @@ COLOR_BLACK = 0,0,0
 COLOR_GREEN = 0,255,0
 COLOR_DARK = 100,100,100
 COLOR_KEY = COLOR_BLACK
- 
+
 #game constants
 TORCH_RADIUS = 100,150
 PLAYER_LIGHT_RADIUS = 50,75
+
 MAN_START = Vector2d(-500,-100)
 WOMAN_START = Vector2d(-530,-120)
-<<<<<<< HEAD:src/MW_constants.py
- 
-=======
-MAN_START = Vector2d(600,1640)
-WOMAN_START = Vector2d(0,1280)
-#MAN_START = Vector2d(1300,2300)     #exit
+#MAN_START = Vector2d(600,1640)
+#WOMAN_START = Vector2d(0,1280)
+#MAN_START = Vector2d(1300,1920)     #exit
 
->>>>>>> d02b2b1a51baa3aaa282cdde996b8f566d9da6e3:src/MW_constants.py
+SHADOW_LADY_START = Vector2d(120,-300)
+
 #engine constants
 dirMap = dict()
 dirMap["RIGHT"] = 1
 dirMap["LEFT"] = -1
+
+
+def blankfcn(arg01 = None, arg02 = None):
+    pass
