@@ -88,6 +88,8 @@ class PlayController(Controller):
                             self.activePlayer = "woman"
                             MW_global.camera.moveTo(self.woman.getActiveWoman().pos)
                     elif MW_global.state != "WINNING" and MW_global.freezetime2 == 0: 
+                        self.man.keyMap[pygame.K_LEFT] = False
+                        self.man.keyMap[pygame.K_RIGHT] = False
                         self.activePlayer = "man"
                         MW_global.camera.moveTo(self.man.pos)
     def loop(self):
