@@ -146,7 +146,7 @@ class DoorEn(Entity):
         if self.id in MW_global.dooropenlist:
             self.state = "DOWN"
         #BAD scripting stuff
-        if self.index == 28168:
+        if MW_global.gamemode == 1 and self.index == 28168:
             if self.anim.activeNode.id == "2":
                 MW_global.matrixcontainer.getAtIndex(28175).state = "LIGHT"
                 MW_global.matrixcontainer.getAtIndex(28175).id = 999999
@@ -394,6 +394,7 @@ class PlayerEn(Entity):
                         MW_global.torchonlist.add(23119)
                         MW_global.torchonlist.add(23114)
                         MW_global.torchonlist.add(23125)
+                        MW_global.torchonlist.add(23132)
                         self.p.woman.shadowLady.teleport(Vector2d(340,1900))
                         self.p.woman.shadowLady.anim.dir = "RIGHT"
                         self.anim.dir = "LEFT"
@@ -623,10 +624,26 @@ class WomanEn(PlayerEn):
         hits = self.getRect().collidelistall(cloth)
         for i in hits:
             index = self.p.cont.wList[self.p.cont.getMatrixIndex(cloth[i])].index
-            if index == 123213:
-                pass
-            elif index == 2432:
-                pass
+            if index == 9070:
+                MW_global.effect.text(self.pos,"I've never felt this way before")
+                self.p.cont.getAtIndex(9070).id = 542
+                self.p.cont.getAtIndex(9070).index = 99999999    
+            elif index == 15484:
+                MW_global.effect.text(self.pos,"I'm not sure...")
+                self.p.cont.getAtIndex(15484).id = 542
+                self.p.cont.getAtIndex(15484).index = 99999999
+            elif index == 14652:
+                MW_global.effect.text(self.pos,"I really like him")
+                self.p.cont.getAtIndex(14652).id = 542
+                self.p.cont.getAtIndex(14652).index = 99999999
+            elif index == 17672:
+                MW_global.effect.text(self.pos,"It's okay")
+                self.p.cont.getAtIndex(17672).id = 542
+                self.p.cont.getAtIndex(17672).index = 99999999
+            elif index == 17495:
+                MW_global.effect.text(self.pos,"I trust him")
+                self.p.cont.getAtIndex(17495).id = 542
+                self.p.cont.getAtIndex(17495).index = 99999999
     def checkHits(self):
         rect = self.p.cont.getMatrixRect(self.getRect().inflate(60,60))  #arbitrary, can be more precise
         wallRects = self.p.cont.getWallRects(rect)
@@ -745,10 +762,30 @@ class ManEn(PlayerEn):
         hits = self.getRect().collidelistall(cloth)
         for i in hits:
             index = self.p.cont.wList[self.p.cont.getMatrixIndex(cloth[i])].index
-            if index == 123213:
-                pass
-            elif index == 2432:
-                pass
+            if index == 11732:
+                MW_global.effect.text(self.pos,"I've never felt this way before")
+                self.p.cont.getAtIndex(11732).id = 542
+                self.p.cont.getAtIndex(11732).index = 99999999    
+            elif index == 15333:
+                MW_global.effect.text(self.pos,"I'm not sure...")
+                self.p.cont.getAtIndex(15333).id = 542
+                self.p.cont.getAtIndex(15333).index = 99999999
+            elif index == 18929:
+                MW_global.effect.text(self.pos,"I really like him")
+                self.p.cont.getAtIndex(18929).id = 542
+                self.p.cont.getAtIndex(18929).index = 99999999
+            elif index == 22798:
+                MW_global.effect.text(self.pos,"It's okay")
+                self.p.cont.getAtIndex(22798).id = 542
+                self.p.cont.getAtIndex(22798).index = 99999999
+            elif index == 23311:
+                MW_global.effect.text(self.pos,"I trust him")
+                self.p.cont.getAtIndex(23311).id = 542
+                self.p.cont.getAtIndex(23311).index = 99999999
+            elif index == 23292:
+                MW_global.effect.text(self.pos,"I trust him")
+                self.p.cont.getAtIndex(23292).id = 542
+                self.p.cont.getAtIndex(23292).index = 99999999
     def update(self):
         if self.anim.activeNode.state == "DEAD" or self.anim.activeNode.state == "REALLYDEAD" or self.anim.activeNode.state == "REALLYREALLYDEAD":
             MW_global.effect.text(Vector2d(650,1390),"harder")

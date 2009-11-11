@@ -43,7 +43,9 @@ class WallEditor:
             self.activeObject = self.entityRefList[self.index]()
             if self.activeObject.getName() == "TorchEn":
                 #self.activeObject.id = 541
-                self.activeObject.id = 520
+                self.activeObject.id = 541
+                #self.activeObject.id = 23132
+                pass
         else: self.activeObject = None
         
     def toggleModeOld(self):
