@@ -1,7 +1,7 @@
 from MW_datatypes import *
 
-gamemode =2
-isFull = False
+gamemode = 1
+isFull = True
 lightingmode = 0
 
 if isFull:
