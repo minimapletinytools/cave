@@ -57,12 +57,12 @@ def getTextEffect(pos,text):
     return EffectText()
 
 class EffectText(Effect):
-    def __init__(self,parent,text = "Game Over",position = Vector2d(0,0),expiration = 100, size = 15):
+    def __init__(self,parent,text = "Game Over",position = Vector2d(0,0),expiration = 100, size = 8):
         Effect.__init__(self,parent,position,expiration)
         self.text = text
         self.size = size
     def draw(self):
-        MW_global.speech.setSize(self.size)
+        MW_global.speech.setSize(self.size,MW_global.font)
         MW_global.speech.writeCentered(
                                         self.p.screen,
                                         MW_global.camera.convertCrds(self.pos),

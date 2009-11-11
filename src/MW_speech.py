@@ -1,4 +1,5 @@
 import pygame
+import os
 from MW_constants import *
 from MW_datatypes import *
 
@@ -13,7 +14,7 @@ class Speech:
             self.font[name] = dict()
         if size not in self.font[name]:
             try: 
-                self.font[name][size] = pygame.font.Font(name,size)
+                self.font[name][size] = pygame.font.Font(os.path.join("data",name),size)
                 print "created font: ", name, " at size: ", size
             except: 
                 self.font[name][size] = pygame.font.SysFont(pygame.font.get_default_font(), size)

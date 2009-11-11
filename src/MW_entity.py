@@ -566,7 +566,7 @@ class WomanEn(PlayerEn):
         for e in events:
             if e.type == pygame.KEYDOWN:
                 if e.key == pygame.K_z:
-                    #MW_global.effect.text(self.pos,"torch on")
+                    MW_global.effect.text(self.pos,"torch on")
                     MW_global.sound.play(MW_global.soundMap['light'])
                     MW_global.screen.fill((35,20,20))
                     self.checkTorch()

@@ -11,8 +11,11 @@ print "version,",sys.version
 
 pygame.mixer.pre_init(44100, -16, 2, 2048)
 pygame.init()
-#screen = pygame.display.set_mode(SCREEN_SIZE, pygame.FULLSCREEN)
-screen = pygame.display.set_mode((SCREEN_SIZE),DISPLAY_FLAGS)
+if isFull:
+    realscreen = pygame.display.set_mode(pygame.display.list_modes()[0],DISPLAY_FLAGS)
+    screen = pygame.Surface((SCREEN_SIZE)).convert()
+else:
+    screen = pygame.display.set_mode(SCREEN_SIZE, DISPLAY_FLAGS)
 #print "flags", screen.get_flags()
 pygame.mouse.set_visible(0)
 camera = MW_camera.Camera(screen)
@@ -40,7 +43,7 @@ freezetime = 0
 freezetime2 = 0
 
 #scripted constants
-
+font = "FFFATLAN.ttf"
 soundMap = dict()
 soundMap['light'] = "light08.wav"
 soundMap['switch'] = "switch01.wav"

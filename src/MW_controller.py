@@ -13,7 +13,7 @@ class ControllerController():
     def __init__(self):
         self.cList = [TestController(),StartController(),PlayController(),WinController()]
         self.effect = MW_effects.EffectMenu()
-        self.activeIndex = 2 
+        self.activeIndex = 2
         MW_global.controller = self
     def loop(self):
         if MW_global.freezetime < 1:
@@ -111,6 +111,10 @@ class PlayController(Controller):
 class WinController(Controller):
     def __init__(self):
         Controller.__init__(self)
+        MW_global.imagewheel.loadImage("gameover01.png")
+        self.go = MW_global.imagewheel.getImage("gameover01.png")
         pass
     def loop(self):
+        if MW_global.finalstate == "WIN":
+            MW_global.screen.blit(self.go,(MW_global.screen.get_width()/2-self.go.get_width()/2,MW_global.screen.get_height()/2-self.go.get_height()/2))        
         pass
