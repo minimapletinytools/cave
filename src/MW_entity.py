@@ -334,7 +334,6 @@ class PlayerEn(Entity):
             #MAN 21124 21125 21126 TRIGGERS WOMAN PIT SCRIPT
             elif id == 21124:
                 MW_global.state = "LOSE"
-                #TODO create shadowlady and have her walk left
                 pass    
             #MAN outside meets woman
             elif id == 27973:
@@ -352,6 +351,7 @@ class PlayerEn(Entity):
             #WOMAN outside by herself
             elif id == 28375:
                 if self.getName() != "ManEn" and self.p.woman.shadowLady != self and MW_global.state != "MAN ON QUEST":
+                    MW_global.torchStateMap[540] = "BLANK" 
                     self.state = "GHOST"
                     self.anim.state = "GHOST"
                     MW_global.microstate2 = "WOMAN AT END"
@@ -625,23 +625,23 @@ class WomanEn(PlayerEn):
         for i in hits:
             index = self.p.cont.wList[self.p.cont.getMatrixIndex(cloth[i])].index
             if index == 9070:
-                MW_global.effect.text(self.pos,"I've never felt this way before")
+                MW_global.effect.text(Vector2d(600,470),"I've never felt this way before")
                 self.p.cont.getAtIndex(9070).id = 542
                 self.p.cont.getAtIndex(9070).index = 99999999    
             elif index == 15484:
-                MW_global.effect.text(self.pos,"I'm not sure...")
+                MW_global.effect.text(Vector2d(-440,1110),"I'm not sure...")
                 self.p.cont.getAtIndex(15484).id = 542
                 self.p.cont.getAtIndex(15484).index = 99999999
             elif index == 14652:
-                MW_global.effect.text(self.pos,"I really like him")
+                MW_global.effect.text(Vector2d(-950,1030),"I really like him")
                 self.p.cont.getAtIndex(14652).id = 542
                 self.p.cont.getAtIndex(14652).index = 99999999
             elif index == 17672:
-                MW_global.effect.text(self.pos,"It's okay")
+                MW_global.effect.text(Vector2d(-420,1350),"It's okay")
                 self.p.cont.getAtIndex(17672).id = 542
                 self.p.cont.getAtIndex(17672).index = 99999999
             elif index == 17495:
-                MW_global.effect.text(self.pos,"I trust him")
+                MW_global.effect.text(Vector2d(-100,1310),"I trust him")
                 self.p.cont.getAtIndex(17495).id = 542
                 self.p.cont.getAtIndex(17495).index = 99999999
     def checkHits(self):
@@ -762,33 +762,41 @@ class ManEn(PlayerEn):
         hits = self.getRect().collidelistall(cloth)
         for i in hits:
             index = self.p.cont.wList[self.p.cont.getMatrixIndex(cloth[i])].index
-            if index == 11732:
-                MW_global.effect.text(self.pos,"I've never felt this way before")
-                self.p.cont.getAtIndex(11732).id = 542
-                self.p.cont.getAtIndex(11732).index = 99999999    
+            if index == 11737:
+                MW_global.effect.text(Vector2d(800,730),"I met her three months ago")
+                self.p.cont.getAtIndex(11737).id = 542
+                self.p.cont.getAtIndex(11737).index = 99999999    
             elif index == 15333:
-                MW_global.effect.text(self.pos,"I'm not sure...")
+                MW_global.effect.text(Vector2d(580,1090),"It was only right that we take the next step")
                 self.p.cont.getAtIndex(15333).id = 542
                 self.p.cont.getAtIndex(15333).index = 99999999
             elif index == 18929:
-                MW_global.effect.text(self.pos,"I really like him")
+                MW_global.effect.text(Vector2d(680,1450),"I wanted her")
                 self.p.cont.getAtIndex(18929).id = 542
                 self.p.cont.getAtIndex(18929).index = 99999999
             elif index == 22798:
-                MW_global.effect.text(self.pos,"It's okay")
+                MW_global.effect.text(Vector2d(1820,1830),"But do I like her?")
                 self.p.cont.getAtIndex(22798).id = 542
                 self.p.cont.getAtIndex(22798).index = 99999999
             elif index == 23311:
-                MW_global.effect.text(self.pos,"I trust him")
+                MW_global.effect.text(Vector2d(-20,1890),"It was her own choice")
                 self.p.cont.getAtIndex(23311).id = 542
                 self.p.cont.getAtIndex(23311).index = 99999999
             elif index == 23292:
-                MW_global.effect.text(self.pos,"I trust him")
+                MW_global.effect.text(Vector2d(-20,1890),"I did not force her")
                 self.p.cont.getAtIndex(23292).id = 542
                 self.p.cont.getAtIndex(23292).index = 99999999
+                for i in range(23508,23511):
+                    self.p.cont.wList[i] = MW_entity.WallEn()
+                    self.p.cont.wList[i].teleport(self.p.cont.getScreenPosition(i%self.p.cont.width,int(i/self.p.cont.width)))
+                if 23909 in MW_global.torchonlist:
+                    self.p.cont.getAtIndex(23909).state = "BLANK"
+                    MW_global.torchonlist.remove(23909)
+                    MW_global.torchofflist.add(23909)
     def update(self):
         if self.anim.activeNode.state == "DEAD" or self.anim.activeNode.state == "REALLYDEAD" or self.anim.activeNode.state == "REALLYREALLYDEAD":
-            MW_global.effect.text(Vector2d(650,1390),"harder")
+            if self.anim.activeNode.state == "REALLYDEAD":
+                MW_global.effect.text(Vector2d(650,1390),"harder...")
             #When woman leaves cave (28375) man comes back to life and goes to beginning
             if MW_global.state == "MAN JOINS WOMAN":
                 MW_global.state = "MAN ON QUEST"
@@ -800,18 +808,21 @@ class ManEn(PlayerEn):
             elif MW_global.state == "WINNING":
                 #game freezes for a bit, then switch to woman and fill in the pit
                 if self.anim.activeNode.state == "REALLYREALLYDEAD":
-                    for i in (23125,23119,23114):
+                    MW_global.torchStateMap[541] = "BLANK" 
+                    for i in (23125,23119,23114,23132,23137):
                         if i in MW_global.torchonlist:
+                            self.p.cont.getAtIndex(i).id = 0
                             self.p.cont.getAtIndex(i).state = "DEFAULT"
                             MW_global.torchonlist.remove(i)
                     self.p.activePlayer = "woman"
-                    if 23909 in MW_global.torchonlist:
-                        self.p.cont.getAtIndex(23909).state = "BLANK"
-                        MW_global.torchonlist.remove(23909)
-                    MW_global.torchofflist.add(23909)
                     for i in range(23508,23511):
                         self.p.cont.wList[i] = MW_entity.WallEn()
                         self.p.cont.wList[i].teleport(self.p.cont.getScreenPosition(i%self.p.cont.width,int(i/self.p.cont.width)))
+                    if 23909 in MW_global.torchonlist:
+                        self.p.cont.getAtIndex(23909).state = "BLANK"
+                        MW_global.torchonlist.remove(23909)
+                        MW_global.torchofflist.add(23909)
+                    
             #game state is lose when man enters climax room, if man dies, then he wins
             elif MW_global.state == "LOSE":
                 MW_global.state = "WINNING"

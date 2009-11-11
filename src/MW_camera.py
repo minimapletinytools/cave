@@ -1,7 +1,12 @@
 import pygame
 from MW_datatypes import *
+from MW_constants import *
 class Camera:
     def __init__(self, sfc):
+        self.width = WIDTH
+        self.height = HEIGHT
+        self.rect = pygame.Rect(0,0,WIDTH,HEIGHT)
+        
         self.width = sfc.get_width()
         self.height = sfc.get_height()
         self.rect = pygame.Rect(0,0,sfc.get_width(),sfc.get_height())

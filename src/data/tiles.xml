@@ -80,10 +80,12 @@
 		<frame id = "601" x = "300" y = "60" w = "20" h = "20" time = "5" state = "HISC">
 			<next state = "DEFAULT" id = "601" />
 			<next state = "HISC" id = "601" />
+			<next state = "BLANK" id = "201" time = "0"/>
 		</frame>
 		<frame id = "701" x = "300" y = "40" w = "20" h = "20" time = "5" state = "HERC">
 			<next state = "DEFAULT" id = "701" />
 			<next state = "HERC" id = "701" />
+			<next state = "BLANK" id = "201" time = "0"/>
 		</frame>
 	</sprite>
 	<sprite name = "spike" file = "spikes_01.png spikes_02.png spikes_03.png spikes_04.png">
