@@ -18,3 +18,6 @@ class soundMan:
             self.loadSound(filename)
         #print "playing sound",filename
         self.soundList[filename].play()
+    
+    def stopAll(self):
+        pygame.mixer.stop()

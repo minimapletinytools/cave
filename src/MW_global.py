@@ -52,6 +52,7 @@ font = "visitor2.ttf",15
 soundMap = dict()
 soundMap['light'] = "light08.wav"
 soundMap['switch'] = "switch01.wav"
+soundMap['static'] = "static03.wav"
 sound.loadSound(soundMap['light'])
 stickyswitchlist = set([2123,3,23299,28566,11732])
 stickydoorlist = set() #sticky doors do not open

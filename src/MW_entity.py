@@ -323,6 +323,7 @@ class PlayerEn(Entity):
                     self.keyMap[pygame.K_RIGHT] = False
                     self.state = "STAND"
                     #TODO play sound
+                    MW_global.sound.play(MW_global.soundMap['static'])
                 elif MW_global.freezetime == 1:
                     MW_global.hangstate = True
                     MW_global.torchStateMap[510] = "BLANK"
@@ -330,6 +331,7 @@ class PlayerEn(Entity):
                     MW_global.torchonlist.remove(22548)
                     MW_global.torchofflist.add(22548)
                     #TODO play another sound
+                    MW_global.sound.stopAll()
                 
             #MAN 21124 21125 21126 TRIGGERS WOMAN PIT SCRIPT
             elif id == 21124:
