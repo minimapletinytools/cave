@@ -301,9 +301,9 @@ class MatrixContainer(SuperContainer):
             self.wList[index].teleport(self.getScreenPosition(index%self.width,int(index/self.width)))
             if e.hasAttribute("id"):
                 self.wList[index].id = int(e.getAttribute("id"))
-            try:
+            if self.wList[index].id in MW_global.torchStateMap:
                 self.wList[index].state = MW_global.torchStateMap[self.wList[index].id]
-            except: self.wList[index].state = "DEFAULT" 
+            else: self.wList[index].state = "DEFAULT" 
             self.torchList.append(self.wList[index])
             self.wList[index].index = index
 	t5 = pygame.time.get_ticks()

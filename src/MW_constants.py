@@ -1,6 +1,6 @@
 from MW_datatypes import *
 
-gamemode = 1
+gamemode = 2
 isFull = False
 lightingmode = 1
 

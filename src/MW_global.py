@@ -45,7 +45,7 @@ freezetime = 0
 freezetime2 = 0
 
 #scripted constants
-font = "FFFATLAN.ttf",8
+font = "visitor2.ttf",10
 soundMap = dict()
 soundMap['light'] = "light08.wav"
 soundMap['switch'] = "switch01.wav"
