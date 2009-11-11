@@ -24,11 +24,11 @@ while 1:
         if isFull:
             p = (MW_global.realscreen.get_width()/2-MW_global.screen.get_width()/2,MW_global.realscreen.get_height()/2-MW_global.screen.get_height()/2)
             MW_global.realscreen.blit(MW_global.screen,p)
-            pygame.display.update(pygame.Rect(p[0],p[1],WIDTH,HEIGHT))
+            #pygame.display.update(pygame.Rect(p[0],p[1],WIDTH,HEIGHT))
+            pygame.display.flip()
         else:
             pygame.display.flip()   #flip the screen
     #else wait the difference3
-    
     else: 
         pygame.time.wait( MSPERFRAME - pygame.time.get_ticks() + last)
         

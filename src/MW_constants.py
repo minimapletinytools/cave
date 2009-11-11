@@ -1,14 +1,15 @@
 from MW_datatypes import *
 
 gamemode = 1
-isFull = True
+isFull = False
+lightingmode = 1
 
 if isFull:
     DISPLAY_FLAGS = pygame.HWSURFACE|pygame.DOUBLEBUF|pygame.FULLSCREEN
 else:
     DISPLAY_FLAGS = pygame.HWSURFACE|pygame.DOUBLEBUF
 if gamemode == 1:
-    SCREEN_SIZE = WIDTH, HEIGHT = 641,480
+    SCREEN_SIZE = WIDTH, HEIGHT = 640,480
     LIGHTING = 1
     CAMERA_MODE = "force"
 elif gamemode == 2:

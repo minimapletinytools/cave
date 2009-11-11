@@ -97,17 +97,19 @@ class MatrixContainer(SuperContainer):
         #if we are dealing with walls
         if e.getName() == "WallEn":
             for f in self.p.getPlayerList():
-                if f.pos.distance(e.pos) < MW_constants.PLAYER_LIGHT_RADIUS[0] and f.anim.activeNode.state != "REALLYREALLYDEAD":
-                    e.state = "LIGHT"
-                    return True
+                if lightingmode == 1 or self.p.getActivePlayer() == f:
+                    if f.pos.distance(e.pos) < MW_constants.PLAYER_LIGHT_RADIUS[0] and f.anim.activeNode.state != "REALLYREALLYDEAD":
+                        e.state = "LIGHT"
+                        return True
             for f in self.activeTorchList:
                 if f.pos.distance(e.pos) < MW_constants.TORCH_RADIUS[0]:
                     e.state = "LIGHT"
                     return True
             for f in self.p.getPlayerList():
-                if f.pos.distance(e.pos) < MW_constants.PLAYER_LIGHT_RADIUS[1] and f.anim.activeNode.state != "REALLYREALLYDEAD":
-                    e.state = "DARK"
-                    return True
+                if lightingmode == 1 or self.p.getActivePlayer() == f:
+                    if f.pos.distance(e.pos) < MW_constants.PLAYER_LIGHT_RADIUS[1] and f.anim.activeNode.state != "REALLYREALLYDEAD":
+                        e.state = "DARK"
+                        return True
             for f in self.activeTorchList:
                 if f.pos.distance(e.pos) < MW_constants.TORCH_RADIUS[1]:
                     e.state = "DARK"
@@ -115,8 +117,9 @@ class MatrixContainer(SuperContainer):
             return False
                 
         for f in self.p.getPlayerList():
-            if f.pos.distance(e.pos) < MW_constants.PLAYER_LIGHT_RADIUS[0] and f.anim.activeNode.state != "REALLYREALLYDEAD":
-                return True
+            if lightingmode == 1 or self.p.getActivePlayer() == f:
+                if f.pos.distance(e.pos) < MW_constants.PLAYER_LIGHT_RADIUS[0] and f.anim.activeNode.state != "REALLYREALLYDEAD":
+                        return True
         for f in self.activeTorchList:
             if f.pos.distance(e.pos) < MW_constants.TORCH_RADIUS[0]:
                 return True

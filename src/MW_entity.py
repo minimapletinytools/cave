@@ -279,6 +279,19 @@ class PlayerEn(Entity):
             return True
         else: return False
 
+    def checkRectProjection(self,rect):
+        selfRect = self.getRect()
+        selfRect.x += rect.x
+        selfRect.y += rect.y
+        selfRect.h = rect.h
+        selfRect.w = rect.w
+        r = self.getRect().inflate(60,60)
+        rect = self.p.cont.getMatrixRect(r)#arbitrary, can be more precise
+        wallRects = self.p.cont.getWallRects(rect)
+        hits = selfRect.collidelistall(wallRects)
+        if len(hits) > 0:
+            return True
+        else: return False
     def checkProjectedRect(self,projection,rect):
         selfRect = self.getRect()
         selfRect.x += projection.x
@@ -586,10 +599,11 @@ class WomanEn(PlayerEn):
                             self.anim.dir = "LEFT"
                         else: self.anim.dir = "RIGHT"
                 if e.key == pygame.K_DOWN:
-                    if self.state == "WALK":
-                        self.state = "CRAWLING"
-                    elif self.state == "STAND":
-                        self.state = "CRAWL"
+                    if not self.checkRectProjection(pygame.Rect(-10,20,40,20)):
+                        if self.state == "WALK":
+                            self.state = "CRAWLING"
+                        elif self.state == "STAND":
+                            self.state = "CRAWL"
             elif e.type == pygame.KEYUP:
                 if e.key == pygame.K_LEFT or e.key == pygame.K_RIGHT:
                     if self.state == "WALK":
