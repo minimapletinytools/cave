@@ -1,7 +1,7 @@
 from MW_datatypes import *
 
-gamemode = 2
-isFull = False
+gamemode = 1
+isFull = True
 
 if isFull:
     DISPLAY_FLAGS = pygame.HWSURFACE|pygame.DOUBLEBUF|pygame.FULLSCREEN
@@ -46,7 +46,7 @@ MAN_START = Vector2d(-540,-40)
 WOMAN_START = Vector2d(-780,-40)
 #MAN_START = Vector2d(600,1640)
 #WOMAN_START = Vector2d(0,1280)
-#MAN_START = Vector2d(1300,1920)     #exit
+MAN_START = Vector2d(1300,1920)     #exit
 
 SHADOW_LADY_START = Vector2d(120,-300)
 

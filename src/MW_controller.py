@@ -113,8 +113,10 @@ class WinController(Controller):
         Controller.__init__(self)
         MW_global.imagewheel.loadImage("gameover01.png")
         self.go = MW_global.imagewheel.getImage("gameover01.png")
+        self.timer = 700
         pass
     def loop(self):
-        if MW_global.finalstate == "WIN":
+        self.timer -= 1
+        if MW_global.finalstate == "WIN" and self.timer < 0:
             MW_global.screen.blit(self.go,(MW_global.screen.get_width()/2-self.go.get_width()/2,MW_global.screen.get_height()/2-self.go.get_height()/2))        
         pass

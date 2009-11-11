@@ -35,7 +35,7 @@ frame = 0
 state = "PASS"
 microstate = "PASS"
 microstate2 = "PASS"
-finalstate = "PASS"
+finalstate = "WIN"
 hangstate = False
 judgementstate = False
 

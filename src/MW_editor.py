@@ -42,7 +42,8 @@ class WallEditor:
         if self.entityRefList[self.index] != None:
             self.activeObject = self.entityRefList[self.index]()
             if self.activeObject.getName() == "TorchEn":
-                self.activeObject.id = 541
+                #self.activeObject.id = 541
+                self.activeObject.id = 520
         else: self.activeObject = None
         
     def toggleModeOld(self):
@@ -101,7 +102,7 @@ class WallEditor:
         if self.activeObject and self.mode == "place":
             self.activeObject.draw()
         pygame.draw.rect(MW_global.screen, (255,255,255),MW_global.camera.convertCrds(pygame.Rect(self.cursor.x,self.cursor.y,TILING_SIZE.x,TILING_SIZE.y)),1)
-        MW_global.speech.setSize(8)
+        MW_global.speech.setSize(16)
         #MW_global.speech.writeText(MW_global.screen, Vector2d(10,10), "x: " + str(self.mX) + "  y: " + str(self.mY) + "  index: " + str(self.mIndex), COLOR_WHITE)
         MW_global.speech.writeText(MW_global.screen, Vector2d(10,10), "x: " + str(self.cursor.x) + "  y: " + str(self.cursor.y) + "  index: " + str(self.mIndex), COLOR_WHITE)
         

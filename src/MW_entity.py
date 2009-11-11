@@ -148,23 +148,23 @@ class DoorEn(Entity):
         #BAD scripting stuff
         if self.index == 28168:
             if self.anim.activeNode.id == "2":
-                MW_global.matrixcontainer.getAtIndex(27975).state = "LIGHT"
-                MW_global.matrixcontainer.getAtIndex(27975).id = 999999
+                MW_global.matrixcontainer.getAtIndex(28175).state = "LIGHT"
+                MW_global.matrixcontainer.getAtIndex(28175).id = 999999
             elif self.anim.activeNode.id == "3":
-                MW_global.matrixcontainer.getAtIndex(27980).state = "LIGHT"
-                MW_global.matrixcontainer.getAtIndex(27980).id = 999999
+                MW_global.matrixcontainer.getAtIndex(28180).state = "LIGHT"
+                MW_global.matrixcontainer.getAtIndex(28180).id = 999999
             elif self.anim.activeNode.id == "4":
-                MW_global.matrixcontainer.getAtIndex(27985).state = "LIGHT"
-                MW_global.matrixcontainer.getAtIndex(27985).id = 999999
+                MW_global.matrixcontainer.getAtIndex(28185).state = "LIGHT"
+                MW_global.matrixcontainer.getAtIndex(28185).id = 999999
             elif self.anim.activeNode.id == "5":
-                MW_global.matrixcontainer.getAtIndex(27990).state = "LIGHT"
-                MW_global.matrixcontainer.getAtIndex(27990).id = 999999
+                MW_global.matrixcontainer.getAtIndex(28190).state = "LIGHT"
+                MW_global.matrixcontainer.getAtIndex(28190).id = 999999
             elif self.anim.activeNode.id == "6":
-                MW_global.matrixcontainer.getAtIndex(27995).state = "LIGHT"
-                MW_global.matrixcontainer.getAtIndex(27995).id = 999999
+                MW_global.matrixcontainer.getAtIndex(28195).state = "LIGHT"
+                MW_global.matrixcontainer.getAtIndex(28195).id = 999999
             elif self.anim.activeNode.id == "7":
-                MW_global.matrixcontainer.getAtIndex(27571).state = "LIGHT"
-                MW_global.matrixcontainer.getAtIndex(27571).id = 999999
+                MW_global.matrixcontainer.getAtIndex(27771).state = "LIGHT"
+                MW_global.matrixcontainer.getAtIndex(27771).id = 999999
         self.anim.state = self.state
         self.anim.update()
     def draw(self):
@@ -355,7 +355,7 @@ class PlayerEn(Entity):
                           self.keyMap[pygame.K_RIGHT] = False
                           MW_global.microstate = "MAN AT BRINK OF THE PIT"
                           #MW_global.freezetime = 120
-                          MW_global.freezetime = 40
+                          MW_global.freezetime = 43
                           #print MW_global.microstate
                           self.state = "STAND"
                           self.p.woman.shadowLady.state = "SHADOWFALL"
@@ -566,7 +566,7 @@ class WomanEn(PlayerEn):
         for e in events:
             if e.type == pygame.KEYDOWN:
                 if e.key == pygame.K_z:
-                    MW_global.effect.text(self.pos,"torch on")
+                    #MW_global.effect.text(self.pos,"torch on")
                     MW_global.sound.play(MW_global.soundMap['light'])
                     MW_global.screen.fill((35,20,20))
                     self.checkTorch()
@@ -737,6 +737,7 @@ class ManEn(PlayerEn):
                 pass
     def update(self):
         if self.anim.activeNode.state == "DEAD" or self.anim.activeNode.state == "REALLYDEAD" or self.anim.activeNode.state == "REALLYREALLYDEAD":
+            MW_global.effect.text(Vector2d(650,1390),"harder")
             #When woman leaves cave (28375) man comes back to life and goes to beginning
             if MW_global.state == "MAN JOINS WOMAN":
                 MW_global.state = "MAN ON QUEST"
