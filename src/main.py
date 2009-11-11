@@ -22,8 +22,8 @@ while 1:
             pass
             #print "cycle time", pygame.time.get_ticks() - t1
         if isFull:
-            p = (MW_global.realscreen.get_width()/2-MW_global.screen.get_width()/2,MW_global.realscreen.get_height()/2-MW_global.screen.get_height()/2)
-            MW_global.realscreen.blit(MW_global.screen,p)
+            #p = (MW_global.screen.get_width()/2-WIDTH/2,MW_global.screen.get_height()/2-HEIGHT/2)
+            #MW_global.realscreen.blit(MW_global.screen,p)
             #pygame.display.update(pygame.Rect(p[0],p[1],WIDTH,HEIGHT))
             pygame.display.flip()
         else:

@@ -15,6 +15,12 @@
 			<next state = "BURNING" id = "11" time = "0"/>
 			<next state = "INSTRUCTION1" id = "101" time = "0" />
 			<next state = "INSTRUCTION2" id = "102" time = "0" />
+			<next state = "I1" id = "111" time = "0" />
+			<next state = "I2" id = "112" time = "0" />
+			<next state = "I3" id = "113" time = "0" />
+			<next state = "I4" id = "114" time = "0" />
+			<next state = "I5" id = "115" time = "0" />
+			<next state = "I6" id = "116" time = "0" />
 			<next state = "SYMBOL1" id = "103" time = "0" />
 			<next state = "SYMBOL2" id = "104" time = "0" />
 			
@@ -50,6 +56,25 @@
 		<frame id = "102" x = "0" y = "100" w = "320" h = "20" dx = "-280" dy = "0" time = "5" state = "INSTRUCTION2">
 			<next state = "DEFAULT" id = "102" />
 		</frame>
+		<frame id = "111" x = "0" y = "100" w = "40" h = "20" time = "5" state = "I1">
+			<next state = "DEFAULT" id = "111" />
+		</frame>
+		<frame id = "112" x = "40" y = "100" w = "40" h = "20" time = "5" state = "I2">
+			<next state = "DEFAULT" id = "112" />
+		</frame>
+		<frame id = "113" x = "80" y = "100" w = "40" h = "20" time = "5" state = "I3">
+			<next state = "DEFAULT" id = "113" />
+		</frame>
+		<frame id = "114" x = "120" y = "100" w = "40" h = "20" time = "5" state = "I4">
+			<next state = "DEFAULT" id = "114" />
+		</frame>
+		<frame id = "115" x = "160" y = "100" w = "60" h = "20" time = "5" state = "I5">
+			<next state = "DEFAULT" id = "115" />
+		</frame>
+		<frame id = "116" x = "280" y = "100" w = "40" h = "20" time = "5" state = "I6">
+			<next state = "DEFAULT" id = "116" />
+		</frame>
+		
 		<frame id = "103" x = "0" y = "120" w = "40" h = "40" dx = "-10" dy = "-10" time = "5" state = "SYMBOL1">
 			<next state = "DEFAULT" id = "103" />
 		</frame>

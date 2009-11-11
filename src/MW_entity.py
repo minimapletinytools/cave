@@ -625,7 +625,7 @@ class WomanEn(PlayerEn):
         for i in hits:
             index = self.p.cont.wList[self.p.cont.getMatrixIndex(cloth[i])].index
             if index == 9070:
-                MW_global.effect.text(Vector2d(600,470),"I've never felt this way before")
+                MW_global.effect.text(Vector2d(-600,470),"I've never felt this way before")
                 self.p.cont.getAtIndex(9070).id = 542
                 self.p.cont.getAtIndex(9070).index = 99999999    
             elif index == 15484:
@@ -721,7 +721,8 @@ class WomanEn(PlayerEn):
                 self.state = "FALLING" 
            
     def draw(self):
-        MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
+        if self.p.cont.checkDraw(self) and MW_global.camera.isOnScreen(self.getRect()):
+            MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
         #pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),1)
         #pygame.draw.rect(MW_global.screen,COLOR_WHITE,self.getRect().inflate(40,40),1)
     
@@ -763,7 +764,7 @@ class ManEn(PlayerEn):
         for i in hits:
             index = self.p.cont.wList[self.p.cont.getMatrixIndex(cloth[i])].index
             if index == 11737:
-                MW_global.effect.text(Vector2d(800,730),"I met her three months ago")
+                MW_global.effect.text(Vector2d(850,730),"I met her three months ago")
                 self.p.cont.getAtIndex(11737).id = 542
                 self.p.cont.getAtIndex(11737).index = 99999999    
             elif index == 15333:
@@ -857,7 +858,8 @@ class ManEn(PlayerEn):
                 self.state = "FALLING" 
     
     def draw(self):
-        MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
+        if self.p.cont.checkDraw(self) and MW_global.camera.isOnScreen(self.getRect()):
+            MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
         #pygame.draw.rect(MW_global.screen,COLOR_WHITE,MW_global.camera.convertCrds(self.getRect()),1)
         #pygame.draw.rect(MW_global.screen,COLOR_WHITE,self.getRect().inflate(20,20),1)
     

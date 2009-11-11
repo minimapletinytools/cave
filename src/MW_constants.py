@@ -2,7 +2,7 @@ from MW_datatypes import *
 
 gamemode = 2
 isFull = False
-lightingmode = 1
+lightingmode = 0
 
 if isFull:
     DISPLAY_FLAGS = pygame.HWSURFACE|pygame.DOUBLEBUF|pygame.FULLSCREEN

@@ -91,7 +91,7 @@ class MatrixContainer(SuperContainer):
             self.editor.update()
         self.activeTorchList = self.getActiveTorches()
     def checkDraw(self,e):
-        if not LIGHTING or (e.getName() == "TorchEn" and not e.id in MW_global.torchofflist):
+        if not LIGHTING or (e.getName() == "TorchEn" and e.state == "BURNING"):
             return True
         
         #if we are dealing with walls
@@ -125,7 +125,6 @@ class MatrixContainer(SuperContainer):
                 return True
         return False
     def draw(self):
-        
         rect = self.getMatrixRect(MW_global.camera.rect)
         for r in range(rect.h):
             for c in range(rect.w):
