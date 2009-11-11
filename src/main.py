@@ -1,6 +1,7 @@
 import pygame
 import MW_global
 import MW_controller
+import sys
 from MW_constants import *
 from MW_datatypes import *
 
@@ -24,8 +25,10 @@ while 1:
         if isFull:
             p = (MW_global.screen.get_width()/2-WIDTH/2,MW_global.screen.get_height()/2-HEIGHT/2)
             #MW_global.realscreen.blit(MW_global.screen,p)
-            pygame.display.update(pygame.Rect(p[0],p[1],WIDTH,HEIGHT))
-            #pygame.display.flip()
+            if sys.platform == 'win32':
+                pygame.display.flip()
+            else:
+                pygame.display.update(pygame.Rect(p[0],p[1],WIDTH,HEIGHT)) 
         else:
             pygame.display.flip()   #flip the screen
     #else wait the difference3
