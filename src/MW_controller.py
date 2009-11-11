@@ -113,7 +113,7 @@ class WinController(Controller):
         Controller.__init__(self)
         MW_global.imagewheel.loadImage("gameover01.png")
         self.go = MW_global.imagewheel.getImage("gameover01.png")
-        self.timer = 700
+        self.timer = 100
         pass
     def loop(self):
         self.timer -= 1

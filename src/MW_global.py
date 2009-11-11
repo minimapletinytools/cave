@@ -35,7 +35,7 @@ frame = 0
 state = "PASS"
 microstate = "PASS"
 microstate2 = "PASS"
-finalstate = "WIN"
+finalstate = "PASS"
 hangstate = False
 judgementstate = False
 
@@ -43,7 +43,7 @@ freezetime = 0
 freezetime2 = 0
 
 #scripted constants
-font = "FFFATLAN.ttf"
+font = "FFFATLAN.ttf",8
 soundMap = dict()
 soundMap['light'] = "light08.wav"
 soundMap['switch'] = "switch01.wav"
