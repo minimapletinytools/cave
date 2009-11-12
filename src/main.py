@@ -12,6 +12,7 @@ last = pygame.time.get_ticks()
 while 1:
     #if time expired
     
+    
     if(pygame.time.get_ticks() - last > MSPERFRAME):
         while(pygame.time.get_ticks() - last > MSPERFRAME):
             last += MSPERFRAME
@@ -39,6 +40,10 @@ while 1:
     #quit
     pygame.event.pump()
     keys = pygame.key.get_pressed()
+    if keys[pygame.K_F12]:
+        pass
+        #restart for installation
+        #mwc = MW_controller.ControllerController()
     if keys[pygame.K_ESCAPE]:
         print "goodbye"
         del mwc

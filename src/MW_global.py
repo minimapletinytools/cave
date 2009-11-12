@@ -12,13 +12,13 @@ print "version,",sys.version
 pygame.mixer.pre_init(44100, -16, 2, 2048)
 pygame.init()
 screen = None
+pygame.display.set_icon(pygame.image.load(os.path.join("data","icon3.bmp")))
 if isFull:
     screen = pygame.display.set_mode(pygame.display.list_modes()[0],DISPLAY_FLAGS)
     #screen = pygame.Surface((SCREEN_SIZE))
 else:
     screen = pygame.display.set_mode(SCREEN_SIZE, DISPLAY_FLAGS)
 pygame.display.set_caption("game")
-pygame.display.set_icon(pygame.image.load(os.path.join("data","icon3.bmp")).convert())
 pygame.mouse.set_visible(0)
 camera = MW_camera.Camera(screen)
 imagewheel = MW_image.ImageWheel()
@@ -52,6 +52,7 @@ font = "visitor2.ttf",15
 #font = "FFFATLAN.ttf",16
 soundMap = dict()
 soundMap['light'] = "light08.wav"
+soundMap['lighton'] = "lightup06.wav"
 soundMap['switch'] = "switch01.wav"
 soundMap['static'] = "static03.wav"
 sound.loadSound(soundMap['light'])

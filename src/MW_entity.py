@@ -86,7 +86,11 @@ class TorchEn(Entity):
         if self.id in MW_global.torchStateMap.keys():
             self.state = MW_global.torchStateMap[self.id]
         self.anim.state = self.state
+        pstate = self.anim.activeNode.state
         self.anim.update()
+        if pstate != "BURNING" and self.anim.activeNode.state == "BURNING":
+            MW_global.sound.play(MW_global.soundMap['lighton'])
+        
     def draw(self):
         MW_global.camera.drawOnScreen(self.anim.getImage(), self.pos+self.anim.getDrawOffset(), self.anim.getDrawRect())
         #dPos = MW_global.camera.convertCrds(self.pos)
@@ -316,7 +320,7 @@ class PlayerEn(Entity):
             #MAN 22751 22951 23151 TURNS ON TORCHES 22548 22554 AND CHANGES 22146 21947 etc
             elif id == 22751 and MW_global.state == "LOSE" and not MW_global.hangstate:
                 if MW_global.freezetime < 1:
-                    MW_global.freezetime = 15
+                    MW_global.freezetime = 23
                     MW_global.torchonlist.add(22548)
                     #MW_global.torchonlist.add(22146)
                     MW_global.torchStateMap[510] = "HANGING"
@@ -345,6 +349,8 @@ class PlayerEn(Entity):
                         self.state = "SLOWWALK"
                         self.p.woman.shadowLady.state = "STAND"
                         self.anim.forceUpdate()
+                        if MW_global.finalstate == "WIN":
+                            MW_global.effect.text(Vector2d(1600,2410),"What took you so long?")
                     if self.anim.activeNode.state == "SLOWWALK":
                         self.p.woman.shadowLady.anim.dir = "RIGHT"
                         self.p.woman.shadowLady.state = "WALK"
@@ -358,11 +364,13 @@ class PlayerEn(Entity):
                     MW_global.torchStateMap[541] = "BLANK"
                     self.state = "GHOST"
                     self.anim.state = "GHOST"
-                    MW_global.microstate2 = "WOMAN AT END"
                     self.anim.forceUpdate()
+                    self.pos = SHADOW_LADY_START
+                    MW_global.microstate2 = "WOMAN AT END"
                     self.p.woman.clearBodies()
                     MW_global.state = "MAN JOINS WOMAN"
                     self.p.activePlayer = "man"
+                    MW_global.effect.text(Vector2d(300,380),"I must find her")
                     #TODO delete the lady so wec an replace her with shadow lady
             #MAN AT BRINK OF PIT
             elif id == 22713:
@@ -384,7 +392,7 @@ class PlayerEn(Entity):
             #MAN falling down final chute
             elif id == 24764:
                 if self.getName() == "ManEn":
-                    self.p.woman.shadowLady.teleport(Vector2d(1500,2420))
+                    self.p.woman.shadowLady.teleport(Vector2d(1500,2410))
                     self.p.woman.shadowLady.anim.dir = "LEFT"
                     #TODO set finish sequence here
                     if MW_global.state == "LOSE":
@@ -673,15 +681,10 @@ class WomanEn(PlayerEn):
         counter = 0
         while len(hits) > 0:
             if counter > 30:
-                if self.state == "CRAWL":
-                    self.state = "DEAD"
-                    #self.pos = Vector2d(self.hitOld.x,self.hitOld.y)
-                    #print "hit infinite loop detected, breaking now"
-                    break
-                else: 
-                    self.state = "CRAWL"
-                    self.anim.state = "CRAWL"
-                    self.anim.forceUpdate()
+                self.state = "DEAD"
+                #self.pos = Vector2d(self.hitOld.x,self.hitOld.y)
+                #print "hit infinite loop detected, breaking now"
+                break
             counter += 1
             flag = True
             if (Vector2d(selfRect)-Vector2d(self.hitOld)).magnitude() > 0:
@@ -784,11 +787,11 @@ class ManEn(PlayerEn):
                 MW_global.effect.text(Vector2d(1820,1830),"But do I like her?")
                 self.p.cont.getAtIndex(22798).id = 542
                 self.p.cont.getAtIndex(22798).index = 99999999
-            elif index == 23311 and self.p.cont.getAtIndex(23292).id != 542:
+            elif index == 23311 and MW_global.torchStateMap[541] == "HERC":
                 MW_global.effect.text(Vector2d(-20,1890),"It was her own choice")
                 self.p.cont.getAtIndex(23311).id = 542
                 self.p.cont.getAtIndex(23311).index = 99999999
-            elif index == 23292 and self.p.cont.getAtIndex(23292).id != 542:
+            elif index == 23292 and MW_global.torchStateMap[541] == "HERC":
                 MW_global.effect.text(Vector2d(-20,1890),"I did not force her")
                 self.p.cont.getAtIndex(23292).id = 542
                 self.p.cont.getAtIndex(23292).index = 99999999
@@ -819,7 +822,7 @@ class ManEn(PlayerEn):
             elif MW_global.state == "WINNING":
                 #game freezes for a bit, then switch to woman and fill in the pit
                 if self.anim.activeNode.state == "REALLYREALLYDEAD":
-                    MW_global.torchStateMap[540] = "BLANK"  
+                    MW_global.torchStateMap[541] = "BLANK"  
                     for i in (23125,23119,23114,23132,23137):
                         if i in MW_global.torchonlist:
                             self.p.cont.getAtIndex(i).id = 0

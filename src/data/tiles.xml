@@ -33,19 +33,19 @@
 			<next state = "HISC" id = "601" time = "0" />
 			<next state = "HERC" id = "701" time = "0" />
 		</frame>
-		<frame id = "11" x = "0" y = "20" w = "20" h = "20" time = "5">
+		<frame id = "11" x = "0" y = "20" w = "20" h = "20" time = "5" state = "BURNING">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "BURNING" id = "12" />
 		</frame>
-		<frame id = "12" x = "0" y = "40" w = "20" h = "20" time = "5">
+		<frame id = "12" x = "0" y = "40" w = "20" h = "20" time = "5" state = "BURNING">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "BURNING" id = "13" />
 		</frame>
-		<frame id = "13" x = "0" y = "60" w = "20" h = "20" time = "5">
+		<frame id = "13" x = "0" y = "60" w = "20" h = "20" time = "5" state = "BURNING">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "BURNING" id = "14" />
 		</frame>
-		<frame id = "14" x = "0" y = "80" w = "20" h = "20" time = "5">
+		<frame id = "14" x = "0" y = "80" w = "20" h = "20" time = "5" state = "BURNING">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "BURNING" id = "11" />
 		</frame>
