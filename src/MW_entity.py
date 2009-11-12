@@ -784,11 +784,11 @@ class ManEn(PlayerEn):
                 MW_global.effect.text(Vector2d(1820,1830),"But do I like her?")
                 self.p.cont.getAtIndex(22798).id = 542
                 self.p.cont.getAtIndex(22798).index = 99999999
-            elif index == 23311:
+            elif index == 23311 and self.p.cont.getAtIndex(23292).id != 542:
                 MW_global.effect.text(Vector2d(-20,1890),"It was her own choice")
                 self.p.cont.getAtIndex(23311).id = 542
                 self.p.cont.getAtIndex(23311).index = 99999999
-            elif index == 23292:
+            elif index == 23292 and self.p.cont.getAtIndex(23292).id != 542:
                 MW_global.effect.text(Vector2d(-20,1890),"I did not force her")
                 self.p.cont.getAtIndex(23292).id = 542
                 self.p.cont.getAtIndex(23292).index = 99999999
