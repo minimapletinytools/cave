@@ -4,7 +4,7 @@ Her Cave
 
 A boy and a girl exploring a cave
 
-to play: Run dist/her_cave.exe
+to play: Run dist/hercave.exe
 
 
 

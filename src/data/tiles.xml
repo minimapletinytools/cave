@@ -1,5 +1,5 @@
 <tiles>
-	<sprite name = "wall" file = "basic_wall02.png" >
+	<sprite name = "wall" file = "wall01.png wall02.png wall03.png wall04.png" >
 		<frame id = "1" x = "0" y = "0" w = "20" h = "20" time = "99">
 			<next state = "DEFAULT" id = "1" />
 			<next state = "DARK" id = "2" time = "0"/>
