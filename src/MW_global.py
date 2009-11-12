@@ -40,6 +40,7 @@ microstate2 = "PASS"
 finalstate = "PASS"
 hangstate = False
 judgementstate = False
+hardcounter = 0
 
 freezetime = 0
 freezetime2 = 0

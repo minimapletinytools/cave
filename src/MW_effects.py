@@ -62,10 +62,13 @@ class EffectText(Effect):
         self.text = text
         self.size = size
     def draw(self):
-        MW_global.speech.setSize(self.size,MW_global.font[0])
-        MW_global.speech.writeCentered(
-                                        self.p.screen,
-                                        MW_global.camera.convertCrds(self.pos),
-                                        self.text,
-                                        COLOR_WHITE
-                                        )
+        if MW_global.camera.isOnScreen(pygame.Rect(self.pos.x,self.pos.y,1,1)):
+            if self.text == "harder":
+                MW_global.hardcounter = 1
+            MW_global.speech.setSize(self.size,MW_global.font[0])
+            MW_global.speech.writeCentered(
+                                            self.p.screen,
+                                            MW_global.camera.convertCrds(self.pos),
+                                            self.text,
+                                            COLOR_WHITE
+                                            )

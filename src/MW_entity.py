@@ -188,8 +188,9 @@ class SwitchEn(Entity):
             #scripting nonsense
             #TODO play some loud noise
             if self.id == 9339:
-                #if 8936 not in MW_global.stickydoorlist:
                 MW_global.stickydoorlist.add(8936)
+            elif self.id == 11732:
+                MW_global.stickydoorlist.add(12683)
             elif self.id == 17496:
                 MW_global.matrixcontainer.getAtIndex(17298).state = "BURNING"
                 MW_global.matrixcontainer.getAtIndex(17306).state = "BURNING"
@@ -354,6 +355,7 @@ class PlayerEn(Entity):
             elif id == 28375:
                 if self.getName() != "ManEn" and self.p.woman.shadowLady != self and MW_global.state != "MAN ON QUEST":
                     MW_global.torchStateMap[540] = "BLANK" 
+                    MW_global.torchStateMap[541] = "BLANK"
                     self.state = "GHOST"
                     self.anim.state = "GHOST"
                     MW_global.microstate2 = "WOMAN AT END"
@@ -770,11 +772,12 @@ class ManEn(PlayerEn):
                 self.p.cont.getAtIndex(11737).id = 542
                 self.p.cont.getAtIndex(11737).index = 99999999    
             elif index == 15333:
-                MW_global.effect.text(Vector2d(580,1090),"It was only right that we take the next step")
+                MW_global.effect.text(Vector2d(560,1080),"It was only right")
+                MW_global.effect.text(Vector2d(560,1100),"that we take the next step")
                 self.p.cont.getAtIndex(15333).id = 542
                 self.p.cont.getAtIndex(15333).index = 99999999
             elif index == 18929:
-                MW_global.effect.text(Vector2d(680,1450),"I wanted her")
+                MW_global.effect.text(Vector2d(680,1450),"I want her")
                 self.p.cont.getAtIndex(18929).id = 542
                 self.p.cont.getAtIndex(18929).index = 99999999
             elif index == 22798:
@@ -799,7 +802,12 @@ class ManEn(PlayerEn):
     def update(self):
         if self.anim.activeNode.state == "DEAD" or self.anim.activeNode.state == "REALLYDEAD" or self.anim.activeNode.state == "REALLYREALLYDEAD":
             if self.anim.activeNode.state == "REALLYDEAD":
-                MW_global.effect.text(Vector2d(650,1390),"harder...")
+                if MW_global.hardcounter == 0:
+                    MW_global.effect.text(Vector2d(640,1450),"harder")
+                elif MW_global.hardcounter == 1:
+                    MW_global.effect.text(Vector2d(640,1450),"harder...")
+                    MW_global.hardcounter = 2
+                
             #When woman leaves cave (28375) man comes back to life and goes to beginning
             if MW_global.state == "MAN JOINS WOMAN":
                 MW_global.state = "MAN ON QUEST"
@@ -811,7 +819,7 @@ class ManEn(PlayerEn):
             elif MW_global.state == "WINNING":
                 #game freezes for a bit, then switch to woman and fill in the pit
                 if self.anim.activeNode.state == "REALLYREALLYDEAD":
-                    MW_global.torchStateMap[541] = "BLANK" 
+                    MW_global.torchStateMap[540] = "BLANK"  
                     for i in (23125,23119,23114,23132,23137):
                         if i in MW_global.torchonlist:
                             self.p.cont.getAtIndex(i).id = 0
