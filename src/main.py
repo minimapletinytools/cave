@@ -48,5 +48,5 @@ while 1:
         print "goodbye"
         del mwc
         pygame.quit()
-        exit()
+        break
 
