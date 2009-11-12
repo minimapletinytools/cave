@@ -26,7 +26,7 @@ while 1:
         if isFull:
             p = (MW_global.screen.get_width()/2-WIDTH/2,MW_global.screen.get_height()/2-HEIGHT/2)
             #MW_global.realscreen.blit(MW_global.screen,p)
-            if sys.platform == 'win32':
+            if sys.platform == 'win32' or sys.platform == 'darwin':
                 pygame.display.flip()
             else:
                 pygame.display.update(pygame.Rect(p[0],p[1],WIDTH,HEIGHT)) 
