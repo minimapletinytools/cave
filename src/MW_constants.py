@@ -1,7 +1,7 @@
 from MW_datatypes import *
 
 gamemode = 1
-isFull = True
+isFull = 1
 lightingmode = 0
 
 if isFull:
@@ -48,6 +48,8 @@ WOMAN_START = Vector2d(-780,-40)
 #MAN_START = Vector2d(600,1640)
 #WOMAN_START = Vector2d(0,1280)
 #MAN_START = Vector2d(1300,1920)     #exit
+#WOMAN_START = Vector2d(-320,840)
+#MAN_START = Vector2d(760,740)
 
 SHADOW_LADY_START = Vector2d(120,-300)
 
