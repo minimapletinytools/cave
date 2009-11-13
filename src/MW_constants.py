@@ -1,6 +1,6 @@
 from MW_datatypes import *
 
-gamemode = 1
+gamemode = 2
 isFull = 0
 lightingmode = 0
 
@@ -49,7 +49,8 @@ WOMAN_START = Vector2d(-780,-40)
 #WOMAN_START = Vector2d(0,1280)
 #MAN_START = Vector2d(1300,1920)     #exit
 #WOMAN_START = Vector2d(-320,840)
-#MAN_START = Vector2d(760,740)
+MAN_START = Vector2d(760,740)
+MAN_START = Vector2d(520,1280)
 
 SHADOW_LADY_START = Vector2d(120,-300)
 
