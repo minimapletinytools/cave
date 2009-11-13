@@ -1,12 +1,7 @@
-Her Cave
-
-
-
+Cave
 A boy and a girl exploring a cave
 
-to play: Run dist/hercave.exe
-
-
+please run fullscreen version for complete experience
 
 Controls:
 	
@@ -29,9 +24,6 @@ UP - jump
 DOWN - crouch/crawl
 
 Z - use lighter, lights torches when near
-
-
-
 
 If full screen version runs slow, try windowed version.
 
