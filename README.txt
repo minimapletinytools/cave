@@ -1,7 +1,10 @@
-Cave
+Cave:
 A boy and a girl exploring a cave
 
-please run fullscreen version for complete experience
+
+
+download version for your platform. Please run fullscreen version for best experience
+
 
 Controls:
 	
@@ -32,7 +35,9 @@ Credits:
 Peter Lu
 
 
-
 And thanks to:
 
-Anton Bobkov, my friends at selectbutton and my friends at DESMAHAUS, and everyone else who helped test the game for me.
+Anton Bobkov, my friends at selectbutton and my friends at DESMAHAUS, UCLA games lab for letting me work there, and everyone else who helped test the game for me.
+
+
+contact: chippermonky@gmail.com
