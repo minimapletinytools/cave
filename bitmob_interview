@@ -20,7 +20,7 @@ What are some of your favorite games?
 
 Assuming you'd like to continue designing, what area of the games industry would you like to be a part of?
 
--I'd like to avoid the industry if possible. I'm not fond of how any profit/sales oriented industry works. The effect of this really shows in the video game industry.
+-I'd like to avoid the industry if possible. I'm not fond of how any profit/sales oriented industry works. The effect of this really shows in the video game industry. I'm working hard now in hopes of avoiding this in the future. 
 
 Do you have any other titles lined up?
 
@@ -51,7 +51,7 @@ Is this your first game?
 
 Was this a project that you did on your own?
 
--Yeah, I tried to get my friend to program it but he said he did not want to do a platformer yet so I just went ahead and did it myself. I did all the design and artwork too. For sound, I used SFXR (http://www.drpetter.se/project_sfxr.html) for everything. I tried making some screaming and grunting sounds with a mic but that did not turn out well. It was pretty fun doing the whole thing. I spent about two months on it on and off. Hopefully, my next endeavor will come about much faster now that I have that much more experience.
+-Yeah, I tried to get my friend to program it but he said he did not want to do a platformer yet so I just went ahead and did it myself. I did all the design and artwork too. For sound, I used SFXR (http://www.drpetter.se/project_sfxr.html) for everything. I tried making some screaming and grunting sounds with a mic but that did not turn out well. It was pretty fun doing the whole thing. I spent about three months on it. Hopefully, my next endeavor will come about much faster now that I have that much more experience.
 
 What came first, the type of game or the story?
 
@@ -59,57 +59,82 @@ What came first, the type of game or the story?
 
 What genre would you put Cave into?
 
-A platformer? Not really ha ha. I do not know. The thought never ocurred to me. The current convention for typing video games by genres only clasify a very unspecific set of core mechanics. If I had to though, I would say adventure.
-
-The page for Cave on the IGF site has probably the shortest description out of all the titles:  "A boy and a girl exploring a cave."  Even your website just has the logo for the game.  Why did you decide to be so minimalist?
-
-I was a bit conflicted about this decision. It always bothers me a little bit when the author of a game puts the game out complete with its own Cliff Notes. I feel the only time when something should be explained is when it inloves some reference that players can not be reasonably expected to know (for example, some cultural practice, or some personal experience). The game should really speak for itself. Of course, its always a battle between the audience and the author. Especially for someone who has no credibility, there is little incentive for players delve deeper. 
+A platformer? Not really ha ha. I do not know. The thought never ocurred to me. The current convention for typing video games by genres only clasify a very unspecific set of core mechanics.
 
 Was the choice to have no music a design choice or a technical one?
 
--It's both. Designing is all about playing off your weaknesses. Music is an interesting beast. Rarely does it ever "exist" in the space 
+-Music is an interesting beast. Everyone knows the power music can have in creating atmosphere. But rarely does music ever "exist" in the space the game takes place in and becomes this artifact in the setting that people never ask questions about. For Cave, I feel silence complements the lonliness and claustrophobia better than music could. Music is certainly something I'll consider exploring in future games though.
 
 You suggest people play the game in fullscreen mode, why is that?
 
--I had a friend who kept playing cave story in windowed mode with no sound and that was driving me crazy. I eventually formulated the theory that players want agency over their own computer and will play things in windowed mode if they can allowing them to tab out and check their email or walkthroughs or whatever. For aesthic and immersive reasons, games in general do better in fullscreen. For Cave, it was particularly important to me because I felt in fullscreen the game 
+-Aesthetically, all games do better in fullscreen with the exception of maybe desktop sheeps and RaRa Racer. I felt it was particularly important for Cave to create a feeling of being stuck in a dark cave rather playing a game in a window hovering over some brightly colored window. Of course, players are free to choose their own experiences as they will. 
 
 Are you concerned about people who don't play your game and assume it's similar to another indie title Cave Story?
 
-Why were there spikes in the game?  You respawn very close to where you die, so what made you decide death was necessary?
-
-Occasionally the characters will, for lack of a better description, pick up a "note," and those "notes" seem to correlate to thoughts they have about each other.  Why did you decide these "notes" should be lying around instead of the characters just speaking at certain check points?
-
- 
+-The title is a homage to Cave Story so it's okay if people get that impression when they read the title. I think the gameplay distinguishes itself from Cave Story immedietely enough that this is not an issue for anyone who plays the game. The title is also a pun for anyone who can figure it out.
 
 These questions go a bit deeper into the game and may be considered a bit too revealing, again, if you feel some things could be kept secret, just let me know:
 
+The page for Cave on the IGF site has probably the shortest description out of all the titles:  "A boy and a girl exploring a cave."  Even your website just has the logo for the game.  Why did you decide to be so minimalist?
+
+I was a bit conflicted about this decision. It always bothers me a little bit when the author of a game puts the game out complete with its own Cliff Notes. I feel the only time when something should be explained is when it inloves some reference that players can not be reasonably expected to know (for example, some cultural practice, or some personal experience). The game should really speak for itself. Of course, its always a battle between the audience and the author. Especially for an author who has no reputation, there is little incentive for players delve deeper. I feel Cave can speak for itself if the players are willing to spend the time to read into it. I had hoped that there'd be enough of a community talking about Cave to interpret everything there is in the game but this has not happened yet. In retrospect, this might not have been the best decision for myself given my reputation (or lack thereof). Most people I've talked to who have played my game have a much better appreciation for it after I explain it to them.
+
+With that in mind, I think this is a good point to briefly synopsize what the game is really about and try not to sound like a pervert. The narrative is a metaphor for the first time an adolescent couple have sex. The style should be loosely reminiscent of those older movies where the boy takes the girl out on a date to some remote area with
+
+
+Specifically, the game is about a boy and a girl exploring a cave... and the consequences related to that for each character.
+
+The game derives its meaning from metaphor and suggests at alternative interpretations using pun (as I mentioned already). A female acquaintance of mine played the game for about 10 seconds before remarking to me "Peter! This game is sexist!" The difference between the boy and the girl's movement are there to suggest a distinction in gender representation in the narrative and also to satire gender representation in video games in general. The boy moves like any other video game character. He moves fast, jumps absurdly high, and does not need to recover after falling. The girl moves much more realistically to the point of annoyance. She must climb on top of things that are waist high, moves slowly, and has to light her way through the dark cave and crawl through narrow tunnels. 
+
+One idea when playing the game 
+
+Why were there spikes in the game?  You respawn very close to where you die, so what made you decide death was necessary?
+
 When the boy dies and you respawn, if you go by the spikes you fell on, all that is left is blood.  When the girl dies her body always remains, and if you die multiples times, multiple bodies are left.  Was there a reason behind that?
+
+-Death is another big gripe that I have about games. Death is such a powerful narrative element and is almost always underplayed in games to facilitate visceral entertainment, playability and sales. If death is going to play any part in any game, then there needs to be a reason.
+
+add more here
+
+The girl leaves her corpse behind to suggest a permanence in her death, while the guy leaves a smatter of blood (because it's cool and all) but gets right back up and keeps going with no other sign that he is dead or injured at all. This all ties back into the representation of male and female in their representation. 
+
+Most Jesse Venbrux and games like "Free Will" and "You Only Live Once" satire the notion of death in video games. They're all quite witty and fun.
+
+Occasionally the characters will, for lack of a better description, pick up a "note," and those "notes" seem to correlate to thoughts they have about each other.  Why did you decide these "notes" should be lying around instead of the characters just speaking at certain check points?
+
+-The "notes" are actually pieces of the other character's clothing. I do not expect all players to notice this as the only thing that suggests this is the color of the clothing. For a while, the game did not have the dialog at all. I added the dialog for two reasons. First, to give a sense of goal and reason for players being in the Cave. Second, to elucidate the meaning behind Cave.   
 
 There was at least one note that I had to go out of my way to find.  Was there a reason for not putting some notes along the path?
 
+-There are actually two such messages that are hidden. They both contain messages that are a little more suggestive of the boy's concious. 
+
 One of the most interesting moments of the game is when, without picking up one of the notes, the text "I want her" appears in front of the boy before a platforming segment.  If you fail during it and respawn the text "harder" appears and then "harder..."  Nothing else similar to that appears in the game.  What was the reasoning behind that?
+
+-I'd hate to spoil this one. Again, it's a pun in the same sense that the title is a pun.
 
 There are two sections in the game where the boy lights a row of candles.  Is there any significance behind this?
 
+-See above for the first set of torches. The second set was intended to complement the disruption of the players sense of control at the "climax" of the game.
+
 Is there any meaning behind the symbol near the end of the game that looks like an arrow pointing down? 
 
-You've been forward about the game having two endings, do you feel one of them is the true ending?
-
-Ultimately, your avatar is a guy as he makes the only relevent decisions in the game--consequently, the player makes the relevent decision. Neither ending is better or worse for the guy. In one, he 
+-If you look carefully, you will see that it represents the bonding of male and female.
 
 Do you know anybody who has actually got the good ending first, and not by accident?
 
-For a while, this was a pretty big issue. I made some design changes which would incline players to get the bad ending first. Certainly, some people still get the good ending on their first playthrough, but that's not a hgue deal. If I wanted full control of a player's experience I'd have made "Cave the movie"
+For a while, this was a pretty big issue. Everyone was getting the good ending because the level design had underplayed death for the guy too much. I made some design changes which would incline/force players to get the bad ending first. Certainly, some people still get the good ending on their first playthrough, but that's not a hgue deal. If I wanted full control of a player's experience I'd have made "Cave the movie"
 
 Does it bother you that of those who have seen both endings, most people prefer the "bad" ending?
 
-
+-Not at all. I wanted to suggest there is no distinction between the bad and good ending for the boy. Hence, as the boy in the game sees it, the bad and good ending are identical. It is the player that must realize the implications of the bad and good ending and make a judgment for themselves. I also did design the bad ending to be a little more entertaining than the good ending because that's how it is in real life sometimes (not to suggest I support such things).
 
 To your knowledge, has everything in the game been discovered?
 
+-I was super excited about this funny little hit colission bug that let the girl climb up walls and get to all sorts of crazy places. In particular, for scripting reasons, there is another girl that's arbitrarily placed someplace unreachable on the map, but the girl could actually get there exploiting the bug. It was funny considering the narrative consequences of such a thing. Also, I'm always fancied by how players will come up with the craziest exploits, god knows how, to let them beat really difficult games in absurdly short periods of time. For example this http://tasvideos.org/727M.html. I was excited that such a thing existed in my game but had to fix the glitch because it was too easy to discover. That's a digression, the two hardest things to find in the game are the two hidden messages. There also the words "CHEATER" with spikes that looks like flames spelt out of level tiles in the middle of the map that you can only see if you mess around with the source code and turn on the level editor (set gamemode = 2 in MW_constants.py). That's obviously not canonical to the narrative.
+
 Finally, what would you like to have players get out of the game?
 
- 
+-I hope players will be enjoy interpreting the different meanings of gameplay and realize there's more than one way to tell a story in a game.
 
 Again thanks for your time, enjoy your day.
 
