@@ -43,8 +43,10 @@ while 1:
     if keys[pygame.K_F12]:
         pass
         #restart for installation
-        #mwc = MW_controller.ControllerController()
-    if keys[pygame.K_ESCAPE]:
+        MW_global.screen.fill((0,0,0))
+        pygame.display.flip()
+        mwc = MW_controller.ControllerController()
+    if pygame.mouse.get_pressed()[0]:
         print "goodbye"
         del mwc
         pygame.quit()
