@@ -1,6 +1,7 @@
 import pygame
 from MW_datatypes import *
 from MW_constants import *
+import MW_global
 class Camera:
     def __init__(self, sfc):
         self.width = WIDTH
@@ -20,7 +21,7 @@ class Camera:
     
     def drawOnScreen(self, sfc, pos, area = None):
         place = Vector2d(self.rect.x,self.rect.y)
-        self.screen.blit(sfc, (pos - place + self.p).getIntTuple(), area)
+        MW_global.screen.blit(sfc, (pos - place + self.p).getIntTuple(), area)
     
     def isOnScreen(self,rect):
         if self.rect.colliderect(rect):
