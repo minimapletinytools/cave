@@ -1,0 +1,20 @@
+immutable object:
+
+#function parameters are all passed by references, but the reference itself is a copy so modifying the REFERENCE ITSELF has no effect outside of the function as in the case of immutable objects
+
+def duck(list):
+    list=1
+test = 0
+duck(test)
+print test
+
+output: 0
+
+def duck(list):
+    list.append("quack")
+test = []
+test.append("hello")
+duck(test)
+print test
+
+output: ["hello","quack"]

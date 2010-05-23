@@ -1,0 +1,26 @@
+import xml.dom.minidom
+
+def hasAttributes(exml, attr):
+    for e in attr:
+        if not exml.hasAttribute(e):
+            return False
+    return True
+
+def isXMLElement(node):
+    return node.nodeType == 1
+
+def getElementNodes(childList):
+    return filter(isXMLElement,childList)
+
+def getChildNodeWithAttribute(filename,tag,attr,value):
+    exml = xml.dom.minidom.parse(filename)
+    txml = None
+    ret = None
+    for e in exml.getElementsByTagName(tag):
+        if e.hasAttribute(attr) and e.getAttribute(attr) == value:
+            ret = e
+            break
+    return ret
+
+def quickEltNode(filename,tag,attr,value):
+    getChildNodeWithAttribute(xml.dom.minidom.parse(filename),tag,attr,value)

@@ -1,0 +1,10 @@
+import pygame
+
+class SAnimator:
+    def __init__(self,exml):
+        imgDict = dict()
+        
+        pass
+        #load images from xml
+        #set reverse images
+    

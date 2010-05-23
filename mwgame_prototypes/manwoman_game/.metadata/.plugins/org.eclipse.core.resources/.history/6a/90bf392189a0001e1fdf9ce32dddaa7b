@@ -1,0 +1,8 @@
+import xml.dom.minidom
+
+def hasAttributes(xml, attr):
+    for e in attr:
+        if not xml.hasAttribute(attr):
+            return False
+        
+    return True

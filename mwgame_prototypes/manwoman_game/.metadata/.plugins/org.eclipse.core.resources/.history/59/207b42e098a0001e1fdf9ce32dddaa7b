@@ -1,0 +1,44 @@
+from PEG_constants import *
+from PEG_datatypes import *
+import PEG_mainLoop
+
+class Camera:
+    def __init__(self, sfc):
+        self.pos = Vector2d(0,0)
+        self.screen = sfc
+        self.centerOffset = Vector2d(400,240)
+    
+    def drawOnScreen(self, sfc, pos, area = None):
+        """draws onto self.screen at camera coordinates pos
+        
+        sfc: pygame.Surface
+        pos: PEG_datatypes.Vector2d
+        area: ????"""
+        if area == None:
+            area = pygame.Rect(0,0,sfc.get_width(),sfc.get_height())
+        self.screen.blit(sfc, (pos-self.pos + self.centerOffset).getSDLRect(), area)
+    
+    def isOnScreen(self,pos):
+        if self.pos.getSDLRect().colliderect(pos.getSDLRect())
+        pass
+     
+    
+    def convertCrds(self, pos):
+        return Vector2d(pos.x+self.pos.x, pos.y+self.pos.y) - self.centerOffset
+    
+    def convertCrdsScaled(self,pos, scale = 1):
+        """same as convertCrds but scales the coordinates effectively shrinking or enlarging relative positioning
+        
+        pos: Vector2d
+        scale: int
+        returns: Vector2d"""
+        return Vector2d(pos.x-self.pos.x, pos.y-self.pos.y)*(scale) + self.centerOffset
+    
+    def moveTo(self, target):
+        self.pos = Vector2d(target.x, target.y)
+    
+    def moveToRel(self, displacement):
+        self.pos += displacement
+    
+    def smoothTo(self, target, rate = 10):
+        self.pos.moveTowards(target, (target-self.pos).magnitude()/rate )

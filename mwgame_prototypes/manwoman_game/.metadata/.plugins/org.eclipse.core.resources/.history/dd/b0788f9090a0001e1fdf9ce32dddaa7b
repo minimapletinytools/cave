@@ -1,0 +1,69 @@
+from PEG_camera import *
+from PEG_helpers import *
+from pedo_player import *
+
+import pedo_lookup
+import PEG_server
+
+import PEG_sanimator
+
+import xml.dom.minidom
+
+
+class testLoop:
+    class __impl:
+        
+        #BAD these are CLASS variables and not instance variables though this is SAFE as this is a singleton object
+        #public data
+        screen = None
+        
+        def __init__(self, sfc):
+            self.screen = sfc
+            self.img = pygame.image.load("walking.png").convert()
+            self.img.set_colorkey((0,0,0))
+            
+            exml = xml.dom.minidom.parse("sprites.xml")
+            txml = None
+            self.anim = None
+            for e in exml.getElementsByTagName("sprite"):
+                if e.hasAttribute("name") and e.getAttribute("name") == "woman":
+                    txml = e
+                    self.anim = PEG_sanimator.SAnimator(txml)
+                    break
+            i, f = self.anim.grabFrame('left')
+            self.screen.blit(i,(50,50),f)
+            pass
+            
+        def __del__(self):
+            pass
+            
+        def loop(self):
+            print "hello"
+            self.screen.blit(self.img,(50,50))
+            
+            i, f = self.anim.grabFrame('left')
+            self.screen.blit(i,(10,10),f)
+            
+    __instance = None
+    
+    def __init__(self,sfc = None):
+        """ create instance """
+        #check if instance exists and create it
+        if testLoop.__instance is None:
+            if sfc == None:
+                print "testLoop instantiation requires surface"
+            testLoop.__instance = testLoop.__impl(sfc)
+
+            
+        
+        #store instance reference as the only member in the handle???
+        self.__dict__['_testLoop_instance'] = testLoop.__instance
+    
+    def __getattr__(self, attr):
+        """delegate access to implementation"""
+        return getattr(self.__instance, attr)
+    
+    def __setattr__(self, attr, value):
+        """delegate access to implementation"""
+        return setattr(self.__instance, attr, value) 
+        

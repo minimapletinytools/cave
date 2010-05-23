@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;man_woman/src/PEG_sanimator&apos; to &apos;PEG_sanimator.py&apos;" description="Rename resource &apos;PEG_sanimator&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/PEG_sanimator" name="PEG_sanimator.py" stamp="1252860471359" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;man_woman/src/PEG_superplayer&apos; to &apos;PEG_superplayer.py&apos;" description="Rename resource &apos;PEG_superplayer&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/PEG_superplayer" name="PEG_superplayer.py" stamp="1252942659750" updateReferences="true"/>
+</session>

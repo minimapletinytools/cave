@@ -1,0 +1,17 @@
+import pygame
+import PEG_xml
+
+class SAnimator:
+    def __init__(self,exml):
+        imgDict = dict()
+        for e in exml.childNodes:
+            if e.nodeName == static:
+                
+        #load images from xml
+        #set reverse images
+    
+    def setStatic(self,exml):
+        if not PEG_xml.hasAttributes(exml, ('name','img','x','y','w','h')):
+            return 
+        self.imgDict[exm]
+        

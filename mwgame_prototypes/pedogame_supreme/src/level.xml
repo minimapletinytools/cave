@@ -1,0 +1,5 @@
+<level id="1">
+	<entity type="Player" x="50.0" y="50"/>
+	<entitt type="Editor" />
+	
+</level>

@@ -1,0 +1,50 @@
+import pygame
+import PEG_xml
+from PEG_datatypes import *
+
+class SAnimator:
+    def __init__(self,exml):
+        self.imgDict = dict()
+        self.animDict = dict()
+        for e in exml.childNodes:
+            if e.nodeName == 'animation': self.setAnim(e)
+        
+        self.frame = 0
+        self.state = ""
+        self.last = 0
+    
+    def setAnim(self,exml):
+        if not PEG_xml.hasAttributes(exml, ('name','img','speed','w','h')):
+            return
+        name = exml.getAttribute('name')
+        self.imgDict[name] = list()
+        self.imgDict[name].append(pygame.image.load(exml.getAttribute('img')).convert())
+        self.imgDict[name].append(pygame.transform.flip(self.imgDict[name][0],False,True))
+        
+        ox = oy = 0
+        if PEG_xml.hasAttributes(exml, ('offsetx', 'offsety')):
+            ox = exml.getAttribute('offsetx')
+            oy = exml.getAttribute('offsety')
+        w = int(exml.getAttribute('w'))
+        h = int(exml.getAttribute('h'))
+        t = int(exml.getAttribute('speed'))
+        self.animDict[name] = list()
+        for i in range(self.imgDict[name][0].get_height() / h):
+            self.animDict[name].append(pygame.Rect(0,i*h,w,h),t,Vector2d(ox,oy))
+            
+    def setState(self,st):
+        self.state = st
+        self.frame = 0
+        
+    def grabFrame(self,dir):
+        d = 0
+        if dir == 'right': d = 1
+        if not self.state:
+            self.state = self.imgDict.keys()[0]
+        i = self.imgDict[self.state][d]
+        f = self.animDict[self.state][self.frame]
+        self.last++
+        if self.last % 
+        self.frame = (self.frame + 1)%len(self.animDict)
+        
+        return i,f

@@ -1,0 +1,261 @@
+import pygame
+from PEG_datatypes import *
+import PEG_mainLoop
+import PEG_camera
+import pedo_lookup
+import xml.dom.minidom
+import PEG_helpers
+from PEG_constants import *
+
+
+class Entity:
+    def __init__(self, position = Rect2d(0,0,0,0)):
+        """initialize Entity at position position
+        
+        position: Vector2d"""
+        self.pos = position
+        self.vel = Vector2d(0,0)
+        
+    def teleport(self, position):
+        """moves entity to position
+        
+        position: PEG_datatypes.Vector2d"""
+        self.pos.x = position.x
+        self.pos.y = position.y
+        
+    def draw(self):
+        pass
+    
+    def update(self):
+        pass
+    
+    def getxml(self):
+        return None
+    
+class MovingEntity(Entity):
+    def __init__(self, position = Rect2d(0,0,0,0)):
+        Entity.__init__(self,position)
+    def collide(self,e):
+        """is called when there is a colision with Entity e
+        
+        e: Entity that is collided with"""
+        pass
+        
+class StaticEntity(Entity):
+    def __init__(self, position = Rect2d(0,0,0,0)):
+        Entity.__init__(self,position)
+
+class SolidEntity(StaticEntity):
+    def __init__(self, exml):
+        """loads a static terrain square
+        
+        img: string filename of image"""
+        tr = Rect2d(0,0,0,0)
+        if exml.hasAttribute("x"):
+            tr.x = float(exml.getAttribute("x"))
+        if exml.hasAttribute("y"):
+            tr.y = float(exml.getAttribute("y"))
+        if exml.hasAttribute("w"):
+            tr.w = float(exml.getAttribute("w"))
+        if exml.hasAttribute("h"):
+            tr.h = float(exml.getAttribute("h"))
+        if exml.hasAttribute("img"):
+            self.mainSurface = pygame.image.load(exml.getAttribute("img")).convert()
+            self.mainSurface.set_colorkey((0,0,0),pygame.RLEACCEL)
+        
+        self.myxml = exml
+        StaticEntity.__init__(self,tr)
+        
+    def draw(self):
+        PEG_mainLoop.mainLoop().cam.drawOnScreen(self.mainSurface, self.pos)
+    
+    def getxml(self):
+        self.myxml.setAttribute("x", str(self.pos.x))
+        self.myxml.setAttribute("y", str(self.pos.y)) 
+        return self.myxmlty
+    
+import random
+class DirtEntity(SolidEntity):
+    def __init__(self,exml):
+        SolidEntity.__inity__(self,exml)
+    def draw(self):
+        random.seed(self.pos.x+self.pos.y)
+        x = random.randint(0,1000)%(self.mainSurface.get_width()-self.pos.w)
+        subsrf = self.mainSurface.subSurface
+        PEG_mainLoop.mainLoop().cam.drawOnScreen(self.mainSurface, self.pos)
+
+import PEG_server
+class Network(Entity):
+    def __init__(self, exml = None):
+        Entity.__init__(self, Rect2d(0,0,0,0))
+        
+        self.enDict = dict()
+        
+        self.server = False
+        if exml.hasAttribute("server"):
+            if exml.getAttribute("server") == "True":
+                self.server = True
+        
+        if self.server:
+            self.mgr = PEG_server.ClntManager()
+        else:
+            self.mgr = PEG_server.SrvManager()
+        self.mgr.start()
+        
+    def __del__(self):
+        try:
+            self.mgr.killMe()
+            self.mgr.join(1)
+        except: print "network closing error -- can ignore this"
+        
+    def update(self):
+        if self.server:
+            self.mgr.relayData()
+            
+        #get data, interpret it, and create objects as needed
+        #get all the messages
+        recv =''
+        try:
+            self.mgr.reclock.acquire()
+            recv = self.mgr.rec[:]
+            self.mgr.rec = []
+            self.mgr.reclock.release()
+        except: 
+            try: self.mgr.reclock.release()
+            except: pass
+        
+        #Messages are in this form:
+        #[0:letter representing message type][5:representing object id][21:object name][30:x][39:y][49:state]
+        if len(recv) > 0:
+            for m in recv:
+                    self.parseData(self.defaultParseMessage(m))
+            
+    def parseEnMessage(self,msg):
+        if msg[0:4] not in self.enDict:
+            exml = xml.dom.minidom.parseString("<entity type=\""+msg[4:20].lstrip('0')+"\" />").getElementsByTagName("entity")[0]
+            self.enDict[msg[0:4]] = pedo_lookup.enTables(exml)
+        self.enDict[msg[0:4]].pos.x = int(msg[20:29].lstrip('0'))
+        self.enDict[msg[0:4]].pos.y = int(msg[29:38].lstrip('0'))
+        self.enDict[msg[0:4]].state = msg[38:48].lstrip('0') 
+        
+    def defaultParseMessage(self,msg):
+        """parses message in format
+        [20:client name][40:msg type][60-440: data]
+        msg: string
+        returns (name,type,data[])
+        """
+        try:
+            name = msg[0:20]
+            type = msg[20:40]
+            data = []
+            for i in range(20):
+                try: data[i] = msg[40+i*20: 60 + i*20].lstrip('0')
+                except: data[i] = ''
+            return (name,type,data)
+        except: print "msg parsing failed"
+        
+    def draw(self):
+        for e in self.enDict.itervalues():
+            e.draw()
+        
+class Editor(Entity):
+    def __init__(self, exml = None):
+        Entity.__init__(self, Rect2d(0,0,0,0))
+        self.cursor = Vector2d(0,0)
+        self.topxml = xml.dom.minidom.parse("entities.xml").getElementsByTagName('list')[0]
+        self.entityList = self.topxml.getElementsByTagName('entity')
+        self.currentItem = 0
+        self.activeObject = None
+        self.setActive()
+        self.mode = "place"
+    
+    def toggleMode(self):
+        if self.mode == "place":
+            self.activeObject = None
+            self.mode = "edit"
+        else:
+            if not self.activeObject:
+                self.setActive()
+            self.mode = "place"
+        
+    def setActive(self, move = 0):
+        if not self.activeObject:
+            self.activeObject = pedo_lookup.enTables(self.entityList[self.currentItem])
+        else:
+            self.currentItem = (self.currentItem + move)%len(self.entityList)
+            self.activeObject = pedo_lookup.enTables(self.entityList[self.currentItem])
+    
+    def setMouse(self):
+        self.screenCrds = Vector2d(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1])
+        self.cursor = PEG_mainLoop.mainLoop().cam.convertCrds(self.screenCrds)
+        self.cursor.x = PEG_helpers.truncateToMultiple(self.cursor.x, TILING_SIZE.x)
+        self.cursor.y = PEG_helpers.truncateToMultiple(self.cursor.y, TILING_SIZE.y)
+        if self.activeObject:
+            self.activeObject.teleport(self.cursor)
+    
+    def addMode(self):
+        self.setMouse()
+        
+        for e in PEG_mainLoop.mainLoop().eventList:
+            if e.type == pygame.KEYDOWN:
+                if e.key == pygame.K_PAGEUP:
+                    self.setActive(1)
+                if e.key == pygame.K_PAGEDOWN:
+                    self.setActive(-1)
+                if e.key == pygame.K_SPACE:
+                    self.toggleMode()
+#CAN DELETE
+#===============================================================================
+#            if e.type == pygame.MOUSEBUTTONUP:
+#                PEG_mainLoop.mainLoop().entityList.append(self.activeObject)
+#                self.activeObject = pedo_lookup.enTables(self.entityList[self.currentItem].cloneNode(True))
+#==============================================================================
+        if pygame.mouse.get_pressed()[0]:
+            for e in PEG_mainLoop.mainLoop().entityList:
+                    if e.pos.getSDLRect().collidepoint(self.cursor.getIntTuple()):
+                        PEG_mainLoop.mainLoop().deleteEntity(e)
+                        break
+            PEG_mainLoop.mainLoop().entityList.append(self.activeObject)
+            self.activeObject = pedo_lookup.enTables(self.entityList[self.currentItem].cloneNode(True))
+        
+    def editMode(self):
+        self.setMouse()
+        for e in PEG_mainLoop.mainLoop().eventList:
+            if e.type == pygame.KEYDOWN:
+                if e.key == pygame.K_SPACE:
+                    self.toggleMode()
+            if e.type == pygame.MOUSEBUTTONUP:
+                for e in PEG_mainLoop.mainLoop().entityList:
+                    if e.pos.getSDLRect().collidepoint(self.cursor.getIntTuple()):
+                        self.activeObject = e
+                        PEG_mainLoop.mainLoop().deleteEntity(e)
+                        self.toggleMode()
+        
+        
+    def update(self):
+        for e in PEG_mainLoop.mainLoop().eventList:
+            if e.type == pygame.KEYDOWN:
+                if e.key == pygame.K_LEFT:
+                    PEG_mainLoop.mainLoop().cam.moveToRel(Vector2d(-50,0))
+                if e.key == pygame.K_RIGHT:
+                    PEG_mainLoop.mainLoop().cam.moveToRel(Vector2d(50,0))
+                if e.key == pygame.K_UP:
+                    PEG_mainLoop.mainLoop().cam.moveToRel(Vector2d(0,-50))
+                if e.key == pygame.K_DOWN:
+                    PEG_mainLoop.mainLoop().cam.moveToRel(Vector2d(0,50))
+        if self.mode == "place":
+            self.addMode()
+        else:
+            self.editMode()
+            
+        #not very efficienty to be looping through this again but who cares
+        for e in PEG_mainLoop.mainLoop().eventList:
+            if e.type == pygame.KEYDOWN and e.key == pygame.K_RETURN:
+                PEG_mainLoop.mainLoop().saveState(99)
+        
+    def draw(self):
+        if self.activeObject:
+            self.activeObject.draw()
+        pygame.draw.rect(PEG_mainLoop.mainLoop().screen, (255,255,255),pygame.Rect(self.screenCrds.x, self.screenCrds.y, 2, 2))
+        
+        

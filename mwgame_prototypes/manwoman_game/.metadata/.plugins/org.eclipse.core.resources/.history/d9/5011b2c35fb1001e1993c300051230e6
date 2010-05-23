@@ -1,0 +1,8 @@
+import pygame
+
+def drawMask(surface):
+    sfc = pygame.Surface((surface.get_width(),surface.get_height()))
+    sfc.fill((0,0,0))
+    pygame.draw.circle(sfc,pygame.Color(255,255,255),(200,200),200,0)
+    sfc.set_colorkey(pygame.Color(255,255,255))
+    surface.blit(sfc,(0,0))

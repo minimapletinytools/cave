@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;man_woman/src/PEG_server.py&apos;" deleteContents="false" description="Delete resource &apos;man_woman/src/PEG_server.py&apos;" element1="/man_woman/src/PEG_server.py" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1252966013562"/>
+</session>

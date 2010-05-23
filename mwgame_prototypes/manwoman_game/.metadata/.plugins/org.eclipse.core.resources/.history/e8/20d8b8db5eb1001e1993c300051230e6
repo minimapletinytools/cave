@@ -1,0 +1,4 @@
+import pygame
+
+def drawMask(surface):
+    sfc = pygame.Surface((surface.get_width(),surface.get_height()))

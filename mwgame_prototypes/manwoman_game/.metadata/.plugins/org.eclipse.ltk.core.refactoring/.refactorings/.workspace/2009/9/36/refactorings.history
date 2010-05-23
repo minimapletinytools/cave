@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;pedogame_supreme&apos; to &apos;man_woman&apos;" description="Rename resource &apos;pedogame_supreme&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/pedogame_supreme" name="man_woman" stamp="1252179133187" updateReferences="true"/>
+</session>

@@ -1,0 +1,13 @@
+what,kind,bundleId,bundleVersion,description,time
+stopped,bundle,org.python.pydev.customizations,1.4.6.2788,org.python.pydev.customizations,1253134715890
+stopped,bundle,org.python.pydev.debug,1.4.6.2788,org.python.pydev.debug,1253134716031
+stopped,bundle,org.python.pydev.refactoring,1.4.6.2788,org.python.pydev.refactoring,1253134716171
+stopped,bundle,org.python.pydev.templates,1.4.6.2788,org.python.pydev.templates,1253134716234
+stopped,bundle,org.python.pydev,1.4.6.2788,org.python.pydev,1253134716234
+stopped,bundle,org.eclipse.jdt.ui,3.4.1.r341_v20080827-1100,org.eclipse.jdt.ui,1253134716234
+stopped,bundle,org.eclipse.mylyn.bugzilla.ui,3.0.2.v20080918-1100-e3x,org.eclipse.mylyn.bugzilla.ui,1253134716234
+stopped,bundle,org.eclipse.mylyn.ide.ui,3.0.2.v20080918-1100-e3x,org.eclipse.mylyn.ide.ui,1253134716250
+stopped,bundle,org.eclipse.mylyn.team.ui,3.0.2.v20080918-1100-e3x,org.eclipse.mylyn.team.ui,1253134716250
+stopped,bundle,org.eclipse.mylyn.resources.ui,3.0.2.v20080918-1100-e3x,org.eclipse.mylyn.resources.ui,1253134716250
+stopped,bundle,org.eclipse.mylyn.context.ui,3.0.2.v20080918-1100-e3x,org.eclipse.mylyn.context.ui,1253134716250
+stopped,bundle,org.eclipse.mylyn.help.ui,3.0.2.v20080918-1100-e3x,org.eclipse.mylyn.help.ui,1253134716359

@@ -1,0 +1,132 @@
+import pygame
+from PEG_datatypes import *
+from PEG_entity import *
+import PEG_helpers
+import PEG_mainLoop
+
+class Player(MovingEntity):
+    """player controlled character
+    
+    __dict__
+    position: Rect2d, represents HIT BOX on screen
+    drawRect: Rect2d, represents DRAW BOX relative to HIT BOX"""
+    def __init__(self, exml):
+        self.drawOffset = Vector2d(4,8)
+        tr = Rect2d(0,0,32,72)
+        if exml.hasAttribute("x"):
+            tr.x = float(exml.getAttribute("x"))
+        if exml.hasAttribute("y"):
+            tr.x = float(exml.getAttribute("y"))
+        self.myxml = exml
+        MovingEntity.__init__(self,tr)
+        self.setUpImages()
+        self.grounded = False
+        self.dir = "left"
+        self.state = "stand"
+        self.ftimer = None
+        self.vel = Vector2d(0,0)
+    
+    def getxml(self):
+        self.myxml.setAttribute("x", str(self.pos.x))
+        self.myxml.setAttribute("y", str(self.pos.y))
+        return self.myxml
+    
+    def setUpImages(self):
+        self.mainSurface = pygame.image.load("wsprite.png").convert_alpha()
+        self.flipSurface = pygame.transform.flip(self.mainSurface,True,False)
+        self.activeSurface = self.mainSurface
+        self.frames = dict()
+        #frame[<animation string>] = (<frame position list>,<ms per frame>)
+        self.frames["run"] = ((Vector2d(0,0),Vector2d(0,80)),100)
+        self.frames["stand"] = ((Vector2d(0,0),),100)
+        self.frames["jump"] = ((Vector2d(0,80),),100)
+        
+    def floating(self):
+        if not self.ftimer:
+            self.ftimer = pygame.time.get_ticks()
+        else:
+            if pygame.time.get_ticks() - self.ftimer > 100:
+                self.ftimer = None
+                self.state = "stand"
+                if self.dir == "left":
+                    self.pos.x -= 5
+                else:
+                    self.pos.x += 5
+    def update(self):
+        #handle the input
+        for e in PEG_mainLoop.mainLoop().eventList:
+            if e.type == pygame.KEYDOWN or e.type == pygame.KEYUP:
+                self.handleInput(e)
+        
+        if self.grounded:
+            if self.state == "jump": self.floating()
+            else: self.ftimer = None
+            self.vel.y = 0
+        else:
+            self.state = "jump"
+            
+        if self.vel.y < 0:
+            self.pos.y -= 2
+            self.vel.y += 3
+        else:
+            self.pos.y += 3
+    
+        self.grounded = False
+        
+        PEG_mainLoop.mainLoop().cam.smoothTo(self.pos.getPosition())
+    
+    def draw(self):
+        if self.dir == "left":
+            self.activeSurface = self.flipSurface
+        else:
+            self.activeSurface = self.mainSurface
+                    
+        frameNum = (PEG_helpers.truncateToMultiple(pygame.time.get_ticks(),self.frames[self.state][1])/self.frames[self.state][1])%len(self.frames[self.state][0])
+        PEG_mainLoop.mainLoop().cam.drawOnScreen(self.activeSurface, self.pos-self.drawOffset, pygame.Rect(self.frames[self.state][0][frameNum].x, self.frames[self.state][0][frameNum].y,40,80))
+        
+    def collide(self, e):
+        """see super"""
+        if isinstance(e, SolidEntity):
+            col = PEG_helpers.collideSide(self.pos,e.pos)
+            self.pos -= col
+            #if collide with ground
+            if col.y > 0:
+                self.grounded = True
+            if col.x != 0:
+                self.vel.x = 0
+            
+        
+    def handleInput(self, e):
+        """handles KEYDOWN type events
+        
+        e: pygame.event w/ pygame.event.type = pygame.KEYDOWN"""
+        keys = pygame.key.get_pressed()
+        
+        
+        
+        #if key down event or L or R are hel down
+        if e.type == pygame.KEYDOWN or keys[pygame.K_LEFT] or keys[pygame.K_RIGHT]:
+            if (e.key == pygame.K_LEFT or keys[pygame.K_LEFT]) and (self.state == "stand" or not self.grounded):
+                self.dir = "left"
+                self.vel.x = -5
+            if (e.key == pygame.K_RIGHT or keys[pygame.K_RIGHT]) and (self.state == "stand" or not self.grounded):
+                self.dir = "right"
+                self.vel.x += 5
+            if e.key == pygame.K_UP:
+                if self.grounded == True:
+                    self.grounded = False
+                    self.vel.y = -50
+            if e.key == pygame.K_DOWN:
+                pass
+            
+        if e.type == pygame.KEYUP:
+            if e.key == pygame.K_LEFT and self.state == "jump":
+                self.dir = "left"
+                self.pos.x += -5
+                self.state = "stand"
+            if e.key == pygame.K_RIGHT and self.state == "jump":
+                self.dir = "right"
+                self.pos.x += 5
+                self.state = "stand"
+        
+               

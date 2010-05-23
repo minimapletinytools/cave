@@ -1,0 +1,20 @@
+import pygame
+import PEG_xml
+
+class SAnimator:
+    def __init__(self,exml):
+        self.imgDict = dict()
+        for e in exml.childNodes:
+            if e.nodeName == 'static': self.setAnim(e,True)
+            elif e.nodeName == 'animation': self.setAnim(e)
+        #load images from xml
+        #set reverse images
+    
+    def setAnim(self,exml,st = False):
+        if not PEG_xml.hasAttributes(exml, ('name','img','x','y','w','h')):
+            return
+        self.imgDict[exml.getAttribute('name')] = (None,None)
+        self.imgDict[exml.getAttribute('name')][0] = pygame.image.load(exml.getAttribute('img')).convert()
+        self.imgDict[exml.getAttribute('name')][1] = pygame.transform.flip(self.imgDict[exml.getAttribute('img')][0],False,True)
+        
+        

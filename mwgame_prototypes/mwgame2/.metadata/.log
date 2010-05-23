@@ -1,0 +1,21 @@
+!SESSION 2009-09-14 10:25:24.187 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_10
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.python.pydev 1 1 2009-09-14 14:44:58.062
+!MESSAGE Information about process of adding new interpreter:
+- Opening dialog to request executable (or jar).
+- Chosen interpreter (name and file):'Tuple [26 -- C:\stuff\pppprog\libraries\python26\python.exe]
+- Ok, file is non-null. Getting info on:C:\stuff\pppprog\libraries\python26\python.exe
+- Beggining task:Getting libs totalWork:100
+- Setting task name:Mounting executable string...
+- Setting task name:Executing:  C:\stuff\pppprog\libraries\python26\python.exe -u C:\stuff\pppprog\programIDE\eclipse\plugins\org.python.pydev_1.4.6.2788\PySrc\interpreterInfo.py
+- Setting task name:Making pythonpath environment... C:\stuff\pppprog\libraries\python26\python.exe -u C:\stuff\pppprog\programIDE\eclipse\plugins\org.python.pydev_1.4.6.2788\PySrc\interpreterInfo.py
+- Setting task name:Making exec... C:\stuff\pppprog\libraries\python26\python.exe -u C:\stuff\pppprog\programIDE\eclipse\plugins\org.python.pydev_1.4.6.2788\PySrc\interpreterInfo.py
+- Setting task name:Reading output...
+- Setting task name:Waiting for process to finish.
+- Success getting the info. Result:Name:26:EndName:Version2.6Executable:C:\stuff\pppprog\libraries\python26\python.exe|C:\stuff\pppprog\libraries\python26|C:\stuff\pppprog\libraries\python26\DLLs|C:\stuff\pppprog\libraries\python26\lib|C:\stuff\pppprog\libraries\python26\lib\lib-tk|C:\stuff\pppprog\libraries\python26\lib\plat-win|C:\stuff\pppprog\libraries\python26\lib\site-packages@$|OpenGL|__builtin__|__main__|_ast|_bisect|_bytesio|_codecs|_codecs_cn|_codecs_hk|_codecs_iso2022|_codecs_jp|_codecs_kr|_codecs_tw|_collections|_csv|_fileio|_functools|_heapq|_hotshot|_json|_locale|_lsprof|_md5|_multibytecodec|_random|_sha|_sha256|_sha512|_sre|_struct|_subprocess|_symtable|_warnings|_weakref|_winreg|array|audioop|binascii|cPickle|cStringIO|cmath|datetime|email|errno|exceptions|future_builtins|gc|imageop|imp|itertools|marshal|math|mmap|msvcrt|nt|operator|os|os.path|parser|signal|strop|sys|thread|time|wx|wxPython|xxsubtype|zipimport|zlib
+

@@ -1,0 +1,1273 @@
+!SESSION 2009-09-05 12:28:35.062 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_10
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86 -data C:\stuff\pppprog\PROGRAMS\progs\manwoman_game
+
+!ENTRY org.python.pydev 4 4 2009-09-05 12:31:18.750
+!MESSAGE Invalid interpreter: python26 configured for project: pedogame_supreme.
+!STACK 0
+org.python.pydev.core.ProjectMisconfiguredException: Invalid interpreter: python26 configured for project: pedogame_supreme.
+	at org.python.pydev.plugin.nature.PythonNature.getProjectInterpreter(PythonNature.java:1045)
+	at org.python.pydev.plugin.nature.PythonNature.getConfigErrorsAndInfo(PythonNature.java:1094)
+	at org.python.pydev.navigator.ProjectInfoForPackageExplorer.getConfigErrorsAndInfo(ProjectInfoForPackageExplorer.java:79)
+	at org.python.pydev.navigator.ProjectInfoForPackageExplorer.recreateInfo(ProjectInfoForPackageExplorer.java:53)
+	at org.python.pydev.navigator.ProjectInfoForPackageExplorer.<init>(ProjectInfoForPackageExplorer.java:45)
+	at org.python.pydev.navigator.PythonBaseModelProvider.getProjectInfo(PythonBaseModelProvider.java:383)
+	at org.python.pydev.navigator.PythonBaseModelProvider.getProjectSourceFolders(PythonBaseModelProvider.java:397)
+	at org.python.pydev.navigator.PythonBaseModelProvider.getResourceInPythonModel(PythonBaseModelProvider.java:342)
+	at org.python.pydev.navigator.PythonBaseModelProvider.getResourceInPythonModel(PythonBaseModelProvider.java:328)
+	at org.python.pydev.navigator.PythonModelProvider.wrapChildren(PythonModelProvider.java:429)
+	at org.python.pydev.navigator.PythonModelProvider.convertToPythonElementsAddOrRemove(PythonModelProvider.java:335)
+	at org.python.pydev.navigator.PythonModelProvider.interceptAdd(PythonModelProvider.java:185)
+	at org.eclipse.ui.internal.navigator.extensions.SafeDelegateTreeContentProvider.interceptAdd(SafeDelegateTreeContentProvider.java:224)
+	at org.eclipse.ui.internal.navigator.NavigatorPipelineService.pipelineInterceptAdd(NavigatorPipelineService.java:124)
+	at org.eclipse.ui.internal.navigator.NavigatorPipelineService.interceptAdd(NavigatorPipelineService.java:81)
+	at org.eclipse.ui.navigator.CommonViewer.add(CommonViewer.java:242)
+	at org.python.pydev.navigator.PythonBaseModelProvider$3.run(PythonBaseModelProvider.java:1130)
+	at org.python.pydev.navigator.PythonBaseModelProvider.runUpdates(PythonBaseModelProvider.java:974)
+	at org.python.pydev.navigator.PythonBaseModelProvider.access$0(PythonBaseModelProvider.java:970)
+	at org.python.pydev.navigator.PythonBaseModelProvider$2.run(PythonBaseModelProvider.java:959)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:133)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3800)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3425)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+
+!ENTRY org.python.pydev.core 2 2 2009-09-05 12:31:18.765
+!MESSAGE Unable to find the path /pedogame_supreme/Entity in the project were it's 
+added as a source folder for pydev (project: pedogame_supreme) member:null
+
+!ENTRY org.python.pydev.core 2 2 2009-09-05 12:31:18.765
+!MESSAGE Unable to find the path /pedogame_supreme/external in the project were it's 
+added as a source folder for pydev (project: pedogame_supreme) member:null
+
+!ENTRY org.python.pydev 4 4 2009-09-05 12:31:18.843
+!MESSAGE Invalid interpreter: python26 configured for project: pedogame_supreme.
+!STACK 0
+org.python.pydev.core.ProjectMisconfiguredException: Invalid interpreter: python26 configured for project: pedogame_supreme.
+	at org.python.pydev.plugin.nature.PythonNature.getProjectInterpreter(PythonNature.java:1045)
+	at org.python.pydev.navigator.PythonBaseModelProvider.notifyPythonPathRebuilt(PythonBaseModelProvider.java:253)
+	at org.python.pydev.plugin.nature.PythonNatureListenersManager.notifyPythonPathRebuilt(PythonNatureListenersManager.java:53)
+	at org.python.pydev.plugin.nature.PythonNature$RebuildPythonNatureModules.run(PythonNature.java:161)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.python.pydev 4 4 2009-09-05 12:31:18.906
+!MESSAGE Invalid interpreter: python26 configured for project: pedogame_supreme.
+!STACK 0
+org.python.pydev.core.ProjectMisconfiguredException: Invalid interpreter: python26 configured for project: pedogame_supreme.
+	at org.python.pydev.plugin.nature.PythonNature.getProjectInterpreter(PythonNature.java:1045)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getSystemModulesManager(ProjectModulesManager.java:191)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagers(ProjectModulesManager.java:399)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagersInvolved(ProjectModulesManager.java:496)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:324)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:317)
+	at org.python.pydev.plugin.nature.PythonNature.resolveModule(PythonNature.java:847)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.resolveModule(AbstractPythonNature.java:40)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.isResourceInPythonpath(AbstractPythonNature.java:23)
+	at org.python.pydev.builder.PyDevBuilder.buildResources(PyDevBuilder.java:277)
+	at org.python.pydev.builder.PyDevBuilder.performFullBuild(PyDevBuilder.java:188)
+	at org.python.pydev.builder.PyDevBuilder.build(PyDevBuilder.java:82)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.python.pydev 4 4 2009-09-05 12:31:18.906
+!MESSAGE Invalid interpreter: python26 configured for project: pedogame_supreme.
+!STACK 0
+org.python.pydev.core.ProjectMisconfiguredException: Invalid interpreter: python26 configured for project: pedogame_supreme.
+	at org.python.pydev.plugin.nature.PythonNature.getProjectInterpreter(PythonNature.java:1045)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getSystemModulesManager(ProjectModulesManager.java:191)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagers(ProjectModulesManager.java:399)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagersInvolved(ProjectModulesManager.java:496)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:324)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:317)
+	at org.python.pydev.plugin.nature.PythonNature.resolveModule(PythonNature.java:847)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.resolveModule(AbstractPythonNature.java:40)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.isResourceInPythonpath(AbstractPythonNature.java:23)
+	at org.python.pydev.builder.PyDevBuilder.buildResources(PyDevBuilder.java:277)
+	at org.python.pydev.builder.PyDevBuilder.performFullBuild(PyDevBuilder.java:188)
+	at org.python.pydev.builder.PyDevBuilder.build(PyDevBuilder.java:82)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.python.pydev 4 4 2009-09-05 12:31:18.921
+!MESSAGE Invalid interpreter: python26 configured for project: pedogame_supreme.
+!STACK 0
+org.python.pydev.core.ProjectMisconfiguredException: Invalid interpreter: python26 configured for project: pedogame_supreme.
+	at org.python.pydev.plugin.nature.PythonNature.getProjectInterpreter(PythonNature.java:1045)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getSystemModulesManager(ProjectModulesManager.java:191)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagers(ProjectModulesManager.java:399)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagersInvolved(ProjectModulesManager.java:496)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:324)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:317)
+	at org.python.pydev.plugin.nature.PythonNature.resolveModule(PythonNature.java:847)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.resolveModule(AbstractPythonNature.java:40)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.isResourceInPythonpath(AbstractPythonNature.java:23)
+	at org.python.pydev.builder.PyDevBuilder.buildResources(PyDevBuilder.java:277)
+	at org.python.pydev.builder.PyDevBuilder.performFullBuild(PyDevBuilder.java:188)
+	at org.python.pydev.builder.PyDevBuilder.build(PyDevBuilder.java:82)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.python.pydev 4 4 2009-09-05 12:31:18.921
+!MESSAGE Invalid interpreter: python26 configured for project: pedogame_supreme.
+!STACK 0
+org.python.pydev.core.ProjectMisconfiguredException: Invalid interpreter: python26 configured for project: pedogame_supreme.
+	at org.python.pydev.plugin.nature.PythonNature.getProjectInterpreter(PythonNature.java:1045)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getSystemModulesManager(ProjectModulesManager.java:191)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagers(ProjectModulesManager.java:399)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagersInvolved(ProjectModulesManager.java:496)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:324)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:317)
+	at org.python.pydev.plugin.nature.PythonNature.resolveModule(PythonNature.java:847)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.resolveModule(AbstractPythonNature.java:40)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.isResourceInPythonpath(AbstractPythonNature.java:23)
+	at org.python.pydev.builder.PyDevBuilder.buildResources(PyDevBuilder.java:277)
+	at org.python.pydev.builder.PyDevBuilder.performFullBuild(PyDevBuilder.java:188)
+	at org.python.pydev.builder.PyDevBuilder.build(PyDevBuilder.java:82)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.python.pydev 4 4 2009-09-05 12:31:18.921
+!MESSAGE Invalid interpreter: python26 configured for project: pedogame_supreme.
+!STACK 0
+org.python.pydev.core.ProjectMisconfiguredException: Invalid interpreter: python26 configured for project: pedogame_supreme.
+	at org.python.pydev.plugin.nature.PythonNature.getProjectInterpreter(PythonNature.java:1045)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getSystemModulesManager(ProjectModulesManager.java:191)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagers(ProjectModulesManager.java:399)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagersInvolved(ProjectModulesManager.java:496)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:324)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:317)
+	at org.python.pydev.plugin.nature.PythonNature.resolveModule(PythonNature.java:847)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.resolveModule(AbstractPythonNature.java:40)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.isResourceInPythonpath(AbstractPythonNature.java:23)
+	at org.python.pydev.builder.PyDevBuilder.buildResources(PyDevBuilder.java:277)
+	at org.python.pydev.builder.PyDevBuilder.performFullBuild(PyDevBuilder.java:188)
+	at org.python.pydev.builder.PyDevBuilder.build(PyDevBuilder.java:82)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.python.pydev 4 4 2009-09-05 12:31:18.937
+!MESSAGE Invalid interpreter: python26 configured for project: pedogame_supreme.
+!STACK 0
+org.python.pydev.core.ProjectMisconfiguredException: Invalid interpreter: python26 configured for project: pedogame_supreme.
+	at org.python.pydev.plugin.nature.PythonNature.getProjectInterpreter(PythonNature.java:1045)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getSystemModulesManager(ProjectModulesManager.java:191)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagers(ProjectModulesManager.java:399)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagersInvolved(ProjectModulesManager.java:496)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:324)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:317)
+	at org.python.pydev.plugin.nature.PythonNature.resolveModule(PythonNature.java:847)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.resolveModule(AbstractPythonNature.java:40)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.isResourceInPythonpath(AbstractPythonNature.java:23)
+	at org.python.pydev.builder.PyDevBuilder.buildResources(PyDevBuilder.java:277)
+	at org.python.pydev.builder.PyDevBuilder.performFullBuild(PyDevBuilder.java:188)
+	at org.python.pydev.builder.PyDevBuilder.build(PyDevBuilder.java:82)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.python.pydev 4 4 2009-09-05 12:31:18.937
+!MESSAGE Invalid interpreter: python26 configured for project: pedogame_supreme.
+!STACK 0
+org.python.pydev.core.ProjectMisconfiguredException: Invalid interpreter: python26 configured for project: pedogame_supreme.
+	at org.python.pydev.plugin.nature.PythonNature.getProjectInterpreter(PythonNature.java:1045)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getSystemModulesManager(ProjectModulesManager.java:191)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagers(ProjectModulesManager.java:399)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagersInvolved(ProjectModulesManager.java:496)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:324)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:317)
+	at org.python.pydev.plugin.nature.PythonNature.resolveModule(PythonNature.java:847)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.resolveModule(AbstractPythonNature.java:40)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.isResourceInPythonpath(AbstractPythonNature.java:23)
+	at org.python.pydev.builder.PyDevBuilder.buildResources(PyDevBuilder.java:277)
+	at org.python.pydev.builder.PyDevBuilder.performFullBuild(PyDevBuilder.java:188)
+	at org.python.pydev.builder.PyDevBuilder.build(PyDevBuilder.java:82)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.python.pydev 4 4 2009-09-05 12:31:18.953
+!MESSAGE Invalid interpreter: python26 configured for project: pedogame_supreme.
+!STACK 0
+org.python.pydev.core.ProjectMisconfiguredException: Invalid interpreter: python26 configured for project: pedogame_supreme.
+	at org.python.pydev.plugin.nature.PythonNature.getProjectInterpreter(PythonNature.java:1045)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getSystemModulesManager(ProjectModulesManager.java:191)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagers(ProjectModulesManager.java:399)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagersInvolved(ProjectModulesManager.java:496)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:324)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:317)
+	at org.python.pydev.plugin.nature.PythonNature.resolveModule(PythonNature.java:847)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.resolveModule(AbstractPythonNature.java:40)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.isResourceInPythonpath(AbstractPythonNature.java:23)
+	at org.python.pydev.builder.PyDevBuilder.buildResources(PyDevBuilder.java:277)
+	at org.python.pydev.builder.PyDevBuilder.performFullBuild(PyDevBuilder.java:188)
+	at org.python.pydev.builder.PyDevBuilder.build(PyDevBuilder.java:82)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.python.pydev 4 4 2009-09-05 12:31:18.953
+!MESSAGE Invalid interpreter: python26 configured for project: pedogame_supreme.
+!STACK 0
+org.python.pydev.core.ProjectMisconfiguredException: Invalid interpreter: python26 configured for project: pedogame_supreme.
+	at org.python.pydev.plugin.nature.PythonNature.getProjectInterpreter(PythonNature.java:1045)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getSystemModulesManager(ProjectModulesManager.java:191)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagers(ProjectModulesManager.java:399)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagersInvolved(ProjectModulesManager.java:496)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:324)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:317)
+	at org.python.pydev.plugin.nature.PythonNature.resolveModule(PythonNature.java:847)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.resolveModule(AbstractPythonNature.java:40)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.isResourceInPythonpath(AbstractPythonNature.java:23)
+	at org.python.pydev.builder.PyDevBuilder.buildResources(PyDevBuilder.java:277)
+	at org.python.pydev.builder.PyDevBuilder.performFullBuild(PyDevBuilder.java:188)
+	at org.python.pydev.builder.PyDevBuilder.build(PyDevBuilder.java:82)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.python.pydev 4 4 2009-09-05 12:31:18.968
+!MESSAGE Invalid interpreter: python26 configured for project: pedogame_supreme.
+!STACK 0
+org.python.pydev.core.ProjectMisconfiguredException: Invalid interpreter: python26 configured for project: pedogame_supreme.
+	at org.python.pydev.plugin.nature.PythonNature.getProjectInterpreter(PythonNature.java:1045)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getSystemModulesManager(ProjectModulesManager.java:191)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagers(ProjectModulesManager.java:399)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagersInvolved(ProjectModulesManager.java:496)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:324)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:317)
+	at org.python.pydev.plugin.nature.PythonNature.resolveModule(PythonNature.java:847)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.resolveModule(AbstractPythonNature.java:40)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.isResourceInPythonpath(AbstractPythonNature.java:23)
+	at org.python.pydev.builder.PyDevBuilder.buildResources(PyDevBuilder.java:277)
+	at org.python.pydev.builder.PyDevBuilder.performFullBuild(PyDevBuilder.java:188)
+	at org.python.pydev.builder.PyDevBuilder.build(PyDevBuilder.java:82)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.python.pydev 4 4 2009-09-05 12:31:18.968
+!MESSAGE Invalid interpreter: python26 configured for project: pedogame_supreme.
+!STACK 0
+org.python.pydev.core.ProjectMisconfiguredException: Invalid interpreter: python26 configured for project: pedogame_supreme.
+	at org.python.pydev.plugin.nature.PythonNature.getProjectInterpreter(PythonNature.java:1045)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getSystemModulesManager(ProjectModulesManager.java:191)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagers(ProjectModulesManager.java:399)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.getManagersInvolved(ProjectModulesManager.java:496)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:324)
+	at org.python.pydev.editor.codecompletion.revisited.ProjectModulesManager.resolveModule(ProjectModulesManager.java:317)
+	at org.python.pydev.plugin.nature.PythonNature.resolveModule(PythonNature.java:847)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.resolveModule(AbstractPythonNature.java:40)
+	at org.python.pydev.plugin.nature.AbstractPythonNature.isResourceInPythonpath(AbstractPythonNature.java:23)
+	at org.python.pydev.builder.PyDevBuilder.buildResources(PyDevBuilder.java:277)
+	at org.python.pydev.builder.PyDevBuilder.performFullBuild(PyDevBuilder.java:188)
+	at org.python.pydev.builder.PyDevBuilder.build(PyDevBuilder.java:82)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:633)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:170)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:201)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:253)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:256)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:309)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:341)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:140)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:238)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.python.pydev 4 4 2009-09-05 12:31:19.062
+!MESSAGE Invalid interpreter: python26 configured for project: pedogame_supreme.
+!STACK 0
+org.python.pydev.core.ProjectMisconfiguredException: Invalid interpreter: python26 configured for project: pedogame_supreme.
+	at org.python.pydev.plugin.nature.PythonNature.getProjectInterpreter(PythonNature.java:1045)
+	at org.python.pydev.plugin.nature.PythonNature.getConfigErrorsAndInfo(PythonNature.java:1094)
+	at org.python.pydev.navigator.ProjectInfoForPackageExplorer.getConfigErrorsAndInfo(ProjectInfoForPackageExplorer.java:79)
+	at org.python.pydev.navigator.ProjectInfoForPackageExplorer.recreateInfo(ProjectInfoForPackageExplorer.java:53)
+	at org.python.pydev.navigator.PythonBaseModelProvider.internalDoNotifyPythonPathRebuilt(PythonBaseModelProvider.java:289)
+	at org.python.pydev.navigator.PythonBaseModelProvider$Updater.run(PythonBaseModelProvider.java:193)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.python.pydev 1 1 2009-09-05 12:31:48.609
+!MESSAGE Information about process of adding new interpreter:
+- Opening dialog to request executable (or jar).
+- Chosen interpreter (name and file):'Tuple [26 -- C:\stuff\pppprog\libraries\python26\python.exe]
+- Ok, file is non-null. Getting info on:C:\stuff\pppprog\libraries\python26\python.exe
+- Beggining task:Getting libs totalWork:100
+- Setting task name:Mounting executable string...
+- Setting task name:Executing:  C:\stuff\pppprog\libraries\python26\python.exe -u C:\stuff\pppprog\programIDE\eclipse\plugins\org.python.pydev_1.4.6.2788\PySrc\interpreterInfo.py
+- Setting task name:Making pythonpath environment... C:\stuff\pppprog\libraries\python26\python.exe -u C:\stuff\pppprog\programIDE\eclipse\plugins\org.python.pydev_1.4.6.2788\PySrc\interpreterInfo.py
+- Setting task name:Making exec... C:\stuff\pppprog\libraries\python26\python.exe -u C:\stuff\pppprog\programIDE\eclipse\plugins\org.python.pydev_1.4.6.2788\PySrc\interpreterInfo.py
+- Setting task name:Reading output...
+- Setting task name:Waiting for process to finish.
+- Success getting the info. Result:Name:26:EndName:Version2.6Executable:C:\stuff\pppprog\libraries\python26\python.exe|C:\stuff\pppprog\libraries\python26|C:\stuff\pppprog\libraries\python26\DLLs|C:\stuff\pppprog\libraries\python26\lib|C:\stuff\pppprog\libraries\python26\lib\lib-tk|C:\stuff\pppprog\libraries\python26\lib\plat-win|C:\stuff\pppprog\libraries\python26\lib\site-packages@$|OpenGL|__builtin__|__main__|_ast|_bisect|_bytesio|_codecs|_codecs_cn|_codecs_hk|_codecs_iso2022|_codecs_jp|_codecs_kr|_codecs_tw|_collections|_csv|_fileio|_functools|_heapq|_hotshot|_json|_locale|_lsprof|_md5|_multibytecodec|_random|_sha|_sha256|_sha512|_sre|_struct|_subprocess|_symtable|_warnings|_weakref|_winreg|array|audioop|binascii|cPickle|cStringIO|cmath|datetime|email|errno|exceptions|future_builtins|gc|imageop|imp|itertools|marshal|math|mmap|msvcrt|nt|operator|os|os.path|parser|signal|strop|sys|thread|time|wx|wxPython|xxsubtype|zipimport|zlib
+
+
+!ENTRY org.python.pydev 4 4 2009-09-05 12:31:50.640
+!MESSAGE Invalid interpreter: python26 configured for project: pedogame_supreme.
+!STACK 0
+org.python.pydev.core.ProjectMisconfiguredException: Invalid interpreter: python26 configured for project: pedogame_supreme.
+	at org.python.pydev.plugin.nature.PythonNature.getProjectInterpreter(PythonNature.java:1045)
+	at org.python.pydev.navigator.PythonBaseModelProvider.notifyPythonPathRebuilt(PythonBaseModelProvider.java:253)
+	at org.python.pydev.plugin.nature.PythonNatureListenersManager.notifyPythonPathRebuilt(PythonNatureListenersManager.java:53)
+	at org.python.pydev.ui.interpreters.AbstractInterpreterManager.restorePythopathForAllInterpreters(AbstractInterpreterManager.java:467)
+	at org.python.pydev.ui.pythonpathconf.AbstractInterpreterPreferencesPage.doRestore(AbstractInterpreterPreferencesPage.java:115)
+	at org.python.pydev.ui.pythonpathconf.AbstractInterpreterPreferencesPage$1.run(AbstractInterpreterPreferencesPage.java:179)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:121)
+
+!ENTRY org.python.pydev 4 4 2009-09-05 12:31:51.593
+!MESSAGE Invalid interpreter: python26 configured for project: pedogame_supreme.
+!STACK 0
+org.python.pydev.core.ProjectMisconfiguredException: Invalid interpreter: python26 configured for project: pedogame_supreme.
+	at org.python.pydev.plugin.nature.PythonNature.getProjectInterpreter(PythonNature.java:1045)
+	at org.python.pydev.plugin.nature.PythonNature.getConfigErrorsAndInfo(PythonNature.java:1094)
+	at org.python.pydev.navigator.ProjectInfoForPackageExplorer.getConfigErrorsAndInfo(ProjectInfoForPackageExplorer.java:79)
+	at org.python.pydev.navigator.ProjectInfoForPackageExplorer.recreateInfo(ProjectInfoForPackageExplorer.java:53)
+	at org.python.pydev.navigator.PythonBaseModelProvider.internalDoNotifyPythonPathRebuilt(PythonBaseModelProvider.java:289)
+	at org.python.pydev.navigator.PythonBaseModelProvider$Updater.run(PythonBaseModelProvider.java:193)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.python.pydev.core 2 2 2009-09-05 12:32:13.109
+!MESSAGE Unable to find the path /man_woman/Entity in the project were it's 
+added as a source folder for pydev (project: man_woman) member:null
+
+!ENTRY org.python.pydev.core 2 2 2009-09-05 12:32:13.109
+!MESSAGE Unable to find the path /man_woman/external in the project were it's 
+added as a source folder for pydev (project: man_woman) member:null
+
+!ENTRY org.python.pydev 4 4 2009-09-05 12:32:13.140
+!MESSAGE The resource tree is locked for modifications.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: The resource tree is locked for modifications.
+	at org.eclipse.core.internal.resources.WorkManager.checkIn(WorkManager.java:115)
+	at org.eclipse.core.internal.resources.Workspace.prepareOperation(Workspace.java:1747)
+	at org.eclipse.core.internal.resources.Resource.deleteMarkers(Resource.java:744)
+	at org.python.pydev.navigator.ProjectInfoForPackageExplorer.getConfigErrorsAndInfo(ProjectInfoForPackageExplorer.java:97)
+	at org.python.pydev.navigator.ProjectInfoForPackageExplorer.recreateInfo(ProjectInfoForPackageExplorer.java:53)
+	at org.python.pydev.navigator.ProjectInfoForPackageExplorer.<init>(ProjectInfoForPackageExplorer.java:45)
+	at org.python.pydev.navigator.PythonBaseModelProvider.getProjectInfo(PythonBaseModelProvider.java:383)
+	at org.python.pydev.navigator.PythonBaseModelProvider.getProjectSourceFolders(PythonBaseModelProvider.java:397)
+	at org.python.pydev.navigator.PythonBaseModelProvider.getResourceInPythonModel(PythonBaseModelProvider.java:342)
+	at org.python.pydev.navigator.PythonBaseModelProvider.getResourceInPythonModel(PythonBaseModelProvider.java:328)
+	at org.python.pydev.navigator.PythonModelProvider.wrapChildren(PythonModelProvider.java:429)
+	at org.python.pydev.navigator.PythonModelProvider.convertToPythonElementsAddOrRemove(PythonModelProvider.java:335)
+	at org.python.pydev.navigator.PythonModelProvider.interceptAdd(PythonModelProvider.java:185)
+	at org.eclipse.ui.internal.navigator.extensions.SafeDelegateTreeContentProvider.interceptAdd(SafeDelegateTreeContentProvider.java:224)
+	at org.eclipse.ui.internal.navigator.NavigatorPipelineService.pipelineInterceptAdd(NavigatorPipelineService.java:124)
+	at org.eclipse.ui.internal.navigator.NavigatorPipelineService.interceptAdd(NavigatorPipelineService.java:81)
+	at org.eclipse.ui.navigator.CommonViewer.add(CommonViewer.java:242)
+	at org.python.pydev.navigator.PythonBaseModelProvider$3.run(PythonBaseModelProvider.java:1130)
+	at org.python.pydev.navigator.PythonBaseModelProvider.runUpdates(PythonBaseModelProvider.java:974)
+	at org.python.pydev.navigator.PythonBaseModelProvider.processRunnables(PythonBaseModelProvider.java:944)
+	at org.python.pydev.navigator.PythonBaseModelProvider.processDelta(PythonBaseModelProvider.java:923)
+	at org.python.pydev.navigator.PythonBaseModelProvider.resourceChanged(PythonBaseModelProvider.java:907)
+	at org.eclipse.core.internal.events.NotificationManager$2.run(NotificationManager.java:288)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:282)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:148)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:313)
+	at org.eclipse.core.internal.resources.Workspace.checkpoint(Workspace.java:367)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:265)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:1800)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:308)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.access$1(UIPerformChangeOperation.java:1)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation$1.run(UIPerformChangeOperation.java:66)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation$2.run(UIPerformChangeOperation.java:84)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:133)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3800)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3425)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.block(ModalContext.java:173)
+	at org.eclipse.jface.operation.ModalContext.run(ModalContext.java:382)
+	at org.eclipse.ltk.internal.ui.refactoring.RefactoringWizardDialog2.run(RefactoringWizardDialog2.java:317)
+	at org.eclipse.ltk.ui.refactoring.RefactoringWizard.internalPerformFinish(RefactoringWizard.java:558)
+	at org.eclipse.ltk.ui.refactoring.UserInputWizardPage.performFinish(UserInputWizardPage.java:154)
+	at org.eclipse.ltk.ui.refactoring.resource.RenameResourceWizard$RenameResourceRefactoringConfigurationPage.performFinish(RenameResourceWizard.java:119)
+	at org.eclipse.ltk.ui.refactoring.RefactoringWizard.performFinish(RefactoringWizard.java:622)
+	at org.eclipse.ltk.internal.ui.refactoring.RefactoringWizardDialog2.okPressed(RefactoringWizardDialog2.java:446)
+	at org.eclipse.jface.dialogs.Dialog.buttonPressed(Dialog.java:472)
+	at org.eclipse.jface.dialogs.Dialog$2.widgetSelected(Dialog.java:624)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:228)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3823)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3422)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:825)
+	at org.eclipse.jface.window.Window.open(Window.java:801)
+	at org.eclipse.ltk.ui.refactoring.RefactoringWizardOpenOperation$1.run(RefactoringWizardOpenOperation.java:144)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ltk.ui.refactoring.RefactoringWizardOpenOperation.run(RefactoringWizardOpenOperation.java:156)
+	at org.eclipse.ltk.internal.ui.refactoring.actions.RenameResourceHandler.execute(RenameResourceHandler.java:40)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:281)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommandInContext(HandlerService.java:270)
+	at org.eclipse.ui.internal.ide.actions.LTKLauncher.runCommand(LTKLauncher.java:95)
+	at org.eclipse.ui.internal.ide.actions.LTKLauncher.openRenameWizard(LTKLauncher.java:73)
+	at org.eclipse.ui.actions.RenameResourceAction.run(RenameResourceAction.java:461)
+	at org.python.pydev.navigator.actions.PyRenameResourceAction.run(PyRenameResourceAction.java:127)
+	at org.eclipse.ui.actions.BaseSelectionListenerAction.runWithEvent(BaseSelectionListenerAction.java:168)
+	at org.eclipse.jface.commands.ActionHandler.execute(ActionHandler.java:119)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:169)
+	at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:247)
+	at org.eclipse.ui.menus.CommandContributionItem.handleWidgetSelection(CommandContributionItem.java:619)
+	at org.eclipse.ui.menus.CommandContributionItem.access$10(CommandContributionItem.java:605)
+	at org.eclipse.ui.menus.CommandContributionItem$4.handleEvent(CommandContributionItem.java:595)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3823)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3422)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+!SUBENTRY 1 org.eclipse.core.resources 4 380 2009-09-05 12:32:13.140
+!MESSAGE The resource tree is locked for modifications.
+
+!ENTRY org.python.pydev 4 4 2009-09-05 12:32:13.156
+!MESSAGE The resource tree is locked for modifications.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: The resource tree is locked for modifications.
+	at org.eclipse.core.internal.resources.WorkManager.checkIn(WorkManager.java:115)
+	at org.eclipse.core.internal.resources.Workspace.prepareOperation(Workspace.java:1747)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:1795)
+	at org.eclipse.ui.texteditor.MarkerUtilities.createMarker(MarkerUtilities.java:398)
+	at org.python.pydev.navigator.ProjectInfoForPackageExplorer.getConfigErrorsAndInfo(ProjectInfoForPackageExplorer.java:108)
+	at org.python.pydev.navigator.ProjectInfoForPackageExplorer.recreateInfo(ProjectInfoForPackageExplorer.java:53)
+	at org.python.pydev.navigator.ProjectInfoForPackageExplorer.<init>(ProjectInfoForPackageExplorer.java:45)
+	at org.python.pydev.navigator.PythonBaseModelProvider.getProjectInfo(PythonBaseModelProvider.java:383)
+	at org.python.pydev.navigator.PythonBaseModelProvider.getProjectSourceFolders(PythonBaseModelProvider.java:397)
+	at org.python.pydev.navigator.PythonBaseModelProvider.getResourceInPythonModel(PythonBaseModelProvider.java:342)
+	at org.python.pydev.navigator.PythonBaseModelProvider.getResourceInPythonModel(PythonBaseModelProvider.java:328)
+	at org.python.pydev.navigator.PythonModelProvider.wrapChildren(PythonModelProvider.java:429)
+	at org.python.pydev.navigator.PythonModelProvider.convertToPythonElementsAddOrRemove(PythonModelProvider.java:335)
+	at org.python.pydev.navigator.PythonModelProvider.interceptAdd(PythonModelProvider.java:185)
+	at org.eclipse.ui.internal.navigator.extensions.SafeDelegateTreeContentProvider.interceptAdd(SafeDelegateTreeContentProvider.java:224)
+	at org.eclipse.ui.internal.navigator.NavigatorPipelineService.pipelineInterceptAdd(NavigatorPipelineService.java:124)
+	at org.eclipse.ui.internal.navigator.NavigatorPipelineService.interceptAdd(NavigatorPipelineService.java:81)
+	at org.eclipse.ui.navigator.CommonViewer.add(CommonViewer.java:242)
+	at org.python.pydev.navigator.PythonBaseModelProvider$3.run(PythonBaseModelProvider.java:1130)
+	at org.python.pydev.navigator.PythonBaseModelProvider.runUpdates(PythonBaseModelProvider.java:974)
+	at org.python.pydev.navigator.PythonBaseModelProvider.processRunnables(PythonBaseModelProvider.java:944)
+	at org.python.pydev.navigator.PythonBaseModelProvider.processDelta(PythonBaseModelProvider.java:923)
+	at org.python.pydev.navigator.PythonBaseModelProvider.resourceChanged(PythonBaseModelProvider.java:907)
+	at org.eclipse.core.internal.events.NotificationManager$2.run(NotificationManager.java:288)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:282)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:148)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:313)
+	at org.eclipse.core.internal.resources.Workspace.checkpoint(Workspace.java:367)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:265)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:1800)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:308)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.access$1(UIPerformChangeOperation.java:1)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation$1.run(UIPerformChangeOperation.java:66)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:37)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation$2.run(UIPerformChangeOperation.java:84)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:133)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3800)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3425)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.block(ModalContext.java:173)
+	at org.eclipse.jface.operation.ModalContext.run(ModalContext.java:382)
+	at org.eclipse.ltk.internal.ui.refactoring.RefactoringWizardDialog2.run(RefactoringWizardDialog2.java:317)
+	at org.eclipse.ltk.ui.refactoring.RefactoringWizard.internalPerformFinish(RefactoringWizard.java:558)
+	at org.eclipse.ltk.ui.refactoring.UserInputWizardPage.performFinish(UserInputWizardPage.java:154)
+	at org.eclipse.ltk.ui.refactoring.resource.RenameResourceWizard$RenameResourceRefactoringConfigurationPage.performFinish(RenameResourceWizard.java:119)
+	at org.eclipse.ltk.ui.refactoring.RefactoringWizard.performFinish(RefactoringWizard.java:622)
+	at org.eclipse.ltk.internal.ui.refactoring.RefactoringWizardDialog2.okPressed(RefactoringWizardDialog2.java:446)
+	at org.eclipse.jface.dialogs.Dialog.buttonPressed(Dialog.java:472)
+	at org.eclipse.jface.dialogs.Dialog$2.widgetSelected(Dialog.java:624)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:228)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3823)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3422)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:825)
+	at org.eclipse.jface.window.Window.open(Window.java:801)
+	at org.eclipse.ltk.ui.refactoring.RefactoringWizardOpenOperation$1.run(RefactoringWizardOpenOperation.java:144)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ltk.ui.refactoring.RefactoringWizardOpenOperation.run(RefactoringWizardOpenOperation.java:156)
+	at org.eclipse.ltk.internal.ui.refactoring.actions.RenameResourceHandler.execute(RenameResourceHandler.java:40)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:281)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommandInContext(HandlerService.java:270)
+	at org.eclipse.ui.internal.ide.actions.LTKLauncher.runCommand(LTKLauncher.java:95)
+	at org.eclipse.ui.internal.ide.actions.LTKLauncher.openRenameWizard(LTKLauncher.java:73)
+	at org.eclipse.ui.actions.RenameResourceAction.run(RenameResourceAction.java:461)
+	at org.python.pydev.navigator.actions.PyRenameResourceAction.run(PyRenameResourceAction.java:127)
+	at org.eclipse.ui.actions.BaseSelectionListenerAction.runWithEvent(BaseSelectionListenerAction.java:168)
+	at org.eclipse.jface.commands.ActionHandler.execute(ActionHandler.java:119)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:476)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:508)
+	at org.eclipse.ui.internal.handlers.HandlerService.executeCommand(HandlerService.java:169)
+	at org.eclipse.ui.internal.handlers.SlaveHandlerService.executeCommand(SlaveHandlerService.java:247)
+	at org.eclipse.ui.menus.CommandContributionItem.handleWidgetSelection(CommandContributionItem.java:619)
+	at org.eclipse.ui.menus.CommandContributionItem.access$10(CommandContributionItem.java:605)
+	at org.eclipse.ui.menus.CommandContributionItem$4.handleEvent(CommandContributionItem.java:595)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3823)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3422)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+!SUBENTRY 1 org.eclipse.core.resources 4 380 2009-09-05 12:32:13.156
+!MESSAGE The resource tree is locked for modifications.
+
+!ENTRY org.eclipse.debug.ui 4 0 2009-09-05 12:33:13.140
+!MESSAGE Launch shortcut 'org.python.pydev.customizations.app_engine.launching.AppEngineLaunchShortcut' enablement expression caused exception. Shortcut was removed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+	at org.eclipse.core.internal.expressions.TypeExtensionManager.getProperty(TypeExtensionManager.java:109)
+	at org.eclipse.core.internal.expressions.TestExpression.evaluate(TestExpression.java:96)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateOr(CompositeExpression.java:68)
+	at org.eclipse.core.internal.expressions.OrExpression.evaluate(OrExpression.java:21)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.IterateExpression.evaluate(IterateExpression.java:150)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.WithExpression.evaluate(WithExpression.java:72)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.EnablementExpression.evaluate(EnablementExpression.java:53)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension.evalEnablementExpression(LaunchShortcutExtension.java:287)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableConfigurationTypes(LaunchConfigurationManager.java:736)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:772)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:492)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getLabel(LaunchingResourceManager.java:307)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.computeLabels(LaunchingResourceManager.java:228)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager$2.run(LaunchingResourceManager.java:138)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.core.expressions 4 201 2009-09-05 12:33:13.140
+!MESSAGE No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+!SESSION 2009-09-12 16:10:34.385 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_10
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86 -data C:\stuff\pppprog\PROGRAMS\progs\manwoman_game
+
+!ENTRY org.eclipse.debug.ui 4 0 2009-09-12 16:11:16.354
+!MESSAGE Launch shortcut 'org.python.pydev.customizations.app_engine.launching.AppEngineLaunchShortcut' enablement expression caused exception. Shortcut was removed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+	at org.eclipse.core.internal.expressions.TypeExtensionManager.getProperty(TypeExtensionManager.java:109)
+	at org.eclipse.core.internal.expressions.TestExpression.evaluate(TestExpression.java:96)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateOr(CompositeExpression.java:68)
+	at org.eclipse.core.internal.expressions.OrExpression.evaluate(OrExpression.java:21)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.IterateExpression.evaluate(IterateExpression.java:150)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.WithExpression.evaluate(WithExpression.java:72)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.EnablementExpression.evaluate(EnablementExpression.java:53)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension.evalEnablementExpression(LaunchShortcutExtension.java:287)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableConfigurationTypes(LaunchConfigurationManager.java:736)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:772)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:492)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getLabel(LaunchingResourceManager.java:307)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.computeLabels(LaunchingResourceManager.java:228)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager$2.run(LaunchingResourceManager.java:138)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.core.expressions 4 201 2009-09-12 16:11:16.354
+!MESSAGE No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+
+!ENTRY org.eclipse.debug.ui 4 0 2009-09-12 16:11:16.479
+!MESSAGE Launch shortcut 'org.python.pydev.customizations.app_engine.launching.AppEngineLaunchShortcut' enablement expression caused exception. Shortcut was removed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+	at org.eclipse.core.internal.expressions.TypeExtensionManager.getProperty(TypeExtensionManager.java:109)
+	at org.eclipse.core.internal.expressions.TestExpression.evaluate(TestExpression.java:96)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateOr(CompositeExpression.java:68)
+	at org.eclipse.core.internal.expressions.OrExpression.evaluate(OrExpression.java:21)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.IterateExpression.evaluate(IterateExpression.java:150)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.WithExpression.evaluate(WithExpression.java:72)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.EnablementExpression.evaluate(EnablementExpression.java:53)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension.evalEnablementExpression(LaunchShortcutExtension.java:287)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableConfigurationTypes(LaunchConfigurationManager.java:736)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:772)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:492)
+	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.selectAndLaunch(ContextRunner.java:127)
+	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.launch(ContextRunner.java:81)
+	at org.eclipse.debug.ui.actions.AbstractLaunchToolbarAction.run(AbstractLaunchToolbarAction.java:80)
+	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:251)
+	at org.eclipse.ui.internal.WWinPluginAction.runWithEvent(WWinPluginAction.java:229)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:583)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:500)
+	at org.eclipse.jface.action.ActionContributionItem$6.handleEvent(ActionContributionItem.java:452)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3823)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3422)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+!SUBENTRY 1 org.eclipse.core.expressions 4 201 2009-09-12 16:11:16.495
+!MESSAGE No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+
+!ENTRY org.eclipse.ui 4 0 2009-09-12 16:11:16.526
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.util.ConcurrentModificationException
+	at java.util.AbstractList$Itr.checkForComodification(Unknown Source)
+	at java.util.AbstractList$Itr.remove(Unknown Source)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableConfigurationTypes(LaunchConfigurationManager.java:743)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:772)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:492)
+	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.selectAndLaunch(ContextRunner.java:127)
+	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.launch(ContextRunner.java:81)
+	at org.eclipse.debug.ui.actions.AbstractLaunchToolbarAction.run(AbstractLaunchToolbarAction.java:80)
+	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:251)
+	at org.eclipse.ui.internal.WWinPluginAction.runWithEvent(WWinPluginAction.java:229)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:583)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:500)
+	at org.eclipse.jface.action.ActionContributionItem$6.handleEvent(ActionContributionItem.java:452)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3823)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3422)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+!SESSION 2009-09-13 09:23:05.781 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_10
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.debug.ui 4 0 2009-09-13 09:35:19.531
+!MESSAGE Launch shortcut 'org.python.pydev.customizations.app_engine.launching.AppEngineLaunchShortcut' enablement expression caused exception. Shortcut was removed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+	at org.eclipse.core.internal.expressions.TypeExtensionManager.getProperty(TypeExtensionManager.java:109)
+	at org.eclipse.core.internal.expressions.TestExpression.evaluate(TestExpression.java:96)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateOr(CompositeExpression.java:68)
+	at org.eclipse.core.internal.expressions.OrExpression.evaluate(OrExpression.java:21)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.IterateExpression.evaluate(IterateExpression.java:150)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.WithExpression.evaluate(WithExpression.java:72)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.EnablementExpression.evaluate(EnablementExpression.java:53)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension.evalEnablementExpression(LaunchShortcutExtension.java:287)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableConfigurationTypes(LaunchConfigurationManager.java:736)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:772)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:492)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getLabel(LaunchingResourceManager.java:307)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.computeLabels(LaunchingResourceManager.java:228)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager$2.run(LaunchingResourceManager.java:138)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.core.expressions 4 201 2009-09-13 09:35:19.531
+!MESSAGE No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+!SESSION 2009-09-13 15:47:56.890 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_10
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.core.resources 2 10035 2009-09-13 15:47:58.640
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.debug.ui 4 0 2009-09-13 15:54:37.406
+!MESSAGE Launch shortcut 'org.python.pydev.customizations.app_engine.launching.AppEngineLaunchShortcut' enablement expression caused exception. Shortcut was removed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+	at org.eclipse.core.internal.expressions.TypeExtensionManager.getProperty(TypeExtensionManager.java:109)
+	at org.eclipse.core.internal.expressions.TestExpression.evaluate(TestExpression.java:96)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateOr(CompositeExpression.java:68)
+	at org.eclipse.core.internal.expressions.OrExpression.evaluate(OrExpression.java:21)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.IterateExpression.evaluate(IterateExpression.java:150)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.WithExpression.evaluate(WithExpression.java:72)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.EnablementExpression.evaluate(EnablementExpression.java:53)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension.evalEnablementExpression(LaunchShortcutExtension.java:287)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableConfigurationTypes(LaunchConfigurationManager.java:736)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:772)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:492)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getLabel(LaunchingResourceManager.java:307)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.computeLabels(LaunchingResourceManager.java:228)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager$2.run(LaunchingResourceManager.java:138)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.core.expressions 4 201 2009-09-13 15:54:37.406
+!MESSAGE No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+
+!ENTRY org.eclipse.core.resources 4 376 2009-09-13 16:39:47.109
+!MESSAGE Marker id 367 not found.
+!SESSION 2009-09-16 14:18:51.890 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_10
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.debug.ui 4 0 2009-09-16 14:19:57.953
+!MESSAGE Launch shortcut 'org.python.pydev.customizations.app_engine.launching.AppEngineLaunchShortcut' enablement expression caused exception. Shortcut was removed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+	at org.eclipse.core.internal.expressions.TypeExtensionManager.getProperty(TypeExtensionManager.java:109)
+	at org.eclipse.core.internal.expressions.TestExpression.evaluate(TestExpression.java:96)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateOr(CompositeExpression.java:68)
+	at org.eclipse.core.internal.expressions.OrExpression.evaluate(OrExpression.java:21)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.IterateExpression.evaluate(IterateExpression.java:150)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.WithExpression.evaluate(WithExpression.java:72)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.EnablementExpression.evaluate(EnablementExpression.java:53)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension.evalEnablementExpression(LaunchShortcutExtension.java:287)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableConfigurationTypes(LaunchConfigurationManager.java:736)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:772)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:492)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getLabel(LaunchingResourceManager.java:307)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.computeLabels(LaunchingResourceManager.java:228)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager$2.run(LaunchingResourceManager.java:138)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.core.expressions 4 201 2009-09-16 14:19:57.953
+!MESSAGE No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+!SESSION 2009-09-18 14:46:23.234 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_10
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.debug.ui 4 0 2009-09-18 14:46:50.406
+!MESSAGE Launch shortcut 'org.python.pydev.customizations.app_engine.launching.AppEngineLaunchShortcut' enablement expression caused exception. Shortcut was removed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+	at org.eclipse.core.internal.expressions.TypeExtensionManager.getProperty(TypeExtensionManager.java:109)
+	at org.eclipse.core.internal.expressions.TestExpression.evaluate(TestExpression.java:96)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateOr(CompositeExpression.java:68)
+	at org.eclipse.core.internal.expressions.OrExpression.evaluate(OrExpression.java:21)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.IterateExpression.evaluate(IterateExpression.java:150)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.WithExpression.evaluate(WithExpression.java:72)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.EnablementExpression.evaluate(EnablementExpression.java:53)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension.evalEnablementExpression(LaunchShortcutExtension.java:287)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableConfigurationTypes(LaunchConfigurationManager.java:736)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:772)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:492)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getLabel(LaunchingResourceManager.java:307)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.computeLabels(LaunchingResourceManager.java:228)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager$2.run(LaunchingResourceManager.java:138)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.core.expressions 4 201 2009-09-18 14:46:50.406
+!MESSAGE No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+
+!ENTRY org.python.pydev 4 4 2009-09-18 14:47:38.343
+!MESSAGE Error connecting to python process (Name:26:EndName:Version2.6Executable:C:\stuff\pppprog\libraries\python26\python.exe|C:\stuff\pppprog\libraries\python26|C:\stuff\pppprog\libraries\python26\DLLs|C:\stuff\pppprog\libraries\python26\lib|C:\stuff\pppprog\libraries\python26\lib\lib-tk|C:\stuff\pppprog\libraries\python26\lib\plat-win|C:\stuff\pppprog\libraries\python26\lib\site-packages@$|OpenGL|__builtin__|__main__|_ast|_bisect|_bytesio|_codecs|_codecs_cn|_codecs_hk|_codecs_iso2022|_codecs_jp|_codecs_kr|_codecs_tw|_collections|_csv|_fileio|_functools|_heapq|_hotshot|_json|_locale|_lsprof|_md5|_multibytecodec|_random|_sha|_sha256|_sha512|_sre|_struct|_subprocess|_symtable|_warnings|_weakref|_winreg|array|audioop|binascii|cPickle|cStringIO|cmath|datetime|email|errno|exceptions|future_builtins|gc|imageop|imp|itertools|marshal|math|mmap|msvcrt|nt|operator|os|os.path|parser|signal|strop|sys|thread|time|wx|wxPython|xxsubtype|zipimport|zlib "C:\stuff\pppprog\programIDE\eclipse\plugins\org.python.pydev_1.4.6.2788\PySrc\pycompletionserver.py" 4268 4269)  - the process in still alive (killing it now)-  the output of the process is: Std output:
+
+
+Err output:
+
+!STACK 0
+java.lang.RuntimeException: Error connecting to python process (Name:26:EndName:Version2.6Executable:C:\stuff\pppprog\libraries\python26\python.exe|C:\stuff\pppprog\libraries\python26|C:\stuff\pppprog\libraries\python26\DLLs|C:\stuff\pppprog\libraries\python26\lib|C:\stuff\pppprog\libraries\python26\lib\lib-tk|C:\stuff\pppprog\libraries\python26\lib\plat-win|C:\stuff\pppprog\libraries\python26\lib\site-packages@$|OpenGL|__builtin__|__main__|_ast|_bisect|_bytesio|_codecs|_codecs_cn|_codecs_hk|_codecs_iso2022|_codecs_jp|_codecs_kr|_codecs_tw|_collections|_csv|_fileio|_functools|_heapq|_hotshot|_json|_locale|_lsprof|_md5|_multibytecodec|_random|_sha|_sha256|_sha512|_sre|_struct|_subprocess|_symtable|_warnings|_weakref|_winreg|array|audioop|binascii|cPickle|cStringIO|cmath|datetime|email|errno|exceptions|future_builtins|gc|imageop|imp|itertools|marshal|math|mmap|msvcrt|nt|operator|os|os.path|parser|signal|strop|sys|thread|time|wx|wxPython|xxsubtype|zipimport|zlib "C:\stuff\pppprog\programIDE\eclipse\plugins\org.python.pydev_1.4.6.2788\PySrc\pycompletionserver.py" 4268 4269)  - the process in still alive (killing it now)-  the output of the process is: Std output:
+
+
+Err output:
+
+	at org.python.pydev.editor.codecompletion.shell.AbstractShell.startIt(AbstractShell.java:462)
+	at org.python.pydev.editor.codecompletion.shell.AbstractShell.getServerShell(AbstractShell.java:245)
+	at org.python.pydev.editor.codecompletion.shell.AbstractShell.getServerShell(AbstractShell.java:198)
+	at org.python.pydev.editor.PyEdit$2.run(PyEdit.java:515)
+!SESSION 2009-09-22 20:03:38.250 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_10
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86 -data C:\stuff\pppprog\PROGRAMS\progs\manwoman_game
+
+!ENTRY org.eclipse.debug.ui 4 0 2009-09-22 20:05:30.515
+!MESSAGE Launch shortcut 'org.python.pydev.customizations.app_engine.launching.AppEngineLaunchShortcut' enablement expression caused exception. Shortcut was removed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+	at org.eclipse.core.internal.expressions.TypeExtensionManager.getProperty(TypeExtensionManager.java:109)
+	at org.eclipse.core.internal.expressions.TestExpression.evaluate(TestExpression.java:96)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateOr(CompositeExpression.java:68)
+	at org.eclipse.core.internal.expressions.OrExpression.evaluate(OrExpression.java:21)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.IterateExpression.evaluate(IterateExpression.java:150)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.WithExpression.evaluate(WithExpression.java:72)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.EnablementExpression.evaluate(EnablementExpression.java:53)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension.evalEnablementExpression(LaunchShortcutExtension.java:287)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableConfigurationTypes(LaunchConfigurationManager.java:736)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:772)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:492)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getLabel(LaunchingResourceManager.java:307)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.computeLabels(LaunchingResourceManager.java:228)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager$2.run(LaunchingResourceManager.java:138)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.core.expressions 4 201 2009-09-22 20:05:30.515
+!MESSAGE No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+!SESSION 2009-09-23 09:26:23.234 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_10
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.debug.ui 4 0 2009-09-23 09:26:38.562
+!MESSAGE Launch shortcut 'org.python.pydev.customizations.app_engine.launching.AppEngineLaunchShortcut' enablement expression caused exception. Shortcut was removed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+	at org.eclipse.core.internal.expressions.TypeExtensionManager.getProperty(TypeExtensionManager.java:109)
+	at org.eclipse.core.internal.expressions.TestExpression.evaluate(TestExpression.java:96)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateOr(CompositeExpression.java:68)
+	at org.eclipse.core.internal.expressions.OrExpression.evaluate(OrExpression.java:21)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.IterateExpression.evaluate(IterateExpression.java:150)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.WithExpression.evaluate(WithExpression.java:72)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.EnablementExpression.evaluate(EnablementExpression.java:53)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension.evalEnablementExpression(LaunchShortcutExtension.java:287)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableConfigurationTypes(LaunchConfigurationManager.java:736)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:772)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:492)
+	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.selectAndLaunch(ContextRunner.java:127)
+	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.launch(ContextRunner.java:81)
+	at org.eclipse.debug.ui.actions.AbstractLaunchToolbarAction.run(AbstractLaunchToolbarAction.java:80)
+	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:251)
+	at org.eclipse.ui.internal.WWinPluginAction.runWithEvent(WWinPluginAction.java:229)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:583)
+	at org.eclipse.jface.action.ActionContributionItem.access$2(ActionContributionItem.java:500)
+	at org.eclipse.jface.action.ActionContributionItem$6.handleEvent(ActionContributionItem.java:452)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1003)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:3823)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3422)
+	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2382)
+	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2346)
+	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2198)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:493)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:288)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:488)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:113)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:193)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:386)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:179)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:549)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:504)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1236)
+!SUBENTRY 1 org.eclipse.core.expressions 4 201 2009-09-23 09:26:38.562
+!MESSAGE No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+
+!ENTRY org.eclipse.debug.ui 4 0 2009-09-23 09:26:38.578
+!MESSAGE Launch shortcut 'org.python.pydev.customizations.app_engine.launching.AppEngineLaunchShortcut' enablement expression caused exception. Shortcut was removed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+	at org.eclipse.core.internal.expressions.TypeExtensionManager.getProperty(TypeExtensionManager.java:109)
+	at org.eclipse.core.internal.expressions.TestExpression.evaluate(TestExpression.java:96)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateOr(CompositeExpression.java:68)
+	at org.eclipse.core.internal.expressions.OrExpression.evaluate(OrExpression.java:21)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.IterateExpression.evaluate(IterateExpression.java:150)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.WithExpression.evaluate(WithExpression.java:72)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.EnablementExpression.evaluate(EnablementExpression.java:53)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension.evalEnablementExpression(LaunchShortcutExtension.java:287)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableConfigurationTypes(LaunchConfigurationManager.java:736)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:772)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:492)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getLabel(LaunchingResourceManager.java:307)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.computeLabels(LaunchingResourceManager.java:228)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager$2.run(LaunchingResourceManager.java:138)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.core.expressions 4 201 2009-09-23 09:26:38.578
+!MESSAGE No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+
+!ENTRY org.eclipse.core.jobs 4 2 2009-09-23 09:26:38.593
+!MESSAGE An internal error occurred during: "Compute launch button tooltip".
+!STACK 0
+java.util.ConcurrentModificationException
+	at java.util.AbstractList$Itr.checkForComodification(Unknown Source)
+	at java.util.AbstractList$Itr.remove(Unknown Source)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableConfigurationTypes(LaunchConfigurationManager.java:743)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:772)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:492)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getLabel(LaunchingResourceManager.java:307)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.computeLabels(LaunchingResourceManager.java:228)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager$2.run(LaunchingResourceManager.java:138)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SESSION 2009-09-29 20:56:32.906 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_10
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.debug.ui 4 0 2009-09-29 20:56:54.687
+!MESSAGE Launch shortcut 'org.python.pydev.customizations.app_engine.launching.AppEngineLaunchShortcut' enablement expression caused exception. Shortcut was removed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+	at org.eclipse.core.internal.expressions.TypeExtensionManager.getProperty(TypeExtensionManager.java:109)
+	at org.eclipse.core.internal.expressions.TestExpression.evaluate(TestExpression.java:96)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateOr(CompositeExpression.java:68)
+	at org.eclipse.core.internal.expressions.OrExpression.evaluate(OrExpression.java:21)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.IterateExpression.evaluate(IterateExpression.java:150)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.WithExpression.evaluate(WithExpression.java:72)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.EnablementExpression.evaluate(EnablementExpression.java:53)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension.evalEnablementExpression(LaunchShortcutExtension.java:287)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableConfigurationTypes(LaunchConfigurationManager.java:736)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:772)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:492)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getLabel(LaunchingResourceManager.java:307)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.computeLabels(LaunchingResourceManager.java:228)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager$2.run(LaunchingResourceManager.java:138)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.core.expressions 4 201 2009-09-29 20:56:54.687
+!MESSAGE No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+!SESSION 2009-10-02 23:03:20.937 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_10
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.debug.ui 4 0 2009-10-03 13:46:03.765
+!MESSAGE Launch shortcut 'org.python.pydev.customizations.app_engine.launching.AppEngineLaunchShortcut' enablement expression caused exception. Shortcut was removed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+	at org.eclipse.core.internal.expressions.TypeExtensionManager.getProperty(TypeExtensionManager.java:109)
+	at org.eclipse.core.internal.expressions.TestExpression.evaluate(TestExpression.java:96)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateOr(CompositeExpression.java:68)
+	at org.eclipse.core.internal.expressions.OrExpression.evaluate(OrExpression.java:21)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.IterateExpression.evaluate(IterateExpression.java:150)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.WithExpression.evaluate(WithExpression.java:72)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.EnablementExpression.evaluate(EnablementExpression.java:53)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension.evalEnablementExpression(LaunchShortcutExtension.java:287)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableConfigurationTypes(LaunchConfigurationManager.java:736)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:772)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:492)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getLabel(LaunchingResourceManager.java:307)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.computeLabels(LaunchingResourceManager.java:228)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager$2.run(LaunchingResourceManager.java:138)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.core.expressions 4 201 2009-10-03 13:46:03.781
+!MESSAGE No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+!SESSION 2009-10-03 14:43:21.093 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_10
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.core.resources 2 10035 2009-10-03 14:43:22.921
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.debug.ui 4 0 2009-10-03 14:44:44.187
+!MESSAGE Launch shortcut 'org.python.pydev.customizations.app_engine.launching.AppEngineLaunchShortcut' enablement expression caused exception. Shortcut was removed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+	at org.eclipse.core.internal.expressions.TypeExtensionManager.getProperty(TypeExtensionManager.java:109)
+	at org.eclipse.core.internal.expressions.TestExpression.evaluate(TestExpression.java:96)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateOr(CompositeExpression.java:68)
+	at org.eclipse.core.internal.expressions.OrExpression.evaluate(OrExpression.java:21)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.IterateExpression.evaluate(IterateExpression.java:150)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.WithExpression.evaluate(WithExpression.java:72)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.EnablementExpression.evaluate(EnablementExpression.java:53)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension.evalEnablementExpression(LaunchShortcutExtension.java:287)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableConfigurationTypes(LaunchConfigurationManager.java:736)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:772)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:492)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getLabel(LaunchingResourceManager.java:307)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.computeLabels(LaunchingResourceManager.java:228)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager$2.run(LaunchingResourceManager.java:138)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.core.expressions 4 201 2009-10-03 14:44:44.187
+!MESSAGE No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+!SESSION 2009-10-03 23:07:41.781 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_10
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.debug.ui 4 0 2009-10-03 23:22:15.281
+!MESSAGE Launch shortcut 'org.python.pydev.customizations.app_engine.launching.AppEngineLaunchShortcut' enablement expression caused exception. Shortcut was removed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+	at org.eclipse.core.internal.expressions.TypeExtensionManager.getProperty(TypeExtensionManager.java:109)
+	at org.eclipse.core.internal.expressions.TestExpression.evaluate(TestExpression.java:96)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateOr(CompositeExpression.java:68)
+	at org.eclipse.core.internal.expressions.OrExpression.evaluate(OrExpression.java:21)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.IterateExpression.evaluate(IterateExpression.java:150)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.WithExpression.evaluate(WithExpression.java:72)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.EnablementExpression.evaluate(EnablementExpression.java:53)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension.evalEnablementExpression(LaunchShortcutExtension.java:287)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableConfigurationTypes(LaunchConfigurationManager.java:736)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:772)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:492)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getLabel(LaunchingResourceManager.java:307)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.computeLabels(LaunchingResourceManager.java:228)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager$2.run(LaunchingResourceManager.java:138)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.core.expressions 4 201 2009-10-03 23:22:15.296
+!MESSAGE No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+!SESSION 2009-10-04 21:18:47.765 -----------------------------------------------
+eclipse.buildId=M20080911-1700
+java.version=1.6.0_10
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY org.eclipse.core.resources 2 10035 2009-10-04 21:18:52.625
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.python.pydev 4 4 2009-10-04 21:20:11.109
+!MESSAGE Error connecting to python process (Name:26:EndName:Version2.6Executable:C:\stuff\pppprog\libraries\python26\python.exe|C:\stuff\pppprog\libraries\python26|C:\stuff\pppprog\libraries\python26\DLLs|C:\stuff\pppprog\libraries\python26\lib|C:\stuff\pppprog\libraries\python26\lib\lib-tk|C:\stuff\pppprog\libraries\python26\lib\plat-win|C:\stuff\pppprog\libraries\python26\lib\site-packages@$|OpenGL|__builtin__|__main__|_ast|_bisect|_bytesio|_codecs|_codecs_cn|_codecs_hk|_codecs_iso2022|_codecs_jp|_codecs_kr|_codecs_tw|_collections|_csv|_fileio|_functools|_heapq|_hotshot|_json|_locale|_lsprof|_md5|_multibytecodec|_random|_sha|_sha256|_sha512|_sre|_struct|_subprocess|_symtable|_warnings|_weakref|_winreg|array|audioop|binascii|cPickle|cStringIO|cmath|datetime|email|errno|exceptions|future_builtins|gc|imageop|imp|itertools|marshal|math|mmap|msvcrt|nt|operator|os|os.path|parser|signal|strop|sys|thread|time|wx|wxPython|xxsubtype|zipimport|zlib "C:\stuff\pppprog\programIDE\eclipse\plugins\org.python.pydev_1.4.6.2788\PySrc\pycompletionserver.py" 1087 1088)  - the process in still alive (killing it now)-  the output of the process is: Std output:
+
+
+Err output:
+
+!STACK 0
+java.lang.RuntimeException: Error connecting to python process (Name:26:EndName:Version2.6Executable:C:\stuff\pppprog\libraries\python26\python.exe|C:\stuff\pppprog\libraries\python26|C:\stuff\pppprog\libraries\python26\DLLs|C:\stuff\pppprog\libraries\python26\lib|C:\stuff\pppprog\libraries\python26\lib\lib-tk|C:\stuff\pppprog\libraries\python26\lib\plat-win|C:\stuff\pppprog\libraries\python26\lib\site-packages@$|OpenGL|__builtin__|__main__|_ast|_bisect|_bytesio|_codecs|_codecs_cn|_codecs_hk|_codecs_iso2022|_codecs_jp|_codecs_kr|_codecs_tw|_collections|_csv|_fileio|_functools|_heapq|_hotshot|_json|_locale|_lsprof|_md5|_multibytecodec|_random|_sha|_sha256|_sha512|_sre|_struct|_subprocess|_symtable|_warnings|_weakref|_winreg|array|audioop|binascii|cPickle|cStringIO|cmath|datetime|email|errno|exceptions|future_builtins|gc|imageop|imp|itertools|marshal|math|mmap|msvcrt|nt|operator|os|os.path|parser|signal|strop|sys|thread|time|wx|wxPython|xxsubtype|zipimport|zlib "C:\stuff\pppprog\programIDE\eclipse\plugins\org.python.pydev_1.4.6.2788\PySrc\pycompletionserver.py" 1087 1088)  - the process in still alive (killing it now)-  the output of the process is: Std output:
+
+
+Err output:
+
+	at org.python.pydev.editor.codecompletion.shell.AbstractShell.startIt(AbstractShell.java:462)
+	at org.python.pydev.editor.codecompletion.shell.AbstractShell.getServerShell(AbstractShell.java:245)
+	at org.python.pydev.editor.codecompletion.shell.AbstractShell.getServerShell(AbstractShell.java:198)
+	at org.python.pydev.editor.PyEdit$2.run(PyEdit.java:515)
+
+!ENTRY org.eclipse.debug.ui 4 0 2009-10-04 23:03:12.750
+!MESSAGE Launch shortcut 'org.python.pydev.customizations.app_engine.launching.AppEngineLaunchShortcut' enablement expression caused exception. Shortcut was removed.
+!STACK 1
+org.eclipse.core.runtime.CoreException: No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
+	at org.eclipse.core.internal.expressions.TypeExtensionManager.getProperty(TypeExtensionManager.java:109)
+	at org.eclipse.core.internal.expressions.TestExpression.evaluate(TestExpression.java:96)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateOr(CompositeExpression.java:68)
+	at org.eclipse.core.internal.expressions.OrExpression.evaluate(OrExpression.java:21)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.IterateExpression.evaluate(IterateExpression.java:150)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.WithExpression.evaluate(WithExpression.java:72)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.EnablementExpression.evaluate(EnablementExpression.java:53)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension.evalEnablementExpression(LaunchShortcutExtension.java:287)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableConfigurationTypes(LaunchConfigurationManager.java:736)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchConfigurationManager.getApplicableLaunchConfigurations(LaunchConfigurationManager.java:772)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getParticipatingLaunchConfigurations(LaunchingResourceManager.java:492)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.getLabel(LaunchingResourceManager.java:307)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager.computeLabels(LaunchingResourceManager.java:228)
+	at org.eclipse.debug.internal.ui.contextlaunching.LaunchingResourceManager$2.run(LaunchingResourceManager.java:138)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.core.expressions 4 201 2009-10-04 23:03:12.750
+!MESSAGE No property tester contributes a property org.python.pydev.customizations.app_engine to type class org.eclipse.core.internal.resources.File
